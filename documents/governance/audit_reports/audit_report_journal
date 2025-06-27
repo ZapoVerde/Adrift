@@ -1,0 +1,31 @@
+# 📋 Audit Report Journal
+
+This document stores manual audit results for system design, governance adherence, and implementation integrity.
+
+---
+
+## 🔍 Audit Scope
+
+Each audit verifies:
+
+- That locked systems match their journal entry
+- That implementation (if claimed) aligns with the specification
+- That versioning, changelogs, and governance were properly followed
+
+Audits may be:
+- Manual (triggered by user)
+- Automatic (e.g., before milestone or export)
+
+---
+
+## 🧾 Report Format
+
+Each audit must contain:
+
+- Timestamp
+- Trigger type (manual, milestone, export)
+- Summary of systems reviewed
+- Deviations found (if any)
+- Action items (e.g., relock, reimplement, re-audit)
+- Auditor notes
+

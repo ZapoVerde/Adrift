@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    // …other settings…
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // for the new JSX transform
+    "jsx": "react-jsx"
+  }
+}

@@ -1,0 +1,35 @@
+Weapon Type,Action,Tick Cost
+Melee - Light,Swing,6
+Melee - Heavy,Swing,10
+Melee - All,Double-strike (batch),12
+Bow - Basic,Quick Shot,10
+Bow - Basic,Aimed Shot,14
+Bow - Compound,Quick Shot,12
+Bow - Compound,Aimed Shot,16
+Rifle - Breechloader,Fire,12
+Rifle - Breechloader,Reload,18
+Rifle - Bolt-action,Fire,10
+Rifle - Bolt-action,Reload,18
+Pistol - Revolver,Fire,8
+Pistol - Revolver,Rapid Fire,6
+Pistol - Semi-auto,Fire,6
+SMG,Fire,6
+SMG,Rapid Fire,4
+Rifle - Lever/Tubeload,Fire,8
+Rifle - Lever/Tubeload,Reload per shell,6
+Rifle - Lever/Tubeload,Full reload,18
+Shotgun - Break Action,Fire,8
+Shotgun - Break Action,Reload,18
+Rifle - Hunting,Fire,10
+Rifle - Hunting,Reload,18
+Rifle - Sniper,Fire,12
+Rifle - Sniper,Reload,24
+Rifle - .22,Fire,6
+Rifle - .22,Reload,12
+Plasma Rifle,Fire,8
+Plasma Rifle,Rapid Fire,6
+Gauss Rifle,Fire,8
+Laser Rifle,Fire,6
+All,Bandage Wound,20
+All,Switch Weapon,6
+All,Overwatch (Enter Stance),6

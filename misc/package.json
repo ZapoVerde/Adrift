@@ -1,0 +1,33 @@
+{
+  "name": "adrift",
+  "version": "1.0.0",
+  "description": "**Crawling** is a retro-sci-fi tactical dungeon crawler inspired by emergent storytelling systems like *RimWorld*, but built from the ground up as a standalone, original project. It features:",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZapoVerde/Adrift.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZapoVerde/Adrift/issues"
+  },
+  "homepage": "https://github.com/ZapoVerde/Adrift#readme",
+  "dependencies": {
+    "framer-motion": "^12.19.1",
+    "lucide-react": "^0.523.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
+  }
+}

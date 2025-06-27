@@ -1,0 +1,132 @@
+
+🔫 Weapon Handling: Stats & Skills Framework
+🧠 Design Philosophy
+You rejected “base damage by weapon class” or “caliber realism” in favor of:
+
+Descriptive categories (e.g. target pistol, snub revolver)
+
+Organic scaling from stats (e.g. STR, DEX, PER) and skills (e.g. pistol, rifle)
+
+A framework that supports misfires, fumbles, or inefficiency when misused
+
+RimWorld-style emergent skill growth and tactical impact
+
+📐 Weapon Profile Components
+Each weapon is defined with handling properties governed by stats and skills:
+
+Attribute	Influenced By	Description
+Speed / Timing	STR, DEX	How quickly the weapon can be readied and used
+Control / Accuracy	PER	How steady, precise, or responsive the weapon is
+Proficiency	Weapon skill (e.g. rifle, pistol)	Determines misfires, penalties, fumbles
+Base Damage	Weapon-specific	Scales into DPS via timing + multiplier system
+Critical Failure Risk	Skill level + weapon profile	Some weapons are more dangerous when mishandled (e.g. bolt-action misfeed, RPG misfire)
+
+🔧 Example Weapon: Hunting Rifle
+Attribute	Handling
+Control	PER
+Timing	STR/DEX (must steady weapon, bolt action)
+Skill	rifle
+
+🔄 Interaction Between Stats, Skills, and Outcomes
+🏋️ Stats (STR, DEX, PER)
+Gate access: Weapons can have soft stat minimums
+
+If unmet, apply penalty to handling, accuracy, or speed
+
+Scale outcomes:
+
+Low DEX = slower aim
+
+Low PER = unstable reticle
+
+Low STR = weapon unbalanced
+
+🧠 Skills
+Weapon type skills (e.g. pistol, shotgun, knife) apply:
+
+Accuracy bonuses
+
+Critical failure mitigation
+
+Passive roll benefits
+
+General skill (e.g. melee, firearms) could be fallback or base
+
+📌 Critical design point: stats determine possibility, skills determine reliability and progression
+
+🎯 Outcome Modeling
+Combat relies on 2d6-based roll + multiplier system:
+
+Stat mismatch applies penalty to roll (not direct damage)
+
+Skill increases chance of solid or critical hits
+
+Weapon damage is shaped by curve, not fixed bands
+
+Sample: Underqualified user fires sniper rifle
+Factor	Effect
+Low STR	Handling penalty (slow setup)
+Low PER	Roll penalty (unstable control)
+No sniper_rifle skill	Higher chance of fumble or poor roll
+Result	2d6 roll with -3 modifier → likely weak or null shot
+
+🔥 Critical Failure Modes
+Each weapon type can define:
+
+Unique failure mode (e.g. misfeed, dropped mag, backflash)
+
+Chance scales inversely with relevant weapon skill
+
+Result may include:
+
+Loss of turn
+
+Self-damage
+
+Revealed position
+
+Weapon jam requiring recovery
+
+🛠️ Implementation Targets
+Each weapon in your ITEM_DB should specify:
+
+python
+Copy
+Edit
+{
+  "name": "Target Pistol",
+  "base_damage": 6,
+  "timing_stats": ["DEX"],
+  "control_stats": ["PER"],
+  "required_skill": "pistol",
+  "critical_failure_mode": "misfire"
+}
+Then, your attack resolution flow should:
+
+Check stat mismatch
+
+Apply roll penalty if needed
+
+Fetch skill level for this weapon
+
+Apply bonus/malus to final damage multiplier
+
+Check for critical failure (skill vs risk)
+
+🧠 Summary: Final Locked-In Model
+Principle	Rule
+Stats gate use	STR, DEX, PER influence handling and success likelihood
+Skills shape results	Weapon skills improve accuracy, reduce failure, and scale damage
+Roll-based damage	2d6-based combat allows for smooth scaling and failure range
+Failure is weapon-specific	Some weapons are riskier to misuse than others
+No artificial weapon tiers	Weapons differ by role and requirement, not raw numbers
+
+Do you want:
+
+This promoted to the design journal?
+
+A sample resolve_attack() function demonstrating stat/skill interaction?
+
+Test scenarios with mismatched weapon use vs expert user?
+
+Let’s define where to build next.
