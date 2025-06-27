@@ -1,0 +1,51 @@
+# Bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test cache
+.pytest_cache/
+
+# Environment files
+.env
+*.env
+
+# Logs and coverage
+*.log
+coverage.xml
+htmlcov/
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives and zips
+*.zip
+
+# Stray folders
+misc/
+scripts/
+
+# Node/TypeScript junk (leftovers)
+node_modules/
+package-lock.json
+package.json
+tsconfig.json
+
+# Compiled or temp
+*.so
+*.egg-info/
+build/
+dist/
+
+# Git metadata (precaution)
+*.orig
+
+# Replit artifacts
+.replit
