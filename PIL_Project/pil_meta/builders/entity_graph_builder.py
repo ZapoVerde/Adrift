@@ -33,7 +33,7 @@ def build_entity_graph(entities: list[dict]) -> dict:
 
         graph[fqname] = {
             "fqname": fqname,
-            "type": "function",
+            "type": entry.get("type", "function"),   # <--- FIXED
             "description": entry.get("description", ""),
             "tags": entry.get("tags", []),
             "source_file": entry.get("source_file", ""),
@@ -53,3 +53,4 @@ def build_entity_graph(entities: list[dict]) -> dict:
             ]
 
     return graph
+

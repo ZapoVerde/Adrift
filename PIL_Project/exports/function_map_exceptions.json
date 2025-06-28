@@ -1,10 +1,87 @@
 {
+  "pil_meta.pipeline": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.builders.entity_graph_builder.build_entity_graph",
+      "pil_meta.builders.linkage_builder.inject_call_links",
+      "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
+      "pil_meta.exporters.json_exporter.export_entity_graph",
+      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
+      "pil_meta.exporters.vault_index_exporter.export_vault_index",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.config_loader.load_config",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+      "pil_meta.utils.test_coverage_utils.estimate_test_coverage"
+    ],
+    "called_by": []
+  },
   "pil_meta.pipeline.run_pipeline": {
     "module": null,
     "function": null,
     "issues": [
+      "invalid_docstring_signature"
+    ],
+    "calls": [
+      "pil_meta.builders.entity_graph_builder.build_entity_graph",
+      "pil_meta.builders.linkage_builder.inject_call_links",
+      "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
+      "pil_meta.exporters.json_exporter.export_entity_graph",
+      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
+      "pil_meta.exporters.vault_index_exporter.export_vault_index",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.config_loader.load_config",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+      "pil_meta.utils.test_coverage_utils.estimate_test_coverage"
+    ],
+    "called_by": [
+      "scripts.rebuild_pil",
+      "tests.test_pipeline",
+      "tests.test_pipeline.test_pipeline_generates_valid_entity_graph"
+    ]
+  },
+  "scripts.rebuild_pil": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "called_by": []
+  },
+  "tests.test_pipeline": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "called_by": []
+  },
+  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
+    "module": null,
+    "function": null,
+    "issues": [
       "invalid_docstring_signature",
-      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "called_by": []
+  },
+  "pil_meta.builders.entity_graph_builder": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
       "orphaned"
     ],
     "calls": [],
@@ -15,10 +92,23 @@
     "function": null,
     "issues": [
       "invalid_docstring_signature",
-      "missing_test",
-      "orphaned"
+      "missing_test"
     ],
     "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.builders.linkage_builder": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.builders.linkage_builder.extract_called_functions"
+    ],
     "called_by": []
   },
   "pil_meta.builders.linkage_builder.extract_called_functions": {
@@ -27,18 +117,37 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags",
-      "orphaned"
+      "missing_tags"
     ],
-    "calls": [],
-    "called_by": []
+    "calls": [
+      "pil_meta.builders.linkage_builder.extract_called_functions"
+    ],
+    "called_by": [
+      "pil_meta.builders.linkage_builder",
+      "pil_meta.builders.linkage_builder.extract_called_functions",
+      "pil_meta.builders.linkage_builder.inject_call_links"
+    ]
   },
   "pil_meta.builders.linkage_builder.inject_call_links": {
     "module": null,
     "function": null,
     "issues": [
       "invalid_docstring_signature",
-      "missing_test",
+      "missing_test"
+    ],
+    "calls": [
+      "pil_meta.builders.linkage_builder.extract_called_functions"
+    ],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.builders.tag_and_link_applier_builders": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
       "orphaned"
     ],
     "calls": [],
@@ -50,6 +159,64 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.builders.usage_map_builder": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.builders.usage_map_builder.build_usage_map": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.utils.exceptions_reporter_utils",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
+    ]
+  },
+  "pil_meta.builders.variable_usage_builder": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.builders.variable_usage_builder.build_variable_usage_map": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.exporters.json_exporter": {
+    "module": null,
+    "function": null,
+    "issues": [
       "missing_tags",
       "orphaned"
     ],
@@ -61,7 +228,86 @@
     "function": null,
     "issues": [
       "invalid_docstring_signature",
+      "missing_test"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.exporters.markdown_vault_exporter": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+    ],
+    "called_by": []
+  },
+  "pil_meta.exporters.markdown_vault_exporter.friendly_name": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
       "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+    ],
+    "called_by": [
+      "pil_meta.exporters.markdown_vault_exporter",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault"
+    ]
+  },
+  "pil_meta.exporters.markdown_vault_exporter._sanitize_filename": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+    ],
+    "called_by": [
+      "pil_meta.exporters.markdown_vault_exporter",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault"
+    ]
+  },
+  "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+    ],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.exporters.md_exporter": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
       "orphaned"
     ],
     "calls": [],
@@ -79,7 +325,17 @@
     "calls": [],
     "called_by": []
   },
-  "pil_meta.loaders.code_loader.load_config": {
+  "pil_meta.exporters.variable_usage_report_exporter": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.exporters.variable_usage_report_exporter.export_variable_usage_markdown": {
     "module": null,
     "function": null,
     "issues": [
@@ -91,36 +347,169 @@
     "calls": [],
     "called_by": []
   },
-  "pil_meta.loaders.code_loader.extract_docstring_flags": {
+  "pil_meta.exporters.vault_index_exporter": {
     "module": null,
     "function": null,
     "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
       "missing_tags",
       "orphaned"
     ],
     "calls": [],
     "called_by": []
   },
-  "pil_meta.loaders.code_loader.extract_functions_from_file": {
+  "pil_meta.exporters.vault_index_exporter.export_vault_index": {
     "module": null,
     "function": null,
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags",
-      "orphaned"
+      "missing_tags"
     ],
     "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.loaders.code_loader": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
     "called_by": []
+  },
+  "pil_meta.loaders.code_loader.extract_nodes_from_ast": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
+    "called_by": [
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.visit"
+    ]
   },
   "pil_meta.loaders.code_loader.load_code_symbols": {
     "module": null,
     "function": null,
     "issues": [
       "invalid_docstring_signature",
+      "missing_test"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.loaders.code_loader.module_name": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_docstring",
       "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
+    "called_by": [
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.visit"
+    ]
+  },
+  "pil_meta.loaders.code_loader.ParentNodeVisitor": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
+    "called_by": [
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.visit"
+    ]
+  },
+  "pil_meta.loaders.code_loader.visit": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_docstring",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+    ],
+    "called_by": [
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.loaders.code_loader.visit"
+    ]
+  },
+  "pil_meta.loaders.config_loader": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
       "orphaned"
     ],
     "calls": [],
@@ -132,6 +521,18 @@
     "issues": [
       "missing_docstring",
       "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.loaders.markdown_loader": {
+    "module": null,
+    "function": null,
+    "issues": [
       "missing_tags",
       "orphaned"
     ],
@@ -150,16 +551,75 @@
     "calls": [],
     "called_by": []
   },
-  "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match": {
+  "pil_meta.utils.docstring_utils": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.utils.docstring_utils.check_docstring_signature_match": {
     "module": null,
     "function": null,
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags",
-      "orphaned"
+      "missing_tags"
     ],
     "calls": [],
+    "called_by": [
+      "pil_meta.validators.governance_validator",
+      "pil_meta.validators.governance_validator.validate_governance_rules"
+    ]
+  },
+  "pil_meta.utils.docstring_utils.extract_docstring_metadata": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.module_name",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.ParentNodeVisitor",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.loaders.code_loader.visit",
+      "pil_meta.loaders.code_loader.visit"
+    ]
+  },
+  "pil_meta.utils.exceptions_reporter_utils": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.builders.usage_map_builder.build_usage_map",
+      "pil_meta.validators.governance_validator.validate_governance_rules"
+    ],
     "called_by": []
   },
   "pil_meta.utils.exceptions_reporter_utils.generate_exception_report": {
@@ -168,6 +628,21 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.builders.usage_map_builder.build_usage_map",
+      "pil_meta.validators.governance_validator.validate_governance_rules"
+    ],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.utils.graph_utils": {
+    "module": null,
+    "function": null,
+    "issues": [
       "missing_tags",
       "orphaned"
     ],
@@ -186,6 +661,16 @@
     "calls": [],
     "called_by": []
   },
+  "pil_meta.utils.path_utils": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
   "pil_meta.utils.path_utils.resolve_path": {
     "module": null,
     "function": null,
@@ -198,16 +683,55 @@
     "calls": [],
     "called_by": []
   },
-  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
+  "pil_meta.utils.test_coverage_utils": {
     "module": null,
     "function": null,
     "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
       "missing_tags",
       "orphaned"
     ],
     "calls": [],
     "called_by": []
+  },
+  "pil_meta.utils.test_coverage_utils.estimate_test_coverage": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pil_meta.pipeline",
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.validators.governance_validator": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.utils.docstring_utils.check_docstring_signature_match"
+    ],
+    "called_by": []
+  },
+  "pil_meta.validators.governance_validator.validate_governance_rules": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [
+      "pil_meta.utils.docstring_utils.check_docstring_signature_match"
+    ],
+    "called_by": [
+      "pil_meta.utils.exceptions_reporter_utils",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
+    ]
   }
 }

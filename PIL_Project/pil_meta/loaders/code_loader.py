@@ -1,125 +1,95 @@
 # code_loader.py
 """
-Loader: Code Symbols
-
-Extracts top-level function symbols from Python files within the configured project root.
-Each symbol includes its fully qualified name, module, line number, docstring summary, and flags.
+Extract all symbols (function, class, method, variable, module) from a single Python source file.
 """
 
-import os
 import ast
-import json
-from pathlib import Path
+import os
 
-def load_config(config_path="pilconfig.json"):
+def load_code_symbols(pyfile_path):
     """
-    Load the global PIL configuration file.
-
-    Returns:
-        dict: Parsed configuration values.
-    """
-    with open(config_path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def extract_docstring_flags(doc):
-    """
-    Parse flags and tags from a docstring.
-
-    Recognized tags:
-    - @subsystem:<tag>
-    - @ignore
-    - @deprecated
-
-    Returns:
-        dict: Extracted flags and tags.
-    """
-    flags = {
-        "subsystems": [],
-        "ignore": False,
-        "deprecated": False,
-    }
-    if not doc:
-        return flags
-
-    for line in doc.strip().split("\n"):
-        line = line.strip()
-        if line.startswith("@subsystem:"):
-            tag = line.split(":", 1)[1].strip().lower()
-            if tag:
-                flags["subsystems"].append(tag)
-        elif line.startswith("@ignore"):
-            flags["ignore"] = True
-        elif line.startswith("@deprecated"):
-            flags["deprecated"] = True
-
-    return flags
-
-def extract_functions_from_file(filepath, root_path):
-    """
-    Extract all function definitions from a single Python file.
+    Parse a single Python file and return a list of symbols with metadata.
 
     Args:
-        filepath (Path): Full path to a Python source file.
-        root_path (Path): Root project path for relative module resolution.
+        pyfile_path (str): Path to .py file.
 
     Returns:
-        list[dict]: List of extracted symbol records.
+        list of dicts: Each with type, name, fqname, module, lineno, doc.
     """
-    with open(filepath, "r", encoding="utf-8") as f:
+    with open(pyfile_path, "r", encoding="utf-8") as f:
         source = f.read()
 
-    try:
-        tree = ast.parse(source, filename=str(filepath))
-    except SyntaxError as e:
-        print(f"⚠️ Skipping {filepath}: {e}")
-        return []
+    module_name = os.path.splitext(os.path.basename(pyfile_path))[0]
+    symbol_list = []
 
-    functions = []
+    # Module-level docstring
+    tree = ast.parse(source, filename=pyfile_path)
+    module_doc = ast.get_docstring(tree)
+    symbol_list.append({
+        "type": "module",
+        "name": module_name,
+        "fqname": module_name,
+        "module": module_name,
+        "lineno": 1,
+        "doc": module_doc or ""
+    })
 
+    # Collect assignments for variables with comments
+    lines = source.splitlines()
+    for idx, line in enumerate(lines):
+        if "=" in line and "#" in line:
+            # very naive: MY_CONSTANT = 42  # comment
+            parts = line.split("#", 1)
+            left = parts[0].strip()
+            right = parts[1].strip()
+            if "=" in left:
+                var_name = left.split("=")[0].strip()
+                symbol_list.append({
+                    "type": "variable",
+                    "name": var_name,
+                    "fqname": f"{module_name}.{var_name}",
+                    "module": module_name,
+                    "lineno": idx + 1,
+                    "doc": right
+                })
+
+    # AST walk for classes/functions
     for node in ast.walk(tree):
         if isinstance(node, ast.FunctionDef):
-            doc = ast.get_docstring(node)
-            flags = extract_docstring_flags(doc)
-            rel_path = filepath.relative_to(root_path).as_posix()
-            module = rel_path.replace(".py", "").replace("/", ".")
-            fqname = f"{module}.{node.name}"
-
-            functions.append({
-                "fqname": fqname,
-                "module": module,
-                "function": node.name,
+            is_method = False
+            parent = getattr(node, 'parent', None)
+            if parent and isinstance(parent, ast.ClassDef):
+                is_method = True
+            symbol_list.append({
+                "type": "method" if is_method else "function",
+                "name": node.name,
+                "fqname": f"{module_name}.{node.name}",
+                "module": module_name,
                 "lineno": node.lineno,
-                "description": doc.strip().split("\n")[0] if doc else "",
-                "tags": flags["subsystems"],
-                "ignore": flags["ignore"],
-                "deprecated": flags["deprecated"],
-                "source_file": rel_path
+                "doc": ast.get_docstring(node) or ""
             })
-    return functions
+        elif isinstance(node, ast.ClassDef):
+            symbol_list.append({
+                "type": "class",
+                "name": node.name,
+                "fqname": f"{module_name}.{node.name}",
+                "module": module_name,
+                "lineno": node.lineno,
+                "doc": ast.get_docstring(node) or ""
+            })
 
-def load_code_symbols(config_path="pilconfig.json"):
-    """
-    Entry point for symbol extraction.
+    # Fix parent linkage for methods
+    for node in ast.walk(tree):
+        for child in ast.iter_child_nodes(node):
+            child.parent = node
 
-    Loads configuration and extracts all function symbols from the project root.
+    # Patch types: fix methods so they're not misclassified as top-level functions
+    for s in symbol_list:
+        if s["type"] == "function":
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name == s["name"]:
+                    parent = getattr(node, 'parent', None)
+                    if parent and isinstance(parent, ast.ClassDef):
+                        s["type"] = "method"
 
-    Returns:
-        list[dict]: All discovered function symbols.
-    """
-    config = load_config(config_path)
-    root_path = Path(config["project_root"]).resolve()
-    all_symbols = []
-
-    for path in root_path.rglob("*.py"):
-        if path.name.startswith("_"):
-            continue  # Skip __init__.py or hidden files
-        try:
-            all_symbols.extend(extract_functions_from_file(path, root_path))
-        except Exception as e:
-            print(f"❌ Error in {path}: {e}")
-
-    return all_symbols
-
-if __name__ == "__main__":
-    from pprint import pprint
-    pprint(load_code_symbols())
+    return symbol_list

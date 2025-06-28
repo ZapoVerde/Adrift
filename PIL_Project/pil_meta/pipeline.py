@@ -8,8 +8,8 @@ responsible for running a complete metadata pass using configuration in pilconfi
 
 Steps:
 - Load config
-- Extract raw function symbols
-- Normalize fields for graph compatibility
+- Extract all code symbols in bulk (functions, methods, classes)
+- Normalize minimal graph fields for linkage
 - Build and enrich entity graph
 - Export graph to disk
 - Emit governance exception report
@@ -18,6 +18,9 @@ Steps:
 import shutil
 from pathlib import Path
 
+from pil_meta.exporters.vault_index_exporter import export_vault_index
+from pil_meta.exporters.markdown_vault_exporter import export_markdown_vault
+from pil_meta.utils.test_coverage_utils import estimate_test_coverage
 from pil_meta.loaders.config_loader import load_config
 from pil_meta.loaders.code_loader import load_code_symbols
 from pil_meta.builders.entity_graph_builder import build_entity_graph
@@ -47,25 +50,25 @@ def run_pipeline() -> None:
     # 📥 Load code-level symbols from source tree
     print("\n📥 Loading code symbols...")
     raw_symbols = load_code_symbols(str(config_path))
-    print(f"✅ Found {len(raw_symbols)} function symbols.")
+    print(f"✅ Found {len(raw_symbols)} code symbols.")
 
-    # 🧾 Normalize for graph compatibility
+    # 🧪 Inject test coverage (NEW)
+    raw_symbols = estimate_test_coverage(raw_symbols, test_dir="tests")
+
+
+    # 🧾 Normalize for graph compatibility (most handled by loader)
     for symbol in raw_symbols:
-        symbol["docstring_present"] = bool(symbol["description"])
-        symbol["test_coverage"] = False  # placeholder, to be overwritten later
-        symbol["linked_journal_entry"] = None
-        symbol["is_orphaned"] = True
-        symbol["links"] = []
-        symbol["called_by_fqns"] = []  # required by linkage builder
-        symbol["calls_fqns"] = []      # required by linkage builder
-        symbol["ignore"] = symbol.get("ignore", False)
-        symbol["deprecated"] = symbol.get("deprecated", False)
+        symbol.setdefault("test_coverage", False)  # will be overwritten by estimator if used
+        symbol.setdefault("is_orphaned", True)
+        symbol.setdefault("links", [])
+        symbol.setdefault("called_by_fqns", [])
+        symbol.setdefault("calls_fqns", [])
 
     # 🧠 Build core entity graph
     print("\n🧠 Building entity graph...")
     graph = build_entity_graph(raw_symbols)
 
-    # 🔗 Compute function-to-function call links
+    # 🔗 Compute function-to-function call links and tag/semantic enrichment
     print("\n🔗 Injecting call linkages...")
     graph = inject_call_links(graph, config["project_root"])
     graph = apply_tags_and_links(graph)
@@ -74,6 +77,12 @@ def run_pipeline() -> None:
     print("\n📤 Exporting entity graph...")
     export_entity_graph(graph, config["output_dir"])
 
+    # Optional: make this conditional on config if desired
+    vault_dir = str(Path(config["output_dir"]) / "vault")
+    export_markdown_vault(graph, output_dir=config["output_dir"] + "/vault")
+    print(f"   ├─ Vault exported to: {vault_dir}")
+    export_vault_index(graph, output_dir=vault_dir)
+    
     # 📋 Emit governance report to track missing docs/tests/etc.
     report_path = str(Path(config["output_dir"]) / "function_map_exceptions.json")
     summary = generate_exception_report(graph, report_path)

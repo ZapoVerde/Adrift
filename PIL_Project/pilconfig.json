@@ -3,5 +3,6 @@
   "journal_path": "../documents/",
   "output_dir": "./exports/",
   "docs_dir": "./docs/",
-  "config_self_path": "./pilconfig.json"
+  "config_self_path": "./pilconfig.json",
+  "vault_dir": "/exports/vault"
 }
