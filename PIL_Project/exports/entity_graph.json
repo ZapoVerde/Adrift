@@ -1,0 +1,765 @@
+{
+  "pil_meta.pipeline.run_pipeline": {
+    "fqname": "pil_meta.pipeline.run_pipeline",
+    "type": "function",
+    "description": "Execute full metadata extraction and export pipeline.",
+    "tags": [],
+    "source_file": "pil_meta/pipeline.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.pipeline.run_pipeline",
+      "module": "pil_meta.pipeline",
+      "function": "run_pipeline",
+      "lineno": 28,
+      "description": "Execute full metadata extraction and export pipeline.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/pipeline.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.loaders.code_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.config_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.builders.linkage_builder.inject_call_links",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.exporters.json_exporter.export_entity_graph",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+        "type": "calls"
+      }
+    ],
+    "calls_fqns": [
+      "pil_meta.builders.entity_graph_builder.build_entity_graph",
+      "pil_meta.builders.linkage_builder.inject_call_links",
+      "pil_meta.exporters.json_exporter.export_entity_graph",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.config_loader.load_config",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
+    ],
+    "called_by_fqns": [
+      "tests.test_pipeline.test_pipeline_generates_valid_entity_graph"
+    ]
+  },
+  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
+    "fqname": "tests.test_pipeline.test_pipeline_generates_valid_entity_graph",
+    "type": "function",
+    "description": "End-to-end test of the PIL pipeline on real source code.",
+    "tags": [],
+    "source_file": "tests/test_pipeline.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "tests.test_pipeline.test_pipeline_generates_valid_entity_graph",
+      "module": "tests.test_pipeline",
+      "function": "test_pipeline_generates_valid_entity_graph",
+      "lineno": 26,
+      "description": "End-to-end test of the PIL pipeline on real source code.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "tests/test_pipeline.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.pipeline.run_pipeline",
+        "type": "calls"
+      }
+    ],
+    "calls_fqns": [
+      "pil_meta.pipeline.run_pipeline"
+    ]
+  },
+  "pil_meta.builders.entity_graph_builder.build_entity_graph": {
+    "fqname": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+    "type": "function",
+    "description": "Wrap each enriched entity into a compliant graph node.",
+    "tags": [],
+    "source_file": "pil_meta/builders/entity_graph_builder.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+      "module": "pil_meta.builders.entity_graph_builder",
+      "function": "build_entity_graph",
+      "lineno": 12,
+      "description": "Wrap each enriched entity into a compliant graph node.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/builders/entity_graph_builder.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "calls_fqns": []
+  },
+  "pil_meta.builders.linkage_builder.extract_called_functions": {
+    "fqname": "pil_meta.builders.linkage_builder.extract_called_functions",
+    "type": "function",
+    "description": "Parses source code and extracts all function names that are called.",
+    "tags": [],
+    "source_file": "pil_meta/builders/linkage_builder.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.builders.linkage_builder.extract_called_functions",
+      "module": "pil_meta.builders.linkage_builder",
+      "function": "extract_called_functions",
+      "lineno": 16,
+      "description": "Parses source code and extracts all function names that are called.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/builders/linkage_builder.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.builders.linkage_builder.extract_called_functions",
+        "type": "calls"
+      }
+    ],
+    "calls_fqns": [
+      "pil_meta.builders.linkage_builder.extract_called_functions"
+    ],
+    "called_by_fqns": [
+      "pil_meta.builders.linkage_builder.extract_called_functions",
+      "pil_meta.builders.linkage_builder.inject_call_links"
+    ]
+  },
+  "pil_meta.builders.linkage_builder.inject_call_links": {
+    "fqname": "pil_meta.builders.linkage_builder.inject_call_links",
+    "type": "function",
+    "description": "Injects structural call links into the entity graph.",
+    "tags": [],
+    "source_file": "pil_meta/builders/linkage_builder.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.builders.linkage_builder.inject_call_links",
+      "module": "pil_meta.builders.linkage_builder",
+      "function": "inject_call_links",
+      "lineno": 43,
+      "description": "Injects structural call links into the entity graph.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/builders/linkage_builder.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.builders.linkage_builder.extract_called_functions",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "pil_meta.builders.linkage_builder.extract_called_functions"
+    ]
+  },
+  "pil_meta.exporters.json_exporter.export_entity_graph": {
+    "fqname": "pil_meta.exporters.json_exporter.export_entity_graph",
+    "type": "function",
+    "description": "Write the in-memory entity graph to `entity_graph.json`.",
+    "tags": [],
+    "source_file": "pil_meta/exporters/json_exporter.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.exporters.json_exporter.export_entity_graph",
+      "module": "pil_meta.exporters.json_exporter",
+      "function": "export_entity_graph",
+      "lineno": 20,
+      "description": "Write the in-memory entity graph to `entity_graph.json`.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/exporters/json_exporter.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "calls_fqns": []
+  },
+  "pil_meta.exporters.md_exporter.export_to_markdown": {
+    "fqname": "pil_meta.exporters.md_exporter.export_to_markdown",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "pil_meta/exporters/md_exporter.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": true,
+    "metadata": {
+      "fqname": "pil_meta.exporters.md_exporter.export_to_markdown",
+      "module": "pil_meta.exporters.md_exporter",
+      "function": "export_to_markdown",
+      "lineno": 5,
+      "description": "",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/exporters/md_exporter.py",
+      "docstring_present": false,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "calls_fqns": []
+  },
+  "pil_meta.loaders.code_loader.load_config": {
+    "fqname": "pil_meta.loaders.code_loader.load_config",
+    "type": "function",
+    "description": "Load the global PIL configuration file.",
+    "tags": [],
+    "source_file": "pil_meta/loaders/code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.loaders.code_loader.load_config",
+      "module": "pil_meta.loaders.code_loader",
+      "function": "load_config",
+      "lineno": 14,
+      "description": "Load the global PIL configuration file.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/code_loader.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.loaders.code_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.config_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_docstring_flags",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_functions_from_file",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols"
+    ],
+    "calls_fqns": [
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.config_loader.load_config"
+    ]
+  },
+  "pil_meta.loaders.code_loader.extract_docstring_flags": {
+    "fqname": "pil_meta.loaders.code_loader.extract_docstring_flags",
+    "type": "function",
+    "description": "Parse flags and tags from a docstring.",
+    "tags": [],
+    "source_file": "pil_meta/loaders/code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "module": "pil_meta.loaders.code_loader",
+      "function": "extract_docstring_flags",
+      "lineno": 24,
+      "description": "Parse flags and tags from a docstring.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/code_loader.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.loaders.code_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.config_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_docstring_flags",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_functions_from_file",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols"
+    ],
+    "calls_fqns": [
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.config_loader.load_config"
+    ]
+  },
+  "pil_meta.loaders.code_loader.extract_functions_from_file": {
+    "fqname": "pil_meta.loaders.code_loader.extract_functions_from_file",
+    "type": "function",
+    "description": "Extract all function definitions from a single Python file.",
+    "tags": [],
+    "source_file": "pil_meta/loaders/code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "module": "pil_meta.loaders.code_loader",
+      "function": "extract_functions_from_file",
+      "lineno": 57,
+      "description": "Extract all function definitions from a single Python file.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/code_loader.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.loaders.code_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.config_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_docstring_flags",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_functions_from_file",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols"
+    ],
+    "calls_fqns": [
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.config_loader.load_config"
+    ]
+  },
+  "pil_meta.loaders.code_loader.load_code_symbols": {
+    "fqname": "pil_meta.loaders.code_loader.load_code_symbols",
+    "type": "function",
+    "description": "Entry point for symbol extraction.",
+    "tags": [],
+    "source_file": "pil_meta/loaders/code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.loaders.code_loader.load_code_symbols",
+      "module": "pil_meta.loaders.code_loader",
+      "function": "load_code_symbols",
+      "lineno": 100,
+      "description": "Entry point for symbol extraction.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/code_loader.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.loaders.code_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.config_loader.load_config",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_docstring_flags",
+        "type": "calls"
+      },
+      {
+        "target": "pil_meta.loaders.code_loader.extract_functions_from_file",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols"
+    ],
+    "calls_fqns": [
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.config_loader.load_config"
+    ]
+  },
+  "pil_meta.loaders.config_loader.load_config": {
+    "fqname": "pil_meta.loaders.config_loader.load_config",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "pil_meta/loaders/config_loader.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.loaders.config_loader.load_config",
+      "module": "pil_meta.loaders.config_loader",
+      "function": "load_config",
+      "lineno": 6,
+      "description": "",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/config_loader.py",
+      "docstring_present": false,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline",
+      "pil_meta.loaders.code_loader.load_config",
+      "pil_meta.loaders.code_loader.extract_docstring_flags",
+      "pil_meta.loaders.code_loader.extract_functions_from_file",
+      "pil_meta.loaders.code_loader.load_code_symbols"
+    ],
+    "calls_fqns": []
+  },
+  "pil_meta.loaders.markdown_loader.load_markdown_entries": {
+    "fqname": "pil_meta.loaders.markdown_loader.load_markdown_entries",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "pil_meta/loaders/markdown_loader.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": true,
+    "metadata": {
+      "fqname": "pil_meta.loaders.markdown_loader.load_markdown_entries",
+      "module": "pil_meta.loaders.markdown_loader",
+      "function": "load_markdown_entries",
+      "lineno": 7,
+      "description": "",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/loaders/markdown_loader.py",
+      "docstring_present": false,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "calls_fqns": []
+  },
+  "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match": {
+    "fqname": "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
+    "type": "function",
+    "description": "Checks if the function docstring references the function name and its parameters.",
+    "tags": [],
+    "source_file": "pil_meta/utils/exceptions_reporter_utils.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
+      "module": "pil_meta.utils.exceptions_reporter_utils",
+      "function": "check_docstring_signature_match",
+      "lineno": 15,
+      "description": "Checks if the function docstring references the function name and its parameters.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/utils/exceptions_reporter_utils.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
+        "type": "calls"
+      }
+    ],
+    "calls_fqns": [
+      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match"
+    ],
+    "called_by_fqns": [
+      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
+      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
+    ]
+  },
+  "pil_meta.utils.exceptions_reporter_utils.generate_exception_report": {
+    "fqname": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+    "type": "function",
+    "description": "Extracts and exports metadata violations to a governance-style report.",
+    "tags": [],
+    "source_file": "pil_meta/utils/exceptions_reporter_utils.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+      "module": "pil_meta.utils.exceptions_reporter_utils",
+      "function": "generate_exception_report",
+      "lineno": 37,
+      "description": "Extracts and exports metadata violations to a governance-style report.",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/utils/exceptions_reporter_utils.py",
+      "docstring_present": true,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [
+      {
+        "target": "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pil_meta.pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match"
+    ]
+  },
+  "pil_meta.utils.graph_utils.walk_graph": {
+    "fqname": "pil_meta.utils.graph_utils.walk_graph",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "pil_meta/utils/graph_utils.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": true,
+    "metadata": {
+      "fqname": "pil_meta.utils.graph_utils.walk_graph",
+      "module": "pil_meta.utils.graph_utils",
+      "function": "walk_graph",
+      "lineno": 5,
+      "description": "",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/utils/graph_utils.py",
+      "docstring_present": false,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "calls_fqns": []
+  },
+  "pil_meta.utils.path_utils.resolve_path": {
+    "fqname": "pil_meta.utils.path_utils.resolve_path",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "pil_meta/utils/path_utils.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": true,
+    "metadata": {
+      "fqname": "pil_meta.utils.path_utils.resolve_path",
+      "module": "pil_meta.utils.path_utils",
+      "function": "resolve_path",
+      "lineno": 5,
+      "description": "",
+      "tags": [],
+      "ignore": false,
+      "deprecated": false,
+      "source_file": "pil_meta/utils/path_utils.py",
+      "docstring_present": false,
+      "test_coverage": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "links": [],
+    "calls_fqns": []
+  }
+}
