@@ -1,36 +1,60 @@
-# world/discovery.py
+# generation.py
 
 """
-Handles LocationStub logic and transformation into LocationInstance.
+TileGenerator is responsible for instantiating HexTiles into full terrain and features.
+
+@ignore: stub — placeholder world tile generator with no output logic
 """
 
-class LocationStub:
-    def __init__(self, type, faction, seed):
-        self.type = type
-        self.faction = faction
-        self.seed = seed
-        self.revealed = False
-        self.rumor_hooks = []
+class TileGenerator:
+    """
+    Mock generator for terrain tile features. Currently returns static values.
 
-    def reveal(self):
-        self.revealed = True
-        return self.instantiate()
+    @ignore: inactive — not used by any system
+    """
+    def __init__(self, world_seed):
+        self.world_seed = world_seed
 
-    def instantiate(self):
-        return LocationInstance(self.type, self.seed)
+    def generate_tile(self, tile, neighbors):
+        """
+        Populate a tile's biome, elevation, moisture, and features.
 
+        @ignore
+        """
+        tile.biome_tag = self.sample_biome(tile, neighbors)
+        tile.elevation = self.sample_elevation(tile, neighbors)
+        tile.moisture = self.sample_moisture(tile, neighbors)
+        tile.hinted_features = self.sample_features(tile, neighbors)
+        return tile
 
-class LocationInstance:
-    def __init__(self, type, seed):
-        self.type = type
-        self.seed = seed
-        self.floorplan = None
-        self.actors = []
-        self.items = []
-        self.environment = []
+    def sample_biome(self, tile, neighbors):
+        """
+        Stub biome sampler.
 
-    def generate_floorplan(self):
-        pass
+        @ignore
+        """
+        return "forest"
 
-    def teardown(self):
-        pass
+    def sample_elevation(self, tile, neighbors):
+        """
+        Stub elevation sampler.
+
+        @ignore
+        """
+        return 0.5
+
+    def sample_moisture(self, tile, neighbors):
+        """
+        Stub moisture sampler.
+
+        @ignore
+        """
+        return 0.3
+
+    def sample_features(self, tile, neighbors):
+        """
+        Stub feature generator.
+
+        @ignore
+        """
+        return []

@@ -1,8 +1,26 @@
 # status_effects.py
 # Apply and tick status effects.
 
-def apply_status_effects(actor): pass
+def apply_status_effects(actor):
+    """
+    Placeholder for applying all active effects on actor.
 
-def tick_status_effects(actor): pass
+    @ignore: stub — effect resolution system missing
+    """
+    pass
 
-def add_effect(actor, effect_dict): pass
+def tick_status_effects(actor):
+    """
+    Placeholder for decrementing durations on active effects.
+
+    @ignore: stub — ticking engine not in place
+    """
+    pass
+
+def add_effect(actor, effect_dict):
+    """
+    Placeholder for applying a new effect to an actor.
+
+    @ignore: stub — effect injection logic not present
+    """
+    pass

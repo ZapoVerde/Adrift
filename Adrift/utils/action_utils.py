@@ -1,8 +1,26 @@
 # action_utils.py
-# Basic player actions.
+# Core action handlers
 
-def resolve_walk_action(player, direction): pass
+def resolve_walk_action(actor, target_tile):
+    """
+    Placeholder for handling movement between tiles.
 
-def resolve_search_action(player): pass
+    @ignore: stub — walk action logic not implemented
+    """
+    pass
 
-def resolve_use_action(player, item): pass
+def resolve_search_action(actor):
+    """
+    Placeholder for triggering an active perception boost.
+
+    @ignore: stub — no search logic present
+    """
+    pass
+
+def resolve_use_action(actor, item):
+    """
+    Placeholder for using an item (e.g., medkit, key).
+
+    @ignore: stub — use action deferred
+    """
+    pass

@@ -1,6 +1,18 @@
 # input_handler.py
-# Input capture and command parsing.
+# Parses and routes player commands
 
-def get_player_input(): pass
+def get_player_input():
+    """
+    Placeholder for reading player input.
 
-def parse_command(raw_input): pass
+    @ignore: stub — no player input system yet
+    """
+    pass
+
+def parse_command(raw_input):
+    """
+    Placeholder for converting raw input into structured command dict.
+
+    @ignore: stub — parser not implemented
+    """
+    pass

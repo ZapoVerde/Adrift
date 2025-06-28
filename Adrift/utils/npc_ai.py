@@ -1,8 +1,27 @@
+
 # npc_ai.py
-# Simple AI selection.
+# Handles basic enemy decision making.
 
-def handle_npc_action(npc): pass
+def handle_npc_action(npc):
+    """
+    Placeholder for executing a turn for an NPC.
 
-def choose_npc_action(npc): pass
+    @ignore: stub — AI loop not implemented
+    """
+    pass
 
-def npc_can_see_player(npc, player): pass
+def choose_npc_action(npc):
+    """
+    Placeholder for selecting an NPC action.
+
+    @ignore: stub — decision logic deferred
+    """
+    pass
+
+def npc_can_see_player(npc, player):
+    """
+    Placeholder for visibility logic between NPC and player.
+
+    @ignore: stub — perception loop missing
+    """
+    pass
