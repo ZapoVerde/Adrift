@@ -24,6 +24,7 @@ from pil_meta.builders.entity_graph_builder import build_entity_graph
 from pil_meta.builders.linkage_builder import inject_call_links
 from pil_meta.exporters.json_exporter import export_entity_graph
 from pil_meta.utils.exceptions_reporter_utils import generate_exception_report
+from pil_meta.builders.tag_and_link_applier_builders import apply_tags_and_links
 
 def run_pipeline() -> None:
     """
@@ -67,6 +68,7 @@ def run_pipeline() -> None:
     # 🔗 Compute function-to-function call links
     print("\n🔗 Injecting call linkages...")
     graph = inject_call_links(graph, config["project_root"])
+    graph = apply_tags_and_links(graph)
 
     # 📤 Save enriched graph to disk
     print("\n📤 Exporting entity graph...")

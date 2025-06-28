@@ -5,32 +5,9 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.builders.entity_graph_builder.build_entity_graph",
-      "pil_meta.builders.linkage_builder.inject_call_links",
-      "pil_meta.exporters.json_exporter.export_entity_graph",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.config_loader.load_config",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
-    ],
-    "called_by": [
-      "tests.test_pipeline.test_pipeline_generates_valid_entity_graph"
-    ]
-  },
-  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "pil_meta.pipeline.run_pipeline"
-    ],
+    "calls": [],
     "called_by": []
   },
   "pil_meta.builders.entity_graph_builder.build_entity_graph": {
@@ -39,12 +16,10 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
+    "called_by": []
   },
   "pil_meta.builders.linkage_builder.extract_called_functions": {
     "module": null,
@@ -52,15 +27,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.builders.linkage_builder.extract_called_functions"
-    ],
-    "called_by": [
-      "pil_meta.builders.linkage_builder.extract_called_functions",
-      "pil_meta.builders.linkage_builder.inject_call_links"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.builders.linkage_builder.inject_call_links": {
     "module": null,
@@ -68,14 +39,22 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.builders.linkage_builder.extract_called_functions"
+    "calls": [],
+    "called_by": []
+  },
+  "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
     ],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.exporters.json_exporter.export_entity_graph": {
     "module": null,
@@ -83,12 +62,10 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
+    "called_by": []
   },
   "pil_meta.exporters.md_exporter.export_to_markdown": {
     "module": null,
@@ -108,22 +85,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.config_loader.load_config"
-    ],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.loaders.code_loader.extract_docstring_flags": {
     "module": null,
@@ -131,21 +97,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.config_loader.load_config"
-    ],
-    "called_by": [
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.loaders.code_loader.extract_functions_from_file": {
     "module": null,
@@ -153,21 +109,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.config_loader.load_config"
-    ],
-    "called_by": [
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.loaders.code_loader.load_code_symbols": {
     "module": null,
@@ -175,22 +121,10 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.config_loader.load_config"
-    ],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.loaders.config_loader.load_config": {
     "module": null,
@@ -198,16 +132,11 @@
     "issues": [
       "missing_docstring",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline",
-      "pil_meta.loaders.code_loader.load_config",
-      "pil_meta.loaders.code_loader.extract_docstring_flags",
-      "pil_meta.loaders.code_loader.extract_functions_from_file",
-      "pil_meta.loaders.code_loader.load_code_symbols"
-    ]
+    "called_by": []
   },
   "pil_meta.loaders.markdown_loader.load_markdown_entries": {
     "module": null,
@@ -227,15 +156,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match"
-    ],
-    "called_by": [
-      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.utils.exceptions_reporter_utils.generate_exception_report": {
     "module": null,
@@ -243,14 +168,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "pil_meta.utils.exceptions_reporter_utils.check_docstring_signature_match"
-    ],
-    "called_by": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "pil_meta.utils.graph_utils.walk_graph": {
     "module": null,
@@ -269,6 +191,18 @@
     "function": null,
     "issues": [
       "missing_docstring",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
       "missing_test",
       "missing_tags",
       "orphaned"
