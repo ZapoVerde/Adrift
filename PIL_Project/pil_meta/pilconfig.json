@@ -1,0 +1,12 @@
+{
+  "project_root": "../../Adrift",
+  "journal_path": "../../documents",
+  "output_dir": "../../exports",
+  "docs_dir": "../../documents",
+  "config_self_path": "./pilconfig.json",
+  "vault_dir": "../../exports/vault",
+  "snapshot_dir": "../../snapshots",
+  "tracked_assets": [
+    "../../Adrift/assets"
+  ]
+}

@@ -1,113 +1,136 @@
 {
-  "pil_meta.pipeline": {
-    "fqname": "pil_meta.pipeline",
+  "pipeline": {
+    "fqname": "pipeline",
     "type": "module",
-    "description": "Pipeline: Main Entry",
+    "description": "Main orchestration pipeline for the PIL meta-engine.",
     "tags": [],
-    "source_file": "pil_meta\\pipeline.py",
+    "source_file": "pipeline.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.pipeline",
-      "module": "pil_meta.pipeline",
-      "function": null,
+      "fqname": "pipeline",
+      "module": "pipeline",
+      "name": "pipeline",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\pipeline.py",
-      "description": "Pipeline: Main Entry",
-      "docstring_full": "Pipeline: Main Entry\n\nCoordinates full metadata graph construction and export from source code.\nThis module is the top-level orchestrator for the Project Intelligence Layer (PIL),\nresponsible for running a complete metadata pass using configuration in pilconfig.json.\n\nSteps:\n- Load config\n- Extract all code symbols in bulk (functions, methods, classes)\n- Normalize minimal graph fields for linkage\n- Build and enrich entity graph\n- Export graph to disk\n- Emit governance exception report",
+      "source_file": "pipeline.py",
+      "description": "Main orchestration pipeline for the PIL meta-engine.",
+      "docstring_full": "Main orchestration pipeline for the PIL meta-engine.\nHandles config loading, symbol extraction, entity graph building, linkage injection,\ntag/link application, export, and governance reporting.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.loaders.config_loader.load_config",
+        "target": "pipeline.run_pipeline",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "target": "loaders.config_loader.load_config",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.test_coverage_utils.estimate_test_coverage",
+        "target": "utils.config_loader.load_config",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+        "target": "loaders.asset_loader.load_asset_symbols",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.linkage_builder.inject_call_links",
+        "target": "builders.entity_graph_builder.build_entity_graph",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
+        "target": "builders.linkage_builder.inject_call_links",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.json_exporter.export_entity_graph",
+        "target": "builders.tag_and_link_applier_builders.apply_tags_and_links",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
+        "target": "exporters.json_exporter.export_entity_graph",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.vault_index_exporter.export_vault_index",
+        "target": "builders.usage_map_builder.build_usage_map",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+        "target": "exporters.usage_map_exporter.export_usage_map",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.export_markdown_vault",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.vault_index_exporter.export_vault_index",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+        "type": "calls"
+      },
+      {
+        "target": "utils.exceptions_reporter_utils.generate_exception_report",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.markdown_loader.load_markdown_entries",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.load_code_symbols",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.builders.entity_graph_builder.build_entity_graph",
-      "pil_meta.builders.linkage_builder.inject_call_links",
-      "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
-      "pil_meta.exporters.json_exporter.export_entity_graph",
-      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
-      "pil_meta.exporters.vault_index_exporter.export_vault_index",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.config_loader.load_config",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
-      "pil_meta.utils.test_coverage_utils.estimate_test_coverage"
+      "builders.entity_graph_builder.build_entity_graph",
+      "builders.linkage_builder.inject_call_links",
+      "builders.tag_and_link_applier_builders.apply_tags_and_links",
+      "builders.usage_map_builder.build_usage_map",
+      "exporters.json_exporter.export_entity_graph",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.usage_map_exporter.export_usage_map",
+      "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+      "exporters.vault_index_exporter.export_vault_index",
+      "loaders.asset_loader.load_asset_symbols",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.config_loader.load_config",
+      "loaders.markdown_loader.load_markdown_entries",
+      "pipeline.run_pipeline",
+      "utils.config_loader.load_config",
+      "utils.exceptions_reporter_utils.generate_exception_report"
     ]
   },
-  "pil_meta.pipeline.run_pipeline": {
-    "fqname": "pil_meta.pipeline.run_pipeline",
+  "pipeline.run_pipeline": {
+    "fqname": "pipeline.run_pipeline",
     "type": "function",
-    "description": "Execute full metadata extraction and export pipeline.",
-    "tags": [
-      "pipeline",
-      "entrypoint"
-    ],
-    "source_file": "pil_meta\\pipeline.py",
-    "test_coverage": true,
+    "description": "Main entry point for running the PIL meta pipeline.",
+    "tags": [],
+    "source_file": "pipeline.py",
+    "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.pipeline.run_pipeline",
-      "module": "pil_meta.pipeline",
-      "function": "run_pipeline",
+      "fqname": "pipeline.run_pipeline",
+      "module": "pipeline",
+      "name": "run_pipeline",
       "type": "function",
       "lineno": 32,
-      "source_file": "pil_meta\\pipeline.py",
-      "description": "Execute full metadata extraction and export pipeline.",
-      "docstring_full": "Execute full metadata extraction and export pipeline.\n\nThis is the entry point called by `scripts/rebuild_pil.py`. It uses\npaths from `pilconfig.json`, loads all top-level Python symbols,\nbuilds the graph, computes call linkages, and writes outputs.",
+      "source_file": "pipeline.py",
+      "description": "Main entry point for running the PIL meta pipeline.",
+      "docstring_full": "Main entry point for running the PIL meta pipeline.\nLoads config, runs all stages, and writes outputs using bulletproof absolute pathing.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
@@ -115,266 +138,163 @@
       "visibility": null,
       "docstring_present": true,
       "metadata": {
-        "args": [],
+        "args": [
+          "config_path"
+        ],
         "returns": null
-      },
-      "test_coverage": true,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.loaders.config_loader.load_config",
+        "target": "pipeline.run_pipeline",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.load_code_symbols",
+        "target": "loaders.config_loader.load_config",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.test_coverage_utils.estimate_test_coverage",
+        "target": "utils.config_loader.load_config",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+        "target": "loaders.asset_loader.load_asset_symbols",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.linkage_builder.inject_call_links",
+        "target": "builders.entity_graph_builder.build_entity_graph",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
+        "target": "builders.linkage_builder.inject_call_links",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.json_exporter.export_entity_graph",
+        "target": "builders.tag_and_link_applier_builders.apply_tags_and_links",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
+        "target": "exporters.json_exporter.export_entity_graph",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.vault_index_exporter.export_vault_index",
+        "target": "builders.usage_map_builder.build_usage_map",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+        "target": "exporters.usage_map_exporter.export_usage_map",
         "type": "calls"
       },
       {
-        "target": "PIL Metadata Strategy",
-        "type": "inferred_journal_link",
-        "confidence": 1.0
+        "target": "exporters.markdown_vault_exporter.export_markdown_vault",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.vault_index_exporter.export_vault_index",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+        "type": "calls"
+      },
+      {
+        "target": "utils.exceptions_reporter_utils.generate_exception_report",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.markdown_loader.load_markdown_entries",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.load_code_symbols",
+        "type": "calls"
       }
-    ],
-    "calls_fqns": [
-      "pil_meta.builders.entity_graph_builder.build_entity_graph",
-      "pil_meta.builders.linkage_builder.inject_call_links",
-      "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
-      "pil_meta.exporters.json_exporter.export_entity_graph",
-      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
-      "pil_meta.exporters.vault_index_exporter.export_vault_index",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.config_loader.load_config",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
-      "pil_meta.utils.test_coverage_utils.estimate_test_coverage"
     ],
     "called_by_fqns": [
-      "scripts.rebuild_pil",
-      "tests.test_pipeline",
-      "tests.test_pipeline.test_pipeline_generates_valid_entity_graph"
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "builders.entity_graph_builder.build_entity_graph",
+      "builders.linkage_builder.inject_call_links",
+      "builders.tag_and_link_applier_builders.apply_tags_and_links",
+      "builders.usage_map_builder.build_usage_map",
+      "exporters.json_exporter.export_entity_graph",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.usage_map_exporter.export_usage_map",
+      "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+      "exporters.vault_index_exporter.export_vault_index",
+      "loaders.asset_loader.load_asset_symbols",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.config_loader.load_config",
+      "loaders.markdown_loader.load_markdown_entries",
+      "pipeline.run_pipeline",
+      "utils.config_loader.load_config",
+      "utils.exceptions_reporter_utils.generate_exception_report"
     ]
   },
-  "scripts.rebuild_pil": {
-    "fqname": "scripts.rebuild_pil",
+  "builders.entity_graph_builder": {
+    "fqname": "builders.entity_graph_builder",
     "type": "module",
-    "description": "CLI entry point to trigger full PIL metadata pipeline.",
+    "description": "Wraps pre-enriched code entities into graph nodes for the entity graph.",
     "tags": [],
-    "source_file": "scripts\\rebuild_pil.py",
+    "source_file": "builders\\entity_graph_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "scripts.rebuild_pil",
-      "module": "scripts.rebuild_pil",
-      "function": null,
+      "fqname": "builders.entity_graph_builder",
+      "module": "builders.entity_graph_builder",
+      "name": "builders.entity_graph_builder",
       "type": "module",
       "lineno": 1,
-      "source_file": "scripts\\rebuild_pil.py",
-      "description": "CLI entry point to trigger full PIL metadata pipeline.",
-      "docstring_full": "CLI entry point to trigger full PIL metadata pipeline.\n\nUsage:\n    python scripts/rebuild_pil.py\n\nReads from pilconfig.json and emits entity_graph.json and other metadata exports.",
+      "source_file": "builders\\entity_graph_builder.py",
+      "description": "Wraps pre-enriched code entities into graph nodes for the entity graph.",
+      "docstring_full": "Wraps pre-enriched code entities into graph nodes for the entity graph.\n\nAssumes upstream loader (code_loader) has already attached all required metadata,\nincluding tags, docstring status, and test coverage placeholders.\n\nOutput format conforms to the `entity_graph.json` specification.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.pipeline.run_pipeline",
+        "target": "builders.entity_graph_builder.get_field",
         "type": "calls"
-      }
-    ],
-    "calls_fqns": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
-  },
-  "tests.test_pipeline": {
-    "fqname": "tests.test_pipeline",
-    "type": "module",
-    "description": "Smoke test for the Project Intelligence Layer (PIL) pipeline.",
-    "tags": [],
-    "source_file": "tests\\test_pipeline.py",
-    "test_coverage": false,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": false,
-    "metadata": {
-      "fqname": "tests.test_pipeline",
-      "module": "tests.test_pipeline",
-      "function": null,
-      "type": "module",
-      "lineno": 1,
-      "source_file": "tests\\test_pipeline.py",
-      "description": "Smoke test for the Project Intelligence Layer (PIL) pipeline.",
-      "docstring_full": "Smoke test for the Project Intelligence Layer (PIL) pipeline.\n\nValidates that:\n- The pipeline executes without error\n- `entity_graph.json` is created\n- At least one function node is present\n- Required metadata fields exist on a sample node\n\nThis test does not validate semantic links or coverage logic \u2014 those are handled in their own modules.",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [
-      {
-        "target": "pil_meta.pipeline.run_pipeline",
-        "type": "calls"
-      }
-    ],
-    "calls_fqns": [
-      "pil_meta.pipeline.run_pipeline"
-    ]
-  },
-  "tests.test_pipeline.test_pipeline_generates_valid_entity_graph": {
-    "fqname": "tests.test_pipeline.test_pipeline_generates_valid_entity_graph",
-    "type": "function",
-    "description": "End-to-end test of the PIL pipeline on real source code.",
-    "tags": [],
-    "source_file": "tests\\test_pipeline.py",
-    "test_coverage": true,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": false,
-    "metadata": {
-      "fqname": "tests.test_pipeline.test_pipeline_generates_valid_entity_graph",
-      "module": "tests.test_pipeline",
-      "function": "test_pipeline_generates_valid_entity_graph",
-      "type": "function",
-      "lineno": 26,
-      "source_file": "tests\\test_pipeline.py",
-      "description": "End-to-end test of the PIL pipeline on real source code.",
-      "docstring_full": "End-to-end test of the PIL pipeline on real source code.",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": true,
-      "metadata": {
-        "args": [],
-        "returns": null
       },
-      "test_coverage": true,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [
       {
-        "target": "pil_meta.pipeline.run_pipeline",
+        "target": "exporters.markdown_vault_exporter.get_field",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.pipeline.run_pipeline"
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter.get_field"
     ]
   },
-  "pil_meta.builders.entity_graph_builder": {
-    "fqname": "pil_meta.builders.entity_graph_builder",
-    "type": "module",
-    "description": "Wraps pre-enriched function records into graph nodes.",
-    "tags": [],
-    "source_file": "pil_meta\\builders\\entity_graph_builder.py",
-    "test_coverage": false,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": true,
-    "metadata": {
-      "fqname": "pil_meta.builders.entity_graph_builder",
-      "module": "pil_meta.builders.entity_graph_builder",
-      "function": null,
-      "type": "module",
-      "lineno": 1,
-      "source_file": "pil_meta\\builders\\entity_graph_builder.py",
-      "description": "Wraps pre-enriched function records into graph nodes.",
-      "docstring_full": "Wraps pre-enriched function records into graph nodes.\n\nThis builder assumes that the upstream loader (code_loader) has already\nattached all required metadata, including tags, docstring status, and test\ncoverage placeholders.\n\nOutput format conforms to the `entity_graph.json` specification.",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [],
-    "calls_fqns": []
-  },
-  "pil_meta.builders.entity_graph_builder.build_entity_graph": {
-    "fqname": "pil_meta.builders.entity_graph_builder.build_entity_graph",
+  "builders.entity_graph_builder.build_entity_graph": {
+    "fqname": "builders.entity_graph_builder.build_entity_graph",
     "type": "function",
     "description": "Wrap each enriched entity into a compliant graph node.",
-    "tags": [
-      "builder",
-      "graph"
-    ],
-    "source_file": "pil_meta\\builders\\entity_graph_builder.py",
+    "tags": [],
+    "source_file": "builders\\entity_graph_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.entity_graph_builder.build_entity_graph",
-      "module": "pil_meta.builders.entity_graph_builder",
-      "function": "build_entity_graph",
+      "fqname": "builders.entity_graph_builder.build_entity_graph",
+      "module": "builders.entity_graph_builder",
+      "name": "build_entity_graph",
       "type": "function",
-      "lineno": 13,
-      "source_file": "pil_meta\\builders\\entity_graph_builder.py",
+      "lineno": 11,
+      "source_file": "builders\\entity_graph_builder.py",
       "description": "Wrap each enriched entity into a compliant graph node.",
-      "docstring_full": "Wrap each enriched entity into a compliant graph node.\n\nParameters:\n    entities (list[dict]): Raw or enriched entity records.\n\nReturns:\n    dict: fqname \u2192 wrapped graph node",
+      "docstring_full": "Wrap each enriched entity into a compliant graph node.\n\nParameters:\n    entities (list[dict]): Raw or enriched entity records.\n\nReturns:\n    dict: fqname → wrapped graph node",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
@@ -386,37 +306,112 @@
           "entities"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
-    "links": [],
-    "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+    "links": [
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      }
     ],
-    "calls_fqns": []
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter.get_field"
+    ]
   },
-  "pil_meta.builders.linkage_builder": {
-    "fqname": "pil_meta.builders.linkage_builder",
+  "builders.entity_graph_builder.get_field": {
+    "fqname": "builders.entity_graph_builder.get_field",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "builders\\entity_graph_builder.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "builders.entity_graph_builder.get_field",
+      "module": "builders.entity_graph_builder",
+      "name": "get_field",
+      "type": "function",
+      "lineno": 27,
+      "source_file": "builders\\entity_graph_builder.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": false,
+      "metadata": {
+        "args": [
+          "key",
+          "default"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "builders.entity_graph_builder",
+      "builders.entity_graph_builder.build_entity_graph",
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.markdown_vault_exporter.get_field"
+    ],
+    "calls_fqns": [
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter.get_field"
+    ]
+  },
+  "builders.linkage_builder": {
+    "fqname": "builders.linkage_builder",
     "type": "module",
     "description": "Adds call relationships between entities in the graph.",
     "tags": [],
-    "source_file": "pil_meta\\builders\\linkage_builder.py",
+    "source_file": "builders\\linkage_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.linkage_builder",
-      "module": "pil_meta.builders.linkage_builder",
-      "function": null,
+      "fqname": "builders.linkage_builder",
+      "module": "builders.linkage_builder",
+      "name": "builders.linkage_builder",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\builders\\linkage_builder.py",
+      "source_file": "builders\\linkage_builder.py",
       "description": "Adds call relationships between entities in the graph.",
       "docstring_full": "Adds call relationships between entities in the graph.\n\nUses AST parsing to detect structural function calls, updates each node with:\n- calls_fqns\n- called_by_fqns\n- links: [ { target, type: \"calls\" } ]\n- is_orphaned (recomputed after linkage)",
       "tags": [],
@@ -425,40 +420,36 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.builders.linkage_builder.extract_called_functions",
+        "target": "builders.linkage_builder.extract_called_functions",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.builders.linkage_builder.extract_called_functions"
+      "builders.linkage_builder.extract_called_functions"
     ]
   },
-  "pil_meta.builders.linkage_builder.extract_called_functions": {
-    "fqname": "pil_meta.builders.linkage_builder.extract_called_functions",
+  "builders.linkage_builder.extract_called_functions": {
+    "fqname": "builders.linkage_builder.extract_called_functions",
     "type": "function",
     "description": "Parses source code and extracts all function names that are called.",
     "tags": [],
-    "source_file": "pil_meta\\builders\\linkage_builder.py",
+    "source_file": "builders\\linkage_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.linkage_builder.extract_called_functions",
-      "module": "pil_meta.builders.linkage_builder",
-      "function": "extract_called_functions",
+      "fqname": "builders.linkage_builder.extract_called_functions",
+      "module": "builders.linkage_builder",
+      "name": "extract_called_functions",
       "type": "function",
       "lineno": 16,
-      "source_file": "pil_meta\\builders\\linkage_builder.py",
+      "source_file": "builders\\linkage_builder.py",
       "description": "Parses source code and extracts all function names that are called.",
       "docstring_full": "Parses source code and extracts all function names that are called.\n\nParameters:\n    source (str): The raw source code of a .py file\n\nReturns:\n    list[str]: All direct call targets (unqualified names)",
       "tags": [],
@@ -472,48 +463,40 @@
           "source"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.builders.linkage_builder.extract_called_functions",
+        "target": "builders.linkage_builder.extract_called_functions",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.builders.linkage_builder",
-      "pil_meta.builders.linkage_builder.extract_called_functions",
-      "pil_meta.builders.linkage_builder.inject_call_links"
+      "builders.linkage_builder",
+      "builders.linkage_builder.extract_called_functions",
+      "builders.linkage_builder.inject_call_links"
     ],
     "calls_fqns": [
-      "pil_meta.builders.linkage_builder.extract_called_functions"
+      "builders.linkage_builder.extract_called_functions"
     ]
   },
-  "pil_meta.builders.linkage_builder.inject_call_links": {
-    "fqname": "pil_meta.builders.linkage_builder.inject_call_links",
+  "builders.linkage_builder.inject_call_links": {
+    "fqname": "builders.linkage_builder.inject_call_links",
     "type": "function",
     "description": "Injects structural call links into the entity graph.",
-    "tags": [
-      "builder",
-      "linkage"
-    ],
-    "source_file": "pil_meta\\builders\\linkage_builder.py",
+    "tags": [],
+    "source_file": "builders\\linkage_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.linkage_builder.inject_call_links",
-      "module": "pil_meta.builders.linkage_builder",
-      "function": "inject_call_links",
+      "fqname": "builders.linkage_builder.inject_call_links",
+      "module": "builders.linkage_builder",
+      "name": "inject_call_links",
       "type": "function",
       "lineno": 43,
-      "source_file": "pil_meta\\builders\\linkage_builder.py",
+      "source_file": "builders\\linkage_builder.py",
       "description": "Injects structural call links into the entity graph.",
       "docstring_full": "Injects structural call links into the entity graph.\n\nParameters:\n    entity_graph (dict): Entity metadata keyed by fqname\n    project_root (str): Project root to re-open source files\n\nReturns:\n    dict: The enriched graph with linkage info",
       "tags": [],
@@ -528,44 +511,39 @@
           "project_root"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.builders.linkage_builder.extract_called_functions",
+        "target": "builders.linkage_builder.extract_called_functions",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": [
-      "pil_meta.builders.linkage_builder.extract_called_functions"
+      "builders.linkage_builder.extract_called_functions"
     ]
   },
-  "pil_meta.builders.tag_and_link_applier_builders": {
-    "fqname": "pil_meta.builders.tag_and_link_applier_builders",
+  "builders.tag_and_link_applier_builders": {
+    "fqname": "builders.tag_and_link_applier_builders",
     "type": "module",
     "description": "Graph Enrichment: Tags and Semantic Links (builders)",
     "tags": [],
-    "source_file": "pil_meta\\builders\\tag_and_link_applier_builders.py",
+    "source_file": "builders\\tag_and_link_applier_builders.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.builders.tag_and_link_applier_builders",
-      "module": "pil_meta.builders.tag_and_link_applier_builders",
-      "function": null,
+      "fqname": "builders.tag_and_link_applier_builders",
+      "module": "builders.tag_and_link_applier_builders",
+      "name": "builders.tag_and_link_applier_builders",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\builders\\tag_and_link_applier_builders.py",
+      "source_file": "builders\\tag_and_link_applier_builders.py",
       "description": "Graph Enrichment: Tags and Semantic Links (builders)",
       "docstring_full": "Graph Enrichment: Tags and Semantic Links (builders)\n\nPopulates known tags and journal links into the graph based on\nexplicit mappings (not heuristics or inference).",
       "tags": [],
@@ -574,33 +552,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links": {
-    "fqname": "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
+  "builders.tag_and_link_applier_builders.apply_tags_and_links": {
+    "fqname": "builders.tag_and_link_applier_builders.apply_tags_and_links",
     "type": "function",
     "description": "Attach known tags and semantic links to specific nodes in the graph.",
     "tags": [],
-    "source_file": "pil_meta\\builders\\tag_and_link_applier_builders.py",
+    "source_file": "builders\\tag_and_link_applier_builders.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.tag_and_link_applier_builders.apply_tags_and_links",
-      "module": "pil_meta.builders.tag_and_link_applier_builders",
-      "function": "apply_tags_and_links",
+      "fqname": "builders.tag_and_link_applier_builders.apply_tags_and_links",
+      "module": "builders.tag_and_link_applier_builders",
+      "name": "apply_tags_and_links",
       "type": "function",
       "lineno": 9,
-      "source_file": "pil_meta\\builders\\tag_and_link_applier_builders.py",
+      "source_file": "builders\\tag_and_link_applier_builders.py",
       "description": "Attach known tags and semantic links to specific nodes in the graph.",
       "docstring_full": "Attach known tags and semantic links to specific nodes in the graph.\n\nParameters:\n    graph (dict): Entity graph keyed by fully qualified name (fqname)\n\nReturns:\n    dict: The enriched graph with added tags and semantic links",
       "tags": [],
@@ -614,37 +588,32 @@
           "graph"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": []
   },
-  "pil_meta.builders.usage_map_builder": {
-    "fqname": "pil_meta.builders.usage_map_builder",
+  "builders.usage_map_builder": {
+    "fqname": "builders.usage_map_builder",
     "type": "module",
     "description": "Usage Map Builder (builders)",
     "tags": [],
-    "source_file": "pil_meta\\builders\\usage_map_builder.py",
+    "source_file": "builders\\usage_map_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.builders.usage_map_builder",
-      "module": "pil_meta.builders.usage_map_builder",
-      "function": null,
+      "fqname": "builders.usage_map_builder",
+      "module": "builders.usage_map_builder",
+      "name": "builders.usage_map_builder",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\builders\\usage_map_builder.py",
+      "source_file": "builders\\usage_map_builder.py",
       "description": "Usage Map Builder (builders)",
       "docstring_full": "Usage Map Builder (builders)\n\nConstructs a forward/reverse reference graph showing usage across the entity set.\nUseful for auditing call relationships beyond simple call trees.",
       "tags": [],
@@ -653,33 +622,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.builders.usage_map_builder.build_usage_map": {
-    "fqname": "pil_meta.builders.usage_map_builder.build_usage_map",
+  "builders.usage_map_builder.build_usage_map": {
+    "fqname": "builders.usage_map_builder.build_usage_map",
     "type": "function",
     "description": "Create bidirectional usage summaries for each FQ name.",
     "tags": [],
-    "source_file": "pil_meta\\builders\\usage_map_builder.py",
+    "source_file": "builders\\usage_map_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.builders.usage_map_builder.build_usage_map",
-      "module": "pil_meta.builders.usage_map_builder",
-      "function": "build_usage_map",
+      "fqname": "builders.usage_map_builder.build_usage_map",
+      "module": "builders.usage_map_builder",
+      "name": "build_usage_map",
       "type": "function",
       "lineno": 11,
-      "source_file": "pil_meta\\builders\\usage_map_builder.py",
+      "source_file": "builders\\usage_map_builder.py",
       "description": "Create bidirectional usage summaries for each FQ name.",
       "docstring_full": "Create bidirectional usage summaries for each FQ name.\n\nParameters:\n    graph (dict): Full graph with calls_fqns available on each node\n\nReturns:\n    dict: { fqname: { used_by: [...], uses: [...] } }",
       "tags": [],
@@ -693,37 +658,34 @@
           "graph"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
-    "calls_fqns": [],
     "called_by_fqns": [
-      "pil_meta.utils.exceptions_reporter_utils",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
-    ]
+      "pipeline",
+      "pipeline.run_pipeline",
+      "utils.exceptions_reporter_utils",
+      "utils.exceptions_reporter_utils.generate_exception_report"
+    ],
+    "calls_fqns": []
   },
-  "pil_meta.builders.variable_usage_builder": {
-    "fqname": "pil_meta.builders.variable_usage_builder",
+  "builders.variable_usage_builder": {
+    "fqname": "builders.variable_usage_builder",
     "type": "module",
     "description": "Variable Usage Map Builder (builders)",
     "tags": [],
-    "source_file": "pil_meta\\builders\\variable_usage_builder.py",
+    "source_file": "builders\\variable_usage_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.builders.variable_usage_builder",
-      "module": "pil_meta.builders.variable_usage_builder",
-      "function": null,
+      "fqname": "builders.variable_usage_builder",
+      "module": "builders.variable_usage_builder",
+      "name": "builders.variable_usage_builder",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\builders\\variable_usage_builder.py",
+      "source_file": "builders\\variable_usage_builder.py",
       "description": "Variable Usage Map Builder (builders)",
       "docstring_full": "Variable Usage Map Builder (builders)\n\nFinds all variables (top-level assignments) used in more than one module,\nand records which modules use them.",
       "tags": [],
@@ -732,33 +694,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.builders.variable_usage_builder.build_variable_usage_map": {
-    "fqname": "pil_meta.builders.variable_usage_builder.build_variable_usage_map",
+  "builders.variable_usage_builder.build_variable_usage_map": {
+    "fqname": "builders.variable_usage_builder.build_variable_usage_map",
     "type": "function",
     "description": "For each variable, scan all other modules for references by name.",
     "tags": [],
-    "source_file": "pil_meta\\builders\\variable_usage_builder.py",
+    "source_file": "builders\\variable_usage_builder.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.builders.variable_usage_builder.build_variable_usage_map",
-      "module": "pil_meta.builders.variable_usage_builder",
-      "function": "build_variable_usage_map",
+      "fqname": "builders.variable_usage_builder.build_variable_usage_map",
+      "module": "builders.variable_usage_builder",
+      "name": "build_variable_usage_map",
       "type": "function",
       "lineno": 12,
-      "source_file": "pil_meta\\builders\\variable_usage_builder.py",
+      "source_file": "builders\\variable_usage_builder.py",
       "description": "For each variable, scan all other modules for references by name.",
       "docstring_full": "For each variable, scan all other modules for references by name.\n\nParameters:\n    variables (list): List of variable nodes (from loader, type=='variable')\n    all_source_files (list): List of all source Path objects\n    root_path (Path): Project root for relative paths\n\nReturns:\n    dict: fqname -> list of modules (relative paths) where used",
       "tags": [],
@@ -774,71 +732,60 @@
           "root_path"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.exporters.json_exporter": {
-    "fqname": "pil_meta.exporters.json_exporter",
+  "exporters.json_exporter": {
+    "fqname": "exporters.json_exporter",
     "type": "module",
     "description": "Export the full entity graph to a structured JSON file.",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\json_exporter.py",
+    "source_file": "exporters\\json_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.exporters.json_exporter",
-      "module": "pil_meta.exporters.json_exporter",
-      "function": null,
+      "fqname": "exporters.json_exporter",
+      "module": "exporters.json_exporter",
+      "name": "exporters.json_exporter",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\exporters\\json_exporter.py",
+      "source_file": "exporters\\json_exporter.py",
       "description": "Export the full entity graph to a structured JSON file.",
-      "docstring_full": "Export the full entity graph to a structured JSON file.\n\nPart of the PIL output pipeline. This module writes the final metadata graph\nproduced by `entity_graph_builder.py` to disk in a machine-readable format.\n\nOutputs:\n  - entity_graph.json \u2192 Complete node metadata and semantic linkages\n\nConforms to the PIL metadata strategy:\n  - Includes docstrings, tags, governance flags, and semantic edges\n  - Supports downstream validation, journal linkage, and vault export",
+      "docstring_full": "Export the full entity graph to a structured JSON file.\n\nPart of the PIL output pipeline. This module writes the final metadata graph\nproduced by `entity_graph_builder.py` to disk in a machine-readable format.\n\nOutputs:\n  - entity_graph.json → Complete node metadata and semantic linkages\n\nConforms to the PIL metadata strategy:\n  - Includes docstrings, tags, governance flags, and semantic edges\n  - Supports downstream validation, journal linkage, and vault export",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.exporters.json_exporter.export_entity_graph": {
-    "fqname": "pil_meta.exporters.json_exporter.export_entity_graph",
+  "exporters.json_exporter.export_entity_graph": {
+    "fqname": "exporters.json_exporter.export_entity_graph",
     "type": "function",
     "description": "Write the in-memory entity graph to `entity_graph.json`.",
-    "tags": [
-      "exporter",
-      "json"
-    ],
-    "source_file": "pil_meta\\exporters\\json_exporter.py",
+    "tags": [],
+    "source_file": "exporters\\json_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.json_exporter.export_entity_graph",
-      "module": "pil_meta.exporters.json_exporter",
-      "function": "export_entity_graph",
+      "fqname": "exporters.json_exporter.export_entity_graph",
+      "module": "exporters.json_exporter",
+      "name": "export_entity_graph",
       "type": "function",
       "lineno": 20,
-      "source_file": "pil_meta\\exporters\\json_exporter.py",
+      "source_file": "exporters\\json_exporter.py",
       "description": "Write the in-memory entity graph to `entity_graph.json`.",
       "docstring_full": "Write the in-memory entity graph to `entity_graph.json`.\n\nParameters:\n    graph (dict): The keyed graph structure, e.g., { fqname: { ... } }\n    output_dir (str): Directory to emit the file into (relative or absolute)\n\nNotes:\n    - Output path is `${output_dir}/entity_graph.json`\n    - Will create the directory if it does not exist\n    - File is formatted with 2-space indentation",
       "tags": [],
@@ -853,37 +800,32 @@
           "output_dir"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": []
   },
-  "pil_meta.exporters.markdown_vault_exporter": {
-    "fqname": "pil_meta.exporters.markdown_vault_exporter",
+  "exporters.markdown_vault_exporter": {
+    "fqname": "exporters.markdown_vault_exporter",
     "type": "module",
     "description": "Markdown Vault Exporter (exporters)",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+    "source_file": "exporters\\markdown_vault_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.markdown_vault_exporter",
-      "module": "pil_meta.exporters.markdown_vault_exporter",
-      "function": null,
+      "fqname": "exporters.markdown_vault_exporter",
+      "module": "exporters.markdown_vault_exporter",
+      "name": "exporters.markdown_vault_exporter",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+      "source_file": "exporters\\markdown_vault_exporter.py",
       "description": "Markdown Vault Exporter (exporters)",
       "docstring_full": "Markdown Vault Exporter (exporters)\n\nExports the PIL entity graph as Markdown/Obsidian-compatible files for each symbol,\nusing human-friendly names for navigation but always showing the real fqname.",
       "tags": [],
@@ -892,45 +834,72 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+        "target": "builders.entity_graph_builder.get_field",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.friendly_name",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter._sanitize_filename"
     ]
   },
-  "pil_meta.exporters.markdown_vault_exporter.friendly_name": {
-    "fqname": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+  "exporters.markdown_vault_exporter.friendly_name": {
+    "fqname": "exporters.markdown_vault_exporter.friendly_name",
     "type": "function",
     "description": "Returns a human-friendly display name for vault navigation,",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+    "source_file": "exporters\\markdown_vault_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
-      "module": "pil_meta.exporters.markdown_vault_exporter",
-      "function": "friendly_name",
+      "fqname": "exporters.markdown_vault_exporter.friendly_name",
+      "module": "exporters.markdown_vault_exporter",
+      "name": "friendly_name",
       "type": "function",
       "lineno": 12,
-      "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+      "source_file": "exporters\\markdown_vault_exporter.py",
       "description": "Returns a human-friendly display name for vault navigation,",
       "docstring_full": "Returns a human-friendly display name for vault navigation,\nwhile preserving real fqname in note metadata.",
       "tags": [],
@@ -944,53 +913,80 @@
           "node"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+        "target": "builders.entity_graph_builder.get_field",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.friendly_name",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name",
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault"
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.get_field"
     ],
     "calls_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter._sanitize_filename"
     ]
   },
-  "pil_meta.exporters.markdown_vault_exporter._sanitize_filename": {
-    "fqname": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+  "exporters.markdown_vault_exporter._sanitize_filename": {
+    "fqname": "exporters.markdown_vault_exporter._sanitize_filename",
     "type": "function",
-    "description": "Replace slashes and other problematic chars for filesystem safety.",
+    "description": "Replace slashes, quotes, and other problematic chars for filesystem safety.",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+    "source_file": "exporters\\markdown_vault_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "module": "pil_meta.exporters.markdown_vault_exporter",
-      "function": "_sanitize_filename",
+      "fqname": "exporters.markdown_vault_exporter._sanitize_filename",
+      "module": "exporters.markdown_vault_exporter",
+      "name": "_sanitize_filename",
       "type": "function",
-      "lineno": 34,
-      "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
-      "description": "Replace slashes and other problematic chars for filesystem safety.",
-      "docstring_full": "Replace slashes and other problematic chars for filesystem safety.",
+      "lineno": 42,
+      "source_file": "exporters\\markdown_vault_exporter.py",
+      "description": "Replace slashes, quotes, and other problematic chars for filesystem safety.",
+      "docstring_full": "Replace slashes, quotes, and other problematic chars for filesystem safety.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
@@ -1002,51 +998,81 @@
           "name"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+        "target": "builders.entity_graph_builder.get_field",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.friendly_name",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name",
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault"
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter",
+      "exporters.md_exporter.export_entity_markdown",
+      "exporters.md_exporter._sanitize_filename"
     ],
     "calls_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter._sanitize_filename"
     ]
   },
-  "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault": {
-    "fqname": "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
+  "exporters.markdown_vault_exporter.export_markdown_vault": {
+    "fqname": "exporters.markdown_vault_exporter.export_markdown_vault",
     "type": "function",
     "description": "Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+    "source_file": "exporters\\markdown_vault_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.markdown_vault_exporter.export_markdown_vault",
-      "module": "pil_meta.exporters.markdown_vault_exporter",
-      "function": "export_markdown_vault",
+      "fqname": "exporters.markdown_vault_exporter.export_markdown_vault",
+      "module": "exporters.markdown_vault_exporter",
+      "name": "export_markdown_vault",
       "type": "function",
-      "lineno": 38,
-      "source_file": "pil_meta\\exporters\\markdown_vault_exporter.py",
+      "lineno": 58,
+      "source_file": "exporters\\markdown_vault_exporter.py",
       "description": "Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.",
       "docstring_full": "Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.\n\nParameters:\n    graph (dict): Entity graph keyed by fqname\n    output_dir (str): Output directory for the Markdown vault",
       "tags": [],
@@ -1061,84 +1087,75 @@
           "output_dir"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter.friendly_name",
+        "target": "builders.entity_graph_builder.get_field",
         "type": "calls"
       },
       {
-        "target": "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.friendly_name",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": [
-      "pil_meta.exporters.markdown_vault_exporter._sanitize_filename",
-      "pil_meta.exporters.markdown_vault_exporter.friendly_name"
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter._sanitize_filename"
     ]
   },
-  "pil_meta.exporters.md_exporter": {
-    "fqname": "pil_meta.exporters.md_exporter",
-    "type": "module",
-    "description": "Optional: export vault-compatible Markdown summary from graph.",
-    "tags": [],
-    "source_file": "pil_meta\\exporters\\md_exporter.py",
-    "test_coverage": false,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": true,
-    "metadata": {
-      "fqname": "pil_meta.exporters.md_exporter",
-      "module": "pil_meta.exporters.md_exporter",
-      "function": null,
-      "type": "module",
-      "lineno": 1,
-      "source_file": "pil_meta\\exporters\\md_exporter.py",
-      "description": "Optional: export vault-compatible Markdown summary from graph.",
-      "docstring_full": "Optional: export vault-compatible Markdown summary from graph.",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [],
-    "calls_fqns": []
-  },
-  "pil_meta.exporters.md_exporter.export_to_markdown": {
-    "fqname": "pil_meta.exporters.md_exporter.export_to_markdown",
+  "exporters.markdown_vault_exporter.get_field": {
+    "fqname": "exporters.markdown_vault_exporter.get_field",
     "type": "function",
     "description": "",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\md_exporter.py",
+    "source_file": "exporters\\markdown_vault_exporter.py",
     "test_coverage": false,
     "docstring_present": false,
     "linked_journal_entry": null,
-    "is_orphaned": true,
+    "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.md_exporter.export_to_markdown",
-      "module": "pil_meta.exporters.md_exporter",
-      "function": "export_to_markdown",
+      "fqname": "exporters.markdown_vault_exporter.get_field",
+      "module": "exporters.markdown_vault_exporter",
+      "name": "get_field",
       "type": "function",
-      "lineno": 5,
-      "source_file": "pil_meta\\exporters\\md_exporter.py",
+      "lineno": 18,
+      "source_file": "exporters\\markdown_vault_exporter.py",
       "description": "",
       "docstring_full": "",
       "tags": [],
@@ -1149,37 +1166,315 @@
       "docstring_present": false,
       "metadata": {
         "args": [
-          "graph",
+          "n",
+          "k"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "builders.entity_graph_builder.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.get_field",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter.friendly_name",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "builders.entity_graph_builder",
+      "builders.entity_graph_builder.build_entity_graph",
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.markdown_vault_exporter.get_field"
+    ],
+    "calls_fqns": [
+      "builders.entity_graph_builder.get_field",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter._sanitize_filename"
+    ]
+  },
+  "exporters.md_exporter": {
+    "fqname": "exporters.md_exporter",
+    "type": "module",
+    "description": "Markdown Exporter (exporters)",
+    "tags": [],
+    "source_file": "exporters\\md_exporter.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "exporters.md_exporter",
+      "module": "exporters.md_exporter",
+      "name": "exporters.md_exporter",
+      "type": "module",
+      "lineno": 1,
+      "source_file": "exporters\\md_exporter.py",
+      "description": "Markdown Exporter (exporters)",
+      "docstring_full": "Markdown Exporter (exporters)\n\nExports a single code entity as a Markdown file with metadata and Obsidian links.\nIntended for use in manual or fine-grained exports, not for bulk vault building.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.md_exporter._sanitize_filename"
+    ]
+  },
+  "exporters.md_exporter.export_entity_markdown": {
+    "fqname": "exporters.md_exporter.export_entity_markdown",
+    "type": "function",
+    "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
+    "tags": [],
+    "source_file": "exporters\\md_exporter.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "exporters.md_exporter.export_entity_markdown",
+      "module": "exporters.md_exporter",
+      "name": "export_entity_markdown",
+      "type": "function",
+      "lineno": 12,
+      "source_file": "exporters\\md_exporter.py",
+      "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
+      "docstring_full": "Export a single entity as a Markdown file with metadata and Obsidian links.\n\nArgs:\n    entity (dict): Entity metadata dictionary, e.g.\n        {\n            \"fqname\": \"module.func\",\n            \"type\": \"function\",\n            \"description\": \"...\",\n            \"tags\": [\"combat\", \"stateful\"],\n            ...\n        }\n    output_dir (str): Directory to write markdown file.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "entity",
           "output_dir"
         ],
         "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
       },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.md_exporter._sanitize_filename"
+    ]
+  },
+  "exporters.md_exporter._sanitize_filename": {
+    "fqname": "exporters.md_exporter._sanitize_filename",
+    "type": "function",
+    "description": "",
+    "tags": [],
+    "source_file": "exporters\\md_exporter.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "exporters.md_exporter._sanitize_filename",
+      "module": "exporters.md_exporter",
+      "name": "_sanitize_filename",
+      "type": "function",
+      "lineno": 49,
+      "source_file": "exporters\\md_exporter.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": false,
+      "metadata": {
+        "args": [
+          "s"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "exporters.markdown_vault_exporter._sanitize_filename",
+        "type": "calls"
+      },
+      {
+        "target": "exporters.md_exporter._sanitize_filename",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "exporters.markdown_vault_exporter",
+      "exporters.markdown_vault_exporter.friendly_name",
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.markdown_vault_exporter.export_markdown_vault",
+      "exporters.markdown_vault_exporter.get_field",
+      "exporters.md_exporter",
+      "exporters.md_exporter.export_entity_markdown",
+      "exporters.md_exporter._sanitize_filename"
+    ],
+    "calls_fqns": [
+      "exporters.markdown_vault_exporter._sanitize_filename",
+      "exporters.md_exporter._sanitize_filename"
+    ]
+  },
+  "exporters.usage_map_exporter": {
+    "fqname": "exporters.usage_map_exporter",
+    "type": "module",
+    "description": "",
+    "tags": [],
+    "source_file": "exporters\\usage_map_exporter.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": true,
+    "metadata": {
+      "fqname": "exporters.usage_map_exporter",
+      "module": "exporters.usage_map_exporter",
+      "name": "exporters.usage_map_exporter",
+      "type": "module",
+      "lineno": 1,
+      "source_file": "exporters\\usage_map_exporter.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": false,
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.exporters.variable_usage_report_exporter": {
-    "fqname": "pil_meta.exporters.variable_usage_report_exporter",
+  "exporters.usage_map_exporter.export_usage_map": {
+    "fqname": "exporters.usage_map_exporter.export_usage_map",
+    "type": "function",
+    "description": "Export the usage map as usage_map.json.",
+    "tags": [],
+    "source_file": "exporters\\usage_map_exporter.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "exporters.usage_map_exporter.export_usage_map",
+      "module": "exporters.usage_map_exporter",
+      "name": "export_usage_map",
+      "type": "function",
+      "lineno": 6,
+      "source_file": "exporters\\usage_map_exporter.py",
+      "description": "Export the usage map as usage_map.json.",
+      "docstring_full": "Export the usage map as usage_map.json.\n\nArgs:\n    usage_map (dict): Usage summary dictionary (see build_usage_map).\n    output_dir (str): Directory to write the JSON file into.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "usage_map",
+          "output_dir"
+        ],
+        "returns": null
+      }
+    },
+    "links": [],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": []
+  },
+  "exporters.variable_usage_report_exporter": {
+    "fqname": "exporters.variable_usage_report_exporter",
     "type": "module",
     "description": "Variable Usage Markdown Exporter (exporters)",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\variable_usage_report_exporter.py",
+    "source_file": "exporters\\variable_usage_report_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.exporters.variable_usage_report_exporter",
-      "module": "pil_meta.exporters.variable_usage_report_exporter",
-      "function": null,
+      "fqname": "exporters.variable_usage_report_exporter",
+      "module": "exporters.variable_usage_report_exporter",
+      "name": "exporters.variable_usage_report_exporter",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\exporters\\variable_usage_report_exporter.py",
+      "source_file": "exporters\\variable_usage_report_exporter.py",
       "description": "Variable Usage Markdown Exporter (exporters)",
       "docstring_full": "Variable Usage Markdown Exporter (exporters)\n\nExports a summary report of variables/lists/constants used in more than one module,\nfor vault, governance, or architectural review.",
       "tags": [],
@@ -1188,33 +1483,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.exporters.variable_usage_report_exporter.export_variable_usage_markdown": {
-    "fqname": "pil_meta.exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+  "exporters.variable_usage_report_exporter.export_variable_usage_markdown": {
+    "fqname": "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
     "type": "function",
     "description": "Writes a Markdown summary listing each variable used in multiple modules.",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\variable_usage_report_exporter.py",
+    "source_file": "exporters\\variable_usage_report_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
-    "is_orphaned": true,
+    "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.variable_usage_report_exporter.export_variable_usage_markdown",
-      "module": "pil_meta.exporters.variable_usage_report_exporter",
-      "function": "export_variable_usage_markdown",
+      "fqname": "exporters.variable_usage_report_exporter.export_variable_usage_markdown",
+      "module": "exporters.variable_usage_report_exporter",
+      "name": "export_variable_usage_markdown",
       "type": "function",
       "lineno": 11,
-      "source_file": "pil_meta\\exporters\\variable_usage_report_exporter.py",
+      "source_file": "exporters\\variable_usage_report_exporter.py",
       "description": "Writes a Markdown summary listing each variable used in multiple modules.",
       "docstring_full": "Writes a Markdown summary listing each variable used in multiple modules.\n\nParameters:\n    usage_map (dict): fqname -> list of modules where variable is used\n    output_path (str): Path to output .md file",
       "tags": [],
@@ -1229,33 +1520,32 @@
           "output_path"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
     "calls_fqns": []
   },
-  "pil_meta.exporters.vault_index_exporter": {
-    "fqname": "pil_meta.exporters.vault_index_exporter",
+  "exporters.vault_index_exporter": {
+    "fqname": "exporters.vault_index_exporter",
     "type": "module",
     "description": "Vault Index Exporter (exporters)",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\vault_index_exporter.py",
+    "source_file": "exporters\\vault_index_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.exporters.vault_index_exporter",
-      "module": "pil_meta.exporters.vault_index_exporter",
-      "function": null,
+      "fqname": "exporters.vault_index_exporter",
+      "module": "exporters.vault_index_exporter",
+      "name": "exporters.vault_index_exporter",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\exporters\\vault_index_exporter.py",
+      "source_file": "exporters\\vault_index_exporter.py",
       "description": "Vault Index Exporter (exporters)",
       "docstring_full": "Vault Index Exporter (exporters)\n\nGenerates an Obsidian-friendly index.md for your code vault,\ngrouped by type, with live Dataview sections and usage links.",
       "tags": [],
@@ -1264,33 +1554,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.exporters.vault_index_exporter.export_vault_index": {
-    "fqname": "pil_meta.exporters.vault_index_exporter.export_vault_index",
+  "exporters.vault_index_exporter.export_vault_index": {
+    "fqname": "exporters.vault_index_exporter.export_vault_index",
     "type": "function",
     "description": "Writes an index.md in output_dir listing all code entities grouped by type,",
     "tags": [],
-    "source_file": "pil_meta\\exporters\\vault_index_exporter.py",
+    "source_file": "exporters\\vault_index_exporter.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.exporters.vault_index_exporter.export_vault_index",
-      "module": "pil_meta.exporters.vault_index_exporter",
-      "function": "export_vault_index",
+      "fqname": "exporters.vault_index_exporter.export_vault_index",
+      "module": "exporters.vault_index_exporter",
+      "name": "export_vault_index",
       "type": "function",
       "lineno": 12,
-      "source_file": "pil_meta\\exporters\\vault_index_exporter.py",
+      "source_file": "exporters\\vault_index_exporter.py",
       "description": "Writes an index.md in output_dir listing all code entities grouped by type,",
       "docstring_full": "Writes an index.md in output_dir listing all code entities grouped by type,\nwith Obsidian links and Dataview live dashboards.",
       "tags": [],
@@ -1305,117 +1591,350 @@
           "output_dir"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": []
   },
-  "pil_meta.loaders.code_loader": {
-    "fqname": "pil_meta.loaders.code_loader",
+  "loaders.asset_loader": {
+    "fqname": "loaders.asset_loader",
     "type": "module",
-    "description": "Code Loader (loaders)",
+    "description": "Extract asset metadata from tracked folders for non-code files.",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
+    "source_file": "loaders\\asset_loader.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.code_loader",
-      "module": "pil_meta.loaders.code_loader",
-      "function": null,
+      "fqname": "loaders.asset_loader",
+      "module": "loaders.asset_loader",
+      "name": "loaders.asset_loader",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
-      "description": "Code Loader (loaders)",
-      "docstring_full": "Code Loader (loaders)\n\nWalks the source tree and extracts all top-level symbols:\n- Modules (one per file)\n- Classes\n- Functions and methods\n- Variables (top-level assignments, including lists/constants)\n\nFor variables, parses preceding comment blocks as their docstring\n(using structured annotation standards).\n\nAll nodes are enriched with docstring metadata via extract_docstring_metadata.",
+      "source_file": "loaders\\asset_loader.py",
+      "description": "Extract asset metadata from tracked folders for non-code files.",
+      "docstring_full": "Extract asset metadata from tracked folders for non-code files.\n\nScans all configured asset directories (from `tracked_assets` in `pilconfig.json`)\nand returns standardized metadata records for each valid asset. These are merged into\nthe main entity graph alongside code functions and modules.\n\nSupports extensions like `.png`, `.tmx`, `.glb`, `.sh`, `.json`, etc.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.loaders.code_loader.module_name",
+        "target": "loaders.asset_loader.export_path_list",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+        "target": "loaders.asset_loader.infer_tags_from_path",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.infer_tags_from_path"
     ]
   },
-  "pil_meta.loaders.code_loader.extract_nodes_from_ast": {
-    "fqname": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-    "type": "function",
-    "description": "Extracts modules, classes, functions, methods, and variables from an AST.",
+  "loaders.asset_loader.SUPPORTED_EXTENSIONS": {
+    "fqname": "loaders.asset_loader.SUPPORTED_EXTENSIONS",
+    "type": "variable",
+    "description": "",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
+    "source_file": "loaders\\asset_loader.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": "",
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.asset_loader.SUPPORTED_EXTENSIONS",
+      "module": "loaders.asset_loader",
+      "name": "SUPPORTED_EXTENSIONS",
+      "type": "variable",
+      "lineno": 14,
+      "source_file": "loaders\\asset_loader.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": "",
+      "deprecated": false,
+      "status": "",
+      "visibility": "",
+      "docstring_present": false,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "loaders.asset_loader.export_path_list",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.asset_loader.infer_tags_from_path",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.infer_tags_from_path"
+    ]
+  },
+  "loaders.asset_loader.infer_tags_from_path": {
+    "fqname": "loaders.asset_loader.infer_tags_from_path",
+    "type": "function",
+    "description": "Infer semantic tags from the file path and extension.",
+    "tags": [],
+    "source_file": "loaders\\asset_loader.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "module": "pil_meta.loaders.code_loader",
-      "function": "extract_nodes_from_ast",
+      "fqname": "loaders.asset_loader.infer_tags_from_path",
+      "module": "loaders.asset_loader",
+      "name": "infer_tags_from_path",
       "type": "function",
-      "lineno": 23,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
-      "description": "Extracts modules, classes, functions, methods, and variables from an AST.",
-      "docstring_full": "Extracts modules, classes, functions, methods, and variables from an AST.\n\n- For modules, captures file-level docstrings.\n- For classes, captures class docstrings.\n- For functions and methods, uses parent assignment to distinguish type.\n- For variables (assignments), captures immediately preceding comments as a docstring.\n\nEach node is enriched with:\n- description: First line of docstring/comment\n- docstring_full: Full body\n- tags, linked_journal_entry, deprecated, status, visibility: Parsed from docstring/comment if present\n- docstring_present: True if a description is present\n\nParameters:\n    tree (ast.AST): Parsed AST of a Python file\n    source_file (Path): Path to the Python file\n    root_path (Path): Project root (for relative module calculation)\n\nReturns:\n    List[Dict[str, Any]]: List of symbol metadata dicts",
+      "lineno": 19,
+      "source_file": "loaders\\asset_loader.py",
+      "description": "Infer semantic tags from the file path and extension.",
+      "docstring_full": "Infer semantic tags from the file path and extension.\n\nParameters:\n    filepath (Path): Relative or absolute path to the asset file\n\nReturns:\n    list[str]: Sorted tag list (e.g. [\"assets\", \"maps\", \"tmx\"])",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "filepath"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.asset_loader.export_path_list",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.asset_loader.infer_tags_from_path",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "loaders.asset_loader",
+      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
+      "loaders.asset_loader.infer_tags_from_path",
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.load_asset_symbols"
+    ],
+    "calls_fqns": [
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.infer_tags_from_path"
+    ]
+  },
+  "loaders.asset_loader.export_path_list": {
+    "fqname": "loaders.asset_loader.export_path_list",
+    "type": "function",
+    "description": "Ensures all paths in the list are absolute, resolving relative paths from config file's directory.",
+    "tags": [],
+    "source_file": "loaders\\asset_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.asset_loader.export_path_list",
+      "module": "loaders.asset_loader",
+      "name": "export_path_list",
+      "type": "function",
+      "lineno": 39,
+      "source_file": "loaders\\asset_loader.py",
+      "description": "Ensures all paths in the list are absolute, resolving relative paths from config file's directory.",
+      "docstring_full": "Ensures all paths in the list are absolute, resolving relative paths from config file's directory.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "paths",
+          "config_base_dir"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.asset_loader.export_path_list",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.asset_loader.infer_tags_from_path",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "loaders.asset_loader",
+      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
+      "loaders.asset_loader.infer_tags_from_path",
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.load_asset_symbols"
+    ],
+    "calls_fqns": [
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.infer_tags_from_path"
+    ]
+  },
+  "loaders.asset_loader.load_asset_symbols": {
+    "fqname": "loaders.asset_loader.load_asset_symbols",
+    "type": "function",
+    "description": "Scan all configured asset folders and extract metadata records.",
+    "tags": [],
+    "source_file": "loaders\\asset_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.asset_loader.load_asset_symbols",
+      "module": "loaders.asset_loader",
+      "name": "load_asset_symbols",
+      "type": "function",
+      "lineno": 52,
+      "source_file": "loaders\\asset_loader.py",
+      "description": "Scan all configured asset folders and extract metadata records.",
+      "docstring_full": "Scan all configured asset folders and extract metadata records.\n\nParameters:\n    config (dict): Loaded config dictionary from pilconfig.json.\n                   Must contain a `tracked_assets` list.\n\nReturns:\n    list[dict]: Asset metadata entries in graph-compatible format\n\nExample Output:\n    {\n        \"fqname\": \"assets/fx/fireball.png\",\n        \"type\": \"asset\",\n        \"filename\": \"fireball.png\",\n        \"path\": \"assets/fx/fireball.png\",\n        \"extension\": \".png\",\n        \"tags\": [\"assets\", \"fx\", \"png\"],\n        \"referenced_by\": [],\n        \"description\": \"\",\n        \"docstring_present\": False,\n        \"test_coverage\": False,\n        \"linked_journal_entry\": None,\n        \"is_orphaned\": True,\n        \"links\": []\n    }",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "config"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.asset_loader.export_path_list",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.asset_loader.infer_tags_from_path",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "loaders.asset_loader.export_path_list",
+      "loaders.asset_loader.infer_tags_from_path"
+    ]
+  },
+  "loaders.code_loader": {
+    "fqname": "loaders.code_loader",
+    "type": "module",
+    "description": "Code Loader (loaders)",
+    "tags": [],
+    "source_file": "loaders\\code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.code_loader",
+      "module": "loaders.code_loader",
+      "name": "loaders.code_loader",
+      "type": "module",
+      "lineno": 1,
+      "source_file": "loaders\\code_loader.py",
+      "description": "Code Loader (loaders)",
+      "docstring_full": "Code Loader (loaders)\n\nWalks the source tree and extracts all top-level symbols (functions, classes, methods, variables, modules).\nEnriches each symbol with structured docstring metadata in bulk for efficient processing.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "loaders.code_loader.module_name",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.extract_nodes_from_ast",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.ParentNodeVisitor",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
+    ]
+  },
+  "loaders.code_loader.extract_nodes_from_ast": {
+    "fqname": "loaders.code_loader.extract_nodes_from_ast",
+    "type": "function",
+    "description": "Extract all classes, functions, methods, variables, and modules from the AST of a source file.",
+    "tags": [],
+    "source_file": "loaders\\code_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.code_loader.extract_nodes_from_ast",
+      "module": "loaders.code_loader",
+      "name": "extract_nodes_from_ast",
+      "type": "function",
+      "lineno": 15,
+      "source_file": "loaders\\code_loader.py",
+      "description": "Extract all classes, functions, methods, variables, and modules from the AST of a source file.",
+      "docstring_full": "Extract all classes, functions, methods, variables, and modules from the AST of a source file.\n\nArgs:\n    tree (ast.AST): The parsed AST of the source file.\n    source_file (Path): The full path to the source file.\n    root_path (Path): The project root path to calculate relative paths.\n\nReturns:\n    List[Dict[str, Any]]: A list of enriched symbol dictionaries.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
@@ -1429,89 +1948,77 @@
           "root_path"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.loaders.code_loader.module_name",
+        "target": "loaders.code_loader.module_name",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
+        "target": "loaders.code_loader.extract_nodes_from_ast",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+        "target": "loaders.code_loader.ParentNodeVisitor",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.visit"
+      "loaders.code_loader",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.visit"
     ],
     "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
     ]
   },
-  "pil_meta.loaders.code_loader.load_code_symbols": {
-    "fqname": "pil_meta.loaders.code_loader.load_code_symbols",
+  "loaders.code_loader.load_code_symbols": {
+    "fqname": "loaders.code_loader.load_code_symbols",
     "type": "function",
-    "description": "Loads and parses all Python source files in the project root configured in pilconfig.json,",
-    "tags": [
-      "loader",
-      "code"
-    ],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
+    "description": "Parse a single Python file and return a list of symbols with metadata.",
+    "tags": [],
+    "source_file": "loaders\\code_loader.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.code_loader.load_code_symbols",
-      "module": "pil_meta.loaders.code_loader",
-      "function": "load_code_symbols",
+      "fqname": "loaders.code_loader.load_code_symbols",
+      "module": "loaders.code_loader",
+      "name": "load_code_symbols",
       "type": "function",
-      "lineno": 169,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
-      "description": "Loads and parses all Python source files in the project root configured in pilconfig.json,",
-      "docstring_full": "Loads and parses all Python source files in the project root configured in pilconfig.json,\nextracting modules, classes, functions, methods, and variables with full metadata.\n\nParameters:\n    config_path (str): Path to the pilconfig.json configuration file.\n\nReturns:\n    List[Dict[str, Any]]: List of enriched symbol dictionaries.",
+      "lineno": 166,
+      "source_file": "loaders\\code_loader.py",
+      "description": "Parse a single Python file and return a list of symbols with metadata.",
+      "docstring_full": "Parse a single Python file and return a list of symbols with metadata.\n\nArgs:\n    pyfile_path (str): Path to .py file.\n    project_root (str): Project root directory (absolute).\n\nReturns:\n    list of dicts: Each with type, name, fqname, module, lineno, doc.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
@@ -1520,83 +2027,75 @@
       "docstring_present": true,
       "metadata": {
         "args": [
-          "config_path"
+          "pyfile_path",
+          "project_root"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.loaders.code_loader.module_name",
+        "target": "loaders.code_loader.module_name",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
+        "target": "loaders.code_loader.extract_nodes_from_ast",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+        "target": "loaders.code_loader.ParentNodeVisitor",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
     ]
   },
-  "pil_meta.loaders.code_loader.module_name": {
-    "fqname": "pil_meta.loaders.code_loader.module_name",
+  "loaders.code_loader.module_name": {
+    "fqname": "loaders.code_loader.module_name",
     "type": "function",
     "description": "",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
+    "source_file": "loaders\\code_loader.py",
     "test_coverage": false,
     "docstring_present": false,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.code_loader.module_name",
-      "module": "pil_meta.loaders.code_loader",
-      "function": "module_name",
+      "fqname": "loaders.code_loader.module_name",
+      "module": "loaders.code_loader",
+      "name": "module_name",
       "type": "function",
-      "lineno": 48,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
+      "lineno": 29,
+      "source_file": "loaders\\code_loader.py",
       "description": "",
       "docstring_full": "",
       "tags": [],
@@ -1610,170 +2109,152 @@
           "path"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.loaders.code_loader.module_name",
+        "target": "loaders.code_loader.module_name",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
+        "target": "loaders.code_loader.extract_nodes_from_ast",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+        "target": "loaders.code_loader.ParentNodeVisitor",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.visit"
+      "loaders.code_loader",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.visit"
     ],
     "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
     ]
   },
-  "pil_meta.loaders.code_loader.ParentNodeVisitor": {
-    "fqname": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+  "loaders.code_loader.ParentNodeVisitor": {
+    "fqname": "loaders.code_loader.ParentNodeVisitor",
     "type": "class",
-    "description": "Assigns parent references to all AST nodes for accurate method detection.",
-    "tags": [],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
-    "test_coverage": false,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": false,
-    "metadata": {
-      "fqname": "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "module": "pil_meta.loaders.code_loader",
-      "function": "ParentNodeVisitor",
-      "type": "class",
-      "lineno": 188,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
-      "description": "Assigns parent references to all AST nodes for accurate method detection.",
-      "docstring_full": "Assigns parent references to all AST nodes for accurate method detection.",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [
-      {
-        "target": "pil_meta.loaders.code_loader.module_name",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
-        "type": "calls"
-      }
-    ],
-    "called_by_fqns": [
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.visit"
-    ],
-    "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "pil_meta.loaders.code_loader.visit": {
-    "fqname": "pil_meta.loaders.code_loader.visit",
-    "type": "method",
     "description": "",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\code_loader.py",
+    "source_file": "loaders\\code_loader.py",
     "test_coverage": false,
     "docstring_present": false,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.code_loader.visit",
-      "module": "pil_meta.loaders.code_loader",
-      "function": "visit",
+      "fqname": "loaders.code_loader.ParentNodeVisitor",
+      "module": "loaders.code_loader",
+      "name": "ParentNodeVisitor",
+      "type": "class",
+      "lineno": 36,
+      "source_file": "loaders\\code_loader.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": false,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "loaders.code_loader.module_name",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.extract_nodes_from_ast",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.ParentNodeVisitor",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      },
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.docstring_utils.extract_docstring_metadata",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "loaders.code_loader",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.visit"
+    ],
+    "calls_fqns": [
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
+    ]
+  },
+  "loaders.code_loader.visit": {
+    "fqname": "loaders.code_loader.visit",
+    "type": "method",
+    "description": "",
+    "tags": [],
+    "source_file": "loaders\\code_loader.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.code_loader.visit",
+      "module": "loaders.code_loader",
+      "name": "visit",
       "type": "method",
-      "lineno": 192,
-      "source_file": "pil_meta\\loaders\\code_loader.py",
+      "lineno": 37,
+      "source_file": "loaders\\code_loader.py",
       "description": "",
       "docstring_full": "",
       "tags": [],
@@ -1788,204 +2269,324 @@
           "node"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.loaders.code_loader.module_name",
+        "target": "loaders.code_loader.module_name",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
+        "target": "loaders.code_loader.extract_nodes_from_ast",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.extract_nodes_from_ast",
+        "target": "loaders.code_loader.ParentNodeVisitor",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       },
       {
-        "target": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+        "target": "loaders.code_loader.visit",
         "type": "calls"
       },
       {
-        "target": "pil_meta.loaders.code_loader.visit",
-        "type": "calls"
-      },
-      {
-        "target": "pil_meta.loaders.code_loader.ParentNodeVisitor",
+        "target": "utils.docstring_utils.extract_docstring_metadata",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.loaders.code_loader.visit"
+      "loaders.code_loader",
+      "loaders.code_loader",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.visit",
+      "loaders.code_loader.visit",
+      "utils.graph_utils",
+      "utils.graph_utils.walk_graph",
+      "utils.graph_utils._walk"
     ],
     "calls_fqns": [
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.utils.docstring_utils.extract_docstring_metadata"
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.visit",
+      "utils.docstring_utils.extract_docstring_metadata"
     ]
   },
-  "pil_meta.loaders.config_loader": {
-    "fqname": "pil_meta.loaders.config_loader",
+  "loaders.config_loader": {
+    "fqname": "loaders.config_loader",
     "type": "module",
-    "description": "Load and validate the pilconfig.json file.",
+    "description": "Config Loader (loaders)",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\config_loader.py",
+    "source_file": "loaders\\config_loader.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.loaders.config_loader",
-      "module": "pil_meta.loaders.config_loader",
-      "function": null,
+      "fqname": "loaders.config_loader",
+      "module": "loaders.config_loader",
+      "name": "loaders.config_loader",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\loaders\\config_loader.py",
-      "description": "Load and validate the pilconfig.json file.",
-      "docstring_full": "Load and validate the pilconfig.json file.",
+      "source_file": "loaders\\config_loader.py",
+      "description": "Config Loader (loaders)",
+      "docstring_full": "Config Loader (loaders)\n\nLoads and validates the pilconfig.json configuration file for the PIL project.\nAll relevant paths are resolved as absolute, relative to the config file location.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.loaders.config_loader.load_config": {
-    "fqname": "pil_meta.loaders.config_loader.load_config",
+  "loaders.config_loader.load_config": {
+    "fqname": "loaders.config_loader.load_config",
     "type": "function",
-    "description": "",
+    "description": "Load the PIL project configuration from pilconfig.json and resolve all important paths.",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\config_loader.py",
+    "source_file": "loaders\\config_loader.py",
     "test_coverage": false,
-    "docstring_present": false,
+    "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.loaders.config_loader.load_config",
-      "module": "pil_meta.loaders.config_loader",
-      "function": "load_config",
+      "fqname": "loaders.config_loader.load_config",
+      "module": "loaders.config_loader",
+      "name": "load_config",
       "type": "function",
-      "lineno": 6,
-      "source_file": "pil_meta\\loaders\\config_loader.py",
-      "description": "",
-      "docstring_full": "",
-      "tags": [],
-      "linked_journal_entry": null,
-      "deprecated": false,
-      "status": null,
-      "visibility": null,
-      "docstring_present": false,
-      "metadata": {
-        "args": [
-          "path"
-        ],
-        "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "links": [],
-    "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
-    ],
-    "calls_fqns": []
-  },
-  "pil_meta.loaders.markdown_loader": {
-    "fqname": "pil_meta.loaders.markdown_loader",
-    "type": "module",
-    "description": "Load design journal or markdown documentation for potential linkages.",
-    "tags": [],
-    "source_file": "pil_meta\\loaders\\markdown_loader.py",
-    "test_coverage": false,
-    "docstring_present": true,
-    "linked_journal_entry": null,
-    "is_orphaned": true,
-    "metadata": {
-      "fqname": "pil_meta.loaders.markdown_loader",
-      "module": "pil_meta.loaders.markdown_loader",
-      "function": null,
-      "type": "module",
-      "lineno": 1,
-      "source_file": "pil_meta\\loaders\\markdown_loader.py",
-      "description": "Load design journal or markdown documentation for potential linkages.",
-      "docstring_full": "Load design journal or markdown documentation for potential linkages.\nExpected output: list of entries with headers, tags, body text.",
+      "lineno": 12,
+      "source_file": "loaders\\config_loader.py",
+      "description": "Load the PIL project configuration from pilconfig.json and resolve all important paths.",
+      "docstring_full": "Load the PIL project configuration from pilconfig.json and resolve all important paths.\n\nArgs:\n    config_path (str): Path to pilconfig.json file (absolute or relative)\n\nReturns:\n    dict: Configuration fields as a dictionary, all relevant paths absolute.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {
+        "args": [
+          "config_path"
+        ],
+        "returns": null
+      }
     },
     "links": [],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
     "calls_fqns": []
   },
-  "pil_meta.loaders.markdown_loader.load_markdown_entries": {
-    "fqname": "pil_meta.loaders.markdown_loader.load_markdown_entries",
-    "type": "function",
+  "loaders.markdown_loader": {
+    "fqname": "loaders.markdown_loader",
+    "type": "module",
+    "description": "Markdown Loader",
+    "tags": [],
+    "source_file": "loaders\\markdown_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.markdown_loader",
+      "module": "loaders.markdown_loader",
+      "name": "loaders.markdown_loader",
+      "type": "module",
+      "lineno": 1,
+      "source_file": "loaders\\markdown_loader.py",
+      "description": "Markdown Loader",
+      "docstring_full": "Markdown Loader\n\nLoads and parses all Markdown (.md) files from a documentation or journal directory.\nExtracts frontmatter, tags, and optional code crosslinks for later graph integration.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "loaders.markdown_loader.parse_frontmatter",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.markdown_loader.parse_frontmatter"
+    ]
+  },
+  "loaders.markdown_loader.FRONTMATTER_RE": {
+    "fqname": "loaders.markdown_loader.FRONTMATTER_RE",
+    "type": "variable",
     "description": "",
     "tags": [],
-    "source_file": "pil_meta\\loaders\\markdown_loader.py",
+    "source_file": "loaders\\markdown_loader.py",
+    "test_coverage": false,
+    "docstring_present": false,
+    "linked_journal_entry": "",
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.markdown_loader.FRONTMATTER_RE",
+      "module": "loaders.markdown_loader",
+      "name": "FRONTMATTER_RE",
+      "type": "variable",
+      "lineno": 14,
+      "source_file": "loaders\\markdown_loader.py",
+      "description": "",
+      "docstring_full": "",
+      "tags": [],
+      "linked_journal_entry": "",
+      "deprecated": false,
+      "status": "",
+      "visibility": "",
+      "docstring_present": false,
+      "metadata": {}
+    },
+    "links": [
+      {
+        "target": "loaders.markdown_loader.parse_frontmatter",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.markdown_loader.parse_frontmatter"
+    ]
+  },
+  "loaders.markdown_loader.parse_frontmatter": {
+    "fqname": "loaders.markdown_loader.parse_frontmatter",
+    "type": "function",
+    "description": "Extract YAML frontmatter as a dict, if present.",
+    "tags": [],
+    "source_file": "loaders\\markdown_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.markdown_loader.parse_frontmatter",
+      "module": "loaders.markdown_loader",
+      "name": "parse_frontmatter",
+      "type": "function",
+      "lineno": 16,
+      "source_file": "loaders\\markdown_loader.py",
+      "description": "Extract YAML frontmatter as a dict, if present.",
+      "docstring_full": "Extract YAML frontmatter as a dict, if present.\n\nArgs:\n    md_content (str): Raw contents of a markdown file.\n\nReturns:\n    dict: Parsed frontmatter, or empty dict if none present.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "md_content"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.markdown_loader.parse_frontmatter",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "loaders.markdown_loader",
+      "loaders.markdown_loader.FRONTMATTER_RE",
+      "loaders.markdown_loader.parse_frontmatter",
+      "loaders.markdown_loader.load_markdown_entries"
+    ],
+    "calls_fqns": [
+      "loaders.markdown_loader.parse_frontmatter"
+    ]
+  },
+  "loaders.markdown_loader.load_markdown_entries": {
+    "fqname": "loaders.markdown_loader.load_markdown_entries",
+    "type": "function",
+    "description": "Load all .md files from a directory and extract metadata for each.",
+    "tags": [],
+    "source_file": "loaders\\markdown_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "loaders.markdown_loader.load_markdown_entries",
+      "module": "loaders.markdown_loader",
+      "name": "load_markdown_entries",
+      "type": "function",
+      "lineno": 38,
+      "source_file": "loaders\\markdown_loader.py",
+      "description": "Load all .md files from a directory and extract metadata for each.",
+      "docstring_full": "Load all .md files from a directory and extract metadata for each.\n\nArgs:\n    journal_dir (str): Path to the journal or docs directory (absolute or relative)\n\nReturns:\n    List[dict]: Each with filename, frontmatter, content, tags",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "journal_dir"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.markdown_loader.parse_frontmatter",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": [
+      "loaders.markdown_loader.parse_frontmatter"
+    ]
+  },
+  "utils.config_loader": {
+    "fqname": "utils.config_loader",
+    "type": "module",
+    "description": "",
+    "tags": [],
+    "source_file": "utils\\config_loader.py",
     "test_coverage": false,
     "docstring_present": false,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.loaders.markdown_loader.load_markdown_entries",
-      "module": "pil_meta.loaders.markdown_loader",
-      "function": "load_markdown_entries",
-      "type": "function",
-      "lineno": 7,
-      "source_file": "pil_meta\\loaders\\markdown_loader.py",
+      "fqname": "utils.config_loader",
+      "module": "utils.config_loader",
+      "name": "utils.config_loader",
+      "type": "module",
+      "lineno": 1,
+      "source_file": "utils\\config_loader.py",
       "description": "",
       "docstring_full": "",
       "tags": [],
@@ -1994,38 +2595,68 @@
       "status": null,
       "visibility": null,
       "docstring_present": false,
-      "metadata": {
-        "args": [
-          "journal_path"
-        ],
-        "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.utils.docstring_utils": {
-    "fqname": "pil_meta.utils.docstring_utils",
+  "utils.config_loader.load_config": {
+    "fqname": "utils.config_loader.load_config",
+    "type": "function",
+    "description": "Load the PIL project configuration and resolve all paths as absolute.",
+    "tags": [],
+    "source_file": "utils\\config_loader.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "utils.config_loader.load_config",
+      "module": "utils.config_loader",
+      "name": "load_config",
+      "type": "function",
+      "lineno": 6,
+      "source_file": "utils\\config_loader.py",
+      "description": "Load the PIL project configuration and resolve all paths as absolute.",
+      "docstring_full": "Load the PIL project configuration and resolve all paths as absolute.\n\nArgs:\n    config_path (str): Path to pilconfig.json file (absolute or relative)\n\nReturns:\n    dict: Configuration fields with all main paths resolved as absolute paths.",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "config_path"
+        ],
+        "returns": null
+      }
+    },
+    "links": [],
+    "called_by_fqns": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ],
+    "calls_fqns": []
+  },
+  "utils.docstring_utils": {
+    "fqname": "utils.docstring_utils",
     "type": "module",
     "description": "Docstring Utilities (utils)",
     "tags": [],
-    "source_file": "pil_meta\\utils\\docstring_utils.py",
+    "source_file": "utils\\docstring_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.utils.docstring_utils",
-      "module": "pil_meta.utils.docstring_utils",
-      "function": null,
+      "fqname": "utils.docstring_utils",
+      "module": "utils.docstring_utils",
+      "name": "utils.docstring_utils",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\utils\\docstring_utils.py",
+      "source_file": "utils\\docstring_utils.py",
       "description": "Docstring Utilities (utils)",
       "docstring_full": "Docstring Utilities (utils)\n\nHouses reusable docstring validation logic shared across pipeline components.\nAlso supports docstring extraction and structured annotation parsing.",
       "tags": [],
@@ -2034,33 +2665,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.utils.docstring_utils.check_docstring_signature_match": {
-    "fqname": "pil_meta.utils.docstring_utils.check_docstring_signature_match",
+  "utils.docstring_utils.check_docstring_signature_match": {
+    "fqname": "utils.docstring_utils.check_docstring_signature_match",
     "type": "function",
     "description": "Checks if the function docstring references the function name and its parameters.",
     "tags": [],
-    "source_file": "pil_meta\\utils\\docstring_utils.py",
+    "source_file": "utils\\docstring_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.docstring_utils.check_docstring_signature_match",
-      "module": "pil_meta.utils.docstring_utils",
-      "function": "check_docstring_signature_match",
+      "fqname": "utils.docstring_utils.check_docstring_signature_match",
+      "module": "utils.docstring_utils",
+      "name": "check_docstring_signature_match",
       "type": "function",
       "lineno": 13,
-      "source_file": "pil_meta\\utils\\docstring_utils.py",
+      "source_file": "utils\\docstring_utils.py",
       "description": "Checks if the function docstring references the function name and its parameters.",
       "docstring_full": "Checks if the function docstring references the function name and its parameters.\n\nParameters:\n    node (dict): Metadata dictionary for a function or method.\n\nReturns:\n    bool: True if name and all params appear in the first line of the docstring",
       "tags": [],
@@ -2074,40 +2701,35 @@
           "node"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
-    "calls_fqns": [],
     "called_by_fqns": [
-      "pil_meta.validators.governance_validator",
-      "pil_meta.validators.governance_validator.validate_governance_rules"
-    ]
+      "validators.governance_validator",
+      "validators.governance_validator.validate_governance_rules"
+    ],
+    "calls_fqns": []
   },
-  "pil_meta.utils.docstring_utils.extract_docstring_metadata": {
-    "fqname": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
+  "utils.docstring_utils.extract_docstring_metadata": {
+    "fqname": "utils.docstring_utils.extract_docstring_metadata",
     "type": "function",
     "description": "Extracts structured metadata from a docstring.",
     "tags": [
       "tag1",
       "tag2"
     ],
-    "source_file": "pil_meta\\utils\\docstring_utils.py",
+    "source_file": "utils\\docstring_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": "linked entry",
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.docstring_utils.extract_docstring_metadata",
-      "module": "pil_meta.utils.docstring_utils",
-      "function": "extract_docstring_metadata",
+      "fqname": "utils.docstring_utils.extract_docstring_metadata",
+      "module": "utils.docstring_utils",
+      "name": "extract_docstring_metadata",
       "type": "function",
       "lineno": 32,
-      "source_file": "pil_meta\\utils\\docstring_utils.py",
+      "source_file": "utils\\docstring_utils.py",
       "description": "Extracts structured metadata from a docstring.",
       "docstring_full": "Extracts structured metadata from a docstring.\n\nParameters:\n    docstring (str): Full function/class/module docstring\n\nReturns:\n    dict: Contains 'description', 'docstring_full', 'tags', 'journal', 'deprecated', plus optional future fields.\n\nSupports:\n    - @tags: [\"tag1\", \"tag2\"]\n    - @journal: \"linked entry\"\n    - @deprecated\n    - @status: \"draft\"\n    - @visibility: \"internal\"",
       "tags": [
@@ -2124,59 +2746,48 @@
           "docstring"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
     "called_by_fqns": [
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.extract_nodes_from_ast",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.load_code_symbols",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.module_name",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.ParentNodeVisitor",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.loaders.code_loader.visit",
-      "pil_meta.loaders.code_loader.visit"
+      "loaders.code_loader",
+      "loaders.code_loader",
+      "loaders.code_loader",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.extract_nodes_from_ast",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.load_code_symbols",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.module_name",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.ParentNodeVisitor",
+      "loaders.code_loader.visit",
+      "loaders.code_loader.visit",
+      "loaders.code_loader.visit"
     ],
     "calls_fqns": []
   },
-  "pil_meta.utils.exceptions_reporter_utils": {
-    "fqname": "pil_meta.utils.exceptions_reporter_utils",
+  "utils.exceptions_reporter_utils": {
+    "fqname": "utils.exceptions_reporter_utils",
     "type": "module",
     "description": "Project health analysis and governance exception reporting.",
     "tags": [],
-    "source_file": "pil_meta\\utils\\exceptions_reporter_utils.py",
+    "source_file": "utils\\exceptions_reporter_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.exceptions_reporter_utils",
-      "module": "pil_meta.utils.exceptions_reporter_utils",
-      "function": null,
+      "fqname": "utils.exceptions_reporter_utils",
+      "module": "utils.exceptions_reporter_utils",
+      "name": "utils.exceptions_reporter_utils",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\utils\\exceptions_reporter_utils.py",
+      "source_file": "utils\\exceptions_reporter_utils.py",
       "description": "Project health analysis and governance exception reporting.",
       "docstring_full": "Project health analysis and governance exception reporting.\n\nDelegates validation and enrichment to dedicated modules. Coordinates:\n- Governance rule execution\n- Usage graph export\n- Summary reporting\n\nGovernance logic lives in governance_validator.py\nUsage mapping lives in usage_map_builder.py",
       "tags": [],
@@ -2185,45 +2796,41 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.validators.governance_validator.validate_governance_rules",
+        "target": "validators.governance_validator.validate_governance_rules",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.usage_map_builder.build_usage_map",
+        "target": "builders.usage_map_builder.build_usage_map",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.builders.usage_map_builder.build_usage_map",
-      "pil_meta.validators.governance_validator.validate_governance_rules"
+      "builders.usage_map_builder.build_usage_map",
+      "validators.governance_validator.validate_governance_rules"
     ]
   },
-  "pil_meta.utils.exceptions_reporter_utils.generate_exception_report": {
-    "fqname": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
+  "utils.exceptions_reporter_utils.generate_exception_report": {
+    "fqname": "utils.exceptions_reporter_utils.generate_exception_report",
     "type": "function",
     "description": "Extracts and exports metadata violations and usage mappings to a governance-style report.",
     "tags": [],
-    "source_file": "pil_meta\\utils\\exceptions_reporter_utils.py",
+    "source_file": "utils\\exceptions_reporter_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.exceptions_reporter_utils.generate_exception_report",
-      "module": "pil_meta.utils.exceptions_reporter_utils",
-      "function": "generate_exception_report",
+      "fqname": "utils.exceptions_reporter_utils.generate_exception_report",
+      "module": "utils.exceptions_reporter_utils",
+      "name": "generate_exception_report",
       "type": "function",
       "lineno": 21,
-      "source_file": "pil_meta\\utils\\exceptions_reporter_utils.py",
+      "source_file": "utils\\exceptions_reporter_utils.py",
       "description": "Extracts and exports metadata violations and usage mappings to a governance-style report.",
       "docstring_full": "Extracts and exports metadata violations and usage mappings to a governance-style report.\n\nParameters:\n    graph (dict): Full entity graph keyed by fqname\n    output_path (str): Path to write the exceptions report\n\nReturns:\n    dict: Summary counts of major issue types for downstream printing",
       "tags": [],
@@ -2238,84 +2845,145 @@
           "output_path"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.validators.governance_validator.validate_governance_rules",
+        "target": "validators.governance_validator.validate_governance_rules",
         "type": "calls"
       },
       {
-        "target": "pil_meta.builders.usage_map_builder.build_usage_map",
+        "target": "builders.usage_map_builder.build_usage_map",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "calls_fqns": [
-      "pil_meta.builders.usage_map_builder.build_usage_map",
-      "pil_meta.validators.governance_validator.validate_governance_rules"
+      "builders.usage_map_builder.build_usage_map",
+      "validators.governance_validator.validate_governance_rules"
     ]
   },
-  "pil_meta.utils.graph_utils": {
-    "fqname": "pil_meta.utils.graph_utils",
+  "utils.graph_utils": {
+    "fqname": "utils.graph_utils",
     "type": "module",
-    "description": "Reusable graph logic, e.g. flatten, walk, summarize.",
+    "description": "Graph Utilities",
     "tags": [],
-    "source_file": "pil_meta\\utils\\graph_utils.py",
+    "source_file": "utils\\graph_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
-    "is_orphaned": true,
+    "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.graph_utils",
-      "module": "pil_meta.utils.graph_utils",
-      "function": null,
+      "fqname": "utils.graph_utils",
+      "module": "utils.graph_utils",
+      "name": "utils.graph_utils",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\utils\\graph_utils.py",
-      "description": "Reusable graph logic, e.g. flatten, walk, summarize.",
-      "docstring_full": "Reusable graph logic, e.g. flatten, walk, summarize.",
+      "source_file": "utils\\graph_utils.py",
+      "description": "Graph Utilities",
+      "docstring_full": "Graph Utilities\n\nCommon functions for working with the code entity graph: walking nodes, traversing edges, etc.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
-    "links": [],
-    "calls_fqns": []
+    "links": [
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.code_loader.visit",
+      "utils.graph_utils._walk"
+    ]
   },
-  "pil_meta.utils.graph_utils.walk_graph": {
-    "fqname": "pil_meta.utils.graph_utils.walk_graph",
+  "utils.graph_utils.walk_graph": {
+    "fqname": "utils.graph_utils.walk_graph",
+    "type": "function",
+    "description": "Walk the entity graph, applying a visitor function to each node.",
+    "tags": [],
+    "source_file": "utils\\graph_utils.py",
+    "test_coverage": false,
+    "docstring_present": true,
+    "linked_journal_entry": null,
+    "is_orphaned": false,
+    "metadata": {
+      "fqname": "utils.graph_utils.walk_graph",
+      "module": "utils.graph_utils",
+      "name": "walk_graph",
+      "type": "function",
+      "lineno": 9,
+      "source_file": "utils\\graph_utils.py",
+      "description": "Walk the entity graph, applying a visitor function to each node.",
+      "docstring_full": "Walk the entity graph, applying a visitor function to each node.\nOptionally start at a subset of nodes; otherwise walk all.\n\nArgs:\n    graph (dict): { fqname: node dict }\n    visit (callable): function(fqname, node)\n    start_nodes (set): Subset of fqn names to start from (optional)",
+      "tags": [],
+      "linked_journal_entry": null,
+      "deprecated": false,
+      "status": null,
+      "visibility": null,
+      "docstring_present": true,
+      "metadata": {
+        "args": [
+          "graph",
+          "visit",
+          "start_nodes"
+        ],
+        "returns": null
+      }
+    },
+    "links": [
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [],
+    "calls_fqns": [
+      "loaders.code_loader.visit",
+      "utils.graph_utils._walk"
+    ]
+  },
+  "utils.graph_utils._walk": {
+    "fqname": "utils.graph_utils._walk",
     "type": "function",
     "description": "",
     "tags": [],
-    "source_file": "pil_meta\\utils\\graph_utils.py",
+    "source_file": "utils\\graph_utils.py",
     "test_coverage": false,
     "docstring_present": false,
     "linked_journal_entry": null,
-    "is_orphaned": true,
+    "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.utils.graph_utils.walk_graph",
-      "module": "pil_meta.utils.graph_utils",
-      "function": "walk_graph",
+      "fqname": "utils.graph_utils._walk",
+      "module": "utils.graph_utils",
+      "name": "_walk",
       "type": "function",
-      "lineno": 5,
-      "source_file": "pil_meta\\utils\\graph_utils.py",
+      "lineno": 24,
+      "source_file": "utils\\graph_utils.py",
       "description": "",
       "docstring_full": "",
       "tags": [],
@@ -2326,111 +2994,123 @@
       "docstring_present": false,
       "metadata": {
         "args": [
-          "graph"
+          "fqname"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
-    "links": [],
-    "calls_fqns": []
+    "links": [
+      {
+        "target": "loaders.code_loader.visit",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      },
+      {
+        "target": "utils.graph_utils._walk",
+        "type": "calls"
+      }
+    ],
+    "called_by_fqns": [
+      "utils.graph_utils",
+      "utils.graph_utils",
+      "utils.graph_utils.walk_graph",
+      "utils.graph_utils.walk_graph",
+      "utils.graph_utils._walk",
+      "utils.graph_utils._walk"
+    ],
+    "calls_fqns": [
+      "loaders.code_loader.visit",
+      "utils.graph_utils._walk"
+    ]
   },
-  "pil_meta.utils.path_utils": {
-    "fqname": "pil_meta.utils.path_utils",
+  "utils.path_utils": {
+    "fqname": "utils.path_utils",
     "type": "module",
-    "description": "Normalize and validate file system paths.",
+    "description": "Path Utilities",
     "tags": [],
-    "source_file": "pil_meta\\utils\\path_utils.py",
+    "source_file": "utils\\path_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.utils.path_utils",
-      "module": "pil_meta.utils.path_utils",
-      "function": null,
+      "fqname": "utils.path_utils",
+      "module": "utils.path_utils",
+      "name": "utils.path_utils",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\utils\\path_utils.py",
-      "description": "Normalize and validate file system paths.",
-      "docstring_full": "Normalize and validate file system paths.",
+      "source_file": "utils\\path_utils.py",
+      "description": "Path Utilities",
+      "docstring_full": "Path Utilities\n\nFunctions for resolving and normalizing paths across PIL modules.",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.utils.path_utils.resolve_path": {
-    "fqname": "pil_meta.utils.path_utils.resolve_path",
+  "utils.path_utils.resolve_path": {
+    "fqname": "utils.path_utils.resolve_path",
     "type": "function",
-    "description": "",
+    "description": "Resolve a given path (relative or absolute) to an absolute, normalized string.",
     "tags": [],
-    "source_file": "pil_meta\\utils\\path_utils.py",
+    "source_file": "utils\\path_utils.py",
     "test_coverage": false,
-    "docstring_present": false,
+    "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.utils.path_utils.resolve_path",
-      "module": "pil_meta.utils.path_utils",
-      "function": "resolve_path",
+      "fqname": "utils.path_utils.resolve_path",
+      "module": "utils.path_utils",
+      "name": "resolve_path",
       "type": "function",
-      "lineno": 5,
-      "source_file": "pil_meta\\utils\\path_utils.py",
-      "description": "",
-      "docstring_full": "",
+      "lineno": 11,
+      "source_file": "utils\\path_utils.py",
+      "description": "Resolve a given path (relative or absolute) to an absolute, normalized string.",
+      "docstring_full": "Resolve a given path (relative or absolute) to an absolute, normalized string.\n\nArgs:\n    path (str): File or directory path (can be relative)\n    base (str, optional): Base directory to resolve from (if given)\n\nReturns:\n    str: Absolute, normalized path",
       "tags": [],
       "linked_journal_entry": null,
       "deprecated": false,
       "status": null,
       "visibility": null,
-      "docstring_present": false,
+      "docstring_present": true,
       "metadata": {
         "args": [
-          "path"
+          "path",
+          "base"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.utils.test_coverage_utils": {
-    "fqname": "pil_meta.utils.test_coverage_utils",
+  "utils.test_coverage_utils": {
+    "fqname": "utils.test_coverage_utils",
     "type": "module",
     "description": "Test Coverage Utilities (utils)",
     "tags": [],
-    "source_file": "pil_meta\\utils\\test_coverage_utils.py",
+    "source_file": "utils\\test_coverage_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.utils.test_coverage_utils",
-      "module": "pil_meta.utils.test_coverage_utils",
-      "function": null,
+      "fqname": "utils.test_coverage_utils",
+      "module": "utils.test_coverage_utils",
+      "name": "utils.test_coverage_utils",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\utils\\test_coverage_utils.py",
+      "source_file": "utils\\test_coverage_utils.py",
       "description": "Test Coverage Utilities (utils)",
       "docstring_full": "Test Coverage Utilities (utils)\n\nProvides functions to estimate static test coverage by scanning test files\nand matching function/method/class names to code symbols.",
       "tags": [],
@@ -2439,33 +3119,29 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.utils.test_coverage_utils.estimate_test_coverage": {
-    "fqname": "pil_meta.utils.test_coverage_utils.estimate_test_coverage",
+  "utils.test_coverage_utils.estimate_test_coverage": {
+    "fqname": "utils.test_coverage_utils.estimate_test_coverage",
     "type": "function",
     "description": "Updates the 'test_coverage' field for each symbol based on whether",
     "tags": [],
-    "source_file": "pil_meta\\utils\\test_coverage_utils.py",
+    "source_file": "utils\\test_coverage_utils.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
-    "is_orphaned": false,
+    "is_orphaned": true,
     "metadata": {
-      "fqname": "pil_meta.utils.test_coverage_utils.estimate_test_coverage",
-      "module": "pil_meta.utils.test_coverage_utils",
-      "function": "estimate_test_coverage",
+      "fqname": "utils.test_coverage_utils.estimate_test_coverage",
+      "module": "utils.test_coverage_utils",
+      "name": "estimate_test_coverage",
       "type": "function",
       "lineno": 13,
-      "source_file": "pil_meta\\utils\\test_coverage_utils.py",
+      "source_file": "utils\\test_coverage_utils.py",
       "description": "Updates the 'test_coverage' field for each symbol based on whether",
       "docstring_full": "Updates the 'test_coverage' field for each symbol based on whether\nits function/class/method name appears in any test file.\n\nParameters:\n    symbols (list[dict]): List of code symbol metadata dicts.\n    test_dir (str): Directory containing test files.\n\nReturns:\n    list[dict]: The same list, with 'test_coverage' set for each symbol.",
       "tags": [],
@@ -2480,37 +3156,29 @@
           "test_dir"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [],
-    "called_by_fqns": [
-      "pil_meta.pipeline",
-      "pil_meta.pipeline.run_pipeline"
-    ],
+    "called_by_fqns": [],
     "calls_fqns": []
   },
-  "pil_meta.validators.governance_validator": {
-    "fqname": "pil_meta.validators.governance_validator",
+  "validators.governance_validator": {
+    "fqname": "validators.governance_validator",
     "type": "module",
     "description": "Validation Rules (validators)",
     "tags": [],
-    "source_file": "pil_meta\\validators\\governance_validator.py",
+    "source_file": "validators\\governance_validator.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.validators.governance_validator",
-      "module": "pil_meta.validators.governance_validator",
-      "function": null,
+      "fqname": "validators.governance_validator",
+      "module": "validators.governance_validator",
+      "name": "validators.governance_validator",
       "type": "module",
       "lineno": 1,
-      "source_file": "pil_meta\\validators\\governance_validator.py",
+      "source_file": "validators\\governance_validator.py",
       "description": "Validation Rules (validators)",
       "docstring_full": "Validation Rules (validators)\n\nApplies all governance rules to the entity graph.\nIncludes docstring checks, test coverage, orphan detection, etc.",
       "tags": [],
@@ -2519,40 +3187,36 @@
       "status": null,
       "visibility": null,
       "docstring_present": true,
-      "metadata": {},
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      "metadata": {}
     },
     "links": [
       {
-        "target": "pil_meta.utils.docstring_utils.check_docstring_signature_match",
+        "target": "utils.docstring_utils.check_docstring_signature_match",
         "type": "calls"
       }
     ],
+    "called_by_fqns": [],
     "calls_fqns": [
-      "pil_meta.utils.docstring_utils.check_docstring_signature_match"
+      "utils.docstring_utils.check_docstring_signature_match"
     ]
   },
-  "pil_meta.validators.governance_validator.validate_governance_rules": {
-    "fqname": "pil_meta.validators.governance_validator.validate_governance_rules",
+  "validators.governance_validator.validate_governance_rules": {
+    "fqname": "validators.governance_validator.validate_governance_rules",
     "type": "function",
     "description": "Run all rule checks over the graph.",
     "tags": [],
-    "source_file": "pil_meta\\validators\\governance_validator.py",
+    "source_file": "validators\\governance_validator.py",
     "test_coverage": false,
     "docstring_present": true,
     "linked_journal_entry": null,
     "is_orphaned": false,
     "metadata": {
-      "fqname": "pil_meta.validators.governance_validator.validate_governance_rules",
-      "module": "pil_meta.validators.governance_validator",
-      "function": "validate_governance_rules",
+      "fqname": "validators.governance_validator.validate_governance_rules",
+      "module": "validators.governance_validator",
+      "name": "validate_governance_rules",
       "type": "function",
       "lineno": 13,
-      "source_file": "pil_meta\\validators\\governance_validator.py",
+      "source_file": "validators\\governance_validator.py",
       "description": "Run all rule checks over the graph.",
       "docstring_full": "Run all rule checks over the graph.\n\nParameters:\n    graph (dict): Entity graph keyed by fqname\n\nReturns:\n    tuple: (violations dict, issue counter)",
       "tags": [],
@@ -2566,25 +3230,20 @@
           "graph"
         ],
         "returns": null
-      },
-      "test_coverage": false,
-      "is_orphaned": true,
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
+      }
     },
     "links": [
       {
-        "target": "pil_meta.utils.docstring_utils.check_docstring_signature_match",
+        "target": "utils.docstring_utils.check_docstring_signature_match",
         "type": "calls"
       }
     ],
     "called_by_fqns": [
-      "pil_meta.utils.exceptions_reporter_utils",
-      "pil_meta.utils.exceptions_reporter_utils.generate_exception_report"
+      "utils.exceptions_reporter_utils",
+      "utils.exceptions_reporter_utils.generate_exception_report"
     ],
     "calls_fqns": [
-      "pil_meta.utils.docstring_utils.check_docstring_signature_match"
+      "utils.docstring_utils.check_docstring_signature_match"
     ]
   }
 }

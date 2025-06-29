@@ -1,17 +1,13 @@
-# rebuild_pil.py
+# scripts/rebuild_pil.py
+# to call run: python scripts/rebuild_pil.py
 """
-CLI entry point to trigger full PIL metadata pipeline.
+Rebuild PIL Metadata
 
-Usage:
-    python scripts/rebuild_pil.py
-
-Reads from pilconfig.json and emits entity_graph.json and other metadata exports.
+Script entry point for full rebuild of PIL project intelligence data.
+Simply runs the pipeline and exits. Can be called by CI or developer CLI.
 """
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
 
 from pil_meta.pipeline import run_pipeline
+
 if __name__ == "__main__":
     run_pipeline()

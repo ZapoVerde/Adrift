@@ -1,96 +1,120 @@
-# pipeline.py
+# pil_meta/pipeline.py
 """
-Pipeline: Main Entry
-
-Coordinates full metadata graph construction and export from source code.
-This module is the top-level orchestrator for the Project Intelligence Layer (PIL),
-responsible for running a complete metadata pass using configuration in pilconfig.json.
-
-Steps:
-- Load config
-- Extract all code symbols in bulk (functions, methods, classes)
-- Normalize minimal graph fields for linkage
-- Build and enrich entity graph
-- Export graph to disk
-- Emit governance exception report
+Main orchestration pipeline for the PIL meta-engine.
+Handles config loading, symbol extraction, entity graph building, linkage injection,
+tag/link application, export, and governance reporting.
 """
 
-import shutil
+import sys
+import traceback
+
 from pathlib import Path
 
-from pil_meta.exporters.vault_index_exporter import export_vault_index
-from pil_meta.exporters.markdown_vault_exporter import export_markdown_vault
-from pil_meta.utils.test_coverage_utils import estimate_test_coverage
 from pil_meta.loaders.config_loader import load_config
+from pil_meta.loaders.asset_loader import load_asset_symbols
 from pil_meta.loaders.code_loader import load_code_symbols
+from pil_meta.loaders.markdown_loader import load_markdown_entries
+
 from pil_meta.builders.entity_graph_builder import build_entity_graph
 from pil_meta.builders.linkage_builder import inject_call_links
-from pil_meta.exporters.json_exporter import export_entity_graph
-from pil_meta.utils.exceptions_reporter_utils import generate_exception_report
 from pil_meta.builders.tag_and_link_applier_builders import apply_tags_and_links
+from pil_meta.builders.usage_map_builder import build_usage_map
 
-def run_pipeline() -> None:
+from pil_meta.exporters.json_exporter import export_entity_graph
+from pil_meta.exporters.usage_map_exporter import export_usage_map  # <-- newly added
+from pil_meta.exporters.markdown_vault_exporter import export_markdown_vault
+from pil_meta.exporters.md_exporter import export_entity_markdown
+from pil_meta.exporters.vault_index_exporter import export_vault_index
+from pil_meta.exporters.variable_usage_report_exporter import export_variable_usage_markdown
+from pil_meta.utils.exceptions_reporter_utils import generate_exception_report
+
+
+def run_pipeline(config_path="pilconfig.json"):
     """
-    Execute full metadata extraction and export pipeline.
-
-    This is the entry point called by `scripts/rebuild_pil.py`. It uses
-    paths from `pilconfig.json`, loads all top-level Python symbols,
-    builds the graph, computes call linkages, and writes outputs.
+    Main entry point for running the PIL meta pipeline.
+    Loads config, runs all stages, and writes outputs using bulletproof absolute pathing.
     """
-    # 🔧 Load configuration
-    config_path = Path(__file__).resolve().parents[1] / "pilconfig.json"
-    config = load_config(str(config_path))  # ensure path is passed as string
+    try:
+        # 1. Load config and resolve all paths as absolute
+        config = load_config(config_path)
+        print("[PIL] Loaded config with resolved paths:")
+        for key in ["project_root", "journal_path", "output_dir", "docs_dir", "vault_dir", "snapshot_dir"]:
+            print(f"  {key}: {config.get(key)}")
 
-    # 🧹 Clear previous exports
-    export_path = Path(config["output_dir"])
-    if export_path.exists():
-        shutil.rmtree(export_path)
-    export_path.mkdir(parents=True, exist_ok=True)
+        # 2. Load asset symbols from all tracked asset directories
+        asset_symbols = load_asset_symbols(config)
+        print(f"✅ Found {len(asset_symbols)} asset files.")
 
-    # 📥 Load code-level symbols from source tree
-    print("\n📥 Loading code symbols...")
-    raw_symbols = load_code_symbols(str(config_path))
-    print(f"✅ Found {len(raw_symbols)} code symbols.")
+        # 3. Load and parse all Python source files in project_root
+        code_symbols = []
+        project_root = config["project_root"]
+        for pyfile in Path(project_root).rglob("*.py"):
+            # Optionally, filter out test or scripts folders if you wish
+            code_symbols.extend(load_code_symbols(str(pyfile), project_root))
+        print(f"✅ Found {len(code_symbols)} code symbols.")
 
-    # 🧪 Inject test coverage (NEW)
-    raw_symbols = estimate_test_coverage(raw_symbols, test_dir="tests")
+        # 4. Build the base entity graph (merge code and assets)
+        entities = code_symbols + asset_symbols
+        entity_graph = build_entity_graph(entities)
+        print("✅ Built entity graph.")
 
+        # 5. Inject call linkages into the graph
+        entity_graph = inject_call_links(entity_graph, project_root)
+        print("✅ Injected call linkages.")
 
-    # 🧾 Normalize for graph compatibility (most handled by loader)
-    for symbol in raw_symbols:
-        symbol.setdefault("test_coverage", False)  # will be overwritten by estimator if used
-        symbol.setdefault("is_orphaned", True)
-        symbol.setdefault("links", [])
-        symbol.setdefault("called_by_fqns", [])
-        symbol.setdefault("calls_fqns", [])
+        # 6. Apply tags and links (journal, manual tags, etc)
+        entity_graph = apply_tags_and_links(entity_graph)
+        print("✅ Applied tags and links.")
 
-    # 🧠 Build core entity graph
-    print("\n🧠 Building entity graph...")
-    graph = build_entity_graph(raw_symbols)
+        # 7. Export entity graph JSON
+        export_entity_graph(entity_graph, config["output_dir"])
+        print(f"✅ Exported entity graph to {config['output_dir']}")
 
-    # 🔗 Compute function-to-function call links and tag/semantic enrichment
-    print("\n🔗 Injecting call linkages...")
-    graph = inject_call_links(graph, config["project_root"])
-    graph = apply_tags_and_links(graph)
+        # 8. Build and export the usage map as JSON
+        usage_map = build_usage_map(entity_graph)
+        export_usage_map(usage_map, config["output_dir"])
+        print(f"✅ Exported usage map to {config['output_dir']}/usage_map.json")
 
-    # 📤 Save enriched graph to disk
-    print("\n📤 Exporting entity graph...")
-    export_entity_graph(graph, config["output_dir"])
+        # 9. Export Markdown vault, index, and variable usage report
+        export_markdown_vault(entity_graph, config["vault_dir"])
+        export_vault_index(entity_graph, config["vault_dir"])
+        export_variable_usage_markdown(usage_map, str(Path(config["output_dir"]) / "variable_usage.md"))
+        print(f"✅ Exported Markdown vault and variable usage report to {config['vault_dir']} and {config['output_dir']}")
 
-    # Optional: make this conditional on config if desired
-    vault_dir = str(Path(config["output_dir"]) / "vault")
-    export_markdown_vault(graph, output_dir=config["output_dir"] + "/vault")
-    print(f"   ├─ Vault exported to: {vault_dir}")
-    export_vault_index(graph, output_dir=vault_dir)
-    
-    # 📋 Emit governance report to track missing docs/tests/etc.
-    report_path = str(Path(config["output_dir"]) / "function_map_exceptions.json")
-    summary = generate_exception_report(graph, report_path)
+        # 10. (Optional) Export individual markdown files for code entities
+        # for node in entity_graph.values():
+        #     export_entity_markdown(node, config["output_dir"])  # Uncomment if needed
 
-    # 🧾 Print quick governance summary
-    print("\n📊 Project health snapshot:")
-    print(f"   ├─ {summary['missing_docstrings']} missing docstrings")
-    print(f"   ├─ {summary['untested']} untested functions")
-    print(f"   └─ {summary['orphaned']} orphaned (unlinked) entities")
+        # 11. Governance reporting / exceptions
+        exceptions_path = str(Path(config["output_dir"]) / "function_map_exceptions.json")
+        generate_exception_report(entity_graph, exceptions_path)
 
-    print("\n✅ Metadata pipeline complete.")
+        print(f"✅ Exceptions report written → {config['output_dir']}/function_map_exceptions.json")
+
+        # 12. (Optional) Load and index Markdown docs/journals
+        journal_entries = load_markdown_entries(config["journal_path"])
+        print(f"✅ Loaded {len(journal_entries)} markdown journal entries.")
+
+        print("\n📊 Project health snapshot:")
+        missing_docstrings = sum(1 for n in entity_graph.values() if not n.get("docstring_present"))
+        orphaned = sum(1 for n in entity_graph.values() if n.get("is_orphaned"))
+        print(f"   ├─ {missing_docstrings} missing docstrings")
+        print(f"   └─ {orphaned} orphaned (unlinked) entities")
+        print("\n✅ Metadata pipeline complete.")
+
+        # 13. (Optional) Snapshot step (non-fatal if missing)
+        try:
+            import subprocess
+            subprocess.run([sys.executable, "scripts/snapshot_project.py"], check=True)
+            print("📦 Project snapshot taken.")
+        except Exception as e:
+            print(f"⚠️ Snapshot step failed: {e}")
+
+    except Exception:
+        print("\n❌ Pipeline failed. Full traceback below:")
+        traceback.print_exc()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    # Default: config path is 'pilconfig.json' in this folder
+    run_pipeline()

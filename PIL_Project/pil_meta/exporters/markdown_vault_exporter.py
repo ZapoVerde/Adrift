@@ -14,26 +14,46 @@ def friendly_name(node):
     Returns a human-friendly display name for vault navigation,
     while preserving real fqname in note metadata.
     """
-    module_name = node.get("module", "")
-    module_part = module_name.split(".")[-1] if module_name else ""
+    # Helper to pull from top-level or metadata
+    def get_field(n, k):
+        return n.get(k) or n.get("metadata", {}).get(k) or "unknown"
+
+    module_name = get_field(node, "module")
+    module_part = module_name.split(".")[-1] if module_name != "unknown" else "unknown"
+    name = get_field(node, "name")
+    function = get_field(node, "function")
+
     if node["type"] == "function":
-        return f'{node.get("function", "?")} (in {module_part})'
+        return f'{name or function or "?"} (in {module_part})'
     if node["type"] == "method":
+        # Try to extract class from fqname: module.class.method
         parts = node["fqname"].split(".")
-        class_part = parts[-2] if len(parts) > 2 else ""
-        return f'{node.get("function", "?")} ({class_part} in {module_part})'
+        class_part = parts[-2] if len(parts) >= 3 else "unknown"
+        return f'{name or function or "?"} ({class_part} in {module_part})'
     if node["type"] == "class":
-        return f'{node.get("function", "?")} (in {module_part})'
+        return f'{name or function or "?"} (in {module_part})'
     if node["type"] == "variable":
-        return f'{node.get("function", "?")} (in {module_part})'
+        return f'{name or function or "?"} (in {module_part})'
     if node["type"] == "module":
         return module_part or node["fqname"]
     return node["fqname"]
 
 
 def _sanitize_filename(name):
-    """Replace slashes and other problematic chars for filesystem safety."""
-    return name.replace("/", "_").replace(":", "-").replace("?", "").replace("*", "").replace("\\", "_").replace("|", "-")
+    """Replace slashes, quotes, and other problematic chars for filesystem safety."""
+    return (
+        name.replace("/", "_")
+            .replace("\\", "_")
+            .replace(":", "-")
+            .replace("?", "")
+            .replace("*", "")
+            .replace("|", "-")
+            .replace('"', "")    # Remove double quotes
+            .replace("'", "")    # Remove single quotes
+            .replace("<", "")
+            .replace(">", "")
+    )
+
 
 def export_markdown_vault(graph: dict, output_dir: str):
     """

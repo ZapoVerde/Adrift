@@ -1,4 +1,4 @@
-# json_exporter.py
+# pil_meta/exporters/json_exporter.py
 """
 Export the full entity graph to a structured JSON file.
 
@@ -13,9 +13,9 @@ Conforms to the PIL metadata strategy:
   - Supports downstream validation, journal linkage, and vault export
 """
 
+import os
 import json
 from pathlib import Path
-
 
 def export_entity_graph(graph: dict, output_dir: str) -> None:
     """
@@ -30,10 +30,9 @@ def export_entity_graph(graph: dict, output_dir: str) -> None:
         - Will create the directory if it does not exist
         - File is formatted with 2-space indentation
     """
-    path = Path(output_dir) / "entity_graph.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2)
-
-    print(f"✅ Exported entity graph → {path}")
+    outdir = Path(output_dir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    outfile = outdir / "entity_graph.json"
+    with open(outfile, "w", encoding="utf-8") as f:
+        json.dump(graph, f, indent=2, ensure_ascii=False)
+    print(f"✅ Exported entity graph → {outfile}")

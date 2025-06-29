@@ -1,95 +1,182 @@
-# code_loader.py
+# pil_meta/loaders/code_loader.py
 """
-Extract all symbols (function, class, method, variable, module) from a single Python source file.
+Code Loader (loaders)
+
+Walks the source tree and extracts all top-level symbols (functions, classes, methods, variables, modules).
+Enriches each symbol with structured docstring metadata in bulk for efficient processing.
 """
 
 import ast
-import os
+from pathlib import Path
+from typing import List, Dict, Any
 
-def load_code_symbols(pyfile_path):
+from pil_meta.utils.docstring_utils import extract_docstring_metadata
+
+def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) -> List[Dict[str, Any]]:
+    """
+    Extract all classes, functions, methods, variables, and modules from the AST of a source file.
+
+    Args:
+        tree (ast.AST): The parsed AST of the source file.
+        source_file (Path): The full path to the source file.
+        root_path (Path): The project root path to calculate relative paths.
+
+    Returns:
+        List[Dict[str, Any]]: A list of enriched symbol dictionaries.
+    """
+    symbols = []
+
+    def module_name(path: Path) -> str:
+        rel = path.relative_to(root_path).with_suffix("")
+        return ".".join(rel.parts)
+
+    module = module_name(source_file)
+    source = source_file.read_text(encoding="utf-8")
+
+    class ParentNodeVisitor(ast.NodeVisitor):
+        def visit(self, node):
+            for child in ast.iter_child_nodes(node):
+                setattr(child, 'parent', node)
+                self.visit(child)
+
+    ParentNodeVisitor().visit(tree)
+
+    docstring = ast.get_docstring(tree) or ""
+    doc_meta = extract_docstring_metadata(docstring)
+    symbols.append({
+        "fqname": module,
+        "module": module,
+        "name": module,
+        "type": "module",
+        "lineno": 1,
+        "source_file": str(source_file.relative_to(root_path)),
+        "description": doc_meta["description"],
+        "docstring_full": doc_meta["docstring_full"],
+        "tags": doc_meta["tags"],
+        "linked_journal_entry": doc_meta["linked_journal_entry"],
+        "deprecated": doc_meta["deprecated"],
+        "status": doc_meta["status"],
+        "visibility": doc_meta["visibility"],
+        "docstring_present": bool(doc_meta["description"]),
+        "metadata": {}
+    })
+
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            parent = getattr(node, 'parent', None)
+            node_type = "function"
+            if parent is not None and isinstance(parent, ast.ClassDef):
+                node_type = "method"
+            docstring = ast.get_docstring(node) or ""
+            doc_meta = extract_docstring_metadata(docstring)
+            fqname = f"{module}.{node.name}"
+            symbol = {
+                "fqname": fqname,
+                "module": module,
+                "name": node.name,
+                "type": node_type,
+                "lineno": node.lineno,
+                "source_file": str(source_file.relative_to(root_path)),
+                "description": doc_meta["description"],
+                "docstring_full": doc_meta["docstring_full"],
+                "tags": doc_meta["tags"],
+                "linked_journal_entry": doc_meta["linked_journal_entry"],
+                "deprecated": doc_meta["deprecated"],
+                "status": doc_meta["status"],
+                "visibility": doc_meta["visibility"],
+                "docstring_present": bool(doc_meta["description"]),
+                "metadata": {
+                    "args": [arg.arg for arg in node.args.args] if hasattr(node, 'args') else [],
+                    "returns": None
+                }
+            }
+            symbols.append(symbol)
+
+        elif isinstance(node, ast.ClassDef):
+            docstring = ast.get_docstring(node) or ""
+            doc_meta = extract_docstring_metadata(docstring)
+            fqname = f"{module}.{node.name}"
+            symbol = {
+                "fqname": fqname,
+                "module": module,
+                "name": node.name,
+                "type": "class",
+                "lineno": node.lineno,
+                "source_file": str(source_file.relative_to(root_path)),
+                "description": doc_meta["description"],
+                "docstring_full": doc_meta["docstring_full"],
+                "tags": doc_meta["tags"],
+                "linked_journal_entry": doc_meta["linked_journal_entry"],
+                "deprecated": doc_meta["deprecated"],
+                "status": doc_meta["status"],
+                "visibility": doc_meta["visibility"],
+                "docstring_present": bool(doc_meta["description"]),
+                "metadata": {}
+            }
+            symbols.append(symbol)
+
+        elif isinstance(node, ast.Assign):
+            parent = getattr(node, 'parent', None)
+            if isinstance(parent, ast.Module) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+                var_name = node.targets[0].id
+                lineno = getattr(node, 'lineno', 1)
+                fqname = f"{module}.{var_name}"
+                try:
+                    source_lines = source.splitlines()
+                    line_text = source_lines[lineno - 1]
+                except Exception:
+                    line_text = ""
+                is_constant = var_name.isupper()
+                is_public = not var_name.startswith('_')
+                is_explicit = ('# @export' in line_text or '# doc:' in line_text)
+                if is_constant or is_public or is_explicit:
+                    doc_comment = ""
+                    if '#' in line_text:
+                        doc_comment = line_text.split('#', 1)[1].strip()
+                    doc_meta = {
+                        "description": doc_comment,
+                        "docstring_full": doc_comment,
+                        "tags": [],
+                        "linked_journal_entry": "",
+                        "deprecated": False,
+                        "status": "",
+                        "visibility": "",
+                    }
+                    symbol = {
+                        "fqname": fqname,
+                        "module": module,
+                        "name": var_name,
+                        "type": "variable",
+                        "lineno": lineno,
+                        "source_file": str(source_file.relative_to(root_path)),
+                        "description": doc_meta["description"],
+                        "docstring_full": doc_meta["docstring_full"],
+                        "tags": doc_meta["tags"],
+                        "linked_journal_entry": doc_meta["linked_journal_entry"],
+                        "deprecated": doc_meta["deprecated"],
+                        "status": doc_meta["status"],
+                        "visibility": doc_meta["visibility"],
+                        "docstring_present": bool(doc_comment),
+                        "metadata": {}
+                    }
+                    symbols.append(symbol)
+
+    return symbols
+
+def load_code_symbols(pyfile_path: str, project_root: str) -> List[Dict[str, Any]]:
     """
     Parse a single Python file and return a list of symbols with metadata.
 
     Args:
         pyfile_path (str): Path to .py file.
+        project_root (str): Project root directory (absolute).
 
     Returns:
         list of dicts: Each with type, name, fqname, module, lineno, doc.
     """
-    with open(pyfile_path, "r", encoding="utf-8") as f:
+    path = Path(pyfile_path).resolve()
+    root_path = Path(project_root).resolve()
+    with open(path, "r", encoding="utf-8") as f:
         source = f.read()
-
-    module_name = os.path.splitext(os.path.basename(pyfile_path))[0]
-    symbol_list = []
-
-    # Module-level docstring
-    tree = ast.parse(source, filename=pyfile_path)
-    module_doc = ast.get_docstring(tree)
-    symbol_list.append({
-        "type": "module",
-        "name": module_name,
-        "fqname": module_name,
-        "module": module_name,
-        "lineno": 1,
-        "doc": module_doc or ""
-    })
-
-    # Collect assignments for variables with comments
-    lines = source.splitlines()
-    for idx, line in enumerate(lines):
-        if "=" in line and "#" in line:
-            # very naive: MY_CONSTANT = 42  # comment
-            parts = line.split("#", 1)
-            left = parts[0].strip()
-            right = parts[1].strip()
-            if "=" in left:
-                var_name = left.split("=")[0].strip()
-                symbol_list.append({
-                    "type": "variable",
-                    "name": var_name,
-                    "fqname": f"{module_name}.{var_name}",
-                    "module": module_name,
-                    "lineno": idx + 1,
-                    "doc": right
-                })
-
-    # AST walk for classes/functions
-    for node in ast.walk(tree):
-        if isinstance(node, ast.FunctionDef):
-            is_method = False
-            parent = getattr(node, 'parent', None)
-            if parent and isinstance(parent, ast.ClassDef):
-                is_method = True
-            symbol_list.append({
-                "type": "method" if is_method else "function",
-                "name": node.name,
-                "fqname": f"{module_name}.{node.name}",
-                "module": module_name,
-                "lineno": node.lineno,
-                "doc": ast.get_docstring(node) or ""
-            })
-        elif isinstance(node, ast.ClassDef):
-            symbol_list.append({
-                "type": "class",
-                "name": node.name,
-                "fqname": f"{module_name}.{node.name}",
-                "module": module_name,
-                "lineno": node.lineno,
-                "doc": ast.get_docstring(node) or ""
-            })
-
-    # Fix parent linkage for methods
-    for node in ast.walk(tree):
-        for child in ast.iter_child_nodes(node):
-            child.parent = node
-
-    # Patch types: fix methods so they're not misclassified as top-level functions
-    for s in symbol_list:
-        if s["type"] == "function":
-            for node in ast.walk(tree):
-                if isinstance(node, ast.FunctionDef) and node.name == s["name"]:
-                    parent = getattr(node, 'parent', None)
-                    if parent and isinstance(parent, ast.ClassDef):
-                        s["type"] = "method"
-
-    return symbol_list
+    tree = ast.parse(source, filename=str(path))
+    return extract_nodes_from_ast(tree, path, root_path)

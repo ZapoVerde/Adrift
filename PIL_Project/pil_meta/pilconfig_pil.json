@@ -1,0 +1,12 @@
+{
+  "project_root": ".",
+  "journal_path": "../docs",
+  "output_dir": "../exports",
+  "docs_dir": "../docs",
+  "config_self_path": "./pilconfig.json",
+  "vault_dir": "../exports/vault",
+  "snapshot_dir": "../snapshots",
+  "tracked_assets": [
+    "./assets"
+  ]
+}
