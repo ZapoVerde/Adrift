@@ -1,5 +1,5 @@
 # load_config (in config_loader)
-> **Fully qualified name:** `utils.config_loader.load_config`
+> **Fully qualified name:** `loaders.config_loader.load_config`
 
 **Type:** function
 **Module:** 
@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Load the PIL project configuration and resolve all paths as absolute.
+Load the PIL project configuration from pilconfig.json and resolve all important paths.
 
 ## Full Docstring
 ```

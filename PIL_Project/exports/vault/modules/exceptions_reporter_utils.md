@@ -19,8 +19,6 @@ Project health analysis and governance exception reporting.
 ```
 
 ## Links
-- **calls**: validators.governance_validator.validate_governance_rules
-- **calls**: builders.usage_map_builder.build_usage_map
-
+None
 
 ---

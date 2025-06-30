@@ -1,0 +1,13 @@
+{
+  "project_root": "./Adrift",
+  "journal_path": "./documents",
+  "output_dir": "./exports",
+  "docs_dir": "./documents",
+  "snapshot_dir": "./snapshots",
+  "vault_dir": "./exports/vault",
+  "config_self_path": "./pilconfig.json",
+  "pil_module_path": "./PIL_Project",
+  "asset_extensions": [".json", ".csv", ".md", ".png"],
+  "ignored_folders": [".git", "__pycache__", "exports", "snapshots"]
+
+}

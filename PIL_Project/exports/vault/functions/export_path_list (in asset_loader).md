@@ -19,8 +19,6 @@ Ensures all paths in the list are absolute, resolving relative paths from config
 ```
 
 ## Links
-- **calls**: loaders.asset_loader.export_path_list
-- **calls**: loaders.asset_loader.infer_tags_from_path
-
+None
 
 ---

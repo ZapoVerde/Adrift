@@ -19,7 +19,6 @@ Run all rule checks over the graph.
 ```
 
 ## Links
-- **calls**: utils.docstring_utils.check_docstring_signature_match
-
+None
 
 ---

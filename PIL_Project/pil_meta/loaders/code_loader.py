@@ -12,7 +12,9 @@ from typing import List, Dict, Any
 
 from pil_meta.utils.docstring_utils import extract_docstring_metadata
 
-def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) -> List[Dict[str, Any]]:
+
+def extract_nodes_from_ast(tree: ast.AST, source_file: Path,
+                           root_path: Path) -> List[Dict[str, Any]]:
     """
     Extract all classes, functions, methods, variables, and modules from the AST of a source file.
 
@@ -33,7 +35,9 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
     module = module_name(source_file)
     source = source_file.read_text(encoding="utf-8")
 
+    # Attach parent references for scoping analysis
     class ParentNodeVisitor(ast.NodeVisitor):
+
         def visit(self, node):
             for child in ast.iter_child_nodes(node):
                 setattr(child, 'parent', node)
@@ -41,6 +45,7 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
 
     ParentNodeVisitor().visit(tree)
 
+    # Record module-level metadata
     docstring = ast.get_docstring(tree) or ""
     doc_meta = extract_docstring_metadata(docstring)
     symbols.append({
@@ -64,9 +69,13 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
     for node in ast.walk(tree):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             parent = getattr(node, 'parent', None)
+            if not isinstance(parent, (ast.Module, ast.ClassDef)):
+                continue  # ❌ Skip inner (scoped) functions
+
             node_type = "function"
-            if parent is not None and isinstance(parent, ast.ClassDef):
+            if isinstance(parent, ast.ClassDef):
                 node_type = "method"
+
             docstring = ast.get_docstring(node) or ""
             doc_meta = extract_docstring_metadata(docstring)
             fqname = f"{module}.{node.name}"
@@ -86,8 +95,10 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
                 "visibility": doc_meta["visibility"],
                 "docstring_present": bool(doc_meta["description"]),
                 "metadata": {
-                    "args": [arg.arg for arg in node.args.args] if hasattr(node, 'args') else [],
-                    "returns": None
+                    "args": [arg.arg for arg in node.args.args] if hasattr(
+                        node, 'args') else [],
+                    "returns":
+                    None
                 }
             }
             symbols.append(symbol)
@@ -117,7 +128,9 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
 
         elif isinstance(node, ast.Assign):
             parent = getattr(node, 'parent', None)
-            if isinstance(parent, ast.Module) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            if isinstance(parent, ast.Module) and len(
+                    node.targets) == 1 and isinstance(node.targets[0],
+                                                      ast.Name):
                 var_name = node.targets[0].id
                 lineno = getattr(node, 'lineno', 1)
                 fqname = f"{module}.{var_name}"
@@ -126,9 +139,12 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
                     line_text = source_lines[lineno - 1]
                 except Exception:
                     line_text = ""
+
                 is_constant = var_name.isupper()
                 is_public = not var_name.startswith('_')
-                is_explicit = ('# @export' in line_text or '# doc:' in line_text)
+                is_explicit = ('# @export' in line_text
+                               or '# doc:' in line_text)
+
                 if is_constant or is_public or is_explicit:
                     doc_comment = ""
                     if '#' in line_text:
@@ -152,7 +168,8 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
                         "description": doc_meta["description"],
                         "docstring_full": doc_meta["docstring_full"],
                         "tags": doc_meta["tags"],
-                        "linked_journal_entry": doc_meta["linked_journal_entry"],
+                        "linked_journal_entry":
+                        doc_meta["linked_journal_entry"],
                         "deprecated": doc_meta["deprecated"],
                         "status": doc_meta["status"],
                         "visibility": doc_meta["visibility"],
@@ -163,7 +180,9 @@ def extract_nodes_from_ast(tree: ast.AST, source_file: Path, root_path: Path) ->
 
     return symbols
 
-def load_code_symbols(pyfile_path: str, project_root: str) -> List[Dict[str, Any]]:
+
+def load_code_symbols(pyfile_path: str,
+                      project_root: str) -> List[Dict[str, Any]]:
     """
     Parse a single Python file and return a list of symbols with metadata.
 

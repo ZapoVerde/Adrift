@@ -19,7 +19,6 @@ Injects structural call links into the entity graph.
 ```
 
 ## Links
-- **calls**: builders.linkage_builder.extract_called_functions
-
+None
 
 ---

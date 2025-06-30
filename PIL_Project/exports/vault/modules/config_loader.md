@@ -1,5 +1,5 @@
 # config_loader
-> **Fully qualified name:** `utils.config_loader`
+> **Fully qualified name:** `loaders.config_loader`
 
 **Type:** module
 **Module:** 
@@ -11,7 +11,7 @@
 ---
 
 ## Description
-
+Config Loader (loaders)
 
 ## Full Docstring
 ```

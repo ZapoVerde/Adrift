@@ -19,8 +19,6 @@ Wraps pre-enriched code entities into graph nodes for the entity graph.
 ```
 
 ## Links
-- **calls**: builders.entity_graph_builder.get_field
-- **calls**: exporters.markdown_vault_exporter.get_field
-
+None
 
 ---

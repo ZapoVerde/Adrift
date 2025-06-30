@@ -19,7 +19,6 @@ Load all .md files from a directory and extract metadata for each.
 ```
 
 ## Links
-- **calls**: loaders.markdown_loader.parse_frontmatter
-
+None
 
 ---

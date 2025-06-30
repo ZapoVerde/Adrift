@@ -19,8 +19,6 @@
 ```
 
 ## Links
-- **calls**: builders.entity_graph_builder.get_field
-- **calls**: exporters.markdown_vault_exporter.get_field
-
+None
 
 ---

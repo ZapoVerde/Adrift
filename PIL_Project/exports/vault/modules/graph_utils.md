@@ -19,9 +19,6 @@ Graph Utilities
 ```
 
 ## Links
-- **calls**: loaders.code_loader.visit
-- **calls**: utils.graph_utils._walk
-- **calls**: utils.graph_utils._walk
-
+None
 
 ---

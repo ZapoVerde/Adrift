@@ -4,7 +4,6 @@
     "uses": [
       "builders.entity_graph_builder.build_entity_graph",
       "builders.linkage_builder.inject_call_links",
-      "builders.tag_and_link_applier_builders.apply_tags_and_links",
       "builders.usage_map_builder.build_usage_map",
       "exporters.json_exporter.export_entity_graph",
       "exporters.markdown_vault_exporter.export_markdown_vault",
@@ -16,8 +15,8 @@
       "loaders.config_loader.load_config",
       "loaders.markdown_loader.load_markdown_entries",
       "pipeline.run_pipeline",
-      "utils.config_loader.load_config",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "utils.exceptions_reporter_utils.generate_exception_report",
+      "utils.snapshot_utils.take_project_snapshot"
     ]
   },
   "builders.entity_graph_builder.build_entity_graph": {
@@ -25,21 +24,9 @@
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ]
+    "uses": []
   },
   "builders.linkage_builder.inject_call_links": {
-    "used_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ],
-    "uses": [
-      "builders.linkage_builder.extract_called_functions"
-    ]
-  },
-  "builders.tag_and_link_applier_builders.apply_tags_and_links": {
     "used_by": [
       "pipeline",
       "pipeline.run_pipeline"
@@ -49,9 +36,7 @@
   "builders.usage_map_builder.build_usage_map": {
     "used_by": [
       "pipeline",
-      "pipeline.run_pipeline",
-      "utils.exceptions_reporter_utils",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "pipeline.run_pipeline"
     ],
     "uses": []
   },
@@ -67,13 +52,7 @@
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ]
+    "uses": []
   },
   "exporters.usage_map_exporter.export_usage_map": {
     "used_by": [
@@ -101,23 +80,14 @@
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ]
+    "uses": []
   },
   "loaders.code_loader.load_code_symbols": {
     "used_by": [
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
+    "uses": []
   },
   "loaders.config_loader.load_config": {
     "used_by": [
@@ -131,9 +101,7 @@
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ]
+    "uses": []
   },
   "pipeline.run_pipeline": {
     "used_by": [
@@ -143,7 +111,6 @@
     "uses": [
       "builders.entity_graph_builder.build_entity_graph",
       "builders.linkage_builder.inject_call_links",
-      "builders.tag_and_link_applier_builders.apply_tags_and_links",
       "builders.usage_map_builder.build_usage_map",
       "exporters.json_exporter.export_entity_graph",
       "exporters.markdown_vault_exporter.export_markdown_vault",
@@ -155,366 +122,21 @@
       "loaders.config_loader.load_config",
       "loaders.markdown_loader.load_markdown_entries",
       "pipeline.run_pipeline",
-      "utils.config_loader.load_config",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "utils.exceptions_reporter_utils.generate_exception_report",
+      "utils.snapshot_utils.take_project_snapshot"
     ]
-  },
-  "utils.config_loader.load_config": {
-    "used_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ],
-    "uses": []
   },
   "utils.exceptions_reporter_utils.generate_exception_report": {
     "used_by": [
       "pipeline",
       "pipeline.run_pipeline"
     ],
-    "uses": [
-      "builders.usage_map_builder.build_usage_map",
-      "validators.governance_validator.validate_governance_rules"
-    ]
-  },
-  "builders.entity_graph_builder": {
-    "used_by": [],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ]
-  },
-  "builders.entity_graph_builder.get_field": {
-    "used_by": [
-      "builders.entity_graph_builder",
-      "builders.entity_graph_builder.build_entity_graph",
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ]
-  },
-  "exporters.markdown_vault_exporter.get_field": {
-    "used_by": [
-      "builders.entity_graph_builder",
-      "builders.entity_graph_builder.build_entity_graph",
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "builders.linkage_builder": {
-    "used_by": [],
-    "uses": [
-      "builders.linkage_builder.extract_called_functions"
-    ]
-  },
-  "builders.linkage_builder.extract_called_functions": {
-    "used_by": [
-      "builders.linkage_builder",
-      "builders.linkage_builder.extract_called_functions",
-      "builders.linkage_builder.inject_call_links"
-    ],
-    "uses": [
-      "builders.linkage_builder.extract_called_functions"
-    ]
-  },
-  "exporters.markdown_vault_exporter": {
-    "used_by": [],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "exporters.markdown_vault_exporter._sanitize_filename": {
-    "used_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter",
-      "exporters.md_exporter.export_entity_markdown",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "exporters.markdown_vault_exporter.friendly_name": {
-    "used_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "uses": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "exporters.md_exporter._sanitize_filename": {
-    "used_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter",
-      "exporters.md_exporter.export_entity_markdown",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "uses": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "exporters.md_exporter": {
-    "used_by": [],
-    "uses": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "exporters.md_exporter.export_entity_markdown": {
-    "used_by": [],
-    "uses": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ]
-  },
-  "loaders.asset_loader": {
-    "used_by": [],
-    "uses": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ]
-  },
-  "loaders.asset_loader.export_path_list": {
-    "used_by": [
-      "loaders.asset_loader",
-      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
-      "loaders.asset_loader.infer_tags_from_path",
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.load_asset_symbols"
-    ],
-    "uses": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ]
-  },
-  "loaders.asset_loader.infer_tags_from_path": {
-    "used_by": [
-      "loaders.asset_loader",
-      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
-      "loaders.asset_loader.infer_tags_from_path",
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.load_asset_symbols"
-    ],
-    "uses": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ]
-  },
-  "loaders.asset_loader.SUPPORTED_EXTENSIONS": {
-    "used_by": [],
-    "uses": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ]
-  },
-  "loaders.code_loader": {
-    "used_by": [],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "loaders.code_loader.ParentNodeVisitor": {
-    "used_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "loaders.code_loader.extract_nodes_from_ast": {
-    "used_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "loaders.code_loader.module_name": {
-    "used_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "loaders.code_loader.visit": {
-    "used_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit",
-      "utils.graph_utils",
-      "utils.graph_utils.walk_graph",
-      "utils.graph_utils._walk"
-    ],
-    "uses": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ]
-  },
-  "utils.docstring_utils.extract_docstring_metadata": {
-    "used_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ],
     "uses": []
   },
-  "loaders.markdown_loader": {
-    "used_by": [],
-    "uses": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ]
-  },
-  "loaders.markdown_loader.parse_frontmatter": {
+  "utils.snapshot_utils.take_project_snapshot": {
     "used_by": [
-      "loaders.markdown_loader",
-      "loaders.markdown_loader.FRONTMATTER_RE",
-      "loaders.markdown_loader.parse_frontmatter",
-      "loaders.markdown_loader.load_markdown_entries"
-    ],
-    "uses": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ]
-  },
-  "loaders.markdown_loader.FRONTMATTER_RE": {
-    "used_by": [],
-    "uses": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ]
-  },
-  "utils.exceptions_reporter_utils": {
-    "used_by": [],
-    "uses": [
-      "builders.usage_map_builder.build_usage_map",
-      "validators.governance_validator.validate_governance_rules"
-    ]
-  },
-  "validators.governance_validator.validate_governance_rules": {
-    "used_by": [
-      "utils.exceptions_reporter_utils",
-      "utils.exceptions_reporter_utils.generate_exception_report"
-    ],
-    "uses": [
-      "utils.docstring_utils.check_docstring_signature_match"
-    ]
-  },
-  "utils.graph_utils": {
-    "used_by": [],
-    "uses": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ]
-  },
-  "utils.graph_utils._walk": {
-    "used_by": [
-      "utils.graph_utils",
-      "utils.graph_utils.walk_graph",
-      "utils.graph_utils._walk"
-    ],
-    "uses": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ]
-  },
-  "utils.graph_utils.walk_graph": {
-    "used_by": [],
-    "uses": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ]
-  },
-  "validators.governance_validator": {
-    "used_by": [],
-    "uses": [
-      "utils.docstring_utils.check_docstring_signature_match"
-    ]
-  },
-  "utils.docstring_utils.check_docstring_signature_match": {
-    "used_by": [
-      "validators.governance_validator",
-      "validators.governance_validator.validate_governance_rules"
+      "pipeline",
+      "pipeline.run_pipeline"
     ],
     "uses": []
   }

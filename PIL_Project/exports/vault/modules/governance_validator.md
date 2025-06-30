@@ -19,7 +19,6 @@ Validation Rules (validators)
 ```
 
 ## Links
-- **calls**: utils.docstring_utils.check_docstring_signature_match
-
+None
 
 ---

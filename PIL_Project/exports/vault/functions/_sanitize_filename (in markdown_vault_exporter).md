@@ -19,15 +19,6 @@ Replace slashes, quotes, and other problematic chars for filesystem safety.
 ```
 
 ## Links
-- **calls**: builders.entity_graph_builder.get_field
-- **calls**: exporters.markdown_vault_exporter.get_field
-- **calls**: builders.entity_graph_builder.get_field
-- **calls**: exporters.markdown_vault_exporter.get_field
-- **calls**: builders.entity_graph_builder.get_field
-- **calls**: exporters.markdown_vault_exporter.get_field
-- **calls**: exporters.markdown_vault_exporter.friendly_name
-- **calls**: exporters.markdown_vault_exporter._sanitize_filename
-- **calls**: exporters.md_exporter._sanitize_filename
-
+None
 
 ---

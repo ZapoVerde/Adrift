@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Scan all configured asset folders and extract metadata records.
+Scan the entire project_root recursively and extract metadata
 
 ## Full Docstring
 ```
@@ -19,8 +19,6 @@ Scan all configured asset folders and extract metadata records.
 ```
 
 ## Links
-- **calls**: loaders.asset_loader.export_path_list
-- **calls**: loaders.asset_loader.infer_tags_from_path
-
+None
 
 ---

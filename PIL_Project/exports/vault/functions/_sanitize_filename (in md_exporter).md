@@ -19,8 +19,6 @@
 ```
 
 ## Links
-- **calls**: exporters.markdown_vault_exporter._sanitize_filename
-- **calls**: exporters.md_exporter._sanitize_filename
-
+None
 
 ---

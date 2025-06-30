@@ -8,7 +8,6 @@
     "calls": [
       "builders.entity_graph_builder.build_entity_graph",
       "builders.linkage_builder.inject_call_links",
-      "builders.tag_and_link_applier_builders.apply_tags_and_links",
       "builders.usage_map_builder.build_usage_map",
       "exporters.json_exporter.export_entity_graph",
       "exporters.markdown_vault_exporter.export_markdown_vault",
@@ -20,8 +19,8 @@
       "loaders.config_loader.load_config",
       "loaders.markdown_loader.load_markdown_entries",
       "pipeline.run_pipeline",
-      "utils.config_loader.load_config",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "utils.exceptions_reporter_utils.generate_exception_report",
+      "utils.snapshot_utils.take_project_snapshot"
     ],
     "called_by": []
   },
@@ -36,7 +35,6 @@
     "calls": [
       "builders.entity_graph_builder.build_entity_graph",
       "builders.linkage_builder.inject_call_links",
-      "builders.tag_and_link_applier_builders.apply_tags_and_links",
       "builders.usage_map_builder.build_usage_map",
       "exporters.json_exporter.export_entity_graph",
       "exporters.markdown_vault_exporter.export_markdown_vault",
@@ -48,121 +46,15 @@
       "loaders.config_loader.load_config",
       "loaders.markdown_loader.load_markdown_entries",
       "pipeline.run_pipeline",
-      "utils.config_loader.load_config",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "utils.exceptions_reporter_utils.generate_exception_report",
+      "utils.snapshot_utils.take_project_snapshot"
     ],
     "called_by": [
       "pipeline",
       "pipeline.run_pipeline"
-    ]
-  },
-  "builders.entity_graph_builder": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "called_by": []
-  },
-  "builders.entity_graph_builder.build_entity_graph": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "called_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ]
-  },
-  "builders.entity_graph_builder.get_field": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter.get_field"
-    ],
-    "called_by": [
-      "builders.entity_graph_builder",
-      "builders.entity_graph_builder.build_entity_graph",
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.markdown_vault_exporter.get_field"
     ]
   },
   "builders.linkage_builder": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.linkage_builder.extract_called_functions"
-    ],
-    "called_by": []
-  },
-  "builders.linkage_builder.extract_called_functions": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.linkage_builder.extract_called_functions"
-    ],
-    "called_by": [
-      "builders.linkage_builder",
-      "builders.linkage_builder.extract_called_functions",
-      "builders.linkage_builder.inject_call_links"
-    ]
-  },
-  "builders.linkage_builder.inject_call_links": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.linkage_builder.extract_called_functions"
-    ],
-    "called_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ]
-  },
-  "builders.tag_and_link_applier_builders": {
     "module": null,
     "function": null,
     "issues": [
@@ -172,7 +64,43 @@
     "calls": [],
     "called_by": []
   },
-  "builders.tag_and_link_applier_builders.apply_tags_and_links": {
+  "builders.linkage_builder.extract_called_functions": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "builders.linkage_builder.inject_call_links": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ]
+  },
+  "builders.entity_graph_builder": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "builders.entity_graph_builder.build_entity_graph": {
     "module": null,
     "function": null,
     "issues": [
@@ -207,9 +135,7 @@
     "calls": [],
     "called_by": [
       "pipeline",
-      "pipeline.run_pipeline",
-      "utils.exceptions_reporter_utils",
-      "utils.exceptions_reporter_utils.generate_exception_report"
+      "pipeline.run_pipeline"
     ]
   },
   "builders.variable_usage_builder": {
@@ -262,15 +188,10 @@
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ],
+    "calls": [],
     "called_by": []
   },
   "exporters.markdown_vault_exporter.friendly_name": {
@@ -279,22 +200,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "called_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "exporters.markdown_vault_exporter._sanitize_filename": {
     "module": null,
@@ -302,25 +212,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "called_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter",
-      "exporters.md_exporter.export_entity_markdown",
-      "exporters.md_exporter._sanitize_filename"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "exporters.markdown_vault_exporter.export_markdown_vault": {
     "module": null,
@@ -330,64 +226,20 @@
       "missing_test",
       "missing_tags"
     ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ],
+    "calls": [],
     "called_by": [
       "pipeline",
       "pipeline.run_pipeline"
-    ]
-  },
-  "exporters.markdown_vault_exporter.get_field": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "called_by": [
-      "builders.entity_graph_builder",
-      "builders.entity_graph_builder.build_entity_graph",
-      "builders.entity_graph_builder.get_field",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.markdown_vault_exporter.get_field"
     ]
   },
   "exporters.md_exporter": {
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ],
+    "calls": [],
     "called_by": []
   },
   "exporters.md_exporter.export_entity_markdown": {
@@ -396,36 +248,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ],
+    "calls": [],
     "called_by": []
-  },
-  "exporters.md_exporter._sanitize_filename": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.md_exporter._sanitize_filename"
-    ],
-    "called_by": [
-      "exporters.markdown_vault_exporter",
-      "exporters.markdown_vault_exporter.friendly_name",
-      "exporters.markdown_vault_exporter._sanitize_filename",
-      "exporters.markdown_vault_exporter.export_markdown_vault",
-      "exporters.markdown_vault_exporter.get_field",
-      "exporters.md_exporter",
-      "exporters.md_exporter.export_entity_markdown",
-      "exporters.md_exporter._sanitize_filename"
-    ]
   },
   "exporters.usage_map_exporter": {
     "module": null,
@@ -500,214 +327,6 @@
       "pipeline.run_pipeline"
     ]
   },
-  "loaders.asset_loader": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ],
-    "called_by": []
-  },
-  "loaders.asset_loader.infer_tags_from_path": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ],
-    "called_by": [
-      "loaders.asset_loader",
-      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
-      "loaders.asset_loader.infer_tags_from_path",
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.load_asset_symbols"
-    ]
-  },
-  "loaders.asset_loader.export_path_list": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ],
-    "called_by": [
-      "loaders.asset_loader",
-      "loaders.asset_loader.SUPPORTED_EXTENSIONS",
-      "loaders.asset_loader.infer_tags_from_path",
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.load_asset_symbols"
-    ]
-  },
-  "loaders.asset_loader.load_asset_symbols": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.asset_loader.export_path_list",
-      "loaders.asset_loader.infer_tags_from_path"
-    ],
-    "called_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ]
-  },
-  "loaders.code_loader": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": []
-  },
-  "loaders.code_loader.extract_nodes_from_ast": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ]
-  },
-  "loaders.code_loader.load_code_symbols": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "invalid_docstring_signature",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ]
-  },
-  "loaders.code_loader.module_name": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ]
-  },
-  "loaders.code_loader.ParentNodeVisitor": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": [
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit"
-    ]
-  },
-  "loaders.code_loader.visit": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.visit",
-      "utils.docstring_utils.extract_docstring_metadata"
-    ],
-    "called_by": [
-      "loaders.code_loader",
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit",
-      "loaders.code_loader.visit",
-      "utils.graph_utils",
-      "utils.graph_utils.walk_graph",
-      "utils.graph_utils._walk"
-    ]
-  },
   "loaders.config_loader": {
     "module": null,
     "function": null,
@@ -736,11 +355,10 @@
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ],
+    "calls": [],
     "called_by": []
   },
   "loaders.markdown_loader.parse_frontmatter": {
@@ -749,17 +367,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ],
-    "called_by": [
-      "loaders.markdown_loader",
-      "loaders.markdown_loader.FRONTMATTER_RE",
-      "loaders.markdown_loader.parse_frontmatter",
-      "loaders.markdown_loader.load_markdown_entries"
-    ]
+    "calls": [],
+    "called_by": []
   },
   "loaders.markdown_loader.load_markdown_entries": {
     "module": null,
@@ -769,15 +381,97 @@
       "missing_test",
       "missing_tags"
     ],
-    "calls": [
-      "loaders.markdown_loader.parse_frontmatter"
-    ],
+    "calls": [],
     "called_by": [
       "pipeline",
       "pipeline.run_pipeline"
     ]
   },
-  "utils.config_loader": {
+  "loaders.asset_loader": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "loaders.asset_loader.infer_tags_from_path": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "loaders.asset_loader.export_path_list": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "loaders.asset_loader.load_asset_symbols": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ]
+  },
+  "loaders.code_loader": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "loaders.code_loader.extract_nodes_from_ast": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "loaders.code_loader.load_code_symbols": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ]
+  },
+  "loaders.code_loader.ParentNodeVisitor": {
     "module": null,
     "function": null,
     "issues": [
@@ -788,19 +482,17 @@
     "calls": [],
     "called_by": []
   },
-  "utils.config_loader.load_config": {
+  "loaders.code_loader.visit": {
     "module": null,
     "function": null,
     "issues": [
-      "invalid_docstring_signature",
+      "missing_docstring",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "pipeline",
-      "pipeline.run_pipeline"
-    ]
+    "called_by": []
   },
   "utils.docstring_utils": {
     "module": null,
@@ -818,53 +510,31 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "validators.governance_validator",
-      "validators.governance_validator.validate_governance_rules"
-    ]
+    "called_by": []
   },
   "utils.docstring_utils.extract_docstring_metadata": {
     "module": null,
     "function": null,
     "issues": [
       "invalid_docstring_signature",
-      "missing_test"
+      "missing_test",
+      "orphaned"
     ],
     "calls": [],
-    "called_by": [
-      "loaders.code_loader",
-      "loaders.code_loader",
-      "loaders.code_loader",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.extract_nodes_from_ast",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.load_code_symbols",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.module_name",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.ParentNodeVisitor",
-      "loaders.code_loader.visit",
-      "loaders.code_loader.visit",
-      "loaders.code_loader.visit"
-    ]
+    "called_by": []
   },
   "utils.exceptions_reporter_utils": {
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "builders.usage_map_builder.build_usage_map",
-      "validators.governance_validator.validate_governance_rules"
-    ],
+    "calls": [],
     "called_by": []
   },
   "utils.exceptions_reporter_utils.generate_exception_report": {
@@ -875,10 +545,7 @@
       "missing_test",
       "missing_tags"
     ],
-    "calls": [
-      "builders.usage_map_builder.build_usage_map",
-      "validators.governance_validator.validate_governance_rules"
-    ],
+    "calls": [],
     "called_by": [
       "pipeline",
       "pipeline.run_pipeline"
@@ -888,12 +555,10 @@
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ],
+    "calls": [],
     "called_by": []
   },
   "utils.graph_utils.walk_graph": {
@@ -902,34 +567,11 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ],
+    "calls": [],
     "called_by": []
-  },
-  "utils.graph_utils._walk": {
-    "module": null,
-    "function": null,
-    "issues": [
-      "missing_docstring",
-      "missing_test",
-      "missing_tags"
-    ],
-    "calls": [
-      "loaders.code_loader.visit",
-      "utils.graph_utils._walk"
-    ],
-    "called_by": [
-      "utils.graph_utils",
-      "utils.graph_utils",
-      "utils.graph_utils.walk_graph",
-      "utils.graph_utils.walk_graph",
-      "utils.graph_utils._walk",
-      "utils.graph_utils._walk"
-    ]
   },
   "utils.path_utils": {
     "module": null,
@@ -975,15 +617,38 @@
     "calls": [],
     "called_by": []
   },
+  "utils.snapshot_utils": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "missing_tags",
+      "orphaned"
+    ],
+    "calls": [],
+    "called_by": []
+  },
+  "utils.snapshot_utils.take_project_snapshot": {
+    "module": null,
+    "function": null,
+    "issues": [
+      "invalid_docstring_signature",
+      "missing_test",
+      "missing_tags"
+    ],
+    "calls": [],
+    "called_by": [
+      "pipeline",
+      "pipeline.run_pipeline"
+    ]
+  },
   "validators.governance_validator": {
     "module": null,
     "function": null,
     "issues": [
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "utils.docstring_utils.check_docstring_signature_match"
-    ],
+    "calls": [],
     "called_by": []
   },
   "validators.governance_validator.validate_governance_rules": {
@@ -992,14 +657,10 @@
     "issues": [
       "invalid_docstring_signature",
       "missing_test",
-      "missing_tags"
+      "missing_tags",
+      "orphaned"
     ],
-    "calls": [
-      "utils.docstring_utils.check_docstring_signature_match"
-    ],
-    "called_by": [
-      "utils.exceptions_reporter_utils",
-      "utils.exceptions_reporter_utils.generate_exception_report"
-    ]
+    "calls": [],
+    "called_by": []
   }
 }

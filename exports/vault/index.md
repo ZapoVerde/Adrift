@@ -246,7 +246,7 @@ This file is auto-generated. Use it as your starting dashboard in Obsidian.
 ## 📊 Live Dataview: All Non-Stable Code
 ```dataview
 table type, status, tags
-from "D:\Docs\Python\AdriftProject\exports\vault"
+from "/home/runner/workspace/AdriftProject/exports/vault"
 where status != "stable"
 sort type asc
 ```

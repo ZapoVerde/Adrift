@@ -19,7 +19,6 @@ Adds call relationships between entities in the graph.
 ```
 
 ## Links
-- **calls**: builders.linkage_builder.extract_called_functions
-
+None
 
 ---

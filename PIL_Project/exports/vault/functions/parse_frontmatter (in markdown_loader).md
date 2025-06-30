@@ -19,7 +19,6 @@ Extract YAML frontmatter as a dict, if present.
 ```
 
 ## Links
-- **calls**: loaders.markdown_loader.parse_frontmatter
-
+None
 
 ---

@@ -19,7 +19,6 @@ Parses source code and extracts all function names that are called.
 ```
 
 ## Links
-- **calls**: builders.linkage_builder.extract_called_functions
-
+None
 
 ---
