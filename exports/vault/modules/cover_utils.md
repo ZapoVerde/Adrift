@@ -19,6 +19,7 @@ This module provides utilities for calculating cover and line-of-sight interfere
 ```
 
 ## Links
-None
+- **calls**: utils.cover_utils.get_cover_objects_along_path
+
 
 ---

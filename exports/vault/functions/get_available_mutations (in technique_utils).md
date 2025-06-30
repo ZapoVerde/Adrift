@@ -19,6 +19,9 @@ Returns a list of valid mutation types for a given technique.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_utils.evolve_add_modifier
+- **calls**: utils.technique_utils.evolve_add_effect
+- **calls**: utils.technique_utils.evolve_replace_effect
+
 
 ---

@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Extract asset metadata from tracked folders for non-code files.
+Asset Loader (loaders)
 
 ## Full Docstring
 ```
@@ -19,6 +19,7 @@ Extract asset metadata from tracked folders for non-code files.
 ```
 
 ## Links
-None
+- **calls**: loaders.asset_loader.infer_tags_from_path
+
 
 ---

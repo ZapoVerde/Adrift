@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #assets #metadata
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,7 @@ Infer semantic tags from the file path and extension.
 ```
 
 ## Links
-None
+- **calls**: loaders.asset_loader.infer_tags_from_path
+
 
 ---

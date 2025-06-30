@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Writes an index.md in output_dir listing all code entities grouped by type,
+Export a Markdown index listing all symbols in the vault, grouped by type.
 
 ## Full Docstring
 ```

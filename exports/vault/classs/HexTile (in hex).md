@@ -19,6 +19,7 @@ Represents a single tile in the axial world coordinate system (q, r).
 ```
 
 ## Links
-None
+- **calls**: world.hex.generate_seed
+
 
 ---

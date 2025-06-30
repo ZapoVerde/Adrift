@@ -1,55 +1,44 @@
-# vault_index_exporter.py
-"""
-Vault Index Exporter (exporters)
+# pil_meta/exporters/vault_index_exporter.py
 
-Generates an Obsidian-friendly index.md for your code vault,
-grouped by type, with live Dataview sections and usage links.
-"""
-
-from collections import defaultdict
 from pathlib import Path
+from typing import Union, Optional
 
-def export_vault_index(graph: dict, output_dir: str):
+def export_vault_index(graph: dict,
+                       output_dir: Union[str, Path],
+                       project_name: str = "project",
+                       timestamp: Optional[str] = None) -> str:
     """
-    Writes an index.md in output_dir listing all code entities grouped by type,
-    with Obsidian links and Dataview live dashboards.
-    """
-    index = []
-    index.append("# 🧭 Project Code Vault Index\n")
-    index.append("This file is auto-generated. Use it as your starting dashboard in Obsidian.\n")
-    index.append("---\n")
+    Export a Markdown index listing all symbols in the vault, grouped by type.
 
-    by_type = defaultdict(list)
+    Args:
+        graph (dict): Entity graph containing all symbols.
+        output_dir (Union[str, Path]): Output directory.
+        project_name (str): Optional project name prefix (unused).
+        timestamp (str): Optional timestamp (unused).
+
+    Returns:
+        str: Full path to the created index.md file.
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    index_lines = ["# Symbol Index\n"]
+    grouped = {}
+
     for node in graph.values():
-        by_type[node["type"]].append(node["fqname"])
-
-    for group in ["module", "class", "function", "method", "variable"]:
-        items = sorted(set(by_type.get(group, [])))
-        if not items:
+        if node.get("visibility") == "internal":
             continue
-        icon = {
-            "module": "📦",
-            "class": "🏛️",
-            "function": "⚙️",
-            "method": "🔹",
-            "variable": "🧩"
-        }.get(group, "")
-        index.append(f"## {icon} {group.title()}s")
-        for fqn in items:
-            index.append(f"- [[{fqn}]]")
-        index.append("")
+        typ = node.get("type", "misc")
+        grouped.setdefault(typ, []).append(node)
 
-    # Optional: Add a Dataview dashboard for status/tags
-    index.append("---\n")
-    index.append("## 📊 Live Dataview: All Non-Stable Code")
-    index.append("```dataview\n"
-                 "table type, status, tags\n"
-                 f'from "{output_dir}"\n'
-                 "where status != \"stable\"\n"
-                 "sort type asc\n"
-                 "```")
+    for typ in sorted(grouped):
+        index_lines.append(f"\n## {typ.capitalize()}s")
+        for node in sorted(grouped[typ], key=lambda x: x.get("fqname", "")):
+            name = node.get("name") or node.get("fqname")
+            filename = name.replace("/", "_").replace(".", "_") + ".md"
+            subdir = typ + "s"
+            index_lines.append(f"- [{name}]({subdir}/{filename})")
 
-    # Write the index file
-    index_path = Path(output_dir) / "index.md"
-    index_path.write_text("\n".join(index), encoding="utf-8")
-    print(f"✅ Exported vault index to {index_path}")
+    outfile = output_dir / "index.md"
+    outfile.write_text("\n".join(index_lines), encoding="utf-8")
+    return str(outfile)

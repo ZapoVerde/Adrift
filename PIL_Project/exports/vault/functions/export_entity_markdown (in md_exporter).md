@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #export #markdown
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,7 @@ Export a single entity as a Markdown file with metadata and Obsidian links.
 ```
 
 ## Links
-None
+- **calls**: exporters.markdown_vault_exporter._sanitize_filename
+
 
 ---

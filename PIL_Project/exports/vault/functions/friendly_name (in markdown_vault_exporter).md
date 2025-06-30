@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #export #vault
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Returns a human-friendly display name for vault navigation,
+Returns a human-friendly display name for vault navigation.
 
 ## Full Docstring
 ```
@@ -19,6 +19,8 @@ Returns a human-friendly display name for vault navigation,
 ```
 
 ## Links
-None
+- **calls**: exporters.markdown_vault_exporter.friendly_name
+- **calls**: exporters.markdown_vault_exporter._sanitize_filename
+
 
 ---

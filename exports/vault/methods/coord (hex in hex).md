@@ -19,6 +19,7 @@ Return the axial coordinates of this tile.
 ```
 
 ## Links
-None
+- **calls**: world.hex.generate_seed
+
 
 ---

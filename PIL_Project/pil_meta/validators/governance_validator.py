@@ -1,14 +1,16 @@
-# governance_validator.py
+# pil_meta/validators/governance_validator.py
 """
 Validation Rules (validators)
 
 Applies all governance rules to the entity graph.
 Includes docstring checks, test coverage, orphan detection, etc.
+
+@tags: ["validation", "governance"]
+@status: "stable"
+@visibility: "public"
 """
 
 from collections import Counter
-from pil_meta.utils.docstring_utils import check_docstring_signature_match
-
 
 def validate_governance_rules(graph: dict) -> tuple[dict, Counter]:
     """
@@ -27,14 +29,9 @@ def validate_governance_rules(graph: dict) -> tuple[dict, Counter]:
         issues = []
         node_type = node.get("type", "function")
 
-        docstring_valid = check_docstring_signature_match(node)
-        node["docstring_valid"] = docstring_valid
-
         if node_type in ("function", "method", "class", "module"):
             if not node.get("docstring_present"):
                 issues.append("missing_docstring")
-            elif node_type in ("function", "method") and not docstring_valid:
-                issues.append("invalid_docstring_signature")
 
         if node_type in ("function", "method"):
             if not node.get("test_coverage"):

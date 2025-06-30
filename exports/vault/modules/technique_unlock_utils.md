@@ -19,6 +19,7 @@
 ```
 
 ## Links
-None
+- **calls**: definitions.actor.add_technique
+
 
 ---

@@ -19,6 +19,7 @@ Scans canonical techniques and adds any to the actor whose
 ```
 
 ## Links
-None
+- **calls**: definitions.actor.add_technique
+
 
 ---

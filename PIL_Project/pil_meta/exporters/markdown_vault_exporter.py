@@ -1,4 +1,4 @@
-# markdown_vault_exporter.py
+# pil_meta/exporters/markdown_vault_exporter.py
 """
 Markdown Vault Exporter (exporters)
 
@@ -9,10 +9,12 @@ using human-friendly names for navigation but always showing the real fqname.
 import os
 from pathlib import Path
 
+
 def friendly_name(node):
-    """
-    Returns a human-friendly display name for vault navigation,
-    while preserving real fqname in note metadata.
+    """Returns a human-friendly display name for vault navigation.
+    @tags: ["export", "vault"]
+    @status: "stable"
+    @visibility: "internal"
     """
     # Helper to pull from top-level or metadata
     def get_field(n, k):
@@ -40,7 +42,11 @@ def friendly_name(node):
 
 
 def _sanitize_filename(name):
-    """Replace slashes, quotes, and other problematic chars for filesystem safety."""
+    """Sanitizes a string for use as a safe Markdown filename.
+    @tags: ["filesystem", "vault"]
+    @status: "stable"
+    @visibility: "internal"
+    """
     return (
         name.replace("/", "_")
             .replace("\\", "_")
@@ -48,26 +54,23 @@ def _sanitize_filename(name):
             .replace("?", "")
             .replace("*", "")
             .replace("|", "-")
-            .replace('"', "")    # Remove double quotes
-            .replace("'", "")    # Remove single quotes
+            .replace('"', "")
+            .replace("'", "")
             .replace("<", "")
             .replace(">", "")
     )
 
 
 def export_markdown_vault(graph: dict, output_dir: str):
-    """
-    Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.
-
-    Parameters:
-        graph (dict): Entity graph keyed by fqname
-        output_dir (str): Output directory for the Markdown vault
+    """Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.
+    @tags: ["export", "markdown", "vault"]
+    @status: "stable"
+    @visibility: "public"
     """
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
     for fqname, node in graph.items():
-        # Use friendly name for file and Obsidian navigation
         friendly = friendly_name(node)
         subdir = node.get("type", "misc") + "s"
         node_dir = output_path / subdir
@@ -82,7 +85,6 @@ def export_markdown_vault(graph: dict, output_dir: str):
         if node.get("links"):
             for link in node["links"]:
                 links_md += f"- **{link.get('type', 'link')}**: {link.get('target')}\n"
-
         if node.get("linked_journal_entry"):
             links_md += f"- **journal**: {node['linked_journal_entry']}\n"
 

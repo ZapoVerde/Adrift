@@ -19,6 +19,14 @@
 ```
 
 ## Links
-None
+- **calls**: world.discovery.sample_biome
+- **calls**: world.generation.sample_biome
+- **calls**: world.discovery.sample_elevation
+- **calls**: world.generation.sample_elevation
+- **calls**: world.discovery.sample_moisture
+- **calls**: world.generation.sample_moisture
+- **calls**: world.discovery.sample_features
+- **calls**: world.generation.sample_features
+
 
 ---

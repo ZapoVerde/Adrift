@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Writes a Markdown summary listing each variable used in multiple modules.
+Export the variable usage summary to a Markdown file.
 
 ## Full Docstring
 ```

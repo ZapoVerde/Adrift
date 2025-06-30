@@ -19,6 +19,7 @@ Scans the tiles along the given path and returns all objects that influence cove
 ```
 
 ## Links
-None
+- **calls**: utils.cover_utils.get_cover_objects_along_path
+
 
 ---

@@ -19,6 +19,7 @@ Create a blank tile with default fields.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_empty_tile
+
 
 ---

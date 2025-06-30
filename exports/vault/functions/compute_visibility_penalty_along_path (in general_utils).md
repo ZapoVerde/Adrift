@@ -19,6 +19,8 @@ Given a traced path from `trace_line`, compute the cumulative visibility penalty
 ```
 
 ## Links
-None
+- **calls**: utils.general_utils.validate_tags
+- **calls**: utils.general_utils.validate_tags
+
 
 ---

@@ -19,6 +19,8 @@ Validates that all tags in a given definition dict exist in TAG_DB.
 ```
 
 ## Links
-None
+- **calls**: utils.general_utils.validate_tags
+- **calls**: utils.general_utils.validate_tags
+
 
 ---

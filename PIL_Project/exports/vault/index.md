@@ -1,82 +1,71 @@
-# 🧭 Project Code Vault Index
+# Symbol Index
 
-This file is auto-generated. Use it as your starting dashboard in Obsidian.
 
----
+## Classs
+- [loaders.code_loader.ParentNodeVisitor](classs/loaders_code_loader_ParentNodeVisitor.md)
 
-## 📦 Modules
-- [[builders.entity_graph_builder]]
-- [[builders.linkage_builder]]
-- [[builders.usage_map_builder]]
-- [[builders.variable_usage_builder]]
-- [[exporters.json_exporter]]
-- [[exporters.markdown_vault_exporter]]
-- [[exporters.md_exporter]]
-- [[exporters.usage_map_exporter]]
-- [[exporters.variable_usage_report_exporter]]
-- [[exporters.vault_index_exporter]]
-- [[loaders.asset_loader]]
-- [[loaders.code_loader]]
-- [[loaders.config_loader]]
-- [[loaders.markdown_loader]]
-- [[pipeline]]
-- [[utils.docstring_utils]]
-- [[utils.exceptions_reporter_utils]]
-- [[utils.graph_utils]]
-- [[utils.path_utils]]
-- [[utils.snapshot_utils]]
-- [[utils.test_coverage_utils]]
-- [[validators.governance_validator]]
+## Functions
+- [builders.entity_graph_builder.build_entity_graph](functions/builders_entity_graph_builder_build_entity_graph.md)
+- [builders.linkage_builder.extract_called_functions](functions/builders_linkage_builder_extract_called_functions.md)
+- [builders.linkage_builder.inject_call_links](functions/builders_linkage_builder_inject_call_links.md)
+- [builders.usage_map_builder.build_usage_map](functions/builders_usage_map_builder_build_usage_map.md)
+- [builders.variable_usage_builder.build_variable_usage_map](functions/builders_variable_usage_builder_build_variable_usage_map.md)
+- [exporters.json_exporter.export_entity_graph](functions/exporters_json_exporter_export_entity_graph.md)
+- [exporters.markdown_vault_exporter._sanitize_filename](functions/exporters_markdown_vault_exporter__sanitize_filename.md)
+- [exporters.markdown_vault_exporter.export_markdown_vault](functions/exporters_markdown_vault_exporter_export_markdown_vault.md)
+- [exporters.markdown_vault_exporter.friendly_name](functions/exporters_markdown_vault_exporter_friendly_name.md)
+- [exporters.md_exporter.export_entity_markdown](functions/exporters_md_exporter_export_entity_markdown.md)
+- [exporters.usage_map_exporter.export_usage_map](functions/exporters_usage_map_exporter_export_usage_map.md)
+- [exporters.variable_usage_report_exporter.export_variable_usage_markdown](functions/exporters_variable_usage_report_exporter_export_variable_usage_markdown.md)
+- [exporters.vault_index_exporter.export_vault_index](functions/exporters_vault_index_exporter_export_vault_index.md)
+- [loaders.asset_loader.export_path_list](functions/loaders_asset_loader_export_path_list.md)
+- [loaders.asset_loader.infer_tags_from_path](functions/loaders_asset_loader_infer_tags_from_path.md)
+- [loaders.asset_loader.load_asset_symbols](functions/loaders_asset_loader_load_asset_symbols.md)
+- [loaders.code_loader.extract_nodes_from_ast](functions/loaders_code_loader_extract_nodes_from_ast.md)
+- [loaders.code_loader.load_code_symbols](functions/loaders_code_loader_load_code_symbols.md)
+- [loaders.config_loader.load_config](functions/loaders_config_loader_load_config.md)
+- [loaders.markdown_loader.load_markdown_entries](functions/loaders_markdown_loader_load_markdown_entries.md)
+- [loaders.markdown_loader.parse_frontmatter](functions/loaders_markdown_loader_parse_frontmatter.md)
+- [pipeline.run_pipeline](functions/pipeline_run_pipeline.md)
+- [utils.docstring_utils.check_docstring_signature_match](functions/utils_docstring_utils_check_docstring_signature_match.md)
+- [utils.docstring_utils.extract_docstring_metadata](functions/utils_docstring_utils_extract_docstring_metadata.md)
+- [utils.exceptions_reporter_utils.generate_exception_report](functions/utils_exceptions_reporter_utils_generate_exception_report.md)
+- [utils.export_cleanup_utils.clean_exports_dir](functions/utils_export_cleanup_utils_clean_exports_dir.md)
+- [utils.graph_utils.walk_graph](functions/utils_graph_utils_walk_graph.md)
+- [utils.path_utils.resolve_path](functions/utils_path_utils_resolve_path.md)
+- [utils.snapshot_utils.take_project_snapshot](functions/utils_snapshot_utils_take_project_snapshot.md)
+- [utils.test_coverage_utils.estimate_test_coverage](functions/utils_test_coverage_utils_estimate_test_coverage.md)
+- [validators.governance_validator.validate_governance_rules](functions/validators_governance_validator_validate_governance_rules.md)
 
-## 🏛️ Classs
-- [[loaders.code_loader.ParentNodeVisitor]]
+## Methods
+- [loaders.code_loader.visit](methods/loaders_code_loader_visit.md)
 
-## ⚙️ Functions
-- [[builders.entity_graph_builder.build_entity_graph]]
-- [[builders.linkage_builder.extract_called_functions]]
-- [[builders.linkage_builder.inject_call_links]]
-- [[builders.usage_map_builder.build_usage_map]]
-- [[builders.variable_usage_builder.build_variable_usage_map]]
-- [[exporters.json_exporter.export_entity_graph]]
-- [[exporters.markdown_vault_exporter._sanitize_filename]]
-- [[exporters.markdown_vault_exporter.export_markdown_vault]]
-- [[exporters.markdown_vault_exporter.friendly_name]]
-- [[exporters.md_exporter.export_entity_markdown]]
-- [[exporters.usage_map_exporter.export_usage_map]]
-- [[exporters.variable_usage_report_exporter.export_variable_usage_markdown]]
-- [[exporters.vault_index_exporter.export_vault_index]]
-- [[loaders.asset_loader.export_path_list]]
-- [[loaders.asset_loader.infer_tags_from_path]]
-- [[loaders.asset_loader.load_asset_symbols]]
-- [[loaders.code_loader.extract_nodes_from_ast]]
-- [[loaders.code_loader.load_code_symbols]]
-- [[loaders.config_loader.load_config]]
-- [[loaders.markdown_loader.load_markdown_entries]]
-- [[loaders.markdown_loader.parse_frontmatter]]
-- [[pipeline.run_pipeline]]
-- [[utils.docstring_utils.check_docstring_signature_match]]
-- [[utils.docstring_utils.extract_docstring_metadata]]
-- [[utils.exceptions_reporter_utils.generate_exception_report]]
-- [[utils.graph_utils.walk_graph]]
-- [[utils.path_utils.resolve_path]]
-- [[utils.snapshot_utils.take_project_snapshot]]
-- [[utils.test_coverage_utils.estimate_test_coverage]]
-- [[validators.governance_validator.validate_governance_rules]]
+## Modules
+- [builders.entity_graph_builder](modules/builders_entity_graph_builder.md)
+- [builders.linkage_builder](modules/builders_linkage_builder.md)
+- [builders.usage_map_builder](modules/builders_usage_map_builder.md)
+- [builders.variable_usage_builder](modules/builders_variable_usage_builder.md)
+- [exporters.json_exporter](modules/exporters_json_exporter.md)
+- [exporters.markdown_vault_exporter](modules/exporters_markdown_vault_exporter.md)
+- [exporters.md_exporter](modules/exporters_md_exporter.md)
+- [exporters.usage_map_exporter](modules/exporters_usage_map_exporter.md)
+- [exporters.variable_usage_report_exporter](modules/exporters_variable_usage_report_exporter.md)
+- [exporters.vault_index_exporter](modules/exporters_vault_index_exporter.md)
+- [loaders.asset_loader](modules/loaders_asset_loader.md)
+- [loaders.code_loader](modules/loaders_code_loader.md)
+- [loaders.config_loader](modules/loaders_config_loader.md)
+- [loaders.markdown_loader](modules/loaders_markdown_loader.md)
+- [pipeline](modules/pipeline.md)
+- [utils.docstring_utils](modules/utils_docstring_utils.md)
+- [utils.exceptions_reporter_utils](modules/utils_exceptions_reporter_utils.md)
+- [utils.export_cleanup_utils](modules/utils_export_cleanup_utils.md)
+- [utils.graph_utils](modules/utils_graph_utils.md)
+- [utils.path_utils](modules/utils_path_utils.md)
+- [utils.snapshot_utils](modules/utils_snapshot_utils.md)
+- [utils.test_coverage_utils](modules/utils_test_coverage_utils.md)
+- [validators.governance_validator](modules/validators_governance_validator.md)
 
-## 🔹 Methods
-- [[loaders.code_loader.visit]]
-
-## 🧩 Variables
-- [[loaders.asset_loader.SUPPORTED_EXTENSIONS]]
-- [[loaders.markdown_loader.FRONTMATTER_RE]]
-- [[utils.snapshot_utils.IGNORED_FOLDERS]]
-
----
-
-## 📊 Live Dataview: All Non-Stable Code
-```dataview
-table type, status, tags
-from "/home/runner/workspace/AdriftProject/PIL_Project/exports/vault"
-where status != "stable"
-sort type asc
-```
+## Variables
+- [loaders.asset_loader.SUPPORTED_EXTENSIONS](variables/loaders_asset_loader_SUPPORTED_EXTENSIONS.md)
+- [loaders.markdown_loader.FRONTMATTER_RE](variables/loaders_markdown_loader_FRONTMATTER_RE.md)
+- [utils.snapshot_utils.IGNORED_FOLDERS](variables/utils_snapshot_utils_IGNORED_FOLDERS.md)

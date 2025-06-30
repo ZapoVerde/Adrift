@@ -19,6 +19,9 @@ Generate a set of mutation options for a technique based on the given skill.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_utils.generate_technique
+- **calls**: definitions.evolution_offer_generator._generate_base_technique
+- **calls**: utils.technique_utils.evolve_technique
+
 
 ---

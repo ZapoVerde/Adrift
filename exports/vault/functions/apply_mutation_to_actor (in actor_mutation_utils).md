@@ -19,6 +19,7 @@ Applies a selected mutation offer to the actor's technique instance.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_mutation_utils.apply_mutation
+
 
 ---

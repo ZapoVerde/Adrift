@@ -19,6 +19,7 @@
 ```
 
 ## Links
-None
+- **calls**: world.hex.generate_seed
+
 
 ---

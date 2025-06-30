@@ -16,24 +16,14 @@ IGNORED_FOLDERS = {
     ".mypy_cache", ".venv", "env", ".idea"
 }
 
-
 def take_project_snapshot(config: dict,
                           entity_graph_path: str | None = None) -> Path:
     """
     Create a compressed zip snapshot of the entire project_root.
     Optionally attach entity_graph.json to aid traceability.
 
-    Parameters:
-        config (dict): The loaded pilconfig with required keys:
-                       - project_root
-                       - snapshot_dir
-        entity_graph_path (str, optional): Path to entity_graph.json to attach
-
     Returns:
-        Path: The full path to the created snapshot file.
-
-    Raises:
-        Exception: If snapshot folder is unwritable or config keys are missing.
+        Path: Full path to the created snapshot zip.
     """
     project_root = Path(config["project_root"]).resolve()
     snapshot_dir = Path(config["snapshot_dir"]).resolve()
@@ -42,12 +32,8 @@ def take_project_snapshot(config: dict,
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     snapshot_file = snapshot_dir / f"project_snapshot_{timestamp}.zip"
 
-    file_count = 0
-    with zipfile.ZipFile(snapshot_file,
-                         "w",
-                         zipfile.ZIP_DEFLATED,
-                         allowZip64=True) as zipf:
-        for foldername, subfolders, filenames in os.walk(project_root):
+    with zipfile.ZipFile(snapshot_file, "w", zipfile.ZIP_DEFLATED, allowZip64=True) as zipf:
+        for foldername, _, filenames in os.walk(project_root):
             rel_folder = Path(foldername).relative_to(project_root)
             if any(part in IGNORED_FOLDERS for part in rel_folder.parts):
                 continue
@@ -56,17 +42,11 @@ def take_project_snapshot(config: dict,
                 file_path = Path(foldername) / filename
                 rel_path = file_path.relative_to(project_root)
                 zipf.write(file_path, arcname=str(rel_path))
-                file_count += 1
 
-        # 🔗 Attach the entity graph if provided
         if entity_graph_path:
             graph_file = Path(entity_graph_path)
             if graph_file.exists():
                 arcname = f"entity_graph_{timestamp}.json"
                 zipf.write(graph_file, arcname=arcname)
-                print(f"📎 Attached entity graph as {arcname}")
-            else:
-                print(f"⚠️  Specified entity graph not found: {graph_file}")
 
-    print(f"📦 Created snapshot with {file_count} files → {snapshot_file}")
     return snapshot_file

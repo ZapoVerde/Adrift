@@ -19,6 +19,10 @@ Stub function to simulate entering a test tactical map.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_floorplan
+- **calls**: definitions.floorplan.get_tile
+- **calls**: flow.engine.enter_test_map
+- **calls**: definitions.floorplan.set_tile
+
 
 ---

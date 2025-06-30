@@ -19,6 +19,8 @@ Runs tag validation on both skills and techniques.
 ```
 
 ## Links
-None
+- **calls**: utils.general_utils.validate_tags
+- **calls**: utils.general_utils.validate_tags
+
 
 ---

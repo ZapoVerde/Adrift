@@ -19,6 +19,7 @@ This module defines the Floorplan structure and creation utilities.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_empty_tile
+
 
 ---

@@ -19,6 +19,9 @@ Adds a new modifier from the pool. Does nothing if already added.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_utils.evolve_add_modifier
+- **calls**: utils.technique_utils.evolve_add_effect
+- **calls**: utils.technique_utils.evolve_replace_effect
+
 
 ---

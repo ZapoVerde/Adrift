@@ -19,6 +19,9 @@ Generates 4 weighted mutation offers for a given actor's visible technique.
 ```
 
 ## Links
-None
+- **calls**: utils.evolution_offer_utils.get_allowed_rarities
+- **calls**: definitions.evolution_offer_generator.generate_evolution_offer
+- **calls**: utils.technique_mutation_utils.generate_evolution_offer
+
 
 ---

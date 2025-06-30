@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #export #markdown #vault
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,8 @@ Export the entity graph as a Markdown vault: one file per node, with friendly na
 ```
 
 ## Links
-None
+- **calls**: exporters.markdown_vault_exporter.friendly_name
+- **calls**: exporters.markdown_vault_exporter._sanitize_filename
+
 
 ---

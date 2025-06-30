@@ -19,6 +19,7 @@ Handles HexTile definitions and lazy generation scaffolding.
 ```
 
 ## Links
-None
+- **calls**: world.hex.generate_seed
+
 
 ---

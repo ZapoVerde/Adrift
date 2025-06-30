@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #exceptions #report #governance
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,8 @@ Project health analysis and governance exception reporting.
 ```
 
 ## Links
-None
+- **calls**: validators.governance_validator.validate_governance_rules
+- **calls**: builders.usage_map_builder.build_usage_map
+
 
 ---

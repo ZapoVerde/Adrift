@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Write the in-memory entity graph to `entity_graph.json`.
+Exports the entity graph as both a stable file and timestamped variant.
 
 ## Full Docstring
 ```

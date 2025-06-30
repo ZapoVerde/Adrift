@@ -19,6 +19,9 @@ Returns the list of allowed rarities after applying boost filtering.
 ```
 
 ## Links
-None
+- **calls**: utils.evolution_offer_utils.get_allowed_rarities
+- **calls**: definitions.evolution_offer_generator.generate_evolution_offer
+- **calls**: utils.technique_mutation_utils.generate_evolution_offer
+
 
 ---

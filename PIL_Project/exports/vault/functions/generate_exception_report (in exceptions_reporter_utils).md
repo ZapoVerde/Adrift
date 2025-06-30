@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #governance #report #exceptions
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Extracts and exports metadata violations and usage mappings to a governance-style report.
+Generate governance exception and usage reports with timestamped filenames.
 
 ## Full Docstring
 ```
@@ -19,6 +19,8 @@ Extracts and exports metadata violations and usage mappings to a governance-styl
 ```
 
 ## Links
-None
+- **calls**: validators.governance_validator.validate_governance_rules
+- **calls**: builders.usage_map_builder.build_usage_map
+
 
 ---

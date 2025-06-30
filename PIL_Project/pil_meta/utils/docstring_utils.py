@@ -4,6 +4,10 @@ Docstring Utilities (utils)
 
 Houses reusable docstring validation logic shared across pipeline components.
 Also supports docstring extraction and structured annotation parsing.
+
+@tags: ["docstring", "metadata", "parsing"]
+@status: "stable"
+@visibility: "internal"
 """
 
 import ast
@@ -13,6 +17,10 @@ import re
 def check_docstring_signature_match(node: dict) -> bool:
     """
     Checks if the function docstring references the function name and its parameters.
+
+    @tags: ["validation", "docstring"]
+    @status: "stable"
+    @visibility: "internal"
 
     Parameters:
         node (dict): Metadata dictionary for a function or method.
@@ -32,6 +40,10 @@ def check_docstring_signature_match(node: dict) -> bool:
 def extract_docstring_metadata(docstring: str) -> dict:
     """
     Extracts structured metadata from a docstring.
+
+    @tags: ["parser", "metadata"]
+    @status: "stable"
+    @visibility: "internal"
 
     Parameters:
         docstring (str): Full function/class/module docstring

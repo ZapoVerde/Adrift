@@ -19,6 +19,10 @@ Main game loop and core flow controller.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_floorplan
+- **calls**: definitions.floorplan.get_tile
+- **calls**: flow.engine.enter_test_map
+- **calls**: definitions.floorplan.set_tile
+
 
 ---

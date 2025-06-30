@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 run_pil_self.py — Self-runner version for PIL_Project
+
 Usage:
+    chmod +x run_pil_self.py
     ./run_pil_self.py
 
 This version is designed to live **inside the PIL_Project folder**.
@@ -16,15 +18,25 @@ from pathlib import Path
 pipeline_script = Path("scripts/rebuild_pil.py")
 config_path = Path("pilconfig_self.json")
 
-if not pipeline_script.exists():
-    print(f"❌ Could not find pipeline script at: {pipeline_script.resolve()}")
-    sys.exit(1)
+try:
+    if not pipeline_script.exists():
+        print(f"❌ Could not find pipeline script at: {pipeline_script.resolve()}")
+        sys.exit(1)
 
-if not config_path.exists():
-    print(f"❌ Could not find config file at: {config_path.resolve()}")
-    sys.exit(1)
+    if not config_path.exists():
+        print(f"❌ Could not find config file at: {config_path.resolve()}")
+        sys.exit(1)
 
-print(f"🚀 Running PIL pipeline from: {pipeline_script.resolve()}")
-subprocess.run(
-    [sys.executable, str(pipeline_script),
-     str(config_path)], check=True)
+    print(f"🚀 Running PIL pipeline from: {pipeline_script.resolve()}")
+    subprocess.run(
+        [sys.executable, str(pipeline_script), str(config_path)],
+        check=True
+    )
+
+except subprocess.CalledProcessError as e:
+    print(f"\n❌ Pipeline script failed with exit code {e.returncode}")
+except Exception as e:
+    print(f"\n❌ Unexpected error occurred: {e}")
+
+finally:
+    input("\n📦 Press Enter to exit...")

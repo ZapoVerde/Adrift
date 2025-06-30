@@ -1,58 +1,60 @@
 #!/usr/bin/env python3
-# run_pil.py
 """
-📦 Project-Side PIL Runner
+chmod +x run_pil.py
+run_pil.py — Self-contained runner for external use
 
-Usage:
-    ./run_pil.py
-
-Requirements:
-- This script must be in the project root alongside pilconfig.json
-- pilconfig.json must contain:
-    "pil_module_path": path to the PIL_Project folder
-
-You can also run manually:
-    python run_pil.py
+This version embeds the PIL config directly and writes it to disk at runtime.
+It requires only this single file to exist in the project root.
 """
 
-import json
 import subprocess
 import sys
+import json
 from pathlib import Path
 
-CONFIG_FILE = Path("pilconfig.json")
+# Embedded config — originally from pilconfig_self.json
+PIL_CONFIG = {
+    "project_root": "./Adrift",
+    "journal_path": "./documents",
+    "output_dir": "./exports",
+    "docs_dir": "./docs",
+    "snapshot_dir": "./snapshots",
+    "vault_dir": "./exports/vault",
+    "config_self_path": "./pilconfig.json",
+    "pil_module_path": "./PIL_Project",
+    "asset_extensions": [".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"]
+}
 
-# 1. Validate config
-if not CONFIG_FILE.exists():
-    print("❌ Missing pilconfig.json in current directory.")
-    sys.exit(1)
+# Dynamically locate rebuild_pil.py inside PIL_Project/scripts/
+pipeline_script = Path(PIL_CONFIG["pil_module_path"]) / "scripts" / "rebuild_pil.py"
+config_file_path = Path("pilconfig.json")  # Written version used at runtime
 
-with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-    config = json.load(f)
+def main():
+    if not pipeline_script.exists():
+        print(f"❌ Could not find pipeline script at: {pipeline_script.resolve()}")
+        sys.exit(1)
 
-if "pil_module_path" not in config:
-    print("❌ 'pil_module_path' not defined in pilconfig.json.")
-    sys.exit(1)
+    # Write config to disk before execution
+    try:
+        with open(config_file_path, "w") as f:
+            json.dump(PIL_CONFIG, f, indent=2)
+        print(f"📝 Wrote config to: {config_file_path.resolve()}")
+    except Exception as e:
+        print(f"❌ Failed to write config: {e}")
+        sys.exit(1)
 
-# 2. Resolve pipeline script
-pil_dir = Path(config["pil_module_path"]).resolve()
-pipeline_script = pil_dir / "scripts" / "rebuild_pil.py"
+    print(f"🚀 Running PIL pipeline from: {pipeline_script.resolve()}")
+    try:
+        subprocess.run(
+            [sys.executable, str(pipeline_script), str(config_file_path)],
+            check=True
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"\n❌ Pipeline script failed with exit code {e.returncode}")
+    except Exception as e:
+        print(f"\n❌ Unexpected error occurred: {e}")
+    finally:
+        input("\n📦 Press Enter to exit...")
 
-if not pipeline_script.exists():
-    print(f"❌ Could not find pipeline script at: {pipeline_script}")
-    sys.exit(1)
-
-# 3. Execute
-print(f"🚀 Running PIL pipeline from: {pipeline_script}")
-result = subprocess.run([
-    sys.executable, "-c",
-    (f"import sys; "
-     f"sys.path.insert(0, '{pil_dir}'); "
-     f"from pil_meta.pipeline import run_pipeline; "
-     f"run_pipeline()")
-])
-
-if result.returncode == 0:
-    print("✅ PIL completed successfully.")
-else:
-    print("❌ PIL pipeline failed.")
+if __name__ == "__main__":
+    main()

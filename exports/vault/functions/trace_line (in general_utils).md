@@ -19,6 +19,8 @@ Traces a straight line from `start` to `end` using a grid-based algorithm.
 ```
 
 ## Links
-None
+- **calls**: utils.general_utils.validate_tags
+- **calls**: utils.general_utils.validate_tags
+
 
 ---

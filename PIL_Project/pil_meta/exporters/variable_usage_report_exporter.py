@@ -1,34 +1,31 @@
-# variable_usage_report_exporter.py
-"""
-Variable Usage Markdown Exporter (exporters)
-
-Exports a summary report of variables/lists/constants used in more than one module,
-for vault, governance, or architectural review.
-"""
+# pil_meta/exporters/variable_usage_reporter.py
 
 from pathlib import Path
+from typing import Union, Optional
 
-def export_variable_usage_markdown(usage_map: dict, output_path: str):
+def export_variable_usage_markdown(usage_map: dict,
+                                   output_path: Union[str, Path],
+                                   project_name: str = "project",
+                                   timestamp: Optional[str] = None) -> str:
     """
-    Writes a Markdown summary listing each variable used in multiple modules.
+    Export the variable usage summary to a Markdown file.
 
-    Parameters:
-        usage_map (dict): fqname -> list of modules where variable is used
-        output_path (str): Path to output .md file
+    Args:
+        usage_map (dict): Usage summary from build_usage_map().
+        output_path (Union[str, Path]): Path to write the Markdown output to.
+        project_name (str): Optional project name prefix (unused).
+        timestamp (Optional[str]): Optional timestamp (unused).
+
+    Returns:
+        str: Full path to the written Markdown file.
     """
-    out = []
-    out.append("# 🧩 Cross-File Variable Usage Report\n")
-    out.append("Lists all variables (top-level assignments) referenced in more than one module.\n")
+    output_path = Path(output_path)
 
-    if not usage_map:
-        out.append("_No cross-file variable usage detected._")
-    else:
-        for fqname, modules in sorted(usage_map.items()):
-            out.append(f"## `{fqname}`")
-            out.append(f"**Used in {len(modules)} files:**")
-            for mod in modules:
-                out.append(f"- `{mod}`")
-            out.append("")  # blank line
+    lines = ["# Variable Usage Report\n"]
+    for varname, usage in sorted(usage_map.get("variable_usage", {}).items()):
+        lines.append(f"\n## `{varname}`")
+        for user in usage:
+            lines.append(f"- `{user}`")
 
-    Path(output_path).write_text("\n".join(out), encoding="utf-8")
-    print(f"✅ Exported variable usage report → {output_path}")
+    output_path.write_text("\n".join(lines), encoding="utf-8")
+    return str(output_path)

@@ -19,6 +19,9 @@ Dispatches to the correct mutation function for test scaffolding.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_utils.evolve_add_modifier
+- **calls**: utils.technique_utils.evolve_add_effect
+- **calls**: utils.technique_utils.evolve_replace_effect
+
 
 ---

@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #loader #code
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,13 @@ Parse a single Python file and return a list of symbols with metadata.
 ```
 
 ## Links
-None
+- **calls**: loaders.code_loader.visit
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+- **calls**: loaders.code_loader.extract_nodes_from_ast
+- **calls**: loaders.code_loader.ParentNodeVisitor
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+- **calls**: loaders.code_loader.visit
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+
 
 ---

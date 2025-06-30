@@ -19,6 +19,7 @@ Generate a new floorplan map with initialized tiles.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_empty_tile
+
 
 ---

@@ -19,6 +19,7 @@ Walk the entity graph, applying a visitor function to each node.
 ```
 
 ## Links
-None
+- **calls**: loaders.code_loader.visit
+
 
 ---

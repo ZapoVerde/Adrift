@@ -19,6 +19,10 @@ Converts integer boost level to a string rarity tier.
 ```
 
 ## Links
-None
+- **calls**: flow.actor_mutation_flow._boost_level_to_rarity
+- **calls**: utils.actor_offer_utils._boost_level_to_rarity
+- **calls**: definitions.evolution_offer_generator.generate_evolution_offer
+- **calls**: utils.technique_mutation_utils.generate_evolution_offer
+
 
 ---

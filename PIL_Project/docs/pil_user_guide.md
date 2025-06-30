@@ -61,6 +61,8 @@ Once PIL is set up:
 * Run `run_pil.py` after each meaningful code change or refactor.
 * Upload the latest `entity_graph.json` to the AI assistant at the start of each working session.
 * If `scripts/snapshot_project.py` is present, a snapshot of the full project as well as a copy of the latest entity graph will be created automatically after each pipeline run.
+* ⚠️ **The entire contents of the `exports/` folder are deleted and regenerated on each run.** Do not store anything here that you want to keep — this folder is volatile by design.
+* ✅ **Only the most recent `entity_graph.json` is stored in `exports/`.** Always use this file as the current source of truth. For older versions, consult the timestamped archives in the `snapshots/` directory.
 
 ### 🧠 Feeding the Entity Graph to the AI Assistant
 

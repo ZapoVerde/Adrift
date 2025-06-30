@@ -19,6 +19,9 @@ Generate a base technique scaffold with random components for a given skill.
 ```
 
 ## Links
-None
+- **calls**: utils.technique_utils.evolve_add_modifier
+- **calls**: utils.technique_utils.evolve_add_effect
+- **calls**: utils.technique_utils.evolve_replace_effect
+
 
 ---

@@ -19,6 +19,7 @@ Computes the total cover_rating from objects along the path.
 ```
 
 ## Links
-None
+- **calls**: utils.cover_utils.get_cover_objects_along_path
+
 
 ---

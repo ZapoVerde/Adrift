@@ -19,6 +19,7 @@
 ```
 
 ## Links
-None
+- **calls**: loaders.asset_loader.infer_tags_from_path
+
 
 ---

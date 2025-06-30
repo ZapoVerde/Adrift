@@ -1,38 +1,45 @@
 # pil_meta/exporters/json_exporter.py
-"""
-Export the full entity graph to a structured JSON file.
 
-Part of the PIL output pipeline. This module writes the final metadata graph
-produced by `entity_graph_builder.py` to disk in a machine-readable format.
-
-Outputs:
-  - entity_graph.json → Complete node metadata and semantic linkages
-
-Conforms to the PIL metadata strategy:
-  - Includes docstrings, tags, governance flags, and semantic edges
-  - Supports downstream validation, journal linkage, and vault export
-"""
-
-import os
 import json
+from datetime import datetime
 from pathlib import Path
+from typing import Union, Optional
 
-def export_entity_graph(graph: dict, output_dir: str) -> None:
+def export_entity_graph(graph: dict,
+                        output_dir: Union[str, Path],
+                        project_name: str = "project",
+                        timestamp: Optional[str] = None) -> dict:
     """
-    Write the in-memory entity graph to `entity_graph.json`.
+    Exports the entity graph as both a stable file and timestamped variant.
 
-    Parameters:
-        graph (dict): The keyed graph structure, e.g., { fqname: { ... } }
-        output_dir (str): Directory to emit the file into (relative or absolute)
+    Args:
+        graph (dict): Entity graph.
+        output_dir (Union[str, Path]): Where to write output files.
+        project_name (str): Optional project name to prefix timestamped file.
+        timestamp (Optional[str]): Optional timestamp override (format: YYYYMMDD_HHMMSS).
 
-    Notes:
-        - Output path is `${output_dir}/entity_graph.json`
-        - Will create the directory if it does not exist
-        - File is formatted with 2-space indentation
+    Returns:
+        dict: {
+            "stable": path to entity_graph.json,
+            "timestamped": path to entity_graph_<project>_<timestamp>.json
+        }
     """
-    outdir = Path(output_dir)
-    outdir.mkdir(parents=True, exist_ok=True)
-    outfile = outdir / "entity_graph.json"
-    with open(outfile, "w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2, ensure_ascii=False)
-    print(f"✅ Exported entity graph → {outfile}")
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    ts = timestamp or datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    stable_path = output_dir / "entity_graph.json"
+    ts_filename = f"entity_graph_{project_name}_{ts}.json"
+    ts_path = output_dir / ts_filename
+
+    with open(stable_path, "w", encoding="utf-8") as f:
+        json.dump(graph, f, indent=2)
+
+    with open(ts_path, "w", encoding="utf-8") as f:
+        json.dump(graph, f, indent=2)
+
+    return {
+        "stable": str(stable_path),
+        "timestamped": str(ts_path)
+    }

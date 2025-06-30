@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #filesystem #vault
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Replace slashes, quotes, and other problematic chars for filesystem safety.
+Sanitizes a string for use as a safe Markdown filename.
 
 ## Full Docstring
 ```
@@ -19,6 +19,8 @@ Replace slashes, quotes, and other problematic chars for filesystem safety.
 ```
 
 ## Links
-None
+- **calls**: exporters.markdown_vault_exporter.friendly_name
+- **calls**: exporters.markdown_vault_exporter._sanitize_filename
+
 
 ---

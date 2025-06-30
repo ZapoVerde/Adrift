@@ -19,6 +19,7 @@ Markdown Exporter (exporters)
 ```
 
 ## Links
-None
+- **calls**: exporters.markdown_vault_exporter._sanitize_filename
+
 
 ---

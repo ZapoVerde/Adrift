@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Export the usage map as usage_map.json.
+Export the usage map to both a timestamped and stable JSON file.
 
 ## Full Docstring
 ```

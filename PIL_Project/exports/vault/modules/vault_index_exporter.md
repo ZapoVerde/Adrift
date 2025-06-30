@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Vault Index Exporter (exporters)
+
 
 ## Full Docstring
 ```

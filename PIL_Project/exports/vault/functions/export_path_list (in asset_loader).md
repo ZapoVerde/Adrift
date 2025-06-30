@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #assets #pathing
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Ensures all paths in the list are absolute, resolving relative paths from config file's directory.
+Resolves path list entries to absolute paths, using config base dir as anchor.
 
 ## Full Docstring
 ```
@@ -19,6 +19,7 @@ Ensures all paths in the list are absolute, resolving relative paths from config
 ```
 
 ## Links
-None
+- **calls**: loaders.asset_loader.infer_tags_from_path
+
 
 ---

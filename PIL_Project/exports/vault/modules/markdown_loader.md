@@ -19,6 +19,7 @@ Markdown Loader
 ```
 
 ## Links
-None
+- **calls**: loaders.markdown_loader.parse_frontmatter
+
 
 ---

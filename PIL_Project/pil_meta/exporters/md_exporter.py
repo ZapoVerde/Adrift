@@ -3,26 +3,19 @@
 Markdown Exporter (exporters)
 
 Exports a single code entity as a Markdown file with metadata and Obsidian links.
-Intended for use in manual or fine-grained exports, not for bulk vault building.
 """
 
 import os
 from pathlib import Path
 
-def export_entity_markdown(entity: dict, output_dir: str) -> None:
-    """
-    Export a single entity as a Markdown file with metadata and Obsidian links.
+def export_entity_markdown(entity: dict, output_dir: str) -> str:
+    """Export a single entity as a Markdown file with metadata and Obsidian links.
+    @tags: ["export", "markdown"]
+    @status: "stable"
+    @visibility: "public"
 
-    Args:
-        entity (dict): Entity metadata dictionary, e.g.
-            {
-                "fqname": "module.func",
-                "type": "function",
-                "description": "...",
-                "tags": ["combat", "stateful"],
-                ...
-            }
-        output_dir (str): Directory to write markdown file.
+    Returns:
+        str: The full path to the written Markdown file.
     """
     outdir = Path(output_dir)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -45,7 +38,6 @@ def export_entity_markdown(entity: dict, output_dir: str) -> None:
         links_md += f"- **journal**: {entity['linked_journal_entry']}\n"
     tags_md = " ".join(f"#{t.replace(' ', '_')}" for t in tags)
 
-    # Sanitize filename for filesystem
     def _sanitize_filename(s):
         return (
             s.replace("/", "_")
@@ -91,4 +83,4 @@ def export_entity_markdown(entity: dict, output_dir: str) -> None:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(md)
 
-    print(f"✅ Exported entity markdown → {filepath}")
+    return str(filepath)

@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Export the full entity graph to a structured JSON file.
+
 
 ## Full Docstring
 ```

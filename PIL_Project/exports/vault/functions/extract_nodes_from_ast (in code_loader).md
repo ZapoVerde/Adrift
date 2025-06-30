@@ -5,7 +5,7 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #loader #code #ast
 **Deprecated:** ❌
 
 ---
@@ -19,6 +19,13 @@ Extract all classes, functions, methods, variables, and modules from the AST of 
 ```
 
 ## Links
-None
+- **calls**: loaders.code_loader.visit
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+- **calls**: loaders.code_loader.extract_nodes_from_ast
+- **calls**: loaders.code_loader.ParentNodeVisitor
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+- **calls**: loaders.code_loader.visit
+- **calls**: utils.docstring_utils.extract_docstring_metadata
+
 
 ---

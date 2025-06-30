@@ -19,6 +19,10 @@ Returns True if the actor currently owns the given skill.
 ```
 
 ## Links
-None
+- **calls**: definitions.actor.initialize_skill_if_missing
+- **calls**: helpers.actor_helpers.initialize_skill_if_missing
+- **calls**: definitions.actor.initialize_technique_if_missing
+- **calls**: helpers.actor_helpers.initialize_technique_if_missing
+
 
 ---

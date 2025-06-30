@@ -19,6 +19,7 @@ Retrieve a tile safely from the floorplan.
 ```
 
 ## Links
-None
+- **calls**: definitions.floorplan.create_empty_tile
+
 
 ---

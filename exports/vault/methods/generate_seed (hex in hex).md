@@ -19,6 +19,7 @@ Generate a unique integer seed based on tile coordinates.
 ```
 
 ## Links
-None
+- **calls**: world.hex.generate_seed
+
 
 ---
