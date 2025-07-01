@@ -29,8 +29,11 @@ def test_print_full_report_mocked(monkeypatch):
     result.project_name = "TestProj"
     result.entity_graph = {"foo": {}}
     result.combined_paths = {}
+
+    # Mark vault export as disabled
     result.vault_files = []
-    result.index_path = "index.md"
+    result.index_path = "[disabled]"
+
     result.journal_entries = []
     result.missing_docstrings = 0
     result.orphaned = 0
@@ -51,7 +54,10 @@ def test_print_full_report_mocked(monkeypatch):
 
 def test_run_pipeline_missing_config(monkeypatch):
     """run_pipeline exits with code 1 on missing config."""
-    monkeypatch.setattr("pil_meta.loaders.config_loader.load_config", lambda path: (_ for _ in ()).throw(FileNotFoundError("not found")))
+    monkeypatch.setattr(
+        "pil_meta.loaders.config_loader.load_config",
+        lambda path: (_ for _ in ()).throw(FileNotFoundError("not found"))
+    )
     with pytest.raises(SystemExit) as excinfo:
         run_pipeline("fake_config.json")
     assert excinfo.value.code == 1

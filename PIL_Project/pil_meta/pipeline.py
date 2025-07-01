@@ -27,7 +27,6 @@ from pil_meta.builders.usage_map_builder import build_usage_map
 
 from pil_meta.exporters.json_exporter import export_entity_graph
 from pil_meta.exporters.usage_map_exporter import export_usage_map
-from pil_meta.exporters.vault_index_exporter import export_vault_index
 
 from pil_meta.utils.snapshot_utils import take_project_snapshot
 from pil_meta.utils.export_cleanup_utils import clean_exports_dir
@@ -66,14 +65,11 @@ class PipelineResult:
     graph_paths: Optional[Dict]
     usage_paths: Optional[Dict]
     combined_paths: Optional[Dict]
-    vault_files: List[str]
-    index_path: str
     project_name: str
     timestamp: str
     config: Dict
     asset_symbols: List
     code_symbols: List
-    journal_entries: List
     missing_docstrings: int
     orphaned: int
     snapshot_path: str
@@ -93,63 +89,15 @@ class PipelineResult:
         self.graph_paths = None
         self.usage_paths = None
         self.combined_paths = None
-        self.vault_files = []
-        self.index_path = ""
         self.project_name = ""
         self.timestamp = ""
         self.config = {}
         self.asset_symbols = []
         self.code_symbols = []
-        self.journal_entries = []
         self.missing_docstrings = 0
         self.orphaned = 0
         self.snapshot_path = ""
         self.snapshot_file_count = 0
-
-def print_full_report(result: PipelineResult) -> None:
-    """Prints the entire structured pipeline report in one call.
-
-    @tags: ["reporting", "output"]
-    @status: "stable"
-    @visibility: "internal"
-    """
-    def build_tree_lines(tree, roots, depth=0):
-        lines = []
-        indent = "    " * depth
-        for root in roots:
-            if root not in tree:
-                continue
-            node = tree[root]
-            line = indent + Path(root).name + "/"
-            if node.get("skipped"):
-                line += " [SKIPPED]"
-            elif node.get("ignored"):
-                line += " [IGNORED]"
-            else:
-                assets_summary = ", ".join(f"{ext}: {count}" for ext, count in sorted(node["assets"].items()))
-                parts = []
-                if node["num_py"]:
-                    parts.append(f"{node['num_py']} .py")
-                if assets_summary:
-                    parts.append(assets_summary)
-                if parts:
-                    line += " (" + ", ".join(parts) + ")"
-            lines.append(line)
-            child_lines = build_tree_lines(tree, sorted(node["children"], key=lambda c: Path(c).name), depth + 1)
-            lines.extend(child_lines)
-        return lines
-
-    folder_tree_lines = build_tree_lines(result.folder_tree, result.scan_roots)
-
-    print_run_context(**result.context)
-    print_folder_tree_summary(folder_tree_lines)
-    print_asset_scan_summary(result.asset_exts, len(result.asset_files))
-    print_symbol_extraction(len(result.code_symbols), len(result.asset_symbols), result.project_name)
-    print_entity_graph(len(result.entity_graph or {}), linkages_injected=True)
-    print_exports(result.combined_paths or {}, len(result.vault_files), result.index_path)
-    print_governance_summary(result.missing_docstrings, result.orphaned)
-    print_journal_entries_loaded(len(result.journal_entries))
-    print_pipeline_complete(result.snapshot_file_count, result.snapshot_path)
 
 def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
     """Orchestrates the PIL metadata pipeline (scan + process + reporting).
@@ -158,7 +106,7 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
 
     @tags: ["entrypoint", "scan", "export"]
     @status: "stable"
-    @visibility: "public"
+    @visibility: "public"]
 
     Args:
         config_path (str): Path to the config JSON used to drive the pipeline.
@@ -195,11 +143,6 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
         folder_tree = {}
 
         def get_parent_dir(path: str) -> str:
-            """Returns the parent folder path of a given path string.
-
-            @tags: ["path", "tree"]
-            @status: "internal"
-            """
             return str(Path(path).parent)
 
         for scan_root in scan_roots:
@@ -285,13 +228,12 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
         clean_exports_dir(config["output_dir"])
         graph_paths = export_entity_graph(entity_graph, config["output_dir"], project_name, timestamp)
         usage_paths = export_usage_map(build_usage_map(entity_graph), config["output_dir"], project_name, timestamp)
-        result.index_path = export_vault_index(entity_graph, config["vault_dir"], project_name, timestamp)
 
         result.graph_paths = graph_paths
         result.usage_paths = usage_paths
         result.combined_paths = {**graph_paths, **usage_paths} if graph_paths and usage_paths else {}
 
-        result.journal_entries = load_markdown_entries(config["journal_path"])
+        #result.journal_entries = load_markdown_entries(config["journal_path"])
         result.missing_docstrings = sum(1 for n in entity_graph.values() if not n.get("docstring_present"))
         result.orphaned = sum(1 for n in entity_graph.values() if n.get("is_orphaned"))
 
@@ -303,12 +245,62 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
         except Exception:
             result.snapshot_file_count = 0
 
-        print_full_report(result)
+        print_run_context(**result.context)
+        print_folder_tree_summary(build_tree_lines(result.folder_tree, result.scan_roots))
+        print_asset_scan_summary(result.asset_exts, len(result.asset_files))
+        print_symbol_extraction(len(result.code_symbols), len(result.asset_symbols), result.project_name)
+        print_entity_graph(len(result.entity_graph or {}), linkages_injected=True)
+        print_exports(result.combined_paths or {})
+        print_governance_summary(result.missing_docstrings, result.orphaned)
+        #print_journal_entries_loaded(len(result.journal_entries))
+        print_pipeline_complete(result.snapshot_file_count, result.snapshot_path)
+
         return result
 
     except Exception:
         traceback.print_exc()
         sys.exit(1)
+
+
+def build_tree_lines(tree: dict, roots: list, depth: int = 0) -> list:
+    """Builds indented string lines from a folder tree dictionary for printing.
+
+    @tags: ["reporting", "tree"]
+    @status: "stable"]
+    @visibility: "internal"]
+
+    Args:
+        tree (dict): Nested folder structure.
+        roots (list): Root-level folders to print.
+        depth (int): Indentation level (used for recursion).
+
+    Returns:
+        list[str]: Formatted indented lines.
+    """
+    lines = []
+    indent = "    " * depth
+    for root in roots:
+        if root not in tree:
+            continue
+        node = tree[root]
+        line = indent + Path(root).name + "/"
+        if node.get("skipped"):
+            line += " [SKIPPED]"
+        elif node.get("ignored"):
+            line += " [IGNORED]"
+        else:
+            assets_summary = ", ".join(f"{ext}: {count}" for ext, count in sorted(node["assets"].items()))
+            parts = []
+            if node["num_py"]:
+                parts.append(f"{node['num_py']} .py")
+            if assets_summary:
+                parts.append(assets_summary)
+            if parts:
+                line += " (" + ", ".join(parts) + ")"
+        lines.append(line)
+        child_lines = build_tree_lines(tree, sorted(node["children"], key=lambda c: Path(c).name), depth + 1)
+        lines.extend(child_lines)
+    return lines
 
 if __name__ == "__main__":
     run_pipeline()

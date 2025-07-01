@@ -5,10 +5,7 @@
     "./tests",
     "./scripts"
   ],
-  "journal_path": "./documents",
   "output_dir": "./exports",
-  "docs_dir": "./docs",
-  "vault_dir": "./exports/vault",
   "snapshot_dir": "./snapshots",
   "config_self_path": "./pilconfig.json",
   "pil_module_path": ".",

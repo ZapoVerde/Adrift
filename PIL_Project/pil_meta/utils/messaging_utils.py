@@ -1,96 +1,88 @@
 # pil_meta/utils/messaging_utils.py
 """
-Centralized messaging utility for PIL with structured reporting format.
-Supports clean, grouped output with headers, emojis, and indentation.
+Formatted reporting helpers for pipeline status, governance, and context.
 
-@tags: ["utility", "messaging", "reporting"]
+@tags: ["utils", "messaging"]
 @status: "stable"
-@visibility: "public"
 """
 
-import sys
-
-DEBUG_ENABLED = False
+import os
+import json
+from pathlib import Path
+from datetime import datetime
 
 def set_debug(enabled: bool) -> None:
-    """Enable or disable debug messages globally."""
-    global DEBUG_ENABLED
-    DEBUG_ENABLED = enabled
+    os.environ["PIL_DEBUG"] = "1" if enabled else "0"
 
-def debug(msg: str, indent: int = 0) -> None:
-    """Print debug messages if debug enabled."""
-    if DEBUG_ENABLED:
-        prefix = "    " * indent
-        print(f"{prefix}[DEBUG] {msg}", file=sys.stdout)
-
-def _print_section_header(title: str, icon: str = "──────────────────────────────") -> None:
-    print(f"\n{icon}\n{title}\n{icon}")
-
-def info(msg: str, indent: int = 0) -> None:
-    """Print informational message with optional indentation."""
-    prefix = "    " * indent
-    print(f"{prefix}[INFO] {msg}", file=sys.stdout)
-
-def warning(msg: str, indent: int = 0) -> None:
-    """Print warning message with optional indentation."""
-    prefix = "    " * indent
-    print(f"{prefix}[WARNING] {msg}", file=sys.stderr)
-
-def error(msg: str, indent: int = 0) -> None:
-    """Print error message with optional indentation."""
-    prefix = "    " * indent
-    print(f"{prefix}[ERROR] {msg}", file=sys.stderr)
+def debug(msg: str) -> None:
+    if os.getenv("PIL_DEBUG") == "1":
+        print(f"[DEBUG] {msg}")
 
 def print_run_context(script: str, config: str, date: str) -> None:
-    _print_section_header("🧠 PIL Pipeline: RUN & SCAN", "───────────── PIL Pipeline: RUN & SCAN ─────────────")
-    info(f"Script: {script}", indent=1)
-    info(f"Config: {config}", indent=1)
-    info(f"Date: {date}", indent=1)
+    print("\n──────────────────────────────")
+    print("🧠 PIL Pipeline Execution")
+    print("──────────────────────────────")
+    print(f"    [INFO] Script:            {script}")
+    print(f"    [INFO] Config used:      {config}")
+    print(f"    [INFO] Timestamp:        {date}")
 
-def print_folder_tree_summary(tree_lines: list[str]) -> None:
-    _print_section_header("📁 Folder Structure (Python Source)", "──────────────────────────────")
-    for line in tree_lines:
-        print(line)
+def print_folder_tree_summary(lines: list) -> None:
+    print("\n──────────────────────────────")
+    print("📁 Folder Scan Summary")
+    print("──────────────────────────────")
+    for line in lines:
+        print(f"    {line}")
 
-def print_asset_scan_summary(supported: list[str], found_count: int) -> None:
-    _print_section_header("🗂️ Asset Scan", "──────────────────────────────")
-    info(f"Supported types: {', '.join(supported)}", indent=1)
-    info(f"Asset files found: {found_count}", indent=1)
+def print_asset_scan_summary(exts: list, count: int) -> None:
+    print("\n──────────────────────────────")
+    print("🎨 Asset Scan Summary")
+    print("──────────────────────────────")
+    print(f"    [INFO] Asset extensions:  {', '.join(exts)}")
+    print(f"    [INFO] Total assets:      {count}")
 
-def print_symbol_extraction(code_symbols: int, asset_files: int, root: str) -> None:
-    _print_section_header("🔬 Symbol Extraction", "──────────────────────────────")
-    info(f"Code symbols: {code_symbols}", indent=1)
-    info(f"Asset files: {asset_files}", indent=1)
-    info(f"Project root: {root}", indent=1)
+def print_symbol_extraction(code_count: int, asset_count: int, project: str) -> None:
+    print("\n──────────────────────────────")
+    print("🔍 Symbol Extraction")
+    print("──────────────────────────────")
+    print(f"    [INFO] Code symbols:      {code_count}")
+    print(f"    [INFO] Asset symbols:     {asset_count}")
+    print(f"    [INFO] Project name:      {project}")
 
-def print_entity_graph(nodes: int, linkages_injected: bool) -> None:
-    _print_section_header("📊 Entity Graph", "──────────────────────────────")
-    info(f"Total nodes: {nodes}", indent=1)
-    info(f"Linkages injected: {'Yes' if linkages_injected else 'No'}", indent=1)
+def print_entity_graph(node_count: int, linkages_injected: bool = False) -> None:
+    print("\n──────────────────────────────")
+    print("📈 Entity Graph")
+    print("──────────────────────────────")
+    print(f"    [INFO] Nodes in graph:    {node_count}")
+    print(f"    [INFO] Linkages applied:  {'Yes' if linkages_injected else 'No'}")
 
-def print_exports(export_paths: dict, vault_files_count: int, index_path: str) -> None:
-    _print_section_header("📤 Exports Written", "──────────────────────────────")
-    info(f"Entity graph:        {export_paths.get('timestamped', 'N/A')}", indent=1)
-    usage_map_path = export_paths.get('timestamped')
-    info(f"Usage map:           {usage_map_path if usage_map_path else 'N/A'}", indent=1)
-    info(f"Vault files:         {vault_files_count} Markdown files", indent=1)
-    info(f"Vault index:         {index_path}", indent=1)
-
-def print_governance_summary(missing_docstrings: int, orphaned: int) -> None:
-    if missing_docstrings > 0 or orphaned > 0:
-        warning("Governance issues detected:")
-        if missing_docstrings > 0:
-            warning(f" - Missing docstrings: {missing_docstrings}")
-        if orphaned > 0:
-            warning(f" - Orphaned entities: {orphaned}")
-        warning("Please ask the assistant to review governance exceptions if needed.")
+def print_exports(paths: dict) -> None:
+    print("\n──────────────────────────────")
+    print("📤 Exports Written")
+    print("──────────────────────────────")
+    if not paths:
+        print("    [WARNING] No exports recorded.")
     else:
-        info("✅ No governance exceptions detected. Metadata quality is good.")
+        for label, path in paths.items():
+            label_fmt = label.replace("_", " ").capitalize()
+            print(f"    [INFO] {label_fmt}:  {path}")
+
+def print_governance_summary(missing: int, orphaned: int) -> None:
+    print("\n[WARNING] Governance issues detected:")
+    if missing:
+        print(f"[WARNING]  - Missing docstrings: {missing}")
+    if orphaned:
+        print(f"[WARNING]  - Orphaned entities: {orphaned}")
+    if missing or orphaned:
+        print("[WARNING] Please ask the assistant to review governance exceptions if needed.")
 
 def print_journal_entries_loaded(count: int) -> None:
-    _print_section_header("📓 Journal/Design Documentation", "──────────────────────────────")
-    info(f"Journal entries loaded: {count}", indent=1)
+    print("\n──────────────────────────────")
+    print("📓 Journal/Design Documentation")
+    print("──────────────────────────────")
+    print(f"    [INFO] Journal entries loaded: {count}")
 
-def print_pipeline_complete(snapshot_count: int, snapshot_path: str) -> None:
-    _print_section_header("✅ Pipeline complete", "──────────────────────────────")
-    info(f"Snapshot: {snapshot_count} files → {snapshot_path}", indent=1)
+def print_pipeline_complete(file_count: int, snapshot_path: str) -> None:
+    print("\n──────────────────────────────")
+    print("✅ Pipeline complete")
+    print("──────────────────────────────")
+    print(f"    [INFO] Snapshot: {file_count} files → {snapshot_path}")
