@@ -1,0 +1,754 @@
+{
+  "timestamp": "20250701_105217",
+  "project_name": "pil_meta",
+  "usage_map": {
+    "pipeline": {
+      "used_by": [],
+      "uses": [
+        "builders.entity_graph_builder.build_entity_graph",
+        "builders.linkage_builder.inject_call_links",
+        "builders.usage_map_builder.build_usage_map",
+        "exporters.json_exporter.export_entity_graph",
+        "exporters.usage_map_exporter.export_usage_map",
+        "exporters.vault_index_exporter.export_vault_index",
+        "loaders.asset_loader.load_asset_symbols",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.config_loader.load_config",
+        "loaders.markdown_loader.load_markdown_entries",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "utils.export_cleanup_utils.clean_exports_dir",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.set_debug",
+        "utils.snapshot_utils.take_project_snapshot"
+      ]
+    },
+    "builders.entity_graph_builder.build_entity_graph": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "builders.linkage_builder.inject_call_links": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "builders.linkage_builder.extract_called_functions"
+      ]
+    },
+    "builders.usage_map_builder.build_usage_map": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "exporters.json_exporter.export_entity_graph": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "exporters.usage_map_exporter.export_usage_map": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "exporters.vault_index_exporter.export_vault_index": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "loaders.asset_loader.load_asset_symbols": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "loaders.asset_loader.infer_tags_from_path"
+      ]
+    },
+    "loaders.code_loader.load_code_symbols": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.visit",
+        "utils.docstring_utils.extract_docstring_metadata"
+      ]
+    },
+    "loaders.config_loader.load_config": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "loaders.markdown_loader.load_markdown_entries": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "loaders.markdown_loader.parse_frontmatter"
+      ]
+    },
+    "pipeline.PipelineResult": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "builders.entity_graph_builder.build_entity_graph",
+        "builders.linkage_builder.inject_call_links",
+        "builders.usage_map_builder.build_usage_map",
+        "exporters.json_exporter.export_entity_graph",
+        "exporters.usage_map_exporter.export_usage_map",
+        "exporters.vault_index_exporter.export_vault_index",
+        "loaders.asset_loader.load_asset_symbols",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.config_loader.load_config",
+        "loaders.markdown_loader.load_markdown_entries",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "utils.export_cleanup_utils.clean_exports_dir",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.set_debug",
+        "utils.snapshot_utils.take_project_snapshot"
+      ]
+    },
+    "pipeline.print_full_report": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "builders.entity_graph_builder.build_entity_graph",
+        "builders.linkage_builder.inject_call_links",
+        "builders.usage_map_builder.build_usage_map",
+        "exporters.json_exporter.export_entity_graph",
+        "exporters.usage_map_exporter.export_usage_map",
+        "exporters.vault_index_exporter.export_vault_index",
+        "loaders.asset_loader.load_asset_symbols",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.config_loader.load_config",
+        "loaders.markdown_loader.load_markdown_entries",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "utils.export_cleanup_utils.clean_exports_dir",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.set_debug",
+        "utils.snapshot_utils.take_project_snapshot"
+      ]
+    },
+    "pipeline.run_pipeline": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "builders.entity_graph_builder.build_entity_graph",
+        "builders.linkage_builder.inject_call_links",
+        "builders.usage_map_builder.build_usage_map",
+        "exporters.json_exporter.export_entity_graph",
+        "exporters.usage_map_exporter.export_usage_map",
+        "exporters.vault_index_exporter.export_vault_index",
+        "loaders.asset_loader.load_asset_symbols",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.config_loader.load_config",
+        "loaders.markdown_loader.load_markdown_entries",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "utils.export_cleanup_utils.clean_exports_dir",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.set_debug",
+        "utils.snapshot_utils.take_project_snapshot"
+      ]
+    },
+    "utils.export_cleanup_utils.clean_exports_dir": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "utils.messaging_utils.print_asset_scan_summary": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_entity_graph": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_exports": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_folder_tree_summary": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_governance_summary": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_journal_entries_loaded": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_pipeline_complete": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_run_context": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.print_symbol_extraction": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.set_debug": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.snapshot_utils.take_project_snapshot": {
+      "used_by": [
+        "pipeline",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "pipeline.__init__"
+      ],
+      "uses": []
+    },
+    "pipeline.__init__": {
+      "used_by": [],
+      "uses": [
+        "builders.entity_graph_builder.build_entity_graph",
+        "builders.linkage_builder.inject_call_links",
+        "builders.usage_map_builder.build_usage_map",
+        "exporters.json_exporter.export_entity_graph",
+        "exporters.usage_map_exporter.export_usage_map",
+        "exporters.vault_index_exporter.export_vault_index",
+        "loaders.asset_loader.load_asset_symbols",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.config_loader.load_config",
+        "loaders.markdown_loader.load_markdown_entries",
+        "pipeline.PipelineResult",
+        "pipeline.print_full_report",
+        "pipeline.run_pipeline",
+        "utils.export_cleanup_utils.clean_exports_dir",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.set_debug",
+        "utils.snapshot_utils.take_project_snapshot"
+      ]
+    },
+    "builders.linkage_builder": {
+      "used_by": [],
+      "uses": [
+        "builders.linkage_builder.extract_called_functions"
+      ]
+    },
+    "builders.linkage_builder.extract_called_functions": {
+      "used_by": [
+        "builders.linkage_builder",
+        "builders.linkage_builder.extract_called_functions",
+        "builders.linkage_builder.inject_call_links"
+      ],
+      "uses": [
+        "builders.linkage_builder.extract_called_functions"
+      ]
+    },
+    "exporters.markdown_vault_exporter": {
+      "used_by": [],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.friendly_name"
+      ]
+    },
+    "exporters.markdown_vault_exporter._sanitize_filename": {
+      "used_by": [
+        "exporters.markdown_vault_exporter",
+        "exporters.markdown_vault_exporter.friendly_name",
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.export_markdown_vault",
+        "exporters.md_exporter",
+        "exporters.md_exporter.export_entity_markdown"
+      ],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.friendly_name"
+      ]
+    },
+    "exporters.markdown_vault_exporter.friendly_name": {
+      "used_by": [
+        "exporters.markdown_vault_exporter",
+        "exporters.markdown_vault_exporter.friendly_name",
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.export_markdown_vault"
+      ],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.friendly_name"
+      ]
+    },
+    "exporters.markdown_vault_exporter.export_markdown_vault": {
+      "used_by": [],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename",
+        "exporters.markdown_vault_exporter.friendly_name"
+      ]
+    },
+    "exporters.md_exporter": {
+      "used_by": [],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename"
+      ]
+    },
+    "exporters.md_exporter.export_entity_markdown": {
+      "used_by": [],
+      "uses": [
+        "exporters.markdown_vault_exporter._sanitize_filename"
+      ]
+    },
+    "loaders.asset_loader": {
+      "used_by": [],
+      "uses": [
+        "loaders.asset_loader.infer_tags_from_path"
+      ]
+    },
+    "loaders.asset_loader.infer_tags_from_path": {
+      "used_by": [
+        "loaders.asset_loader",
+        "loaders.asset_loader.SUPPORTED_EXTENSIONS",
+        "loaders.asset_loader.infer_tags_from_path",
+        "loaders.asset_loader.export_path_list",
+        "loaders.asset_loader.load_asset_symbols"
+      ],
+      "uses": [
+        "loaders.asset_loader.infer_tags_from_path"
+      ]
+    },
+    "loaders.asset_loader.SUPPORTED_EXTENSIONS": {
+      "used_by": [],
+      "uses": [
+        "loaders.asset_loader.infer_tags_from_path"
+      ]
+    },
+    "loaders.asset_loader.export_path_list": {
+      "used_by": [],
+      "uses": [
+        "loaders.asset_loader.infer_tags_from_path"
+      ]
+    },
+    "loaders.code_loader": {
+      "used_by": [],
+      "uses": [
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.visit",
+        "utils.docstring_utils.extract_docstring_metadata"
+      ]
+    },
+    "loaders.code_loader.ParentNodeVisitor": {
+      "used_by": [
+        "loaders.code_loader",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.visit"
+      ],
+      "uses": [
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.visit",
+        "utils.docstring_utils.extract_docstring_metadata"
+      ]
+    },
+    "loaders.code_loader.extract_nodes_from_ast": {
+      "used_by": [
+        "loaders.code_loader",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.visit"
+      ],
+      "uses": [
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.visit",
+        "utils.docstring_utils.extract_docstring_metadata"
+      ]
+    },
+    "loaders.code_loader.visit": {
+      "used_by": [
+        "loaders.code_loader",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.visit",
+        "utils.graph_utils",
+        "utils.graph_utils.walk_graph"
+      ],
+      "uses": [
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.visit",
+        "utils.docstring_utils.extract_docstring_metadata"
+      ]
+    },
+    "utils.docstring_utils.extract_docstring_metadata": {
+      "used_by": [
+        "loaders.code_loader",
+        "loaders.code_loader.extract_nodes_from_ast",
+        "loaders.code_loader.load_code_symbols",
+        "loaders.code_loader.ParentNodeVisitor",
+        "loaders.code_loader.visit"
+      ],
+      "uses": []
+    },
+    "loaders.markdown_loader": {
+      "used_by": [],
+      "uses": [
+        "loaders.markdown_loader.parse_frontmatter"
+      ]
+    },
+    "loaders.markdown_loader.parse_frontmatter": {
+      "used_by": [
+        "loaders.markdown_loader",
+        "loaders.markdown_loader.FRONTMATTER_RE",
+        "loaders.markdown_loader.parse_frontmatter",
+        "loaders.markdown_loader.load_markdown_entries"
+      ],
+      "uses": [
+        "loaders.markdown_loader.parse_frontmatter"
+      ]
+    },
+    "loaders.markdown_loader.FRONTMATTER_RE": {
+      "used_by": [],
+      "uses": [
+        "loaders.markdown_loader.parse_frontmatter"
+      ]
+    },
+    "utils.graph_utils": {
+      "used_by": [],
+      "uses": [
+        "loaders.code_loader.visit"
+      ]
+    },
+    "utils.graph_utils.walk_graph": {
+      "used_by": [],
+      "uses": [
+        "loaders.code_loader.visit"
+      ]
+    },
+    "utils.messaging_utils": {
+      "used_by": [],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils._print_section_header": {
+      "used_by": [
+        "utils.messaging_utils",
+        "utils.messaging_utils.DEBUG_ENABLED",
+        "utils.messaging_utils.set_debug",
+        "utils.messaging_utils.debug",
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning",
+        "utils.messaging_utils.error",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.info": {
+      "used_by": [
+        "utils.messaging_utils",
+        "utils.messaging_utils.DEBUG_ENABLED",
+        "utils.messaging_utils.set_debug",
+        "utils.messaging_utils.debug",
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning",
+        "utils.messaging_utils.error",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.warning": {
+      "used_by": [
+        "utils.messaging_utils",
+        "utils.messaging_utils.DEBUG_ENABLED",
+        "utils.messaging_utils.set_debug",
+        "utils.messaging_utils.debug",
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning",
+        "utils.messaging_utils.error",
+        "utils.messaging_utils.print_run_context",
+        "utils.messaging_utils.print_folder_tree_summary",
+        "utils.messaging_utils.print_asset_scan_summary",
+        "utils.messaging_utils.print_symbol_extraction",
+        "utils.messaging_utils.print_entity_graph",
+        "utils.messaging_utils.print_exports",
+        "utils.messaging_utils.print_governance_summary",
+        "utils.messaging_utils.print_journal_entries_loaded",
+        "utils.messaging_utils.print_pipeline_complete"
+      ],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.DEBUG_ENABLED": {
+      "used_by": [],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.debug": {
+      "used_by": [],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    },
+    "utils.messaging_utils.error": {
+      "used_by": [],
+      "uses": [
+        "utils.messaging_utils._print_section_header",
+        "utils.messaging_utils.info",
+        "utils.messaging_utils.warning"
+      ]
+    }
+  }
+}

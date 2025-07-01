@@ -14,16 +14,25 @@ from pathlib import Path
 
 # Embedded config — originally from pilconfig_self.json
 PIL_CONFIG = {
-    "project_root": "./Adrift",
-    "journal_path": "./documents",
-    "output_dir": "./exports",
-    "docs_dir": "./docs",
-    "snapshot_dir": "./snapshots",
-    "vault_dir": "./exports/vault",
-    "config_self_path": "./pilconfig.json",
-    "pil_module_path": "./PIL_Project",
-    "asset_extensions": [".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"]
+  "project_root": "./AdriftProject",
+  "scan_dirs": [
+    "./AdriftProject",
+    "./tests",
+    "./scripts"
+  ],
+  "journal_path": "./docs",
+  "output_dir": "./exports",
+  "docs_dir": "./documents",
+  "snapshot_dir": "./snapshots",
+  "vault_dir": "./exports/vault",
+  "config_self_path": "./pilconfig_self.json",
+  "pil_module_path": "./AdriftProject",
+  "asset_extensions": [".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"],
+  "asset_dirs": [
+    "./assets"
+  ]
 }
+
 
 # Dynamically locate rebuild_pil.py inside PIL_Project/scripts/
 pipeline_script = Path(PIL_CONFIG["pil_module_path"]) / "scripts" / "rebuild_pil.py"
