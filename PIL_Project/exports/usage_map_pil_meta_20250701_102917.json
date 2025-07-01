@@ -1,5 +1,5 @@
 {
-  "timestamp": "20250701_092535",
+  "timestamp": "20250701_102917",
   "project_name": "pil_meta",
   "usage_map": {
     "pipeline": {
@@ -487,9 +487,7 @@
         "exporters.markdown_vault_exporter",
         "exporters.markdown_vault_exporter.friendly_name",
         "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.md_exporter",
-        "exporters.md_exporter.export_entity_markdown"
+        "exporters.markdown_vault_exporter.export_markdown_vault"
       ],
       "uses": [
         "exporters.markdown_vault_exporter._sanitize_filename",
@@ -506,18 +504,6 @@
       "uses": [
         "exporters.markdown_vault_exporter._sanitize_filename",
         "exporters.markdown_vault_exporter.friendly_name"
-      ]
-    },
-    "exporters.md_exporter": {
-      "used_by": [],
-      "uses": [
-        "exporters.markdown_vault_exporter._sanitize_filename"
-      ]
-    },
-    "exporters.md_exporter.export_entity_markdown": {
-      "used_by": [],
-      "uses": [
-        "exporters.markdown_vault_exporter._sanitize_filename"
       ]
     },
     "loaders.asset_loader": {

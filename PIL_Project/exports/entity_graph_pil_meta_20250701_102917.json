@@ -1,5 +1,5 @@
 {
-  "timestamp": "20250701_092535",
+  "timestamp": "20250701_102917",
   "project_name": "pil_meta",
   "graph": {
     "pipeline": {
@@ -858,6 +858,37 @@
         "utils.snapshot_utils.take_project_snapshot"
       ]
     },
+    "__init__": {
+      "fqname": "__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "__init__",
+        "module": "__init__",
+        "name": "__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
     "builders.entity_graph_builder": {
       "fqname": "builders.entity_graph_builder",
       "type": "module",
@@ -1208,6 +1239,37 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
+    "builders.__init__": {
+      "fqname": "builders.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "builders\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "builders.__init__",
+        "module": "builders.__init__",
+        "name": "builders.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "builders\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
     "exporters.json_exporter": {
       "fqname": "exporters.json_exporter",
       "type": "module",
@@ -1426,9 +1488,7 @@
         "exporters.markdown_vault_exporter",
         "exporters.markdown_vault_exporter.friendly_name",
         "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.md_exporter",
-        "exporters.md_exporter.export_entity_markdown"
+        "exporters.markdown_vault_exporter.export_markdown_vault"
       ],
       "calls_fqns": [
         "exporters.markdown_vault_exporter._sanitize_filename",
@@ -1490,94 +1550,6 @@
       "calls_fqns": [
         "exporters.markdown_vault_exporter._sanitize_filename",
         "exporters.markdown_vault_exporter.friendly_name"
-      ]
-    },
-    "exporters.md_exporter": {
-      "fqname": "exporters.md_exporter",
-      "type": "module",
-      "description": "Markdown Exporter (exporters)",
-      "tags": [],
-      "source_file": "exporters\\md_exporter.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": false,
-      "metadata": {
-        "fqname": "exporters.md_exporter",
-        "module": "exporters.md_exporter",
-        "name": "exporters.md_exporter",
-        "type": "module",
-        "lineno": 1,
-        "source_file": "exporters\\md_exporter.py",
-        "description": "Markdown Exporter (exporters)",
-        "docstring_full": "Markdown Exporter (exporters)\n\nExports a single code entity as a Markdown file with metadata and Obsidian links.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {}
-      },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename"
-      ]
-    },
-    "exporters.md_exporter.export_entity_markdown": {
-      "fqname": "exporters.md_exporter.export_entity_markdown",
-      "type": "function",
-      "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
-      "tags": [
-        "export",
-        "markdown"
-      ],
-      "source_file": "exporters\\md_exporter.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": false,
-      "metadata": {
-        "fqname": "exporters.md_exporter.export_entity_markdown",
-        "module": "exporters.md_exporter",
-        "name": "export_entity_markdown",
-        "type": "function",
-        "lineno": 11,
-        "source_file": "exporters\\md_exporter.py",
-        "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
-        "docstring_full": "Export a single entity as a Markdown file with metadata and Obsidian links.\n@tags: [\"export\", \"markdown\"]\n@status: \"stable\"\n@visibility: \"public\"\n\nReturns:\n    str: The full path to the written Markdown file.",
-        "tags": [
-          "export",
-          "markdown"
-        ],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": "stable",
-        "visibility": "public",
-        "docstring_present": true,
-        "metadata": {
-          "args": [
-            "entity",
-            "output_dir"
-          ],
-          "returns": null
-        }
-      },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename"
       ]
     },
     "exporters.usage_map_exporter": {
@@ -1730,6 +1702,37 @@
         "pipeline.run_pipeline",
         "pipeline.__init__"
       ],
+      "calls_fqns": []
+    },
+    "exporters.__init__": {
+      "fqname": "exporters.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "exporters\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "exporters.__init__",
+        "module": "exporters.__init__",
+        "name": "exporters.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "exporters\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "loaders.asset_loader": {
@@ -2602,6 +2605,37 @@
       "calls_fqns": [
         "loaders.markdown_loader.parse_frontmatter"
       ]
+    },
+    "loaders.__init__": {
+      "fqname": "loaders.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "loaders\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "loaders.__init__",
+        "module": "loaders.__init__",
+        "name": "loaders.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "loaders\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.docstring_utils": {
       "fqname": "utils.docstring_utils",
@@ -6397,6 +6431,37 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
+    "utils.__init__": {
+      "fqname": "utils.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "utils\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "utils.__init__",
+        "module": "utils.__init__",
+        "name": "utils.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "utils\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
     "validators.governance_validator": {
       "fqname": "validators.governance_validator",
       "type": "module",
@@ -6465,6 +6530,37 @@
           ],
           "returns": null
         }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "validators.__init__": {
+      "fqname": "validators.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "validators\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "validators.__init__",
+        "module": "validators.__init__",
+        "name": "validators.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "validators\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
       },
       "links": [],
       "called_by_fqns": [],
@@ -6622,309 +6718,6 @@
         "status": null,
         "visibility": null,
         "docstring_present": false,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder": {
-      "fqname": "test_entity_graph_builder",
-      "type": "module",
-      "description": "",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder",
-        "module": "test_entity_graph_builder",
-        "name": "test_entity_graph_builder",
-        "type": "module",
-        "lineno": 1,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {}
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_valid_entity_graph_build": {
-      "fqname": "test_entity_graph_builder.test_valid_entity_graph_build",
-      "type": "function",
-      "description": "Valid entities yield expected graph nodes with correct fields.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_valid_entity_graph_build",
-        "module": "test_entity_graph_builder",
-        "name": "test_valid_entity_graph_build",
-        "type": "function",
-        "lineno": 6,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Valid entities yield expected graph nodes with correct fields.",
-        "docstring_full": "Valid entities yield expected graph nodes with correct fields.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_empty_input_returns_empty_graph": {
-      "fqname": "test_entity_graph_builder.test_empty_input_returns_empty_graph",
-      "type": "function",
-      "description": "Empty input yields an empty graph dict.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_empty_input_returns_empty_graph",
-        "module": "test_entity_graph_builder",
-        "name": "test_empty_input_returns_empty_graph",
-        "type": "function",
-        "lineno": 19,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Empty input yields an empty graph dict.",
-        "docstring_full": "Empty input yields an empty graph dict.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_missing_required_fqname_raises": {
-      "fqname": "test_entity_graph_builder.test_missing_required_fqname_raises",
-      "type": "function",
-      "description": "Entity missing 'fqname' should raise KeyError.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_missing_required_fqname_raises",
-        "module": "test_entity_graph_builder",
-        "name": "test_missing_required_fqname_raises",
-        "type": "function",
-        "lineno": 23,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Entity missing 'fqname' should raise KeyError.",
-        "docstring_full": "Entity missing 'fqname' should raise KeyError.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_entity_not_dict_raises": {
-      "fqname": "test_entity_graph_builder.test_entity_not_dict_raises",
-      "type": "function",
-      "description": "Non-dict entity in list should raise TypeError.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_entity_not_dict_raises",
-        "module": "test_entity_graph_builder",
-        "name": "test_entity_not_dict_raises",
-        "type": "function",
-        "lineno": 29,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Non-dict entity in list should raise TypeError.",
-        "docstring_full": "Non-dict entity in list should raise TypeError.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_tags_must_be_list": {
-      "fqname": "test_entity_graph_builder.test_tags_must_be_list",
-      "type": "function",
-      "description": "Entity with non-list 'tags' should raise ValueError.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_tags_must_be_list",
-        "module": "test_entity_graph_builder",
-        "name": "test_tags_must_be_list",
-        "type": "function",
-        "lineno": 35,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Entity with non-list 'tags' should raise ValueError.",
-        "docstring_full": "Entity with non-list 'tags' should raise ValueError.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_duplicate_fqnames_overwrites_last": {
-      "fqname": "test_entity_graph_builder.test_duplicate_fqnames_overwrites_last",
-      "type": "function",
-      "description": "Duplicate FQ names: last entity should overwrite prior.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_duplicate_fqnames_overwrites_last",
-        "module": "test_entity_graph_builder",
-        "name": "test_duplicate_fqnames_overwrites_last",
-        "type": "function",
-        "lineno": 41,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Duplicate FQ names: last entity should overwrite prior.",
-        "docstring_full": "Duplicate FQ names: last entity should overwrite prior.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_extra_fields_are_preserved": {
-      "fqname": "test_entity_graph_builder.test_extra_fields_are_preserved",
-      "type": "function",
-      "description": "Entities with extra/unknown fields retain them in output.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_extra_fields_are_preserved",
-        "module": "test_entity_graph_builder",
-        "name": "test_extra_fields_are_preserved",
-        "type": "function",
-        "lineno": 50,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Entities with extra/unknown fields retain them in output.",
-        "docstring_full": "Entities with extra/unknown fields retain them in output.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_entity_graph_builder.test_tags_none_raises": {
-      "fqname": "test_entity_graph_builder.test_tags_none_raises",
-      "type": "function",
-      "description": "Entity with 'tags' set to None should raise ValueError.",
-      "tags": [],
-      "source_file": "test_entity_graph_builder.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_entity_graph_builder.test_tags_none_raises",
-        "module": "test_entity_graph_builder",
-        "name": "test_tags_none_raises",
-        "type": "function",
-        "lineno": 59,
-        "source_file": "test_entity_graph_builder.py",
-        "description": "Entity with 'tags' set to None should raise ValueError.",
-        "docstring_full": "Entity with 'tags' set to None should raise ValueError.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
         "metadata": {
           "args": [],
           "returns": null
@@ -7095,244 +6888,10 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_json_exporter": {
-      "fqname": "test_json_exporter",
-      "type": "module",
-      "description": "",
-      "tags": [],
-      "source_file": "test_json_exporter.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_json_exporter",
-        "module": "test_json_exporter",
-        "name": "test_json_exporter",
-        "type": "module",
-        "lineno": 1,
-        "source_file": "test_json_exporter.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {}
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_json_exporter.test_export_entity_graph_writes_files": {
-      "fqname": "test_json_exporter.test_export_entity_graph_writes_files",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_json_exporter.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_json_exporter.test_export_entity_graph_writes_files",
-        "module": "test_json_exporter",
-        "name": "test_export_entity_graph_writes_files",
-        "type": "function",
-        "lineno": 6,
-        "source_file": "test_json_exporter.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {
-          "args": [
-            "tmp_path"
-          ],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_linkage_builder": {
-      "fqname": "test_linkage_builder",
-      "type": "module",
-      "description": "",
-      "tags": [],
-      "source_file": "test_linkage_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_linkage_builder",
-        "module": "test_linkage_builder",
-        "name": "test_linkage_builder",
-        "type": "module",
-        "lineno": 1,
-        "source_file": "test_linkage_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {}
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_linkage_builder.test_injects_call_link_between_functions": {
-      "fqname": "test_linkage_builder.test_injects_call_link_between_functions",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_linkage_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_linkage_builder.test_injects_call_link_between_functions",
-        "module": "test_linkage_builder",
-        "name": "test_injects_call_link_between_functions",
-        "type": "function",
-        "lineno": 6,
-        "source_file": "test_linkage_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_linkage_builder.test_missing_calls_field_results_in_no_links": {
-      "fqname": "test_linkage_builder.test_missing_calls_field_results_in_no_links",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_linkage_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_linkage_builder.test_missing_calls_field_results_in_no_links",
-        "module": "test_linkage_builder",
-        "name": "test_missing_calls_field_results_in_no_links",
-        "type": "function",
-        "lineno": 26,
-        "source_file": "test_linkage_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_linkage_builder.test_nonexistent_target_is_ignored": {
-      "fqname": "test_linkage_builder.test_nonexistent_target_is_ignored",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_linkage_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_linkage_builder.test_nonexistent_target_is_ignored",
-        "module": "test_linkage_builder",
-        "name": "test_nonexistent_target_is_ignored",
-        "type": "function",
-        "lineno": 38,
-        "source_file": "test_linkage_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
-    "test_linkage_builder.test_empty_graph_returns_empty": {
-      "fqname": "test_linkage_builder.test_empty_graph_returns_empty",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_linkage_builder.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": null,
-      "is_orphaned": true,
-      "metadata": {
-        "fqname": "test_linkage_builder.test_empty_graph_returns_empty",
-        "module": "test_linkage_builder",
-        "name": "test_empty_graph_returns_empty",
-        "type": "function",
-        "lineno": 52,
-        "source_file": "test_linkage_builder.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": false,
-        "metadata": {
-          "args": [],
-          "returns": null
-        }
-      },
-      "links": [],
-      "called_by_fqns": [],
-      "calls_fqns": []
-    },
     "test_pipeline": {
       "fqname": "test_pipeline",
       "type": "module",
-      "description": "Smoke test for the Project Intelligence Layer (PIL) pipeline.",
+      "description": "Unit and edge tests for pil_meta.pipeline, in addition to the integration smoke test.",
       "tags": [],
       "source_file": "test_pipeline.py",
       "test_coverage": false,
@@ -7346,8 +6905,8 @@
         "type": "module",
         "lineno": 1,
         "source_file": "test_pipeline.py",
-        "description": "Smoke test for the Project Intelligence Layer (PIL) pipeline.",
-        "docstring_full": "Smoke test for the Project Intelligence Layer (PIL) pipeline.\n\nValidates that:\n- The pipeline executes without error\n- `entity_graph.json` is created\n- At least one function node is present\n- Required metadata fields exist on a sample node\n\nThis test does not validate semantic links or coverage logic — those are handled in their own modules.",
+        "description": "Unit and edge tests for pil_meta.pipeline, in addition to the integration smoke test.",
+        "docstring_full": "Unit and edge tests for pil_meta.pipeline, in addition to the integration smoke test.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
@@ -7360,10 +6919,10 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_pipeline.test_pipeline_generates_valid_entity_graph": {
-      "fqname": "test_pipeline.test_pipeline_generates_valid_entity_graph",
+    "test_pipeline.test_pipelineresult_attributes": {
+      "fqname": "test_pipeline.test_pipelineresult_attributes",
       "type": "function",
-      "description": "End-to-end test of the PIL pipeline on real source code.",
+      "description": "PipelineResult attributes are set to expected default types/values.",
       "tags": [],
       "source_file": "test_pipeline.py",
       "test_coverage": false,
@@ -7371,14 +6930,14 @@
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_pipeline.test_pipeline_generates_valid_entity_graph",
+        "fqname": "test_pipeline.test_pipelineresult_attributes",
         "module": "test_pipeline",
-        "name": "test_pipeline_generates_valid_entity_graph",
+        "name": "test_pipelineresult_attributes",
         "type": "function",
-        "lineno": 26,
+        "lineno": 9,
         "source_file": "test_pipeline.py",
-        "description": "End-to-end test of the PIL pipeline on real source code.",
-        "docstring_full": "End-to-end test of the PIL pipeline on real source code.",
+        "description": "PipelineResult attributes are set to expected default types/values.",
+        "docstring_full": "PipelineResult attributes are set to expected default types/values.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
@@ -7394,23 +6953,1229 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_usage_map_builder": {
-      "fqname": "test_usage_map_builder",
+    "test_pipeline.test_print_full_report_mocked": {
+      "fqname": "test_pipeline.test_print_full_report_mocked",
+      "type": "function",
+      "description": "print_full_report can run with a fully stubbed PipelineResult.",
+      "tags": [],
+      "source_file": "test_pipeline.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "test_pipeline.test_print_full_report_mocked",
+        "module": "test_pipeline",
+        "name": "test_print_full_report_mocked",
+        "type": "function",
+        "lineno": 19,
+        "source_file": "test_pipeline.py",
+        "description": "print_full_report can run with a fully stubbed PipelineResult.",
+        "docstring_full": "print_full_report can run with a fully stubbed PipelineResult.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "monkeypatch"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "test_pipeline.test_run_pipeline_missing_config": {
+      "fqname": "test_pipeline.test_run_pipeline_missing_config",
+      "type": "function",
+      "description": "run_pipeline exits with code 1 on missing config.",
+      "tags": [],
+      "source_file": "test_pipeline.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "test_pipeline.test_run_pipeline_missing_config",
+        "module": "test_pipeline",
+        "name": "test_run_pipeline_missing_config",
+        "type": "function",
+        "lineno": 52,
+        "source_file": "test_pipeline.py",
+        "description": "run_pipeline exits with code 1 on missing config.",
+        "docstring_full": "run_pipeline exits with code 1 on missing config.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "monkeypatch"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder",
+      "type": "module",
+      "description": "Unit tests for pil_meta.builders.entity_graph_builder.",
+      "tags": [
+        "test",
+        "entity_graph_builder",
+        "unit"
+      ],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "phase1_core_logic.test_entity_graph_builder",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Unit tests for pil_meta.builders.entity_graph_builder.",
+        "docstring_full": "Unit tests for pil_meta.builders.entity_graph_builder.\n\nCovers:\n- build_entity_graph: verifies graph node population, field preservation, and error handling.\nAll scenarios are explicitly documented. Fields are checked at correct levels per builder output.\n\n@tags: [\"test\", \"entity_graph_builder\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "entity_graph_builder",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_valid_entity_graph_build": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_valid_entity_graph_build",
+      "type": "function",
+      "description": "Valid entities yield expected graph nodes with correct fields and metadata.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_valid_entity_graph_build",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_valid_entity_graph_build",
+        "type": "function",
+        "lineno": 16,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Valid entities yield expected graph nodes with correct fields and metadata.",
+        "docstring_full": "Valid entities yield expected graph nodes with correct fields and metadata.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_empty_input_returns_empty_graph": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_empty_input_returns_empty_graph",
+      "type": "function",
+      "description": "Empty input yields an empty graph dict.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_empty_input_returns_empty_graph",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_empty_input_returns_empty_graph",
+        "type": "function",
+        "lineno": 32,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Empty input yields an empty graph dict.",
+        "docstring_full": "Empty input yields an empty graph dict.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_missing_required_fqname_raises": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_missing_required_fqname_raises",
+      "type": "function",
+      "description": "Entity missing 'fqname' should raise KeyError.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_missing_required_fqname_raises",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_missing_required_fqname_raises",
+        "type": "function",
+        "lineno": 38,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Entity missing 'fqname' should raise KeyError.",
+        "docstring_full": "Entity missing 'fqname' should raise KeyError.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_entity_not_dict_raises": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_entity_not_dict_raises",
+      "type": "function",
+      "description": "Non-dict entity in list should raise TypeError.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_entity_not_dict_raises",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_entity_not_dict_raises",
+        "type": "function",
+        "lineno": 46,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Non-dict entity in list should raise TypeError.",
+        "docstring_full": "Non-dict entity in list should raise TypeError.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_tags_must_be_list": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_tags_must_be_list",
+      "type": "function",
+      "description": "Entity with non-list 'tags' should raise ValueError. (Not enforced in current implementation.)",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_tags_must_be_list",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_tags_must_be_list",
+        "type": "function",
+        "lineno": 55,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Entity with non-list 'tags' should raise ValueError. (Not enforced in current implementation.)",
+        "docstring_full": "Entity with non-list 'tags' should raise ValueError. (Not enforced in current implementation.)",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_tags_none_raises": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_tags_none_raises",
+      "type": "function",
+      "description": "Entity with 'tags' set to None should raise ValueError. (Not enforced in current implementation.)",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_tags_none_raises",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_tags_none_raises",
+        "type": "function",
+        "lineno": 64,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Entity with 'tags' set to None should raise ValueError. (Not enforced in current implementation.)",
+        "docstring_full": "Entity with 'tags' set to None should raise ValueError. (Not enforced in current implementation.)",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_duplicate_fqnames_overwrites_last": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_duplicate_fqnames_overwrites_last",
+      "type": "function",
+      "description": "Duplicate FQ names: last entity should overwrite prior entity in output.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_duplicate_fqnames_overwrites_last",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_duplicate_fqnames_overwrites_last",
+        "type": "function",
+        "lineno": 72,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Duplicate FQ names: last entity should overwrite prior entity in output.",
+        "docstring_full": "Duplicate FQ names: last entity should overwrite prior entity in output.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_entity_graph_builder.test_extra_fields_are_preserved": {
+      "fqname": "phase1_core_logic.test_entity_graph_builder.test_extra_fields_are_preserved",
+      "type": "function",
+      "description": "Entities with extra or unknown fields retain those fields in metadata output.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_entity_graph_builder.test_extra_fields_are_preserved",
+        "module": "phase1_core_logic.test_entity_graph_builder",
+        "name": "test_extra_fields_are_preserved",
+        "type": "function",
+        "lineno": 83,
+        "source_file": "phase1_core_logic\\test_entity_graph_builder.py",
+        "description": "Entities with extra or unknown fields retain those fields in metadata output.",
+        "docstring_full": "Entities with extra or unknown fields retain those fields in metadata output.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_json_exporter": {
+      "fqname": "phase1_core_logic.test_json_exporter",
+      "type": "module",
+      "description": "Unit test for pil_meta.exporters.json_exporter.export_entity_graph.",
+      "tags": [
+        "test",
+        "json_exporter",
+        "unit"
+      ],
+      "source_file": "phase1_core_logic\\test_json_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_json_exporter",
+        "module": "phase1_core_logic.test_json_exporter",
+        "name": "phase1_core_logic.test_json_exporter",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase1_core_logic\\test_json_exporter.py",
+        "description": "Unit test for pil_meta.exporters.json_exporter.export_entity_graph.",
+        "docstring_full": "Unit test for pil_meta.exporters.json_exporter.export_entity_graph.\nChecks file output and verifies that the returned path exists.\n@tags: [\"test\", \"json_exporter\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "json_exporter",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_json_exporter.test_export_entity_graph_writes_files": {
+      "fqname": "phase1_core_logic.test_json_exporter.test_export_entity_graph_writes_files",
+      "type": "function",
+      "description": "Test that export_entity_graph writes output and returns a valid file path.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_json_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_json_exporter.test_export_entity_graph_writes_files",
+        "module": "phase1_core_logic.test_json_exporter",
+        "name": "test_export_entity_graph_writes_files",
+        "type": "function",
+        "lineno": 12,
+        "source_file": "phase1_core_logic\\test_json_exporter.py",
+        "description": "Test that export_entity_graph writes output and returns a valid file path.",
+        "docstring_full": "Test that export_entity_graph writes output and returns a valid file path.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder": {
+      "fqname": "phase1_core_logic.test_linkage_builder",
+      "type": "module",
+      "description": "Unit tests for pil_meta.builders.linkage_builder.",
+      "tags": [
+        "test",
+        "linkage_builder",
+        "unit"
+      ],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "phase1_core_logic.test_linkage_builder",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Unit tests for pil_meta.builders.linkage_builder.",
+        "docstring_full": "Unit tests for pil_meta.builders.linkage_builder.\n\nCovers:\n- inject_call_links: verifies linkage population and safe file access\n- extract_called_functions: verifies correct AST call extraction\nAll test graphs include required fields, and temporary files are used for any file IO.\n@tags: [\"test\", \"linkage_builder\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "linkage_builder",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_injects_call_link_between_functions": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_injects_call_link_between_functions",
+      "type": "function",
+      "description": "Test that inject_call_links correctly identifies and links called functions within a file.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_injects_call_link_between_functions",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_injects_call_link_between_functions",
+        "type": "function",
+        "lineno": 16,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test that inject_call_links correctly identifies and links called functions within a file.",
+        "docstring_full": "Test that inject_call_links correctly identifies and links called functions within a file.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_missing_calls_field_results_in_no_links": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_missing_calls_field_results_in_no_links",
+      "type": "function",
+      "description": "Test that inject_call_links handles nodes with no callable references without error.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_missing_calls_field_results_in_no_links",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_missing_calls_field_results_in_no_links",
+        "type": "function",
+        "lineno": 43,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test that inject_call_links handles nodes with no callable references without error.",
+        "docstring_full": "Test that inject_call_links handles nodes with no callable references without error.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_nonexistent_target_is_ignored": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_nonexistent_target_is_ignored",
+      "type": "function",
+      "description": "Test that calls to functions not present in the graph do not cause errors in inject_call_links.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_nonexistent_target_is_ignored",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_nonexistent_target_is_ignored",
+        "type": "function",
+        "lineno": 61,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test that calls to functions not present in the graph do not cause errors in inject_call_links.",
+        "docstring_full": "Test that calls to functions not present in the graph do not cause errors in inject_call_links.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_empty_graph_returns_empty": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_empty_graph_returns_empty",
+      "type": "function",
+      "description": "Test that inject_call_links on an empty graph returns an empty dict.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_empty_graph_returns_empty",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_empty_graph_returns_empty",
+        "type": "function",
+        "lineno": 79,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test that inject_call_links on an empty graph returns an empty dict.",
+        "docstring_full": "Test that inject_call_links on an empty graph returns an empty dict.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_extract_simple_function_calls": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_extract_simple_function_calls",
+      "type": "function",
+      "description": "Test extract_called_functions detects simple function calls by name.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_extract_simple_function_calls",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_extract_simple_function_calls",
+        "type": "function",
+        "lineno": 86,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test extract_called_functions detects simple function calls by name.",
+        "docstring_full": "Test extract_called_functions detects simple function calls by name.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_extract_attribute_calls": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_extract_attribute_calls",
+      "type": "function",
+      "description": "Test extract_called_functions detects attribute and qualified calls.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_extract_attribute_calls",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_extract_attribute_calls",
+        "type": "function",
+        "lineno": 94,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test extract_called_functions detects attribute and qualified calls.",
+        "docstring_full": "Test extract_called_functions detects attribute and qualified calls.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_extract_nested_calls": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_extract_nested_calls",
+      "type": "function",
+      "description": "Test extract_called_functions detects nested function calls.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_extract_nested_calls",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_extract_nested_calls",
+        "type": "function",
+        "lineno": 103,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test extract_called_functions detects nested function calls.",
+        "docstring_full": "Test extract_called_functions detects nested function calls.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_linkage_builder.test_extract_handles_empty_and_bad_code": {
+      "fqname": "phase1_core_logic.test_linkage_builder.test_extract_handles_empty_and_bad_code",
+      "type": "function",
+      "description": "Test extract_called_functions handles empty strings and bad syntax gracefully.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_linkage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_linkage_builder.test_extract_handles_empty_and_bad_code",
+        "module": "phase1_core_logic.test_linkage_builder",
+        "name": "test_extract_handles_empty_and_bad_code",
+        "type": "function",
+        "lineno": 112,
+        "source_file": "phase1_core_logic\\test_linkage_builder.py",
+        "description": "Test extract_called_functions handles empty strings and bad syntax gracefully.",
+        "docstring_full": "Test extract_called_functions handles empty strings and bad syntax gracefully.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder": {
+      "fqname": "phase1_core_logic.test_usage_map_builder",
+      "type": "module",
+      "description": "Unit tests for pil_meta.builders.usage_map_builder.",
+      "tags": [
+        "test",
+        "usage_map_builder",
+        "unit"
+      ],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "phase1_core_logic.test_usage_map_builder",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Unit tests for pil_meta.builders.usage_map_builder.",
+        "docstring_full": "Unit tests for pil_meta.builders.usage_map_builder.\n\nCovers:\n- build_usage_map: validates correct API output, used_by/uses relationships, cycles.\nNote: Orphan nodes (no uses/no used_by) are not included in the result per builder implementation.\n\n@tags: [\"test\", \"usage_map_builder\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "usage_map_builder",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder.test_empty_graph_returns_empty_map": {
+      "fqname": "phase1_core_logic.test_usage_map_builder.test_empty_graph_returns_empty_map",
+      "type": "function",
+      "description": "Empty graph yields an empty usage map.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder.test_empty_graph_returns_empty_map",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "test_empty_graph_returns_empty_map",
+        "type": "function",
+        "lineno": 15,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Empty graph yields an empty usage map.",
+        "docstring_full": "Empty graph yields an empty usage map.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder.test_single_node_no_uses": {
+      "fqname": "phase1_core_logic.test_usage_map_builder.test_single_node_no_uses",
+      "type": "function",
+      "description": "Node with no calls_fqns: usage map is empty dict (orphan nodes not included).",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder.test_single_node_no_uses",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "test_single_node_no_uses",
+        "type": "function",
+        "lineno": 22,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Node with no calls_fqns: usage map is empty dict (orphan nodes not included).",
+        "docstring_full": "Node with no calls_fqns: usage map is empty dict (orphan nodes not included).",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder.test_call_links_are_registered_as_usage": {
+      "fqname": "phase1_core_logic.test_usage_map_builder.test_call_links_are_registered_as_usage",
+      "type": "function",
+      "description": "Node with calls_fqns creates correct uses/used_by mapping.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder.test_call_links_are_registered_as_usage",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "test_call_links_are_registered_as_usage",
+        "type": "function",
+        "lineno": 35,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Node with calls_fqns creates correct uses/used_by mapping.",
+        "docstring_full": "Node with calls_fqns creates correct uses/used_by mapping.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder.test_usage_map_cycle_and_orphan": {
+      "fqname": "phase1_core_logic.test_usage_map_builder.test_usage_map_cycle_and_orphan",
+      "type": "function",
+      "description": "Cycle in calls_fqns is reflected; orphans are not included in result.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder.test_usage_map_cycle_and_orphan",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "test_usage_map_cycle_and_orphan",
+        "type": "function",
+        "lineno": 54,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Cycle in calls_fqns is reflected; orphans are not included in result.",
+        "docstring_full": "Cycle in calls_fqns is reflected; orphans are not included in result.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_usage_map_builder.test_missing_node_in_calls": {
+      "fqname": "phase1_core_logic.test_usage_map_builder.test_missing_node_in_calls",
+      "type": "function",
+      "description": "Calls to missing nodes should still populate the used_by field in the map.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_usage_map_builder.test_missing_node_in_calls",
+        "module": "phase1_core_logic.test_usage_map_builder",
+        "name": "test_missing_node_in_calls",
+        "type": "function",
+        "lineno": 69,
+        "source_file": "phase1_core_logic\\test_usage_map_builder.py",
+        "description": "Calls to missing nodes should still populate the used_by field in the map.",
+        "docstring_full": "Calls to missing nodes should still populate the used_by field in the map.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder",
+      "type": "module",
+      "description": "Unit tests for pil_meta.builders.variable_usage_builder.",
+      "tags": [
+        "test",
+        "variable_usage_builder",
+        "unit"
+      ],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "phase1_core_logic.test_variable_usage_builder",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "Unit tests for pil_meta.builders.variable_usage_builder.",
+        "docstring_full": "Unit tests for pil_meta.builders.variable_usage_builder.\n\nCovers:\n- build_variable_usage_map: finds variable usage across files,\n  ignores unused variables, handles read errors, and empty cases.\nAll IO is handled via pytest tmp_path. Results are checked for key presence and correctness.\n\n@tags: [\"test\", \"variable_usage_builder\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "variable_usage_builder",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder.write_temp_file": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder.write_temp_file",
+      "type": "function",
+      "description": "Utility: write content to a temporary file in dirpath.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder.write_temp_file",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "write_temp_file",
+        "type": "function",
+        "lineno": 18,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "Utility: write content to a temporary file in dirpath.",
+        "docstring_full": "Utility: write content to a temporary file in dirpath.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "dirpath",
+            "filename",
+            "content"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder.test_variable_used_in_multiple_files": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder.test_variable_used_in_multiple_files",
+      "type": "function",
+      "description": "Variable is used in another file; usage is correctly recorded, but not in its own defining file.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder.test_variable_used_in_multiple_files",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "test_variable_used_in_multiple_files",
+        "type": "function",
+        "lineno": 26,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "Variable is used in another file; usage is correctly recorded, but not in its own defining file.",
+        "docstring_full": "Variable is used in another file; usage is correctly recorded, but not in its own defining file.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder.test_variable_not_used": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder.test_variable_not_used",
+      "type": "function",
+      "description": "Variable is not referenced in any file except its own; usage map returns empty.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder.test_variable_not_used",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "test_variable_not_used",
+        "type": "function",
+        "lineno": 39,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "Variable is not referenced in any file except its own; usage map returns empty.",
+        "docstring_full": "Variable is not referenced in any file except its own; usage map returns empty.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder.test_file_read_error": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder.test_file_read_error",
+      "type": "function",
+      "description": "IO errors when reading a file are handled gracefully (file is skipped, no crash).",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder.test_file_read_error",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "test_file_read_error",
+        "type": "function",
+        "lineno": 50,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "IO errors when reading a file are handled gracefully (file is skipped, no crash).",
+        "docstring_full": "IO errors when reading a file are handled gracefully (file is skipped, no crash).",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.test_variable_usage_builder.test_no_variables_returns_empty": {
+      "fqname": "phase1_core_logic.test_variable_usage_builder.test_no_variables_returns_empty",
+      "type": "function",
+      "description": "Empty input variable list yields an empty usage map.",
+      "tags": [],
+      "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase1_core_logic.test_variable_usage_builder.test_no_variables_returns_empty",
+        "module": "phase1_core_logic.test_variable_usage_builder",
+        "name": "test_no_variables_returns_empty",
+        "type": "function",
+        "lineno": 67,
+        "source_file": "phase1_core_logic\\test_variable_usage_builder.py",
+        "description": "Empty input variable list yields an empty usage map.",
+        "docstring_full": "Empty input variable list yields an empty usage map.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase1_core_logic.__init__": {
+      "fqname": "phase1_core_logic.__init__",
       "type": "module",
       "description": "",
       "tags": [],
-      "source_file": "test_usage_map_builder.py",
+      "source_file": "phase1_core_logic\\__init__.py",
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_usage_map_builder",
-        "module": "test_usage_map_builder",
-        "name": "test_usage_map_builder",
+        "fqname": "phase1_core_logic.__init__",
+        "module": "phase1_core_logic.__init__",
+        "name": "phase1_core_logic.__init__",
         "type": "module",
         "lineno": 1,
-        "source_file": "test_usage_map_builder.py",
+        "source_file": "phase1_core_logic\\__init__.py",
         "description": "",
         "docstring_full": "",
         "tags": [],
@@ -7425,31 +8190,181 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_usage_map_builder.test_empty_graph_returns_empty_map": {
-      "fqname": "test_usage_map_builder.test_empty_graph_returns_empty_map",
-      "type": "function",
-      "description": "",
-      "tags": [],
-      "source_file": "test_usage_map_builder.py",
+    "phase2_export_utilities.test_coverage_utils": {
+      "fqname": "phase2_export_utilities.test_coverage_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.test_coverage_utils.",
+      "tags": [
+        "test",
+        "test_coverage_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_coverage_utils.py",
       "test_coverage": false,
-      "docstring_present": false,
+      "docstring_present": true,
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_usage_map_builder.test_empty_graph_returns_empty_map",
-        "module": "test_usage_map_builder",
-        "name": "test_empty_graph_returns_empty_map",
+        "fqname": "phase2_export_utilities.test_coverage_utils",
+        "module": "phase2_export_utilities.test_coverage_utils",
+        "name": "phase2_export_utilities.test_coverage_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_coverage_utils.py",
+        "description": "Unit tests for pil_meta.utils.test_coverage_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.test_coverage_utils.\n\nCovers:\n- estimate_test_coverage: marks 'test_coverage' True for covered symbols, False for uncovered\n\n@tags: [\"test\", \"test_coverage_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "test_coverage_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_detects_covered": {
+      "fqname": "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_detects_covered",
+      "type": "function",
+      "description": "Marks test_coverage True for symbols appearing in test files.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_coverage_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_detects_covered",
+        "module": "phase2_export_utilities.test_coverage_utils",
+        "name": "test_estimate_test_coverage_detects_covered",
         "type": "function",
-        "lineno": 5,
-        "source_file": "test_usage_map_builder.py",
-        "description": "",
-        "docstring_full": "",
+        "lineno": 16,
+        "source_file": "phase2_export_utilities\\test_coverage_utils.py",
+        "description": "Marks test_coverage True for symbols appearing in test files.",
+        "docstring_full": "Marks test_coverage True for symbols appearing in test files.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
         "status": null,
         "visibility": null,
-        "docstring_present": false,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_no_tests": {
+      "fqname": "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_no_tests",
+      "type": "function",
+      "description": "If no test files, all symbols should be marked False.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_coverage_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_coverage_utils.test_estimate_test_coverage_no_tests",
+        "module": "phase2_export_utilities.test_coverage_utils",
+        "name": "test_estimate_test_coverage_no_tests",
+        "type": "function",
+        "lineno": 37,
+        "source_file": "phase2_export_utilities\\test_coverage_utils.py",
+        "description": "If no test files, all symbols should be marked False.",
+        "docstring_full": "If no test files, all symbols should be marked False.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_docstring_utils": {
+      "fqname": "phase2_export_utilities.test_docstring_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.graph_utils.",
+      "tags": [
+        "test",
+        "graph_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_docstring_utils",
+        "module": "phase2_export_utilities.test_docstring_utils",
+        "name": "phase2_export_utilities.test_docstring_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+        "description": "Unit tests for pil_meta.utils.graph_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.graph_utils.\n\nCovers:\n- walk_graph: full visit, cycles, starting from a subset, no duplicates\n\n@tags: [\"test\", \"graph_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "graph_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_docstring_utils.test_walk_graph_visits_all_nodes": {
+      "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_visits_all_nodes",
+      "type": "function",
+      "description": "Visits every node in a simple graph.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_visits_all_nodes",
+        "module": "phase2_export_utilities.test_docstring_utils",
+        "name": "test_walk_graph_visits_all_nodes",
+        "type": "function",
+        "lineno": 15,
+        "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+        "description": "Visits every node in a simple graph.",
+        "docstring_full": "Visits every node in a simple graph.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
         "metadata": {
           "args": [],
           "returns": null
@@ -7459,31 +8374,31 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_usage_map_builder.test_single_node_no_links_produces_self_usage": {
-      "fqname": "test_usage_map_builder.test_single_node_no_links_produces_self_usage",
+    "phase2_export_utilities.test_docstring_utils.test_walk_graph_handles_cycles": {
+      "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_handles_cycles",
       "type": "function",
-      "description": "",
+      "description": "Walk graph does not revisit nodes in cycles.",
       "tags": [],
-      "source_file": "test_usage_map_builder.py",
+      "source_file": "phase2_export_utilities\\test_docstring_utils.py",
       "test_coverage": false,
-      "docstring_present": false,
+      "docstring_present": true,
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_usage_map_builder.test_single_node_no_links_produces_self_usage",
-        "module": "test_usage_map_builder",
-        "name": "test_single_node_no_links_produces_self_usage",
+        "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_handles_cycles",
+        "module": "phase2_export_utilities.test_docstring_utils",
+        "name": "test_walk_graph_handles_cycles",
         "type": "function",
-        "lineno": 9,
-        "source_file": "test_usage_map_builder.py",
-        "description": "",
-        "docstring_full": "",
+        "lineno": 28,
+        "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+        "description": "Walk graph does not revisit nodes in cycles.",
+        "docstring_full": "Walk graph does not revisit nodes in cycles.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
         "status": null,
         "visibility": null,
-        "docstring_present": false,
+        "docstring_present": true,
         "metadata": {
           "args": [],
           "returns": null
@@ -7493,33 +8408,471 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_usage_map_builder.test_call_links_are_registered_as_usage": {
-      "fqname": "test_usage_map_builder.test_call_links_are_registered_as_usage",
+    "phase2_export_utilities.test_docstring_utils.test_walk_graph_with_start_nodes": {
+      "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_with_start_nodes",
       "type": "function",
-      "description": "",
+      "description": "Only start from specified nodes.",
       "tags": [],
-      "source_file": "test_usage_map_builder.py",
+      "source_file": "phase2_export_utilities\\test_docstring_utils.py",
       "test_coverage": false,
-      "docstring_present": false,
+      "docstring_present": true,
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_usage_map_builder.test_call_links_are_registered_as_usage",
-        "module": "test_usage_map_builder",
-        "name": "test_call_links_are_registered_as_usage",
+        "fqname": "phase2_export_utilities.test_docstring_utils.test_walk_graph_with_start_nodes",
+        "module": "phase2_export_utilities.test_docstring_utils",
+        "name": "test_walk_graph_with_start_nodes",
+        "type": "function",
+        "lineno": 41,
+        "source_file": "phase2_export_utilities\\test_docstring_utils.py",
+        "description": "Only start from specified nodes.",
+        "docstring_full": "Only start from specified nodes.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_export_cleanup_utils": {
+      "fqname": "phase2_export_utilities.test_export_cleanup_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.export_cleanup_utils.",
+      "tags": [
+        "test",
+        "export_cleanup_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_export_cleanup_utils",
+        "module": "phase2_export_utilities.test_export_cleanup_utils",
+        "name": "phase2_export_utilities.test_export_cleanup_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+        "description": "Unit tests for pil_meta.utils.export_cleanup_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.export_cleanup_utils.\n\nCovers:\n- Only removes intended .json exports and variable_usage.md\n- Leaves markdown and snapshot files untouched\n- Handles missing directory gracefully\n\n@tags: [\"test\", \"export_cleanup_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "export_cleanup_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_removes_json_and_variable_usage": {
+      "fqname": "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_removes_json_and_variable_usage",
+      "type": "function",
+      "description": "Removes entity_graph*.json, function_map_exceptions*.json, usage_map*.json, and variable_usage.md.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_removes_json_and_variable_usage",
+        "module": "phase2_export_utilities.test_export_cleanup_utils",
+        "name": "test_cleanup_removes_json_and_variable_usage",
+        "type": "function",
+        "lineno": 17,
+        "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+        "description": "Removes entity_graph*.json, function_map_exceptions*.json, usage_map*.json, and variable_usage.md.",
+        "docstring_full": "Removes entity_graph*.json, function_map_exceptions*.json, usage_map*.json, and variable_usage.md.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_handles_missing_dir": {
+      "fqname": "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_handles_missing_dir",
+      "type": "function",
+      "description": "No error when export directory does not exist.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_export_cleanup_utils.test_cleanup_handles_missing_dir",
+        "module": "phase2_export_utilities.test_export_cleanup_utils",
+        "name": "test_cleanup_handles_missing_dir",
+        "type": "function",
+        "lineno": 47,
+        "source_file": "phase2_export_utilities\\test_export_cleanup_utils.py",
+        "description": "No error when export directory does not exist.",
+        "docstring_full": "No error when export directory does not exist.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_graph_utils": {
+      "fqname": "phase2_export_utilities.test_graph_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.graph_utils.",
+      "tags": [
+        "test",
+        "graph_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_graph_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_graph_utils",
+        "module": "phase2_export_utilities.test_graph_utils",
+        "name": "phase2_export_utilities.test_graph_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_graph_utils.py",
+        "description": "Unit tests for pil_meta.utils.graph_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.graph_utils.\n\nCovers:\n- walk_graph: full visit, cycles, starting from a subset, no duplicates\n\n@tags: [\"test\", \"graph_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "graph_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_graph_utils.test_walk_graph_visits_all_nodes": {
+      "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_visits_all_nodes",
+      "type": "function",
+      "description": "Visits every node in a simple graph.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_graph_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_visits_all_nodes",
+        "module": "phase2_export_utilities.test_graph_utils",
+        "name": "test_walk_graph_visits_all_nodes",
+        "type": "function",
+        "lineno": 15,
+        "source_file": "phase2_export_utilities\\test_graph_utils.py",
+        "description": "Visits every node in a simple graph.",
+        "docstring_full": "Visits every node in a simple graph.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_graph_utils.test_walk_graph_handles_cycles": {
+      "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_handles_cycles",
+      "type": "function",
+      "description": "Walk graph does not revisit nodes in cycles.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_graph_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_handles_cycles",
+        "module": "phase2_export_utilities.test_graph_utils",
+        "name": "test_walk_graph_handles_cycles",
+        "type": "function",
+        "lineno": 28,
+        "source_file": "phase2_export_utilities\\test_graph_utils.py",
+        "description": "Walk graph does not revisit nodes in cycles.",
+        "docstring_full": "Walk graph does not revisit nodes in cycles.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_graph_utils.test_walk_graph_with_start_nodes": {
+      "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_with_start_nodes",
+      "type": "function",
+      "description": "Only start from specified nodes.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_graph_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_graph_utils.test_walk_graph_with_start_nodes",
+        "module": "phase2_export_utilities.test_graph_utils",
+        "name": "test_walk_graph_with_start_nodes",
+        "type": "function",
+        "lineno": 41,
+        "source_file": "phase2_export_utilities\\test_graph_utils.py",
+        "description": "Only start from specified nodes.",
+        "docstring_full": "Only start from specified nodes.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_markdown_vault_exporter": {
+      "fqname": "phase2_export_utilities.test_markdown_vault_exporter",
+      "type": "module",
+      "description": "Unit tests for pil_meta.exporters.markdown_vault_exporter.export_markdown_vault.",
+      "tags": [
+        "test",
+        "markdown_vault_exporter",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_markdown_vault_exporter",
+        "module": "phase2_export_utilities.test_markdown_vault_exporter",
+        "name": "phase2_export_utilities.test_markdown_vault_exporter",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+        "description": "Unit tests for pil_meta.exporters.markdown_vault_exporter.export_markdown_vault.",
+        "docstring_full": "Unit tests for pil_meta.exporters.markdown_vault_exporter.export_markdown_vault.\n\nCovers:\n- File creation for each node\n- Directory structure (by type)\n- Content sanity (basic Markdown fields present)\n- Handles edge: empty graph\n\n@tags: [\"test\", \"markdown_vault_exporter\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "markdown_vault_exporter",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_creates_files": {
+      "fqname": "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_creates_files",
+      "type": "function",
+      "description": "Exports a small graph and verifies .md files are created in correct folders.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_creates_files",
+        "module": "phase2_export_utilities.test_markdown_vault_exporter",
+        "name": "test_export_markdown_vault_creates_files",
+        "type": "function",
+        "lineno": 18,
+        "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+        "description": "Exports a small graph and verifies .md files are created in correct folders.",
+        "docstring_full": "Exports a small graph and verifies .md files are created in correct folders.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_empty_graph": {
+      "fqname": "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_empty_graph",
+      "type": "function",
+      "description": "Exporting an empty graph returns an empty file list and creates no files.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_markdown_vault_exporter.test_export_markdown_vault_empty_graph",
+        "module": "phase2_export_utilities.test_markdown_vault_exporter",
+        "name": "test_export_markdown_vault_empty_graph",
+        "type": "function",
+        "lineno": 67,
+        "source_file": "phase2_export_utilities\\test_markdown_vault_exporter.py",
+        "description": "Exporting an empty graph returns an empty file list and creates no files.",
+        "docstring_full": "Exporting an empty graph returns an empty file list and creates no files.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_messaging_utils": {
+      "fqname": "phase2_export_utilities.test_messaging_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.messaging_utils.",
+      "tags": [
+        "test",
+        "messaging_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_messaging_utils",
+        "module": "phase2_export_utilities.test_messaging_utils",
+        "name": "phase2_export_utilities.test_messaging_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+        "description": "Unit tests for pil_meta.utils.messaging_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.messaging_utils.\n\nCovers:\n- Debug message toggle\n- Info/warning/error formatting (stdout/stderr capture)\n- Section headers and all reporting helpers\n\n@tags: [\"test\", \"messaging_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "messaging_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_messaging_utils.test_set_debug_and_debug_output": {
+      "fqname": "phase2_export_utilities.test_messaging_utils.test_set_debug_and_debug_output",
+      "type": "function",
+      "description": "Debug messages print only when debug is enabled.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_messaging_utils.test_set_debug_and_debug_output",
+        "module": "phase2_export_utilities.test_messaging_utils",
+        "name": "test_set_debug_and_debug_output",
         "type": "function",
         "lineno": 20,
-        "source_file": "test_usage_map_builder.py",
-        "description": "",
-        "docstring_full": "",
+        "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+        "description": "Debug messages print only when debug is enabled.",
+        "docstring_full": "Debug messages print only when debug is enabled.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
         "status": null,
         "visibility": null,
-        "docstring_present": false,
+        "docstring_present": true,
         "metadata": {
-          "args": [],
+          "args": [
+            "capsys"
+          ],
           "returns": null
         }
       },
@@ -7527,23 +8880,650 @@
       "called_by_fqns": [],
       "calls_fqns": []
     },
-    "test_usage_map_builder.test_multiple_link_types_handled_correctly": {
-      "fqname": "test_usage_map_builder.test_multiple_link_types_handled_correctly",
+    "phase2_export_utilities.test_messaging_utils.test_info_warning_error_formatting": {
+      "fqname": "phase2_export_utilities.test_messaging_utils.test_info_warning_error_formatting",
       "type": "function",
+      "description": "info prints to stdout; warning/error print to stderr, with prefixes.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_messaging_utils.test_info_warning_error_formatting",
+        "module": "phase2_export_utilities.test_messaging_utils",
+        "name": "test_info_warning_error_formatting",
+        "type": "function",
+        "lineno": 34,
+        "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+        "description": "info prints to stdout; warning/error print to stderr, with prefixes.",
+        "docstring_full": "info prints to stdout; warning/error print to stderr, with prefixes.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "capsys"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_messaging_utils.test_print_section_header_prints_title": {
+      "fqname": "phase2_export_utilities.test_messaging_utils.test_print_section_header_prints_title",
+      "type": "function",
+      "description": "Section header function prints title with lines.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_messaging_utils.test_print_section_header_prints_title",
+        "module": "phase2_export_utilities.test_messaging_utils",
+        "name": "test_print_section_header_prints_title",
+        "type": "function",
+        "lineno": 50,
+        "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+        "description": "Section header function prints title with lines.",
+        "docstring_full": "Section header function prints title with lines.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "capsys"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_messaging_utils.test_reporting_helpers_dont_crash": {
+      "fqname": "phase2_export_utilities.test_messaging_utils.test_reporting_helpers_dont_crash",
+      "type": "function",
+      "description": "All reporting helper functions execute and print something.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_messaging_utils.test_reporting_helpers_dont_crash",
+        "module": "phase2_export_utilities.test_messaging_utils",
+        "name": "test_reporting_helpers_dont_crash",
+        "type": "function",
+        "lineno": 71,
+        "source_file": "phase2_export_utilities\\test_messaging_utils.py",
+        "description": "All reporting helper functions execute and print something.",
+        "docstring_full": "All reporting helper functions execute and print something.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "func",
+            "args",
+            "capsys"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_path_utils": {
+      "fqname": "phase2_export_utilities.test_path_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.path_utils.",
+      "tags": [
+        "test",
+        "path_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_path_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_path_utils",
+        "module": "phase2_export_utilities.test_path_utils",
+        "name": "phase2_export_utilities.test_path_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_path_utils.py",
+        "description": "Unit tests for pil_meta.utils.path_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.path_utils.\n\nCovers:\n- resolve_path: absolute, relative, and base-relative resolution\n- Returns normalized string paths\n\n@tags: [\"test\", \"path_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "path_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_path_utils.test_resolve_absolute_path": {
+      "fqname": "phase2_export_utilities.test_path_utils.test_resolve_absolute_path",
+      "type": "function",
+      "description": "Absolute paths remain unchanged and normalized.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_path_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_path_utils.test_resolve_absolute_path",
+        "module": "phase2_export_utilities.test_path_utils",
+        "name": "test_resolve_absolute_path",
+        "type": "function",
+        "lineno": 17,
+        "source_file": "phase2_export_utilities\\test_path_utils.py",
+        "description": "Absolute paths remain unchanged and normalized.",
+        "docstring_full": "Absolute paths remain unchanged and normalized.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_path_utils.test_resolve_relative_path": {
+      "fqname": "phase2_export_utilities.test_path_utils.test_resolve_relative_path",
+      "type": "function",
+      "description": "Relative paths are resolved from current working directory.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_path_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_path_utils.test_resolve_relative_path",
+        "module": "phase2_export_utilities.test_path_utils",
+        "name": "test_resolve_relative_path",
+        "type": "function",
+        "lineno": 27,
+        "source_file": "phase2_export_utilities\\test_path_utils.py",
+        "description": "Relative paths are resolved from current working directory.",
+        "docstring_full": "Relative paths are resolved from current working directory.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_path_utils.test_resolve_with_base": {
+      "fqname": "phase2_export_utilities.test_path_utils.test_resolve_with_base",
+      "type": "function",
+      "description": "Relative paths are resolved using the provided base directory.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_path_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_path_utils.test_resolve_with_base",
+        "module": "phase2_export_utilities.test_path_utils",
+        "name": "test_resolve_with_base",
+        "type": "function",
+        "lineno": 42,
+        "source_file": "phase2_export_utilities\\test_path_utils.py",
+        "description": "Relative paths are resolved using the provided base directory.",
+        "docstring_full": "Relative paths are resolved using the provided base directory.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_snapshot_utils": {
+      "fqname": "phase2_export_utilities.test_snapshot_utils",
+      "type": "module",
+      "description": "Unit tests for pil_meta.utils.snapshot_utils.",
+      "tags": [
+        "test",
+        "snapshot_utils",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_snapshot_utils",
+        "module": "phase2_export_utilities.test_snapshot_utils",
+        "name": "phase2_export_utilities.test_snapshot_utils",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+        "description": "Unit tests for pil_meta.utils.snapshot_utils.",
+        "docstring_full": "Unit tests for pil_meta.utils.snapshot_utils.\n\nCovers:\n- Creation of project snapshot as a zip\n- Ignores configured folders\n- Optionally attaches entity graph file\n\n@tags: [\"test\", \"snapshot_utils\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "snapshot_utils",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_snapshot_utils.test_snapshot_includes_project_files": {
+      "fqname": "phase2_export_utilities.test_snapshot_utils.test_snapshot_includes_project_files",
+      "type": "function",
+      "description": "Snapshot includes all files from project_root except ignored folders.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_snapshot_utils.test_snapshot_includes_project_files",
+        "module": "phase2_export_utilities.test_snapshot_utils",
+        "name": "test_snapshot_includes_project_files",
+        "type": "function",
+        "lineno": 19,
+        "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+        "description": "Snapshot includes all files from project_root except ignored folders.",
+        "docstring_full": "Snapshot includes all files from project_root except ignored folders.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_snapshot_utils.test_snapshot_attaches_entity_graph": {
+      "fqname": "phase2_export_utilities.test_snapshot_utils.test_snapshot_attaches_entity_graph",
+      "type": "function",
+      "description": "Entity graph file is attached in the zip with correct naming.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_snapshot_utils.test_snapshot_attaches_entity_graph",
+        "module": "phase2_export_utilities.test_snapshot_utils",
+        "name": "test_snapshot_attaches_entity_graph",
+        "type": "function",
+        "lineno": 46,
+        "source_file": "phase2_export_utilities\\test_snapshot_utils.py",
+        "description": "Entity graph file is attached in the zip with correct naming.",
+        "docstring_full": "Entity graph file is attached in the zip with correct naming.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_usage_map_exporter": {
+      "fqname": "phase2_export_utilities.test_usage_map_exporter",
+      "type": "module",
+      "description": "Unit tests for pil_meta.exporters.usage_map_exporter.export_usage_map.",
+      "tags": [
+        "test",
+        "usage_map_exporter",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_usage_map_exporter",
+        "module": "phase2_export_utilities.test_usage_map_exporter",
+        "name": "phase2_export_utilities.test_usage_map_exporter",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+        "description": "Unit tests for pil_meta.exporters.usage_map_exporter.export_usage_map.",
+        "docstring_full": "Unit tests for pil_meta.exporters.usage_map_exporter.export_usage_map.\n\nCovers:\n- File creation and structure\n- Edge cases: empty usage map, missing output directory\n- JSON content and metadata validation\n\n@tags: [\"test\", \"usage_map_exporter\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "usage_map_exporter",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_writes_timestamped_file": {
+      "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_writes_timestamped_file",
+      "type": "function",
+      "description": "Test normal usage map export: file created, correct path and metadata.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_writes_timestamped_file",
+        "module": "phase2_export_utilities.test_usage_map_exporter",
+        "name": "test_export_usage_map_writes_timestamped_file",
+        "type": "function",
+        "lineno": 18,
+        "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+        "description": "Test normal usage map export: file created, correct path and metadata.",
+        "docstring_full": "Test normal usage map export: file created, correct path and metadata.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_usage_map_exporter.test_export_empty_usage_map_creates_valid_file": {
+      "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_empty_usage_map_creates_valid_file",
+      "type": "function",
+      "description": "Exporting an empty usage map creates a valid JSON file with metadata.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_empty_usage_map_creates_valid_file",
+        "module": "phase2_export_utilities.test_usage_map_exporter",
+        "name": "test_export_empty_usage_map_creates_valid_file",
+        "type": "function",
+        "lineno": 37,
+        "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+        "description": "Exporting an empty usage map creates a valid JSON file with metadata.",
+        "docstring_full": "Exporting an empty usage map creates a valid JSON file with metadata.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_creates_parent_dirs": {
+      "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_creates_parent_dirs",
+      "type": "function",
+      "description": "Output directory should be created automatically if it does not exist.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_usage_map_exporter.test_export_usage_map_creates_parent_dirs",
+        "module": "phase2_export_utilities.test_usage_map_exporter",
+        "name": "test_export_usage_map_creates_parent_dirs",
+        "type": "function",
+        "lineno": 50,
+        "source_file": "phase2_export_utilities\\test_usage_map_exporter.py",
+        "description": "Output directory should be created automatically if it does not exist.",
+        "docstring_full": "Output directory should be created automatically if it does not exist.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_vault_index_exporter": {
+      "fqname": "phase2_export_utilities.test_vault_index_exporter",
+      "type": "module",
+      "description": "Unit tests for pil_meta.exporters.vault_index_exporter.export_vault_index.",
+      "tags": [
+        "test",
+        "vault_index_exporter",
+        "unit"
+      ],
+      "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_vault_index_exporter",
+        "module": "phase2_export_utilities.test_vault_index_exporter",
+        "name": "phase2_export_utilities.test_vault_index_exporter",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+        "description": "Unit tests for pil_meta.exporters.vault_index_exporter.export_vault_index.",
+        "docstring_full": "Unit tests for pil_meta.exporters.vault_index_exporter.export_vault_index.\n\nCovers:\n- Markdown index file creation\n- Grouping and linking for multiple types\n- Skips nodes with visibility=internal\n- Edge case: empty graph\n\n@tags: [\"test\", \"vault_index_exporter\", \"unit\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "vault_index_exporter",
+          "unit"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_creates_index": {
+      "fqname": "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_creates_index",
+      "type": "function",
+      "description": "Exports a small graph and verifies index.md is created with correct sections and links.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_creates_index",
+        "module": "phase2_export_utilities.test_vault_index_exporter",
+        "name": "test_export_vault_index_creates_index",
+        "type": "function",
+        "lineno": 18,
+        "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+        "description": "Exports a small graph and verifies index.md is created with correct sections and links.",
+        "docstring_full": "Exports a small graph and verifies index.md is created with correct sections and links.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_empty_graph": {
+      "fqname": "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_empty_graph",
+      "type": "function",
+      "description": "Empty graph yields an index.md with only the header.",
+      "tags": [],
+      "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase2_export_utilities.test_vault_index_exporter.test_export_vault_index_empty_graph",
+        "module": "phase2_export_utilities.test_vault_index_exporter",
+        "name": "test_export_vault_index_empty_graph",
+        "type": "function",
+        "lineno": 60,
+        "source_file": "phase2_export_utilities\\test_vault_index_exporter.py",
+        "description": "Empty graph yields an index.md with only the header.",
+        "docstring_full": "Empty graph yields an index.md with only the header.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase2_export_utilities.__init__": {
+      "fqname": "phase2_export_utilities.__init__",
+      "type": "module",
       "description": "",
       "tags": [],
-      "source_file": "test_usage_map_builder.py",
+      "source_file": "phase2_export_utilities\\__init__.py",
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
       "is_orphaned": true,
       "metadata": {
-        "fqname": "test_usage_map_builder.test_multiple_link_types_handled_correctly",
-        "module": "test_usage_map_builder",
-        "name": "test_multiple_link_types_handled_correctly",
-        "type": "function",
-        "lineno": 35,
-        "source_file": "test_usage_map_builder.py",
+        "fqname": "phase2_export_utilities.__init__",
+        "module": "phase2_export_utilities.__init__",
+        "name": "phase2_export_utilities.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase2_export_utilities\\__init__.py",
         "description": "",
         "docstring_full": "",
         "tags": [],
@@ -7552,10 +9532,223 @@
         "status": null,
         "visibility": null,
         "docstring_present": false,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.test_pipeline_integration": {
+      "fqname": "phase3_integration_system.test_pipeline_integration",
+      "type": "module",
+      "description": "Integration/system tests for pil_meta.pipeline.run_pipeline.",
+      "tags": [
+        "test",
+        "pipeline",
+        "integration",
+        "system"
+      ],
+      "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.test_pipeline_integration",
+        "module": "phase3_integration_system.test_pipeline_integration",
+        "name": "phase3_integration_system.test_pipeline_integration",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+        "description": "Integration/system tests for pil_meta.pipeline.run_pipeline.",
+        "docstring_full": "Integration/system tests for pil_meta.pipeline.run_pipeline.\n\nCovers:\n- End-to-end happy path: config, scanning, and all artifact creation\n- Fails gracefully if config missing or broken\n- Checks reporting, governance fields, and snapshot file\n\n@tags: [\"test\", \"pipeline\", \"integration\", \"system\"]\n@status: \"stable\"",
+        "tags": [
+          "test",
+          "pipeline",
+          "integration",
+          "system"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.test_pipeline_integration.make_minimal_project": {
+      "fqname": "phase3_integration_system.test_pipeline_integration.make_minimal_project",
+      "type": "function",
+      "description": "Sets up a minimal fake project with pilconfig.json, src file, and journal.",
+      "tags": [],
+      "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.test_pipeline_integration.make_minimal_project",
+        "module": "phase3_integration_system.test_pipeline_integration",
+        "name": "make_minimal_project",
+        "type": "function",
+        "lineno": 20,
+        "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+        "description": "Sets up a minimal fake project with pilconfig.json, src file, and journal.",
+        "docstring_full": "Sets up a minimal fake project with pilconfig.json, src file, and journal.\nReturns project_root and config_path.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
         "metadata": {
-          "args": [],
+          "args": [
+            "tmp_path"
+          ],
           "returns": null
         }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.test_pipeline_integration.test_full_pipeline_happy_path": {
+      "fqname": "phase3_integration_system.test_pipeline_integration.test_full_pipeline_happy_path",
+      "type": "function",
+      "description": "Full pipeline run completes, produces all main artifacts, and populates result fields.",
+      "tags": [],
+      "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.test_pipeline_integration.test_full_pipeline_happy_path",
+        "module": "phase3_integration_system.test_pipeline_integration",
+        "name": "test_full_pipeline_happy_path",
+        "type": "function",
+        "lineno": 46,
+        "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+        "description": "Full pipeline run completes, produces all main artifacts, and populates result fields.",
+        "docstring_full": "Full pipeline run completes, produces all main artifacts, and populates result fields.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.test_pipeline_integration.test_pipeline_fails_gracefully_on_missing_config": {
+      "fqname": "phase3_integration_system.test_pipeline_integration.test_pipeline_fails_gracefully_on_missing_config",
+      "type": "function",
+      "description": "Pipeline exits with code 1 if config is missing.",
+      "tags": [],
+      "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.test_pipeline_integration.test_pipeline_fails_gracefully_on_missing_config",
+        "module": "phase3_integration_system.test_pipeline_integration",
+        "name": "test_pipeline_fails_gracefully_on_missing_config",
+        "type": "function",
+        "lineno": 66,
+        "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+        "description": "Pipeline exits with code 1 if config is missing.",
+        "docstring_full": "Pipeline exits with code 1 if config is missing.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.test_pipeline_integration.test_pipeline_handles_empty_project": {
+      "fqname": "phase3_integration_system.test_pipeline_integration.test_pipeline_handles_empty_project",
+      "type": "function",
+      "description": "Handles empty scan dir and produces no artifacts but no crash.",
+      "tags": [],
+      "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.test_pipeline_integration.test_pipeline_handles_empty_project",
+        "module": "phase3_integration_system.test_pipeline_integration",
+        "name": "test_pipeline_handles_empty_project",
+        "type": "function",
+        "lineno": 80,
+        "source_file": "phase3_integration_system\\test_pipeline_integration.py",
+        "description": "Handles empty scan dir and produces no artifacts but no crash.",
+        "docstring_full": "Handles empty scan dir and produces no artifacts but no crash.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "tmp_path"
+          ],
+          "returns": null
+        }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "phase3_integration_system.__init__": {
+      "fqname": "phase3_integration_system.__init__",
+      "type": "module",
+      "description": "",
+      "tags": [],
+      "source_file": "phase3_integration_system\\__init__.py",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "phase3_integration_system.__init__",
+        "module": "phase3_integration_system.__init__",
+        "name": "phase3_integration_system.__init__",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "phase3_integration_system\\__init__.py",
+        "description": "",
+        "docstring_full": "",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": false,
+        "metadata": {}
       },
       "links": [],
       "called_by_fqns": [],

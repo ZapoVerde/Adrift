@@ -1,5 +1,5 @@
 # test_valid_entity_graph_build (in test_entity_graph_builder)
-> **Fully qualified name:** `test_entity_graph_builder.test_valid_entity_graph_build`
+> **Fully qualified name:** `phase1_core_logic.test_entity_graph_builder.test_valid_entity_graph_build`
 
 **Type:** function
 **Module:** 
@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Valid entities yield expected graph nodes with correct fields.
+Valid entities yield expected graph nodes with correct fields and metadata.
 
 ## Full Docstring
 ```

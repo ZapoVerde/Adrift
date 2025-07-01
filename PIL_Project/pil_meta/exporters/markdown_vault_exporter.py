@@ -1,11 +1,33 @@
 # pil_meta/exporters/markdown_vault_exporter.py
+"""
+Markdown vault exporter for PIL project.
+
+Exports the entire codebase entity graph as a set of Markdown files, suitable for
+importing into Obsidian or other knowledge vault tools. Each symbol (function,
+class, etc.) is exported as a separate file with PIL metadata, links, and
+friendly names.
+
+@tags: ["export", "markdown", "vault"]
+@status: "stable"
+"""
 
 import os
 from pathlib import Path
 from typing import Union, Optional
 
-def friendly_name(node):
-    """Returns a human-friendly display name for vault navigation."""
+def friendly_name(node: dict) -> str:
+    """
+    Returns a human-friendly display name for vault navigation.
+
+    Args:
+        node (dict): Entity graph node.
+
+    Returns:
+        str: User-friendly label for UI or markdown heading.
+
+    Recursive note: This function may call itself via the filename sanitizer for
+    fallback purposes, but always resolves due to string fallback.
+    """
     def get_field(n, k):
         return n.get(k) or n.get("metadata", {}).get(k) or "unknown"
 
@@ -29,7 +51,17 @@ def friendly_name(node):
     return node["fqname"]
 
 def _sanitize_filename(name: str) -> str:
-    """Sanitizes a string for use as a safe Markdown filename."""
+    """
+    Sanitizes a string for use as a safe Markdown filename.
+
+    Args:
+        name (str): Raw symbol or friendly name.
+
+    Returns:
+        str: Sanitized string safe for the filesystem.
+    """
+    # Recursion note: Called by friendly_name and may call friendly_name for fallback.
+    # Always terminates, as string fallback is enforced.
     return (
         name.replace("/", "_")
             .replace("\\", "_")
@@ -49,6 +81,30 @@ def export_markdown_vault(
     project_name: str = "project",
     timestamp: Optional[str] = None
 ) -> list[str]:
+    """
+    Exports the given entity graph to a Markdown "vault"—one .md file per symbol.
+
+    Args:
+        graph (dict): Entity graph as produced by pipeline.
+        output_dir (str or Path): Destination directory for vault.
+        project_name (str, optional): Project display name (for metadata).
+        timestamp (str, optional): Run timestamp for traceability.
+
+    Returns:
+        list[str]: List of written Markdown file paths.
+
+    Each file contains:
+    - Friendly name as H1 heading
+    - FQ name, type, status, visibility, tags, deprecated status
+    - Description and full docstring
+    - Structured links to other nodes and journal entries
+
+    Folders are organized by symbol type (e.g., functions/, classes/).
+    Files are sanitized for filesystem safety and Obsidian compatibility.
+
+    @tags: ["export", "markdown", "vault"]
+    @status: "stable"
+    """
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
     written_files = []

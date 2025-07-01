@@ -1,5 +1,5 @@
 # test_empty_input_returns_empty_graph (in test_entity_graph_builder)
-> **Fully qualified name:** `test_entity_graph_builder.test_empty_input_returns_empty_graph`
+> **Fully qualified name:** `phase1_core_logic.test_entity_graph_builder.test_empty_input_returns_empty_graph`
 
 **Type:** function
 **Module:** 

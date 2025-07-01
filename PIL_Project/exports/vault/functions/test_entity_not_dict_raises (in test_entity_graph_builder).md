@@ -1,5 +1,5 @@
 # test_entity_not_dict_raises (in test_entity_graph_builder)
-> **Fully qualified name:** `test_entity_graph_builder.test_entity_not_dict_raises`
+> **Fully qualified name:** `phase1_core_logic.test_entity_graph_builder.test_entity_not_dict_raises`
 
 **Type:** function
 **Module:** 

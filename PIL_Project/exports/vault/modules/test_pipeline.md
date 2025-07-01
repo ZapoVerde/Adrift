@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Smoke test for the Project Intelligence Layer (PIL) pipeline.
+Unit and edge tests for pil_meta.pipeline, in addition to the integration smoke test.
 
 ## Full Docstring
 ```
