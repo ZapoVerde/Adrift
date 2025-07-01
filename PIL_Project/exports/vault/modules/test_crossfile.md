@@ -1,5 +1,5 @@
 # test_crossfile
-> **Fully qualified name:** `PIL_Project.tests.test_crossfile`
+> **Fully qualified name:** `test_crossfile`
 
 **Type:** module
 **Module:** 

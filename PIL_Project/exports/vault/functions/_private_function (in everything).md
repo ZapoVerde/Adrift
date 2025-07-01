@@ -1,5 +1,5 @@
 # _private_function (in everything)
-> **Fully qualified name:** `tests.sample_input.everything._private_function`
+> **Fully qualified name:** `sample_input.everything._private_function`
 
 **Type:** function
 **Module:** 

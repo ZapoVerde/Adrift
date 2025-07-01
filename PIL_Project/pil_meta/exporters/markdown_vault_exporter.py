@@ -1,22 +1,11 @@
 # pil_meta/exporters/markdown_vault_exporter.py
-"""
-Markdown Vault Exporter (exporters)
-
-Exports the PIL entity graph as Markdown/Obsidian-compatible files for each symbol,
-using human-friendly names for navigation but always showing the real fqname.
-"""
 
 import os
 from pathlib import Path
-
+from typing import Union, Optional
 
 def friendly_name(node):
-    """Returns a human-friendly display name for vault navigation.
-    @tags: ["export", "vault"]
-    @status: "stable"
-    @visibility: "internal"
-    """
-    # Helper to pull from top-level or metadata
+    """Returns a human-friendly display name for vault navigation."""
     def get_field(n, k):
         return n.get(k) or n.get("metadata", {}).get(k) or "unknown"
 
@@ -28,7 +17,6 @@ def friendly_name(node):
     if node["type"] == "function":
         return f'{name or function or "?"} (in {module_part})'
     if node["type"] == "method":
-        # Try to extract class from fqname: module.class.method
         parts = node["fqname"].split(".")
         class_part = parts[-2] if len(parts) >= 3 else "unknown"
         return f'{name or function or "?"} ({class_part} in {module_part})'
@@ -40,13 +28,8 @@ def friendly_name(node):
         return module_part or node["fqname"]
     return node["fqname"]
 
-
-def _sanitize_filename(name):
-    """Sanitizes a string for use as a safe Markdown filename.
-    @tags: ["filesystem", "vault"]
-    @status: "stable"
-    @visibility: "internal"
-    """
+def _sanitize_filename(name: str) -> str:
+    """Sanitizes a string for use as a safe Markdown filename."""
     return (
         name.replace("/", "_")
             .replace("\\", "_")
@@ -60,15 +43,15 @@ def _sanitize_filename(name):
             .replace(">", "")
     )
 
-
-def export_markdown_vault(graph: dict, output_dir: str):
-    """Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.
-    @tags: ["export", "markdown", "vault"]
-    @status: "stable"
-    @visibility: "public"
-    """
+def export_markdown_vault(
+    graph: dict,
+    output_dir: Union[str, Path],
+    project_name: str = "project",
+    timestamp: Optional[str] = None
+) -> list[str]:
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
+    written_files = []
 
     for fqname, node in graph.items():
         friendly = friendly_name(node)
@@ -77,10 +60,7 @@ def export_markdown_vault(graph: dict, output_dir: str):
         node_dir.mkdir(parents=True, exist_ok=True)
         file_path = node_dir / (_sanitize_filename(friendly) + ".md")
 
-        # Obsidian tag line
         tags = " ".join(f"#{t.replace(' ', '_')}" for t in node.get("tags", []))
-
-        # Links section
         links_md = ""
         if node.get("links"):
             for link in node["links"]:
@@ -116,4 +96,6 @@ def export_markdown_vault(graph: dict, output_dir: str):
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(md)
 
-    print(f"✅ Exported Markdown vault with friendly names to {output_path}")
+        written_files.append(str(file_path))
+
+    return written_files

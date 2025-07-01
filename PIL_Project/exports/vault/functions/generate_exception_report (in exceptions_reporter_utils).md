@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Generate governance exception and usage reports with timestamped filenames.
+Generates governance exception reports with timestamped filenames and embedded metadata.
 
 ## Full Docstring
 ```
@@ -20,7 +20,6 @@ Generate governance exception and usage reports with timestamped filenames.
 
 ## Links
 - **calls**: validators.governance_validator.validate_governance_rules
-- **calls**: builders.usage_map_builder.build_usage_map
 
 
 ---

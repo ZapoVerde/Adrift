@@ -1,5 +1,5 @@
 # everything
-> **Fully qualified name:** `tests.sample_input.everything`
+> **Fully qualified name:** `sample_input.everything`
 
 **Type:** module
 **Module:** 

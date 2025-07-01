@@ -1,5 +1,5 @@
 # test_exporter_is_idempotent (in test_roundtrip)
-> **Fully qualified name:** `tests.sample_input.test_roundtrip.test_exporter_is_idempotent`
+> **Fully qualified name:** `sample_input.test_roundtrip.test_exporter_is_idempotent`
 
 **Type:** function
 **Module:** 
@@ -19,8 +19,6 @@
 ```
 
 ## Links
-- **calls**: pil_meta.exporters.markdown_vault_exporter.export_markdown_vault
-- **calls**: pil_meta.exporters.markdown_vault_exporter.export_markdown_vault
-
+None
 
 ---

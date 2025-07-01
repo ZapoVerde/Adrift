@@ -1,5 +1,5 @@
 # top_level_function (in everything)
-> **Fully qualified name:** `tests.sample_input.everything.top_level_function`
+> **Fully qualified name:** `sample_input.everything.top_level_function`
 
 **Type:** function
 **Module:** 

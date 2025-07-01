@@ -5,41 +5,38 @@ from datetime import datetime
 from pathlib import Path
 from typing import Union, Optional
 
-def export_entity_graph(graph: dict,
-                        output_dir: Union[str, Path],
-                        project_name: str = "project",
-                        timestamp: Optional[str] = None) -> dict:
-    """
-    Exports the entity graph as both a stable file and timestamped variant.
+def export_entity_graph(
+    graph: dict,
+    output_dir: Union[str, Path],
+    project_name: str = "project",
+    timestamp: Optional[str] = None
+) -> dict:
+    """Exports the entity graph as a timestamped JSON file.
+    The output filename includes both the project name and timestamp for traceability.
+    The file content wraps the graph dict with `timestamp` and `project_name` fields.
 
     Args:
         graph (dict): Entity graph.
-        output_dir (Union[str, Path]): Where to write output files.
-        project_name (str): Optional project name to prefix timestamped file.
-        timestamp (Optional[str]): Optional timestamp override (format: YYYYMMDD_HHMMSS).
+        output_dir (Union[str, Path]): Directory for output files.
+        project_name (str): Project name for filename and metadata.
+        timestamp (Optional[str]): Timestamp string (YYYYMMDD_HHMMSS). If not provided, uses current time.
 
     Returns:
-        dict: {
-            "stable": path to entity_graph.json,
-            "timestamped": path to entity_graph_<project>_<timestamp>.json
-        }
+        dict: {"timestamped": path to timestamped entity graph JSON file}
     """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-
     ts = timestamp or datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"entity_graph_{project_name}_{ts}.json"
+    ts_path = output_dir / filename
 
-    stable_path = output_dir / "entity_graph.json"
-    ts_filename = f"entity_graph_{project_name}_{ts}.json"
-    ts_path = output_dir / ts_filename
-
-    with open(stable_path, "w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2)
+    wrapper = {
+        "timestamp": ts,
+        "project_name": project_name,
+        "graph": graph
+    }
 
     with open(ts_path, "w", encoding="utf-8") as f:
-        json.dump(graph, f, indent=2)
+        json.dump(wrapper, f, indent=2, ensure_ascii=False)
 
-    return {
-        "stable": str(stable_path),
-        "timestamped": str(ts_path)
-    }
+    return {"timestamped": str(ts_path)}

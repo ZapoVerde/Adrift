@@ -1,5 +1,5 @@
 # MY_CONSTANT (in everything)
-> **Fully qualified name:** `tests.sample_input.everything.MY_CONSTANT`
+> **Fully qualified name:** `sample_input.everything.MY_CONSTANT`
 
 **Type:** variable
 **Module:** 

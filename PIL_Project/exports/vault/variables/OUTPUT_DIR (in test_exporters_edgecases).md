@@ -1,5 +1,5 @@
 # OUTPUT_DIR (in test_exporters_edgecases)
-> **Fully qualified name:** `PIL_Project.tests.test_exporters_edgecases.OUTPUT_DIR`
+> **Fully qualified name:** `test_exporters_edgecases.OUTPUT_DIR`
 
 **Type:** variable
 **Module:** 

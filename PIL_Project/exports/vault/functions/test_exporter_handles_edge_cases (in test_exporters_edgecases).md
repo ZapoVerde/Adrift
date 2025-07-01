@@ -1,5 +1,5 @@
 # test_exporter_handles_edge_cases (in test_exporters_edgecases)
-> **Fully qualified name:** `PIL_Project.tests.test_exporters_edgecases.test_exporter_handles_edge_cases`
+> **Fully qualified name:** `test_exporters_edgecases.test_exporter_handles_edge_cases`
 
 **Type:** function
 **Module:** 

@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #pipeline #orchestration #reporting
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Main orchestration pipeline for the PIL meta-engine.
+Orchestrates the full PIL metadata pipeline with structured reporting.
 
 ## Full Docstring
 ```
@@ -19,7 +19,18 @@ Main orchestration pipeline for the PIL meta-engine.
 ```
 
 ## Links
+- **calls**: utils.messaging_utils.print_run_context
+- **calls**: utils.messaging_utils.print_folder_tree_summary
+- **calls**: utils.messaging_utils.print_asset_scan_summary
+- **calls**: utils.messaging_utils.print_symbol_extraction
+- **calls**: utils.messaging_utils.print_entity_graph
+- **calls**: utils.messaging_utils.print_exports
+- **calls**: utils.messaging_utils.print_governance_summary
+- **calls**: utils.messaging_utils.print_journal_entries_loaded
+- **calls**: utils.messaging_utils.print_pipeline_complete
+- **calls**: pipeline.PipelineResult
 - **calls**: pipeline.run_pipeline
+- **calls**: utils.messaging_utils.set_debug
 - **calls**: loaders.config_loader.load_config
 - **calls**: loaders.asset_loader.load_asset_symbols
 - **calls**: builders.entity_graph_builder.build_entity_graph
@@ -29,12 +40,10 @@ Main orchestration pipeline for the PIL meta-engine.
 - **calls**: exporters.usage_map_exporter.export_usage_map
 - **calls**: exporters.markdown_vault_exporter.export_markdown_vault
 - **calls**: exporters.vault_index_exporter.export_vault_index
-- **calls**: exporters.variable_usage_report_exporter.export_variable_usage_markdown
 - **calls**: loaders.markdown_loader.load_markdown_entries
+- **calls**: pipeline.print_full_report
+- **calls**: builders.usage_map_builder.build_usage_map
 - **calls**: utils.snapshot_utils.take_project_snapshot
-- **calls**: builders.usage_map_builder.build_usage_map
-- **calls**: builders.usage_map_builder.build_usage_map
-- **calls**: utils.exceptions_reporter_utils.generate_exception_report
 - **calls**: loaders.code_loader.load_code_symbols
 
 

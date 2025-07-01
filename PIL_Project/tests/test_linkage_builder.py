@@ -1,7 +1,11 @@
 # tests/builders/test_linkage_builder.py
+"""
+Unit tests for pil_meta.builders.linkage_builder.
+Covers call link injection and AST call extraction, including edge/error cases.
+"""
 
 import pytest
-from pil_meta.builders.linkage_builder import inject_call_links
+from pil_meta.builders.linkage_builder import inject_call_links, extract_called_functions
 
 def test_injects_call_link_between_functions():
     graph = {
@@ -52,3 +56,27 @@ def test_nonexistent_target_is_ignored():
 def test_empty_graph_returns_empty():
     result = inject_call_links({}, "any")
     assert result == {}
+
+# ---- AST call extraction tests below ----
+
+def test_extract_simple_function_calls():
+    code = "foo()\nbar()"
+    result = extract_called_functions(code)
+    assert sorted(result) == ["bar", "foo"]
+
+def test_extract_attribute_calls():
+    code = "obj.func1()\nmodule.func2()"
+    result = extract_called_functions(code)
+    assert "func1" in result
+    assert "func2" in result
+
+def test_extract_nested_calls():
+    code = "outer(inner())"
+    result = extract_called_functions(code)
+    assert "outer" in result
+    assert "inner" in result
+
+def test_extract_handles_empty_and_bad_code():
+    assert extract_called_functions("") == []
+    # Bad code should return empty
+    assert extract_called_functions("def incomplete(:") == []

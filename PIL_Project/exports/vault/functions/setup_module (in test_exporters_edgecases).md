@@ -1,5 +1,5 @@
 # setup_module (in test_exporters_edgecases)
-> **Fully qualified name:** `PIL_Project.tests.test_exporters_edgecases.setup_module`
+> **Fully qualified name:** `test_exporters_edgecases.setup_module`
 
 **Type:** function
 **Module:** 

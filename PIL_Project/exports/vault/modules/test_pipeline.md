@@ -1,5 +1,5 @@
 # test_pipeline
-> **Fully qualified name:** `PIL_Project.tests.test_pipeline`
+> **Fully qualified name:** `test_pipeline`
 
 **Type:** module
 **Module:** 

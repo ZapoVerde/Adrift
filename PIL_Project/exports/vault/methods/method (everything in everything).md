@@ -1,5 +1,5 @@
 # method (everything in everything)
-> **Fully qualified name:** `tests.sample_input.everything.method`
+> **Fully qualified name:** `sample_input.everything.method`
 
 **Type:** method
 **Module:** 

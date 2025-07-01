@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Markdown Vault Exporter (exporters)
+
 
 ## Full Docstring
 ```

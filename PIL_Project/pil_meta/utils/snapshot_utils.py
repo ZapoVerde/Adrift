@@ -4,26 +4,38 @@ Utility to create a zip snapshot of the full project for archival or traceabilit
 
 This should be called from within pipeline.py using:
     from pil_meta.utils.snapshot_utils import take_project_snapshot
+
+@tags: ["utility", "snapshot", "archive"]
+@status: "stable"
+@visibility: "public"
 """
 
 import zipfile
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 IGNORED_FOLDERS = {
     ".git", "__pycache__", "node_modules", "snapshots", "exports",
     ".mypy_cache", ".venv", "env", ".idea"
 }
 
-def take_project_snapshot(config: dict,
-                          entity_graph_path: str | None = None) -> Path:
-    """
-    Create a compressed zip snapshot of the entire project_root.
-    Optionally attach entity_graph.json to aid traceability.
+def take_project_snapshot(
+    config: dict,
+    entity_graph_path: Optional[str] = None
+) -> Path:
+    """Creates a compressed zip snapshot of the entire project_root.
+    Optionally attaches entity_graph.json for traceability and audit.
+
+    Args:
+        config (dict): Loaded pilconfig for current run.
+        entity_graph_path (str, optional): Path to entity graph export, if available.
 
     Returns:
         Path: Full path to the created snapshot zip.
+    @tags: ["snapshot", "archive"]
+    @status: "stable"
     """
     project_root = Path(config["project_root"]).resolve()
     snapshot_dir = Path(config["snapshot_dir"]).resolve()

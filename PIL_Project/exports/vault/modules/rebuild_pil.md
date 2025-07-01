@@ -1,5 +1,5 @@
 # rebuild_pil
-> **Fully qualified name:** `PIL_Project.scripts.rebuild_pil`
+> **Fully qualified name:** `rebuild_pil`
 
 **Type:** module
 **Module:** 
@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Rebuild PIL Metadata
+Entry point to run the PIL metadata pipeline.
 
 ## Full Docstring
 ```

@@ -11,7 +11,7 @@
 ---
 
 ## Description
-Exports the entity graph as both a stable file and timestamped variant.
+Exports the entity graph as a timestamped JSON file.
 
 ## Full Docstring
 ```

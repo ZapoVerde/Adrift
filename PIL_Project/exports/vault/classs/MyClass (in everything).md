@@ -1,5 +1,5 @@
 # MyClass (in everything)
-> **Fully qualified name:** `tests.sample_input.everything.MyClass`
+> **Fully qualified name:** `sample_input.everything.MyClass`
 
 **Type:** class
 **Module:** 

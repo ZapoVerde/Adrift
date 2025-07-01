@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** #export #markdown #vault
+**Tags:** 
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Export the entity graph as a Markdown vault: one file per node, with friendly names, tags, and links.
+
 
 ## Full Docstring
 ```

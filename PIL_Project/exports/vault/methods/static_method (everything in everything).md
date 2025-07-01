@@ -1,5 +1,5 @@
 # static_method (everything in everything)
-> **Fully qualified name:** `tests.sample_input.everything.static_method`
+> **Fully qualified name:** `sample_input.everything.static_method`
 
 **Type:** method
 **Module:** 

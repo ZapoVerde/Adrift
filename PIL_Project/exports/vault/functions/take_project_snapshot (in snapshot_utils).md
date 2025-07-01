@@ -5,13 +5,13 @@
 **Module:** 
 **Status:** n/a
 **Visibility:** n/a
-**Tags:** 
+**Tags:** #snapshot #archive
 **Deprecated:** ❌
 
 ---
 
 ## Description
-Create a compressed zip snapshot of the entire project_root.
+Creates a compressed zip snapshot of the entire project_root.
 
 ## Full Docstring
 ```

@@ -1,14 +1,20 @@
 # pil_meta/pipeline.py
 """
-Main orchestration pipeline for the PIL meta-engine.
-Handles config loading, symbol extraction, entity graph building, linkage injection,
-tag/link application, export, and governance reporting.
+Orchestrates the full PIL metadata pipeline with structured reporting.
+Focuses on core exports and clean governance summary.
+
+@tags: ["pipeline", "orchestration", "reporting"]
+@status: "stable"
 """
 
 import sys
 import traceback
+import os
 from pathlib import Path
 from datetime import datetime
+from typing import Dict, List, Set, Optional
+from collections import defaultdict
+from zipfile import ZipFile
 
 from pil_meta.loaders.config_loader import load_config
 from pil_meta.loaders.asset_loader import load_asset_symbols
@@ -22,92 +28,263 @@ from pil_meta.builders.usage_map_builder import build_usage_map
 from pil_meta.exporters.json_exporter import export_entity_graph
 from pil_meta.exporters.usage_map_exporter import export_usage_map
 from pil_meta.exporters.markdown_vault_exporter import export_markdown_vault
-from pil_meta.exporters.md_exporter import export_entity_markdown
 from pil_meta.exporters.vault_index_exporter import export_vault_index
-from pil_meta.exporters.variable_usage_report_exporter import export_variable_usage_markdown
 
-from pil_meta.utils.exceptions_reporter_utils import generate_exception_report
 from pil_meta.utils.snapshot_utils import take_project_snapshot
 from pil_meta.utils.export_cleanup_utils import clean_exports_dir
 
-def run_pipeline(config_path="pilconfig.json"):
+from pil_meta.utils.messaging_utils import (
+    set_debug,
+    print_run_context,
+    print_folder_tree_summary,
+    print_asset_scan_summary,
+    print_symbol_extraction,
+    print_entity_graph,
+    print_exports,
+    print_governance_summary,
+    print_journal_entries_loaded,
+    print_pipeline_complete,
+    debug,
+)
+
+class PipelineResult:
+    """Container for all results and statistics from a full PIL pipeline run."""
+    context: Dict
+    folder_tree: Dict
+    scan_roots: List[str]
+    all_seen_folders: Set[str]
+    py_files: List[str]
+    asset_files: List[str]
+    file_roots: List[str]
+    asset_exts: List[str]
+    asset_counts: Dict[str, int]
+    entity_graph: Optional[Dict]
+    graph_paths: Optional[Dict]
+    usage_paths: Optional[Dict]
+    combined_paths: Optional[Dict]
+    vault_files: List[str]
+    index_path: str
+    project_name: str
+    timestamp: str
+    config: Dict
+    asset_symbols: List
+    code_symbols: List
+    journal_entries: List
+    missing_docstrings: int
+    orphaned: int
+    snapshot_path: str
+    snapshot_file_count: int
+
+    def __init__(self):
+        self.context = {}
+        self.folder_tree = {}
+        self.scan_roots = []
+        self.all_seen_folders = set()
+        self.py_files = []
+        self.asset_files = []
+        self.file_roots = []
+        self.asset_exts = []
+        self.asset_counts = defaultdict(int)
+        self.entity_graph = None
+        self.graph_paths = None
+        self.usage_paths = None
+        self.combined_paths = None
+        self.vault_files = []
+        self.index_path = ""
+        self.project_name = ""
+        self.timestamp = ""
+        self.config = {}
+        self.asset_symbols = []
+        self.code_symbols = []
+        self.journal_entries = []
+        self.missing_docstrings = 0
+        self.orphaned = 0
+        self.snapshot_path = ""
+        self.snapshot_file_count = 0
+
+def print_full_report(result: PipelineResult) -> None:
+    """Prints the entire structured pipeline report in one call."""
+    def build_tree_lines(tree, roots, depth=0):
+        lines = []
+        indent = "    " * depth
+        for root in roots:
+            if root not in tree:
+                continue
+            node = tree[root]
+            line = indent + Path(root).name + "/"
+            if node.get("skipped"):
+                line += " [SKIPPED]"
+            elif node.get("ignored"):
+                line += " [IGNORED]"
+            else:
+                assets_summary = ", ".join(f"{ext}: {count}" for ext, count in sorted(node["assets"].items()))
+                parts = []
+                if node["num_py"]:
+                    parts.append(f"{node['num_py']} .py")
+                if assets_summary:
+                    parts.append(assets_summary)
+                if parts:
+                    line += " (" + ", ".join(parts) + ")"
+            lines.append(line)
+            child_lines = build_tree_lines(tree, sorted(node["children"], key=lambda c: Path(c).name), depth + 1)
+            lines.extend(child_lines)
+        return lines
+
+    folder_tree_lines = build_tree_lines(result.folder_tree, result.scan_roots)
+
+    print_run_context(**result.context)
+    print_folder_tree_summary(folder_tree_lines)
+    print_asset_scan_summary(result.asset_exts, len(result.asset_files))
+    print_symbol_extraction(len(result.code_symbols), len(result.asset_symbols), result.project_name)
+    print_entity_graph(len(result.entity_graph or {}), linkages_injected=True)
+    print_exports(result.combined_paths or {}, len(result.vault_files), result.index_path)
+
+    print_governance_summary(result.missing_docstrings, result.orphaned)
+
+    print_journal_entries_loaded(len(result.journal_entries))
+    print_pipeline_complete(result.snapshot_file_count, result.snapshot_path)
+
+def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
+    """Orchestrates the PIL metadata pipeline (scan + process + reporting)."""
+    result = PipelineResult()
     try:
+        set_debug(False)
+
         config = load_config(config_path)
-        project_root = Path(config["project_root"]).resolve()
-        project_name = project_root.name
+        project_name = Path(config["project_root"]).resolve().name
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        asset_symbols = load_asset_symbols(config)
-        code_symbols = []
-        for pyfile in project_root.rglob("*.py"):
-            code_symbols.extend(load_code_symbols(str(pyfile), str(project_root)))
+        result.context = {
+            "script": os.path.basename(sys.argv[0]),
+            "config": config_path,
+            "date": timestamp,
+        }
+        result.project_name = project_name
+        result.timestamp = timestamp
+        result.config = config
 
-        print("\n🔍 Scanning summary:")
-        print(f"   ├─ Code symbols: {len(code_symbols)}")
-        print(f"   ├─ Asset files: {len(asset_symbols)}")
-        print(f"   └─ Project root: {project_root}")
+        scan_roots = [str(Path(d).resolve()) for d in config.get("scan_dirs", [config["project_root"]])]
+        result.scan_roots = scan_roots
+        all_seen_folders = set()
+        py_files = []
+        file_roots = []
+        asset_exts = config.get("asset_extensions", [])
+        result.asset_exts = asset_exts
+
+        folder_tree = {}
+
+        def get_parent_dir(path):
+            return str(Path(path).parent)
+
+        for scan_root in scan_roots:
+            scan_path = Path(scan_root)
+            if not scan_path.exists():
+                folder_tree[scan_root] = {
+                    "parent": None,
+                    "children": [],
+                    "num_py": 0,
+                    "assets": defaultdict(int),
+                    "ignored": False,
+                    "skipped": True,
+                }
+                continue
+            for folder, subdirs, files in os.walk(scan_path):
+                folder_path = str(Path(folder).resolve())
+                if folder_path in all_seen_folders:
+                    continue
+                all_seen_folders.add(folder_path)
+                parent = get_parent_dir(folder_path)
+                if folder_path not in folder_tree:
+                    folder_tree[folder_path] = {
+                        "parent": parent if folder_path != scan_root else None,
+                        "children": [],
+                        "num_py": 0,
+                        "assets": defaultdict(int),
+                        "ignored": False,
+                        "skipped": False,
+                    }
+                if "__pycache__" in folder_path.split(os.sep):
+                    folder_tree[folder_path]["ignored"] = True
+                    subdirs[:] = []
+                    continue
+                py_count = 0
+                asset_count = defaultdict(int)
+                for f in files:
+                    ext = Path(f).suffix
+                    full_path = str(Path(folder_path) / f)
+                    if f.endswith(".py"):
+                        py_count += 1
+                        py_files.append(full_path)
+                        file_roots.append(str(scan_path))
+                    elif ext in asset_exts:
+                        asset_count[ext] += 1
+                        result.asset_counts[ext] += 1
+                        result.asset_files.append(full_path)
+                folder_tree[folder_path]["num_py"] += py_count
+                for ext, ct in asset_count.items():
+                    folder_tree[folder_path]["assets"][ext] += ct
+                if parent and parent in folder_tree:
+                    if folder_path not in folder_tree[parent]["children"]:
+                        folder_tree[parent]["children"].append(folder_path)
+
+        result.folder_tree = folder_tree
+        result.all_seen_folders = all_seen_folders
+        result.py_files = py_files
+        result.file_roots = file_roots
+
+        code_symbols = []
+        for pyfile, file_root in zip(py_files, file_roots):
+            code_symbols.extend(load_code_symbols(pyfile, file_root))
+        result.code_symbols = code_symbols
+
+        asset_symbols = load_asset_symbols(config)
+        result.asset_symbols = asset_symbols
 
         entities = code_symbols + asset_symbols
         entity_graph = build_entity_graph(entities)
-        entity_graph = inject_call_links(entity_graph, str(project_root))
-
-        print("\n🧠 Graph construction:")
-        print(f"   ├─ Total nodes: {len(entity_graph)}")
-        print("   └─ Linkages injected")
+        entity_graph = inject_call_links(entity_graph, str(config["project_root"]))
+        result.entity_graph = entity_graph
 
         clean_exports_dir(config["output_dir"])
 
         graph_paths = export_entity_graph(entity_graph, config["output_dir"], project_name, timestamp)
         usage_paths = export_usage_map(build_usage_map(entity_graph), config["output_dir"], project_name, timestamp)
-        vault_files = export_markdown_vault(entity_graph, config["vault_dir"], project_name, timestamp)
-        index_path = export_vault_index(entity_graph, config["vault_dir"], project_name, timestamp)
-        variable_report_path = export_variable_usage_markdown(
-            build_usage_map(entity_graph),
-            str(Path(config["output_dir"]) / "variable_usage.md"),
-            project_name,
-            timestamp
-        )
+        result.vault_files = export_markdown_vault(entity_graph, config["vault_dir"], project_name, timestamp)
+        result.index_path = export_vault_index(entity_graph, config["vault_dir"], project_name, timestamp)
 
-        print("\n📤 Exports written:")
-        print(f"   ├─ Entity graph → {graph_paths['stable']} ({Path(graph_paths['timestamped']).name})")
-        print(f"   ├─ Usage map → {usage_paths['stable']} ({Path(usage_paths['timestamped']).name})")
-        print(f"   ├─ Vault files → {len(vault_files)} Markdown files")
-        print(f"   ├─ Vault index → {index_path}")
-        print(f"   └─ Variable usage → {variable_report_path}")
+        combined_paths = {}
+        if graph_paths:
+            combined_paths.update(graph_paths)
+        if usage_paths:
+            combined_paths.update(usage_paths)
+        result.graph_paths = graph_paths
+        result.usage_paths = usage_paths
+        result.combined_paths = combined_paths
 
-        try:
-            generate_exception_report(entity_graph, config["output_dir"])
-        except Exception as e:
-            print(f"❌ Failed to generate exceptions report: {e}")
+        result.journal_entries = load_markdown_entries(config["journal_path"])
 
-        print("\n📎 Governance:")
-        print(f"   ├─ Exceptions (latest) → {Path(config['output_dir']) / 'function_map_exceptions.json'}")
-        print(f"   ├─ Exceptions (timestamped) → {sorted(Path(config['output_dir']).glob('function_map_exceptions_*.json'))[-1]}")
-        print(f"   └─ Usage map (timestamped) → {usage_paths['timestamped']}")
+        result.missing_docstrings = sum(1 for n in entity_graph.values() if not n.get("docstring_present"))
+        result.orphaned = sum(1 for n in entity_graph.values() if n.get("is_orphaned"))
 
-        journal_entries = load_markdown_entries(config["journal_path"])
-        print(f"\n📓 Journal entries loaded: {len(journal_entries)}")
+        entity_graph_path = None
+        if result.graph_paths and "timestamped" in result.graph_paths:
+            entity_graph_path = result.graph_paths["timestamped"]
 
-        missing_docstrings = sum(1 for n in entity_graph.values() if not n.get("docstring_present"))
-        orphaned = sum(1 for n in entity_graph.values() if n.get("is_orphaned"))
-
-        print("\n📊 Project health:")
-        print(f"   ├─ Missing docstrings: {missing_docstrings}")
-        print(f"   └─ Orphaned entities: {orphaned}")
-
-        print("\n✅ Metadata pipeline complete.")
-
-        snapshot_path = take_project_snapshot(
+        result.snapshot_path = str(take_project_snapshot(
             config,
-            entity_graph_path=graph_paths["stable"]
-        )
-        from zipfile import ZipFile
-        with ZipFile(snapshot_path, 'r') as zipf:
-            file_count = len(zipf.infolist())
-        print(f"📦 Created snapshot with {file_count} files → {snapshot_path}")
+            entity_graph_path=entity_graph_path
+        ))
+        try:
+            with ZipFile(result.snapshot_path, 'r') as zipf:
+                result.snapshot_file_count = len(zipf.infolist())
+        except Exception:
+            result.snapshot_file_count = 0
+
+        print_full_report(result)
+
+        return result
 
     except Exception:
-        print("\n❌ Pipeline failed. Full traceback below:")
         traceback.print_exc()
         sys.exit(1)
 

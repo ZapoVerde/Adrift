@@ -1,5 +1,5 @@
 # INPUT_JSON (in test_exporters_edgecases)
-> **Fully qualified name:** `PIL_Project.tests.test_exporters_edgecases.INPUT_JSON`
+> **Fully qualified name:** `test_exporters_edgecases.INPUT_JSON`
 
 **Type:** variable
 **Module:** 
