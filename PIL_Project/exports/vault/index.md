@@ -1,6 +1,17 @@
 # Symbol Index
 
 
+## Assets
+- [pil_meta/entity_graph_20250701_105218.json](assets/pil_meta_entity_graph_20250701_105218_json.md)
+- [pilconfig.json](assets/pilconfig_json.md)
+- [pilconfig_self.json](assets/pilconfig_self_json.md)
+- [tests/sample_input/dummy_icon.png](assets/tests_sample_input_dummy_icon_png.md)
+- [tests/sample_input/fireball.tmx](assets/tests_sample_input_fireball_tmx.md)
+- [tests/sample_input/sample_entities.json](assets/tests_sample_input_sample_entities_json.md)
+- [tests/sample_input/sample_graph.json](assets/tests_sample_input_sample_graph_json.md)
+- [tests/sample_input/sample_graph_crossfile.json](assets/tests_sample_input_sample_graph_crossfile_json.md)
+- [tests/sample_input/sample_graph_edge_cases.json](assets/tests_sample_input_sample_graph_edge_cases_json.md)
+
 ## Classs
 - [loaders.code_loader.ParentNodeVisitor](classs/loaders_code_loader_ParentNodeVisitor.md)
 - [pipeline.PipelineResult](classs/pipeline_PipelineResult.md)
@@ -16,6 +27,7 @@
 - [exporters.markdown_vault_exporter._sanitize_filename](functions/exporters_markdown_vault_exporter__sanitize_filename.md)
 - [exporters.markdown_vault_exporter.export_markdown_vault](functions/exporters_markdown_vault_exporter_export_markdown_vault.md)
 - [exporters.markdown_vault_exporter.friendly_name](functions/exporters_markdown_vault_exporter_friendly_name.md)
+- [exporters.md_exporter.export_entity_markdown](functions/exporters_md_exporter_export_entity_markdown.md)
 - [exporters.usage_map_exporter.export_usage_map](functions/exporters_usage_map_exporter_export_usage_map.md)
 - [exporters.vault_index_exporter.export_vault_index](functions/exporters_vault_index_exporter_export_vault_index.md)
 - [loaders.asset_loader.export_path_list](functions/loaders_asset_loader_export_path_list.md)
@@ -25,7 +37,6 @@
 - [loaders.code_loader.load_code_symbols](functions/loaders_code_loader_load_code_symbols.md)
 - [loaders.config_loader.load_config](functions/loaders_config_loader_load_config.md)
 - [loaders.markdown_loader.load_markdown_entries](functions/loaders_markdown_loader_load_markdown_entries.md)
-- [loaders.markdown_loader.parse_frontmatter](functions/loaders_markdown_loader_parse_frontmatter.md)
 - [phase1_core_logic.test_entity_graph_builder.test_duplicate_fqnames_overwrites_last](functions/phase1_core_logic_test_entity_graph_builder_test_duplicate_fqnames_overwrites_last.md)
 - [phase1_core_logic.test_entity_graph_builder.test_empty_input_returns_empty_graph](functions/phase1_core_logic_test_entity_graph_builder_test_empty_input_returns_empty_graph.md)
 - [phase1_core_logic.test_entity_graph_builder.test_entity_not_dict_raises](functions/phase1_core_logic_test_entity_graph_builder_test_entity_not_dict_raises.md)
@@ -137,6 +148,7 @@
 - [exporters.__init__](modules/exporters___init__.md)
 - [exporters.json_exporter](modules/exporters_json_exporter.md)
 - [exporters.markdown_vault_exporter](modules/exporters_markdown_vault_exporter.md)
+- [exporters.md_exporter](modules/exporters_md_exporter.md)
 - [exporters.usage_map_exporter](modules/exporters_usage_map_exporter.md)
 - [exporters.vault_index_exporter](modules/exporters_vault_index_exporter.md)
 - [loaders.__init__](modules/loaders___init__.md)
@@ -183,7 +195,6 @@
 
 ## Variables
 - [loaders.asset_loader.SUPPORTED_EXTENSIONS](variables/loaders_asset_loader_SUPPORTED_EXTENSIONS.md)
-- [loaders.markdown_loader.FRONTMATTER_RE](variables/loaders_markdown_loader_FRONTMATTER_RE.md)
 - [sample_input.everything.MY_CONSTANT](variables/sample_input_everything_MY_CONSTANT.md)
 - [sample_input.test_roundtrip.DIR1](variables/sample_input_test_roundtrip_DIR1.md)
 - [sample_input.test_roundtrip.DIR2](variables/sample_input_test_roundtrip_DIR2.md)

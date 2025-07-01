@@ -27,7 +27,6 @@ from pil_meta.builders.usage_map_builder import build_usage_map
 
 from pil_meta.exporters.json_exporter import export_entity_graph
 from pil_meta.exporters.usage_map_exporter import export_usage_map
-from pil_meta.exporters.markdown_vault_exporter import export_markdown_vault
 from pil_meta.exporters.vault_index_exporter import export_vault_index
 
 from pil_meta.utils.snapshot_utils import take_project_snapshot
@@ -48,7 +47,12 @@ from pil_meta.utils.messaging_utils import (
 )
 
 class PipelineResult:
-    """Container for all results and statistics from a full PIL pipeline run."""
+    """Container for all results and statistics from a full PIL pipeline run.
+
+    @tags: ["container", "result"]
+    @status: "stable"
+    @visibility: "internal"
+    """
     context: Dict
     folder_tree: Dict
     scan_roots: List[str]
@@ -103,7 +107,12 @@ class PipelineResult:
         self.snapshot_file_count = 0
 
 def print_full_report(result: PipelineResult) -> None:
-    """Prints the entire structured pipeline report in one call."""
+    """Prints the entire structured pipeline report in one call.
+
+    @tags: ["reporting", "output"]
+    @status: "stable"
+    @visibility: "internal"
+    """
     def build_tree_lines(tree, roots, depth=0):
         lines = []
         indent = "    " * depth
@@ -138,14 +147,25 @@ def print_full_report(result: PipelineResult) -> None:
     print_symbol_extraction(len(result.code_symbols), len(result.asset_symbols), result.project_name)
     print_entity_graph(len(result.entity_graph or {}), linkages_injected=True)
     print_exports(result.combined_paths or {}, len(result.vault_files), result.index_path)
-
     print_governance_summary(result.missing_docstrings, result.orphaned)
-
     print_journal_entries_loaded(len(result.journal_entries))
     print_pipeline_complete(result.snapshot_file_count, result.snapshot_path)
 
 def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
-    """Orchestrates the PIL metadata pipeline (scan + process + reporting)."""
+    """Orchestrates the PIL metadata pipeline (scan + process + reporting).
+
+    Reads config, scans for symbols and assets, applies linkages, and exports structured outputs.
+
+    @tags: ["entrypoint", "scan", "export"]
+    @status: "stable"
+    @visibility: "public"
+
+    Args:
+        config_path (str): Path to the config JSON used to drive the pipeline.
+
+    Returns:
+        PipelineResult: Captures all exports, stats, paths, and entity graph output.
+    """
     result = PipelineResult()
     try:
         set_debug(False)
@@ -165,15 +185,21 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
 
         scan_roots = [str(Path(d).resolve()) for d in config.get("scan_dirs", [config["project_root"]])]
         result.scan_roots = scan_roots
+        asset_exts = config.get("asset_extensions", [])
+        ignored_folders = set(config.get("ignored_folders", []))
+
+        result.asset_exts = asset_exts
         all_seen_folders = set()
         py_files = []
         file_roots = []
-        asset_exts = config.get("asset_extensions", [])
-        result.asset_exts = asset_exts
-
         folder_tree = {}
 
-        def get_parent_dir(path):
+        def get_parent_dir(path: str) -> str:
+            """Returns the parent folder path of a given path string.
+
+            @tags: ["path", "tree"]
+            @status: "internal"
+            """
             return str(Path(path).parent)
 
         for scan_root in scan_roots:
@@ -193,6 +219,20 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
                 if folder_path in all_seen_folders:
                     continue
                 all_seen_folders.add(folder_path)
+
+                rel_parts = Path(folder).relative_to(scan_path).parts
+                if any(part in ignored_folders for part in rel_parts):
+                    folder_tree[folder_path] = {
+                        "parent": get_parent_dir(folder_path),
+                        "children": [],
+                        "num_py": 0,
+                        "assets": defaultdict(int),
+                        "ignored": True,
+                        "skipped": False,
+                    }
+                    subdirs[:] = []
+                    continue
+
                 parent = get_parent_dir(folder_path)
                 if folder_path not in folder_tree:
                     folder_tree[folder_path] = {
@@ -203,10 +243,7 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
                         "ignored": False,
                         "skipped": False,
                     }
-                if "__pycache__" in folder_path.split(os.sep):
-                    folder_tree[folder_path]["ignored"] = True
-                    subdirs[:] = []
-                    continue
+
                 py_count = 0
                 asset_count = defaultdict(int)
                 for f in files:
@@ -246,34 +283,20 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
         result.entity_graph = entity_graph
 
         clean_exports_dir(config["output_dir"])
-
         graph_paths = export_entity_graph(entity_graph, config["output_dir"], project_name, timestamp)
         usage_paths = export_usage_map(build_usage_map(entity_graph), config["output_dir"], project_name, timestamp)
-        result.vault_files = export_markdown_vault(entity_graph, config["vault_dir"], project_name, timestamp)
         result.index_path = export_vault_index(entity_graph, config["vault_dir"], project_name, timestamp)
 
-        combined_paths = {}
-        if graph_paths:
-            combined_paths.update(graph_paths)
-        if usage_paths:
-            combined_paths.update(usage_paths)
         result.graph_paths = graph_paths
         result.usage_paths = usage_paths
-        result.combined_paths = combined_paths
+        result.combined_paths = {**graph_paths, **usage_paths} if graph_paths and usage_paths else {}
 
         result.journal_entries = load_markdown_entries(config["journal_path"])
-
         result.missing_docstrings = sum(1 for n in entity_graph.values() if not n.get("docstring_present"))
         result.orphaned = sum(1 for n in entity_graph.values() if n.get("is_orphaned"))
 
-        entity_graph_path = None
-        if result.graph_paths and "timestamped" in result.graph_paths:
-            entity_graph_path = result.graph_paths["timestamped"]
-
-        result.snapshot_path = str(take_project_snapshot(
-            config,
-            entity_graph_path=entity_graph_path
-        ))
+        entity_graph_path = result.graph_paths.get("timestamped") if result.graph_paths else None
+        result.snapshot_path = str(take_project_snapshot(config, entity_graph_path=entity_graph_path))
         try:
             with ZipFile(result.snapshot_path, 'r') as zipf:
                 result.snapshot_file_count = len(zipf.infolist())
@@ -281,7 +304,6 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
             result.snapshot_file_count = 0
 
         print_full_report(result)
-
         return result
 
     except Exception:

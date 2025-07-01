@@ -1,6 +1,6 @@
 {
-  "timestamp": "20250701_102917",
-  "project_name": "pil_meta",
+  "timestamp": "20250701_144604",
+  "project_name": "PIL_Project",
   "graph": {
     "pipeline": {
       "fqname": "pipeline",
@@ -15,7 +15,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "pipeline",
         "module": "pipeline",
@@ -37,335 +37,77 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils.print_run_context",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_folder_tree_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_asset_scan_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_symbol_extraction",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_exports",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_governance_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_journal_entries_loaded",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_pipeline_complete",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.PipelineResult",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.run_pipeline",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.set_debug",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.config_loader.load_config",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.asset_loader.load_asset_symbols",
-          "type": "calls"
-        },
-        {
-          "target": "builders.entity_graph_builder.build_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "builders.linkage_builder.inject_call_links",
-          "type": "calls"
-        },
-        {
-          "target": "utils.export_cleanup_utils.clean_exports_dir",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.json_exporter.export_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.usage_map_exporter.export_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter.export_markdown_vault",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.vault_index_exporter.export_vault_index",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.markdown_loader.load_markdown_entries",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.print_full_report",
-          "type": "calls"
-        },
-        {
-          "target": "builders.usage_map_builder.build_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "utils.snapshot_utils.take_project_snapshot",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.load_code_symbols",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "builders.entity_graph_builder.build_entity_graph",
-        "builders.linkage_builder.inject_call_links",
-        "builders.usage_map_builder.build_usage_map",
-        "exporters.json_exporter.export_entity_graph",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.usage_map_exporter.export_usage_map",
-        "exporters.vault_index_exporter.export_vault_index",
-        "loaders.asset_loader.load_asset_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.config_loader.load_config",
-        "loaders.markdown_loader.load_markdown_entries",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "utils.export_cleanup_utils.clean_exports_dir",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.set_debug",
-        "utils.snapshot_utils.take_project_snapshot"
-      ]
+      "calls_fqns": []
     },
     "pipeline.PipelineResult": {
       "fqname": "pipeline.PipelineResult",
       "type": "class",
       "description": "Container for all results and statistics from a full PIL pipeline run.",
-      "tags": [],
+      "tags": [
+        "container",
+        "result"
+      ],
       "source_file": "pipeline.py",
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "pipeline.PipelineResult",
         "module": "pipeline",
         "name": "PipelineResult",
         "type": "class",
-        "lineno": 50,
+        "lineno": 49,
         "source_file": "pipeline.py",
         "description": "Container for all results and statistics from a full PIL pipeline run.",
-        "docstring_full": "Container for all results and statistics from a full PIL pipeline run.",
-        "tags": [],
+        "docstring_full": "Container for all results and statistics from a full PIL pipeline run.\n\n@tags: [\"container\", \"result\"]\n@status: \"stable\"\n@visibility: \"internal\"",
+        "tags": [
+          "container",
+          "result"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
-        "visibility": null,
+        "status": "stable",
+        "visibility": "internal",
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils.print_run_context",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_folder_tree_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_asset_scan_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_symbol_extraction",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_exports",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_governance_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_journal_entries_loaded",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_pipeline_complete",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.PipelineResult",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.run_pipeline",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.set_debug",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.config_loader.load_config",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.asset_loader.load_asset_symbols",
-          "type": "calls"
-        },
-        {
-          "target": "builders.entity_graph_builder.build_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "builders.linkage_builder.inject_call_links",
-          "type": "calls"
-        },
-        {
-          "target": "utils.export_cleanup_utils.clean_exports_dir",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.json_exporter.export_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.usage_map_exporter.export_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter.export_markdown_vault",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.vault_index_exporter.export_vault_index",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.markdown_loader.load_markdown_entries",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.print_full_report",
-          "type": "calls"
-        },
-        {
-          "target": "builders.usage_map_builder.build_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "utils.snapshot_utils.take_project_snapshot",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.load_code_symbols",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "builders.entity_graph_builder.build_entity_graph",
-        "builders.linkage_builder.inject_call_links",
-        "builders.usage_map_builder.build_usage_map",
-        "exporters.json_exporter.export_entity_graph",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.usage_map_exporter.export_usage_map",
-        "exporters.vault_index_exporter.export_vault_index",
-        "loaders.asset_loader.load_asset_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.config_loader.load_config",
-        "loaders.markdown_loader.load_markdown_entries",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "utils.export_cleanup_utils.clean_exports_dir",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.set_debug",
-        "utils.snapshot_utils.take_project_snapshot"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "pipeline.print_full_report": {
       "fqname": "pipeline.print_full_report",
       "type": "function",
       "description": "Prints the entire structured pipeline report in one call.",
-      "tags": [],
+      "tags": [
+        "reporting",
+        "output"
+      ],
       "source_file": "pipeline.py",
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "pipeline.print_full_report",
         "module": "pipeline",
         "name": "print_full_report",
         "type": "function",
-        "lineno": 105,
+        "lineno": 109,
         "source_file": "pipeline.py",
         "description": "Prints the entire structured pipeline report in one call.",
-        "docstring_full": "Prints the entire structured pipeline report in one call.",
-        "tags": [],
+        "docstring_full": "Prints the entire structured pipeline report in one call.\n\n@tags: [\"reporting\", \"output\"]\n@status: \"stable\"\n@visibility: \"internal\"",
+        "tags": [
+          "reporting",
+          "output"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
-        "visibility": null,
+        "status": "stable",
+        "visibility": "internal",
         "docstring_present": true,
         "metadata": {
           "args": [
@@ -374,172 +116,42 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils.print_run_context",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_folder_tree_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_asset_scan_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_symbol_extraction",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_exports",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_governance_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_journal_entries_loaded",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_pipeline_complete",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.PipelineResult",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.run_pipeline",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.set_debug",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.config_loader.load_config",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.asset_loader.load_asset_symbols",
-          "type": "calls"
-        },
-        {
-          "target": "builders.entity_graph_builder.build_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "builders.linkage_builder.inject_call_links",
-          "type": "calls"
-        },
-        {
-          "target": "utils.export_cleanup_utils.clean_exports_dir",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.json_exporter.export_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.usage_map_exporter.export_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter.export_markdown_vault",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.vault_index_exporter.export_vault_index",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.markdown_loader.load_markdown_entries",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.print_full_report",
-          "type": "calls"
-        },
-        {
-          "target": "builders.usage_map_builder.build_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "utils.snapshot_utils.take_project_snapshot",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.load_code_symbols",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "builders.entity_graph_builder.build_entity_graph",
-        "builders.linkage_builder.inject_call_links",
-        "builders.usage_map_builder.build_usage_map",
-        "exporters.json_exporter.export_entity_graph",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.usage_map_exporter.export_usage_map",
-        "exporters.vault_index_exporter.export_vault_index",
-        "loaders.asset_loader.load_asset_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.config_loader.load_config",
-        "loaders.markdown_loader.load_markdown_entries",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "utils.export_cleanup_utils.clean_exports_dir",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.set_debug",
-        "utils.snapshot_utils.take_project_snapshot"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "pipeline.run_pipeline": {
       "fqname": "pipeline.run_pipeline",
       "type": "function",
       "description": "Orchestrates the PIL metadata pipeline (scan + process + reporting).",
-      "tags": [],
+      "tags": [
+        "entrypoint",
+        "scan",
+        "export"
+      ],
       "source_file": "pipeline.py",
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "pipeline.run_pipeline",
         "module": "pipeline",
         "name": "run_pipeline",
         "type": "function",
-        "lineno": 147,
+        "lineno": 154,
         "source_file": "pipeline.py",
         "description": "Orchestrates the PIL metadata pipeline (scan + process + reporting).",
-        "docstring_full": "Orchestrates the PIL metadata pipeline (scan + process + reporting).",
-        "tags": [],
+        "docstring_full": "Orchestrates the PIL metadata pipeline (scan + process + reporting).\n\nReads config, scans for symbols and assets, applies linkages, and exports structured outputs.\n\n@tags: [\"entrypoint\", \"scan\", \"export\"]\n@status: \"stable\"\n@visibility: \"public\"\n\nArgs:\n    config_path (str): Path to the config JSON used to drive the pipeline.\n\nReturns:\n    PipelineResult: Captures all exports, stats, paths, and entity graph output.",
+        "tags": [
+          "entrypoint",
+          "scan",
+          "export"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
-        "visibility": null,
+        "status": "stable",
+        "visibility": "public",
         "docstring_present": true,
         "metadata": {
           "args": [
@@ -548,147 +160,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils.print_run_context",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_folder_tree_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_asset_scan_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_symbol_extraction",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_exports",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_governance_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_journal_entries_loaded",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_pipeline_complete",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.PipelineResult",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.run_pipeline",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.set_debug",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.config_loader.load_config",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.asset_loader.load_asset_symbols",
-          "type": "calls"
-        },
-        {
-          "target": "builders.entity_graph_builder.build_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "builders.linkage_builder.inject_call_links",
-          "type": "calls"
-        },
-        {
-          "target": "utils.export_cleanup_utils.clean_exports_dir",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.json_exporter.export_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.usage_map_exporter.export_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter.export_markdown_vault",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.vault_index_exporter.export_vault_index",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.markdown_loader.load_markdown_entries",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.print_full_report",
-          "type": "calls"
-        },
-        {
-          "target": "builders.usage_map_builder.build_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "utils.snapshot_utils.take_project_snapshot",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.load_code_symbols",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "builders.entity_graph_builder.build_entity_graph",
-        "builders.linkage_builder.inject_call_links",
-        "builders.usage_map_builder.build_usage_map",
-        "exporters.json_exporter.export_entity_graph",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.usage_map_exporter.export_usage_map",
-        "exporters.vault_index_exporter.export_vault_index",
-        "loaders.asset_loader.load_asset_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.config_loader.load_config",
-        "loaders.markdown_loader.load_markdown_entries",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "utils.export_cleanup_utils.clean_exports_dir",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.set_debug",
-        "utils.snapshot_utils.take_project_snapshot"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "pipeline.__init__": {
       "fqname": "pipeline.__init__",
@@ -699,13 +173,13 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "pipeline.__init__",
         "module": "pipeline",
         "name": "__init__",
         "type": "method",
-        "lineno": 78,
+        "lineno": 82,
         "source_file": "pipeline.py",
         "description": "",
         "docstring_full": "",
@@ -722,141 +196,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils.print_run_context",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_folder_tree_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_asset_scan_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_symbol_extraction",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_exports",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_governance_summary",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_journal_entries_loaded",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.print_pipeline_complete",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.PipelineResult",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.run_pipeline",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.set_debug",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.config_loader.load_config",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.asset_loader.load_asset_symbols",
-          "type": "calls"
-        },
-        {
-          "target": "builders.entity_graph_builder.build_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "builders.linkage_builder.inject_call_links",
-          "type": "calls"
-        },
-        {
-          "target": "utils.export_cleanup_utils.clean_exports_dir",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.json_exporter.export_entity_graph",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.usage_map_exporter.export_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter.export_markdown_vault",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.vault_index_exporter.export_vault_index",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.markdown_loader.load_markdown_entries",
-          "type": "calls"
-        },
-        {
-          "target": "pipeline.print_full_report",
-          "type": "calls"
-        },
-        {
-          "target": "builders.usage_map_builder.build_usage_map",
-          "type": "calls"
-        },
-        {
-          "target": "utils.snapshot_utils.take_project_snapshot",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.load_code_symbols",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "builders.entity_graph_builder.build_entity_graph",
-        "builders.linkage_builder.inject_call_links",
-        "builders.usage_map_builder.build_usage_map",
-        "exporters.json_exporter.export_entity_graph",
-        "exporters.markdown_vault_exporter.export_markdown_vault",
-        "exporters.usage_map_exporter.export_usage_map",
-        "exporters.vault_index_exporter.export_vault_index",
-        "loaders.asset_loader.load_asset_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.config_loader.load_config",
-        "loaders.markdown_loader.load_markdown_entries",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "utils.export_cleanup_utils.clean_exports_dir",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.set_debug",
-        "utils.snapshot_utils.take_project_snapshot"
-      ]
+      "calls_fqns": []
     },
     "__init__": {
       "fqname": "__init__",
@@ -929,7 +271,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "builders.entity_graph_builder.build_entity_graph",
         "module": "builders.entity_graph_builder",
@@ -953,13 +295,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "builders.linkage_builder": {
@@ -971,7 +307,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "builders.linkage_builder",
         "module": "builders.linkage_builder",
@@ -989,16 +325,9 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "builders.linkage_builder.extract_called_functions",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "builders.linkage_builder.extract_called_functions"
-      ]
+      "calls_fqns": []
     },
     "builders.linkage_builder.extract_called_functions": {
       "fqname": "builders.linkage_builder.extract_called_functions",
@@ -1009,7 +338,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "builders.linkage_builder.extract_called_functions",
         "module": "builders.linkage_builder",
@@ -1032,20 +361,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "builders.linkage_builder.extract_called_functions",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "builders.linkage_builder",
-        "builders.linkage_builder.extract_called_functions",
-        "builders.linkage_builder.inject_call_links"
-      ],
-      "calls_fqns": [
-        "builders.linkage_builder.extract_called_functions"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "builders.linkage_builder.inject_call_links": {
       "fqname": "builders.linkage_builder.inject_call_links",
@@ -1056,7 +374,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "builders.linkage_builder.inject_call_links",
         "module": "builders.linkage_builder",
@@ -1080,22 +398,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "builders.linkage_builder.extract_called_functions",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "builders.linkage_builder.extract_called_functions"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "builders.usage_map_builder": {
       "fqname": "builders.usage_map_builder",
@@ -1137,7 +442,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "builders.usage_map_builder.build_usage_map",
         "module": "builders.usage_map_builder",
@@ -1161,13 +466,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "builders.variable_usage_builder": {
@@ -1310,7 +609,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.json_exporter.export_entity_graph",
         "module": "exporters.json_exporter",
@@ -1337,25 +636,23 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "exporters.markdown_vault_exporter": {
       "fqname": "exporters.markdown_vault_exporter",
       "type": "module",
-      "description": "",
-      "tags": [],
+      "description": "Markdown vault exporter for PIL project.",
+      "tags": [
+        "export",
+        "markdown",
+        "vault"
+      ],
       "source_file": "exporters\\markdown_vault_exporter.py",
       "test_coverage": false,
-      "docstring_present": false,
+      "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.markdown_vault_exporter",
         "module": "exporters.markdown_vault_exporter",
@@ -1363,31 +660,23 @@
         "type": "module",
         "lineno": 1,
         "source_file": "exporters\\markdown_vault_exporter.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
+        "description": "Markdown vault exporter for PIL project.",
+        "docstring_full": "Markdown vault exporter for PIL project.\n\nExports the entire codebase entity graph as a set of Markdown files, suitable for\nimporting into Obsidian or other knowledge vault tools. Each symbol (function,\nclass, etc.) is exported as a separate file with PIL metadata, links, and\nfriendly names.\n\n@tags: [\"export\", \"markdown\", \"vault\"]\n@status: \"stable\"",
+        "tags": [
+          "export",
+          "markdown",
+          "vault"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
+        "status": "stable",
         "visibility": null,
-        "docstring_present": false,
+        "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter.friendly_name",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.friendly_name"
-      ]
+      "calls_fqns": []
     },
     "exporters.markdown_vault_exporter.friendly_name": {
       "fqname": "exporters.markdown_vault_exporter.friendly_name",
@@ -1398,16 +687,16 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.markdown_vault_exporter.friendly_name",
         "module": "exporters.markdown_vault_exporter",
         "name": "friendly_name",
         "type": "function",
-        "lineno": 7,
+        "lineno": 18,
         "source_file": "exporters\\markdown_vault_exporter.py",
         "description": "Returns a human-friendly display name for vault navigation.",
-        "docstring_full": "Returns a human-friendly display name for vault navigation.",
+        "docstring_full": "Returns a human-friendly display name for vault navigation.\n\nArgs:\n    node (dict): Entity graph node.\n\nReturns:\n    str: User-friendly label for UI or markdown heading.\n\nRecursive note: This function may call itself via the filename sanitizer for\nfallback purposes, but always resolves due to string fallback.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
@@ -1421,26 +710,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter.friendly_name",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "exporters.markdown_vault_exporter",
-        "exporters.markdown_vault_exporter.friendly_name",
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.export_markdown_vault"
-      ],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.friendly_name"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "exporters.markdown_vault_exporter._sanitize_filename": {
       "fqname": "exporters.markdown_vault_exporter._sanitize_filename",
@@ -1451,16 +723,16 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.markdown_vault_exporter._sanitize_filename",
         "module": "exporters.markdown_vault_exporter",
         "name": "_sanitize_filename",
         "type": "function",
-        "lineno": 31,
+        "lineno": 53,
         "source_file": "exporters\\markdown_vault_exporter.py",
         "description": "Sanitizes a string for use as a safe Markdown filename.",
-        "docstring_full": "Sanitizes a string for use as a safe Markdown filename.",
+        "docstring_full": "Sanitizes a string for use as a safe Markdown filename.\n\nArgs:\n    name (str): Raw symbol or friendly name.\n\nReturns:\n    str: Sanitized string safe for the filesystem.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
@@ -1474,52 +746,43 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter.friendly_name",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "exporters.markdown_vault_exporter",
-        "exporters.markdown_vault_exporter.friendly_name",
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.export_markdown_vault"
-      ],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.friendly_name"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "exporters.markdown_vault_exporter.export_markdown_vault": {
       "fqname": "exporters.markdown_vault_exporter.export_markdown_vault",
       "type": "function",
-      "description": "",
-      "tags": [],
+      "description": "Exports the given entity graph to a Markdown \"vault\"—one .md file per symbol.",
+      "tags": [
+        "export",
+        "markdown",
+        "vault"
+      ],
       "source_file": "exporters\\markdown_vault_exporter.py",
       "test_coverage": false,
-      "docstring_present": false,
+      "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.markdown_vault_exporter.export_markdown_vault",
         "module": "exporters.markdown_vault_exporter",
         "name": "export_markdown_vault",
         "type": "function",
-        "lineno": 46,
+        "lineno": 78,
         "source_file": "exporters\\markdown_vault_exporter.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
+        "description": "Exports the given entity graph to a Markdown \"vault\"—one .md file per symbol.",
+        "docstring_full": "Exports the given entity graph to a Markdown \"vault\"—one .md file per symbol.\n\nArgs:\n    graph (dict): Entity graph as produced by pipeline.\n    output_dir (str or Path): Destination directory for vault.\n    project_name (str, optional): Project display name (for metadata).\n    timestamp (str, optional): Run timestamp for traceability.\n\nReturns:\n    list[str]: List of written Markdown file paths.\n\nEach file contains:\n- Friendly name as H1 heading\n- FQ name, type, status, visibility, tags, deprecated status\n- Description and full docstring\n- Structured links to other nodes and journal entries\n\nFolders are organized by symbol type (e.g., functions/, classes/).\nFiles are sanitized for filesystem safety and Obsidian compatibility.\n\n@tags: [\"export\", \"markdown\", \"vault\"]\n@status: \"stable\"",
+        "tags": [
+          "export",
+          "markdown",
+          "vault"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
+        "status": "stable",
         "visibility": null,
-        "docstring_present": false,
+        "docstring_present": true,
         "metadata": {
           "args": [
             "graph",
@@ -1530,27 +793,83 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "exporters.markdown_vault_exporter.friendly_name",
-          "type": "calls"
-        },
-        {
-          "target": "exporters.markdown_vault_exporter._sanitize_filename",
-          "type": "calls"
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "exporters.md_exporter": {
+      "fqname": "exporters.md_exporter",
+      "type": "module",
+      "description": "Markdown Exporter (exporters)",
+      "tags": [],
+      "source_file": "exporters\\md_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "exporters.md_exporter",
+        "module": "exporters.md_exporter",
+        "name": "exporters.md_exporter",
+        "type": "module",
+        "lineno": 1,
+        "source_file": "exporters\\md_exporter.py",
+        "description": "Markdown Exporter (exporters)",
+        "docstring_full": "Markdown Exporter (exporters)\n\nExports a single code entity as a Markdown file with metadata and Obsidian links.",
+        "tags": [],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": null,
+        "visibility": null,
+        "docstring_present": true,
+        "metadata": {}
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "exporters.md_exporter.export_entity_markdown": {
+      "fqname": "exporters.md_exporter.export_entity_markdown",
+      "type": "function",
+      "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
+      "tags": [
+        "export",
+        "markdown"
+      ],
+      "source_file": "exporters\\md_exporter.py",
+      "test_coverage": false,
+      "docstring_present": true,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "exporters.md_exporter.export_entity_markdown",
+        "module": "exporters.md_exporter",
+        "name": "export_entity_markdown",
+        "type": "function",
+        "lineno": 11,
+        "source_file": "exporters\\md_exporter.py",
+        "description": "Export a single entity as a Markdown file with metadata and Obsidian links.",
+        "docstring_full": "Export a single entity as a Markdown file with metadata and Obsidian links.\n@tags: [\"export\", \"markdown\"]\n@status: \"stable\"\n@visibility: \"public\"\n\nReturns:\n    str: The full path to the written Markdown file.",
+        "tags": [
+          "export",
+          "markdown"
+        ],
+        "linked_journal_entry": null,
+        "deprecated": false,
+        "status": "stable",
+        "visibility": "public",
+        "docstring_present": true,
+        "metadata": {
+          "args": [
+            "entity",
+            "output_dir"
+          ],
+          "returns": null
         }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "exporters.markdown_vault_exporter._sanitize_filename",
-        "exporters.markdown_vault_exporter.friendly_name"
-      ]
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "exporters.usage_map_exporter": {
       "fqname": "exporters.usage_map_exporter",
@@ -1592,7 +911,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.usage_map_exporter.export_usage_map",
         "module": "exporters.usage_map_exporter",
@@ -1619,13 +938,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "exporters.vault_index_exporter": {
@@ -1668,7 +981,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "exporters.vault_index_exporter.export_vault_index",
         "module": "exporters.vault_index_exporter",
@@ -1695,13 +1008,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "exporters.__init__": {
@@ -1744,7 +1051,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.asset_loader",
         "module": "loaders.asset_loader",
@@ -1762,16 +1069,9 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.asset_loader.infer_tags_from_path",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.asset_loader.infer_tags_from_path"
-      ]
+      "calls_fqns": []
     },
     "loaders.asset_loader.SUPPORTED_EXTENSIONS": {
       "fqname": "loaders.asset_loader.SUPPORTED_EXTENSIONS",
@@ -1782,7 +1082,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": "",
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.asset_loader.SUPPORTED_EXTENSIONS",
         "module": "loaders.asset_loader",
@@ -1800,16 +1100,9 @@
         "docstring_present": false,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.asset_loader.infer_tags_from_path",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.asset_loader.infer_tags_from_path"
-      ]
+      "calls_fqns": []
     },
     "loaders.asset_loader.infer_tags_from_path": {
       "fqname": "loaders.asset_loader.infer_tags_from_path",
@@ -1823,7 +1116,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.asset_loader.infer_tags_from_path",
         "module": "loaders.asset_loader",
@@ -1849,22 +1142,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.asset_loader.infer_tags_from_path",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "loaders.asset_loader",
-        "loaders.asset_loader.SUPPORTED_EXTENSIONS",
-        "loaders.asset_loader.infer_tags_from_path",
-        "loaders.asset_loader.export_path_list",
-        "loaders.asset_loader.load_asset_symbols"
-      ],
-      "calls_fqns": [
-        "loaders.asset_loader.infer_tags_from_path"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.asset_loader.export_path_list": {
       "fqname": "loaders.asset_loader.export_path_list",
@@ -1878,7 +1158,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.asset_loader.export_path_list",
         "module": "loaders.asset_loader",
@@ -1905,16 +1185,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.asset_loader.infer_tags_from_path",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.asset_loader.infer_tags_from_path"
-      ]
+      "calls_fqns": []
     },
     "loaders.asset_loader.load_asset_symbols": {
       "fqname": "loaders.asset_loader.load_asset_symbols",
@@ -1928,7 +1201,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.asset_loader.load_asset_symbols",
         "module": "loaders.asset_loader",
@@ -1954,22 +1227,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.asset_loader.infer_tags_from_path",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "loaders.asset_loader.infer_tags_from_path"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.code_loader": {
       "fqname": "loaders.code_loader",
@@ -1980,7 +1240,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.code_loader",
         "module": "loaders.code_loader",
@@ -1998,43 +1258,9 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.extract_nodes_from_ast",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.ParentNodeVisitor",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.visit",
-        "utils.docstring_utils.extract_docstring_metadata"
-      ]
+      "calls_fqns": []
     },
     "loaders.code_loader.extract_nodes_from_ast": {
       "fqname": "loaders.code_loader.extract_nodes_from_ast",
@@ -2049,7 +1275,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.code_loader.extract_nodes_from_ast",
         "module": "loaders.code_loader",
@@ -2078,49 +1304,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.extract_nodes_from_ast",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.ParentNodeVisitor",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "loaders.code_loader",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.visit"
-      ],
-      "calls_fqns": [
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.visit",
-        "utils.docstring_utils.extract_docstring_metadata"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.code_loader.load_code_symbols": {
       "fqname": "loaders.code_loader.load_code_symbols",
@@ -2134,7 +1320,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.code_loader.load_code_symbols",
         "module": "loaders.code_loader",
@@ -2161,49 +1347,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.extract_nodes_from_ast",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.ParentNodeVisitor",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.visit",
-        "utils.docstring_utils.extract_docstring_metadata"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.code_loader.ParentNodeVisitor": {
       "fqname": "loaders.code_loader.ParentNodeVisitor",
@@ -2214,7 +1360,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.code_loader.ParentNodeVisitor",
         "module": "loaders.code_loader",
@@ -2232,49 +1378,9 @@
         "docstring_present": false,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.extract_nodes_from_ast",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.ParentNodeVisitor",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "loaders.code_loader",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.visit"
-      ],
-      "calls_fqns": [
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.visit",
-        "utils.docstring_utils.extract_docstring_metadata"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.code_loader.visit": {
       "fqname": "loaders.code_loader.visit",
@@ -2285,7 +1391,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.code_loader.visit",
         "module": "loaders.code_loader",
@@ -2309,56 +1415,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.extract_nodes_from_ast",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.ParentNodeVisitor",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        },
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        },
-        {
-          "target": "utils.docstring_utils.extract_docstring_metadata",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "loaders.code_loader",
-        "loaders.code_loader",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.visit",
-        "loaders.code_loader.visit",
-        "utils.graph_utils",
-        "utils.graph_utils.walk_graph"
-      ],
-      "calls_fqns": [
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.visit",
-        "utils.docstring_utils.extract_docstring_metadata"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.config_loader": {
       "fqname": "loaders.config_loader",
@@ -2400,7 +1459,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.config_loader.load_config",
         "module": "loaders.config_loader",
@@ -2424,25 +1483,19 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "loaders.markdown_loader": {
       "fqname": "loaders.markdown_loader",
       "type": "module",
-      "description": "Markdown Loader",
+      "description": "Markdown Loader (loaders)",
       "tags": [],
       "source_file": "loaders\\markdown_loader.py",
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.markdown_loader",
         "module": "loaders.markdown_loader",
@@ -2450,8 +1503,8 @@
         "type": "module",
         "lineno": 1,
         "source_file": "loaders\\markdown_loader.py",
-        "description": "Markdown Loader",
-        "docstring_full": "Markdown Loader\n\nLoads and parses all Markdown (.md) files from a documentation or journal directory.\nExtracts frontmatter, tags, and optional code crosslinks for later graph integration.",
+        "description": "Markdown Loader (loaders)",
+        "docstring_full": "Markdown Loader (loaders)\n\nParses Markdown files for structured metadata entries.\nUsed to populate the documentation and vault systems.",
         "tags": [],
         "linked_journal_entry": null,
         "deprecated": false,
@@ -2460,151 +1513,54 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.markdown_loader.parse_frontmatter",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.markdown_loader.parse_frontmatter"
-      ]
-    },
-    "loaders.markdown_loader.FRONTMATTER_RE": {
-      "fqname": "loaders.markdown_loader.FRONTMATTER_RE",
-      "type": "variable",
-      "description": "",
-      "tags": [],
-      "source_file": "loaders\\markdown_loader.py",
-      "test_coverage": false,
-      "docstring_present": false,
-      "linked_journal_entry": "",
-      "is_orphaned": false,
-      "metadata": {
-        "fqname": "loaders.markdown_loader.FRONTMATTER_RE",
-        "module": "loaders.markdown_loader",
-        "name": "FRONTMATTER_RE",
-        "type": "variable",
-        "lineno": 14,
-        "source_file": "loaders\\markdown_loader.py",
-        "description": "",
-        "docstring_full": "",
-        "tags": [],
-        "linked_journal_entry": "",
-        "deprecated": false,
-        "status": "",
-        "visibility": "",
-        "docstring_present": false,
-        "metadata": {}
-      },
-      "links": [
-        {
-          "target": "loaders.markdown_loader.parse_frontmatter",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.markdown_loader.parse_frontmatter"
-      ]
-    },
-    "loaders.markdown_loader.parse_frontmatter": {
-      "fqname": "loaders.markdown_loader.parse_frontmatter",
-      "type": "function",
-      "description": "Extract YAML frontmatter as a dict, if present.",
-      "tags": [],
-      "source_file": "loaders\\markdown_loader.py",
-      "test_coverage": false,
-      "docstring_present": true,
-      "linked_journal_entry": null,
-      "is_orphaned": false,
-      "metadata": {
-        "fqname": "loaders.markdown_loader.parse_frontmatter",
-        "module": "loaders.markdown_loader",
-        "name": "parse_frontmatter",
-        "type": "function",
-        "lineno": 16,
-        "source_file": "loaders\\markdown_loader.py",
-        "description": "Extract YAML frontmatter as a dict, if present.",
-        "docstring_full": "Extract YAML frontmatter as a dict, if present.\n\nArgs:\n    md_content (str): Raw contents of a markdown file.\n\nReturns:\n    dict: Parsed frontmatter, or empty dict if none present.",
-        "tags": [],
-        "linked_journal_entry": null,
-        "deprecated": false,
-        "status": null,
-        "visibility": null,
-        "docstring_present": true,
-        "metadata": {
-          "args": [
-            "md_content"
-          ],
-          "returns": null
-        }
-      },
-      "links": [
-        {
-          "target": "loaders.markdown_loader.parse_frontmatter",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "loaders.markdown_loader",
-        "loaders.markdown_loader.FRONTMATTER_RE",
-        "loaders.markdown_loader.parse_frontmatter",
-        "loaders.markdown_loader.load_markdown_entries"
-      ],
-      "calls_fqns": [
-        "loaders.markdown_loader.parse_frontmatter"
-      ]
+      "calls_fqns": []
     },
     "loaders.markdown_loader.load_markdown_entries": {
       "fqname": "loaders.markdown_loader.load_markdown_entries",
       "type": "function",
-      "description": "Load all .md files from a directory and extract metadata for each.",
-      "tags": [],
+      "description": "Loads markdown entries from a .md file unless it resides in an ignored folder.",
+      "tags": [
+        "loader",
+        "markdown",
+        "ignore"
+      ],
       "source_file": "loaders\\markdown_loader.py",
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "loaders.markdown_loader.load_markdown_entries",
         "module": "loaders.markdown_loader",
         "name": "load_markdown_entries",
         "type": "function",
-        "lineno": 38,
+        "lineno": 14,
         "source_file": "loaders\\markdown_loader.py",
-        "description": "Load all .md files from a directory and extract metadata for each.",
-        "docstring_full": "Load all .md files from a directory and extract metadata for each.\n\nArgs:\n    journal_dir (str): Path to the journal or docs directory (absolute or relative)\n\nReturns:\n    List[dict]: Each with filename, frontmatter, content, tags",
-        "tags": [],
+        "description": "Loads markdown entries from a .md file unless it resides in an ignored folder.",
+        "docstring_full": "Loads markdown entries from a .md file unless it resides in an ignored folder.\n\n@tags: [\"loader\", \"markdown\", \"ignore\"]\n@status: \"stable\"\n@visibility: \"public\"",
+        "tags": [
+          "loader",
+          "markdown",
+          "ignore"
+        ],
         "linked_journal_entry": null,
         "deprecated": false,
-        "status": null,
-        "visibility": null,
+        "status": "stable",
+        "visibility": "public",
         "docstring_present": true,
         "metadata": {
           "args": [
-            "journal_dir"
+            "md_path",
+            "ignored_folders"
           ],
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.markdown_loader.parse_frontmatter",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "loaders.markdown_loader.parse_frontmatter"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "loaders.__init__": {
       "fqname": "loaders.__init__",
@@ -2730,7 +1686,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": "linked entry",
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.docstring_utils.extract_docstring_metadata",
         "module": "utils.docstring_utils",
@@ -2757,23 +1713,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "loaders.code_loader",
-        "loaders.code_loader",
-        "loaders.code_loader",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.extract_nodes_from_ast",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.load_code_symbols",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.ParentNodeVisitor",
-        "loaders.code_loader.visit",
-        "loaders.code_loader.visit",
-        "loaders.code_loader.visit"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "utils.export_cleanup_utils": {
@@ -2819,7 +1759,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.export_cleanup_utils.clean_exports_dir",
         "module": "utils.export_cleanup_utils",
@@ -2846,13 +1786,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "utils.graph_utils": {
@@ -2864,7 +1798,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.graph_utils",
         "module": "utils.graph_utils",
@@ -2882,16 +1816,9 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.code_loader.visit"
-      ]
+      "calls_fqns": []
     },
     "utils.graph_utils.walk_graph": {
       "fqname": "utils.graph_utils.walk_graph",
@@ -2902,7 +1829,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.graph_utils.walk_graph",
         "module": "utils.graph_utils",
@@ -2927,16 +1854,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "loaders.code_loader.visit",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "loaders.code_loader.visit"
-      ]
+      "calls_fqns": []
     },
     "utils.messaging_utils": {
       "fqname": "utils.messaging_utils",
@@ -2951,7 +1871,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils",
         "module": "utils.messaging_utils",
@@ -2973,130 +1893,9 @@
         "docstring_present": true,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "calls_fqns": []
     },
     "utils.messaging_utils.DEBUG_ENABLED": {
       "fqname": "utils.messaging_utils.DEBUG_ENABLED",
@@ -3107,7 +1906,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": "",
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.DEBUG_ENABLED",
         "module": "utils.messaging_utils",
@@ -3125,130 +1924,9 @@
         "docstring_present": false,
         "metadata": {}
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "calls_fqns": []
     },
     "utils.messaging_utils.set_debug": {
       "fqname": "utils.messaging_utils.set_debug",
@@ -3259,7 +1937,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.set_debug",
         "module": "utils.messaging_utils",
@@ -3282,136 +1960,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.debug": {
       "fqname": "utils.messaging_utils.debug",
@@ -3422,7 +1973,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.debug",
         "module": "utils.messaging_utils",
@@ -3446,130 +1997,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "calls_fqns": []
     },
     "utils.messaging_utils._print_section_header": {
       "fqname": "utils.messaging_utils._print_section_header",
@@ -3580,7 +2010,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils._print_section_header",
         "module": "utils.messaging_utils",
@@ -3604,267 +2034,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.info": {
       "fqname": "utils.messaging_utils.info",
@@ -3875,7 +2047,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.info",
         "module": "utils.messaging_utils",
@@ -3899,420 +2071,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.warning": {
       "fqname": "utils.messaging_utils.warning",
@@ -4323,7 +2084,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.warning",
         "module": "utils.messaging_utils",
@@ -4347,199 +2108,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.DEBUG_ENABLED",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.set_debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils.debug",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.warning",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.error",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_run_context",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_folder_tree_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_asset_scan_summary",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_symbol_extraction",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_entity_graph",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_exports",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_governance_summary",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_journal_entries_loaded",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete",
-        "utils.messaging_utils.print_pipeline_complete"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.error": {
       "fqname": "utils.messaging_utils.error",
@@ -4550,7 +2121,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.error",
         "module": "utils.messaging_utils",
@@ -4574,130 +2145,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
+      "links": [],
       "called_by_fqns": [],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_run_context": {
       "fqname": "utils.messaging_utils.print_run_context",
@@ -4708,7 +2158,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_run_context",
         "module": "utils.messaging_utils",
@@ -4733,136 +2183,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_folder_tree_summary": {
       "fqname": "utils.messaging_utils.print_folder_tree_summary",
@@ -4873,7 +2196,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_folder_tree_summary",
         "module": "utils.messaging_utils",
@@ -4896,136 +2219,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_asset_scan_summary": {
       "fqname": "utils.messaging_utils.print_asset_scan_summary",
@@ -5036,7 +2232,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_asset_scan_summary",
         "module": "utils.messaging_utils",
@@ -5060,136 +2256,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_symbol_extraction": {
       "fqname": "utils.messaging_utils.print_symbol_extraction",
@@ -5200,7 +2269,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_symbol_extraction",
         "module": "utils.messaging_utils",
@@ -5225,136 +2294,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_entity_graph": {
       "fqname": "utils.messaging_utils.print_entity_graph",
@@ -5365,7 +2307,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_entity_graph",
         "module": "utils.messaging_utils",
@@ -5389,136 +2331,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_exports": {
       "fqname": "utils.messaging_utils.print_exports",
@@ -5529,7 +2344,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_exports",
         "module": "utils.messaging_utils",
@@ -5554,136 +2369,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_governance_summary": {
       "fqname": "utils.messaging_utils.print_governance_summary",
@@ -5694,7 +2382,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_governance_summary",
         "module": "utils.messaging_utils",
@@ -5718,136 +2406,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_journal_entries_loaded": {
       "fqname": "utils.messaging_utils.print_journal_entries_loaded",
@@ -5858,7 +2419,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_journal_entries_loaded",
         "module": "utils.messaging_utils",
@@ -5881,136 +2442,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.messaging_utils.print_pipeline_complete": {
       "fqname": "utils.messaging_utils.print_pipeline_complete",
@@ -6021,7 +2455,7 @@
       "test_coverage": false,
       "docstring_present": false,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.messaging_utils.print_pipeline_complete",
         "module": "utils.messaging_utils",
@@ -6045,136 +2479,9 @@
           "returns": null
         }
       },
-      "links": [
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils._print_section_header",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.info",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        },
-        {
-          "target": "utils.messaging_utils.warning",
-          "type": "calls"
-        }
-      ],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
-      "calls_fqns": [
-        "utils.messaging_utils._print_section_header",
-        "utils.messaging_utils.info",
-        "utils.messaging_utils.warning"
-      ]
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
     },
     "utils.path_utils": {
       "fqname": "utils.path_utils",
@@ -6326,7 +2633,7 @@
       "test_coverage": false,
       "docstring_present": true,
       "linked_journal_entry": null,
-      "is_orphaned": false,
+      "is_orphaned": true,
       "metadata": {
         "fqname": "utils.snapshot_utils.take_project_snapshot",
         "module": "utils.snapshot_utils",
@@ -6354,13 +2661,7 @@
         }
       },
       "links": [],
-      "called_by_fqns": [
-        "pipeline",
-        "pipeline.PipelineResult",
-        "pipeline.print_full_report",
-        "pipeline.run_pipeline",
-        "pipeline.__init__"
-      ],
+      "called_by_fqns": [],
       "calls_fqns": []
     },
     "utils.test_coverage_utils": {
@@ -10237,6 +6538,303 @@
           "args": [],
           "returns": null
         }
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "pilconfig.json": {
+      "fqname": "pilconfig.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "pilconfig.json",
+        "type": "asset",
+        "filename": "pilconfig.json",
+        "path": "pilconfig.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "pilconfig_self.json": {
+      "fqname": "pilconfig_self.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "pilconfig_self.json",
+        "type": "asset",
+        "filename": "pilconfig_self.json",
+        "path": "pilconfig_self.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "pil_meta/entity_graph_20250701_105218.json": {
+      "fqname": "pil_meta/entity_graph_20250701_105218.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "pil_meta/entity_graph_20250701_105218.json",
+        "type": "asset",
+        "filename": "entity_graph_20250701_105218.json",
+        "path": "pil_meta/entity_graph_20250701_105218.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/dummy_icon.png": {
+      "fqname": "tests/sample_input/dummy_icon.png",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "png"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/dummy_icon.png",
+        "type": "asset",
+        "filename": "dummy_icon.png",
+        "path": "tests/sample_input/dummy_icon.png",
+        "extension": ".png",
+        "tags": [
+          "png"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/fireball.tmx": {
+      "fqname": "tests/sample_input/fireball.tmx",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "tmx"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/fireball.tmx",
+        "type": "asset",
+        "filename": "fireball.tmx",
+        "path": "tests/sample_input/fireball.tmx",
+        "extension": ".tmx",
+        "tags": [
+          "tmx"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/sample_entities.json": {
+      "fqname": "tests/sample_input/sample_entities.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/sample_entities.json",
+        "type": "asset",
+        "filename": "sample_entities.json",
+        "path": "tests/sample_input/sample_entities.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/sample_graph.json": {
+      "fqname": "tests/sample_input/sample_graph.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/sample_graph.json",
+        "type": "asset",
+        "filename": "sample_graph.json",
+        "path": "tests/sample_input/sample_graph.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/sample_graph_crossfile.json": {
+      "fqname": "tests/sample_input/sample_graph_crossfile.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/sample_graph_crossfile.json",
+        "type": "asset",
+        "filename": "sample_graph_crossfile.json",
+        "path": "tests/sample_input/sample_graph_crossfile.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
+      },
+      "links": [],
+      "called_by_fqns": [],
+      "calls_fqns": []
+    },
+    "tests/sample_input/sample_graph_edge_cases.json": {
+      "fqname": "tests/sample_input/sample_graph_edge_cases.json",
+      "type": "asset",
+      "description": "",
+      "tags": [
+        "json"
+      ],
+      "source_file": "",
+      "test_coverage": false,
+      "docstring_present": false,
+      "linked_journal_entry": null,
+      "is_orphaned": true,
+      "metadata": {
+        "fqname": "tests/sample_input/sample_graph_edge_cases.json",
+        "type": "asset",
+        "filename": "sample_graph_edge_cases.json",
+        "path": "tests/sample_input/sample_graph_edge_cases.json",
+        "extension": ".json",
+        "tags": [
+          "json"
+        ],
+        "referenced_by": [],
+        "description": "",
+        "docstring_present": false,
+        "test_coverage": false,
+        "linked_journal_entry": null,
+        "is_orphaned": true,
+        "links": []
       },
       "links": [],
       "called_by_fqns": [],

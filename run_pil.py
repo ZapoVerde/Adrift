@@ -1,69 +1,108 @@
-#!/usr/bin/env python3
+# run_pil.py
 """
-chmod +x run_pil.py
-run_pil.py — Self-contained runner for external use
+Self-contained entry point for running the PIL pipeline for the Adrift project.
+Writes the config to disk, then invokes the main pipeline logic with error handling.
 
-This version embeds the PIL config directly and writes it to disk at runtime.
-It requires only this single file to exist in the project root.
+@tags: ["entrypoint", "adrift", "self-contained"]
+@status: "stable"
 """
 
-import subprocess
-import sys
+
+
 import json
+import sys
+import traceback
+import importlib.util
 from pathlib import Path
+from types import ModuleType
+from typing import Callable
 
-# Embedded config — originally from pilconfig_self.json
+
+
 PIL_CONFIG = {
-  "project_root": "./AdriftProject",
-  "scan_dirs": [
-    "./AdriftProject",
-    "./tests",
-    "./scripts"
-  ],
-  "journal_path": "./docs",
-  "output_dir": "./exports",
-  "docs_dir": "./documents",
-  "snapshot_dir": "./snapshots",
-  "vault_dir": "./exports/vault",
-  "config_self_path": "./pilconfig_self.json",
-  "pil_module_path": "./AdriftProject",
-  "asset_extensions": [".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"],
-  "asset_dirs": [
-    "./assets"
-  ]
+    # 📁 Root of the project to scan
+    "project_root": "./PIL_Project",
+
+    # 📂 Directories to scan for code and assets
+    "scan_dirs": [
+        "./PIL_Project/pil_meta",
+        "./PIL_Project/scripts",
+        "./PIL_Project/tests"
+    ],
+
+    # 📚 Location of markdown journal entries *OPTIONAL* *UNUSED*
+    "journal_path": "./documents",
+
+    # 📤 Where exports (JSON, vault, etc) are saved *MANDATORY*
+    "output_dir": "./PIL_Project/exports",
+
+    # 📝 Directory for user documentation (used by markdown loader) *OPTIONAL* *UNUSED*
+    "docs_dir": "./docs",
+
+    # 🗃️ Where the Obsidian vault is written
+    "vault_dir": "./PIL_Project/exports/vault",
+
+    # 🧳 Directory for full project snapshots
+    "snapshot_dir": "./PIL_Project/snapshots",
+
+    # 📌 Where this config is written (by this file)
+    "config_self_path": "./pilconfig.json",
+
+    # 📦 Where the PIL module is located (for function resolution)
+    "pil_module_path": "./PIL_Project",
+
+    # 🎨 Asset file extensions to include in scan
+    "asset_extensions": [
+        ".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"
+    ],
+
+    # 🚫 Folder names to ignore during scanning
+    "ignored_folders": [
+        ".git", "__pycache__", "snapshots", "exports",
+        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache"
+    ]
 }
 
 
-# Dynamically locate rebuild_pil.py inside PIL_Project/scripts/
-pipeline_script = Path(PIL_CONFIG["pil_module_path"]) / "scripts" / "rebuild_pil.py"
-config_file_path = Path("pilconfig.json")  # Written version used at runtime
+def import_pipeline_run_function(pil_module_path: str) -> Callable[[str], None]:
+    """
+    Dynamically imports run_pipeline() from pil_meta.pipeline inside pil_module_path.
+
+    Raises:
+        FileNotFoundError: if pipeline.py is missing
+        ImportError: if spec or loader is None
+    """
+    pil_meta_path = Path(pil_module_path) / "pil_meta" / "pipeline.py"
+    if not pil_meta_path.exists():
+        raise FileNotFoundError(f"Pipeline file not found: {pil_meta_path}")
+
+    spec = importlib.util.spec_from_file_location("pil_meta.pipeline", pil_meta_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Failed to create import spec for: {pil_meta_path}")
+
+    module: ModuleType = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run_pipeline
 
 def main():
-    if not pipeline_script.exists():
-        print(f"❌ Could not find pipeline script at: {pipeline_script.resolve()}")
-        sys.exit(1)
-
-    # Write config to disk before execution
     try:
-        with open(config_file_path, "w") as f:
+        # Write embedded config to disk
+        config_path = Path(PIL_CONFIG["config_self_path"])
+        with config_path.open("w", encoding="utf-8") as f:
             json.dump(PIL_CONFIG, f, indent=2)
-        print(f"📝 Wrote config to: {config_file_path.resolve()}")
+
+        # Dynamically import and run pipeline
+        run_pipeline = import_pipeline_run_function(PIL_CONFIG["pil_module_path"])
+        run_pipeline(str(config_path))
+
     except Exception as e:
-        print(f"❌ Failed to write config: {e}")
+        print("\n❌ [RUN_PIL ERROR] Pipeline execution failed.")
+        print(f"   Reason: {str(e)}")
+        traceback.print_exc()
         sys.exit(1)
 
-    print(f"🚀 Running PIL pipeline from: {pipeline_script.resolve()}")
-    try:
-        subprocess.run(
-            [sys.executable, str(pipeline_script), str(config_file_path)],
-            check=True
-        )
-    except subprocess.CalledProcessError as e:
-        print(f"\n❌ Pipeline script failed with exit code {e.returncode}")
-    except Exception as e:
-        print(f"\n❌ Unexpected error occurred: {e}")
     finally:
-        input("\n📦 Press Enter to exit...")
+        input("\n✅ Pipeline complete. Press Enter to exit...")
 
 if __name__ == "__main__":
     main()

@@ -1,42 +1,81 @@
-#!/usr/bin/env python3
+# run_pil_self.py
 """
-run_pil_self.py — Self-runner version for PIL_Project
+DO NOT RELOCATE OR REUSE THIS FILE OUTSIDE THE ADRIFT PROJECT.
 
-Usage:
-    chmod +x run_pil_self.py
-    ./run_pil_self.py
+Self-contained entry point for running the PIL pipeline locally.
+Writes its own config and directly invokes the pipeline.
+Intended for internal testing and standalone runs only.
 
-This version is designed to live **inside the PIL_Project folder**.
-It runs the pipeline using pil_meta as the project root and references pilconfig_self.json.
+@tags: ["entrypoint", "self-contained", "adrift-only"]
+@status: "stable"
 """
 
-import subprocess
+import json
+import traceback
 import sys
 from pathlib import Path
+from pil_meta.pipeline import run_pipeline
 
-# Define pipeline script and config path
-pipeline_script = Path("scripts/rebuild_pil.py")
-config_path = Path("pilconfig_self.json")
+PIL_CONFIG = {
+    # 📁 Root of the project to scan
+    "project_root": ".",
 
-try:
-    if not pipeline_script.exists():
-        print(f"❌ Could not find pipeline script at: {pipeline_script.resolve()}")
+    # 📂 Directories to scan for code and assets
+    "scan_dirs": [
+        "./pil_meta",
+        "./tests",
+        "./scripts"
+    ],
+
+    # 📚 Location of markdown journal entries *OPTIONAL* *UNUSED*
+    "journal_path": "./documents",
+
+    # 📤 Where exports (JSON, vault, etc) are saved *MANDATORY*
+    "output_dir": "./exports",
+
+    # 📝 Directory for user documentation (used by markdown loader) *OPTIONAL* *UNUSED*
+    "docs_dir": "./docs",
+
+    # 🗃️ Where the Obsidian vault is written
+    "vault_dir": "./exports/vault",
+
+    # 🧳 Directory for full project snapshots
+    "snapshot_dir": "./snapshots",
+
+    # 📌 Where this config is written (by this file)
+    "config_self_path": "./pilconfig.json",
+
+    # 📦 Where the PIL module is located (for function resolution)
+    "pil_module_path": ".",
+
+    # 🎨 Asset file extensions to include in scan
+    "asset_extensions": [
+        ".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"
+    ],
+
+    # 🚫 Folder names to ignore during scanning
+    "ignored_folders": [
+        ".git", "__pycache__", "snapshots", "exports",
+        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache"
+    ]
+}
+
+def main():
+    try:
+        config_path = Path(PIL_CONFIG["config_self_path"])
+        with config_path.open("w", encoding="utf-8") as f:
+            json.dump(PIL_CONFIG, f, indent=2)
+        run_pipeline(str(config_path))
+
+    except Exception as e:
+        print("\n❌ [RUN_PIL ERROR] Pipeline execution failed.")
+        print(f"   Reason: {str(e)}")
+        traceback.print_exc()
         sys.exit(1)
 
-    if not config_path.exists():
-        print(f"❌ Could not find config file at: {config_path.resolve()}")
-        sys.exit(1)
+    finally:
+        input("\n✅ Pipeline complete. Press Enter to exit...")
 
-    print(f"🚀 Running PIL pipeline from: {pipeline_script.resolve()}")
-    subprocess.run(
-        [sys.executable, str(pipeline_script), str(config_path)],
-        check=True
-    )
 
-except subprocess.CalledProcessError as e:
-    print(f"\n❌ Pipeline script failed with exit code {e.returncode}")
-except Exception as e:
-    print(f"\n❌ Unexpected error occurred: {e}")
-
-finally:
-    input("\n📦 Press Enter to exit...")
+if __name__ == "__main__":
+    main()
