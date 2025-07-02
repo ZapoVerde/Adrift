@@ -62,7 +62,7 @@ Once PIL is set up:
 * Run `run_pil.py` after each meaningful code change or refactor.
 * Upload the latest `entity_graph.json` to the AI assistant at the start of each working session.
 * If `scripts/snapshot_project.py` is present, a snapshot of the full project as well as a copy of the latest entity graph will be created automatically after each pipeline run.
-* ⚠️ **The entire contents of the ************`exports/`************ folder are deleted and regenerated on each run.** Do not store anything here that you want to keep — this folder is volatile by design.
+* ⚠️ **The contents of the ************`exports/`************ folder are deleted and regenerated on each run.** Do not store anything here that you want to keep — this folder is volatile by design.
 * ✅ **Only the most recent ************`entity_graph.json`************ is stored in ************`exports/`************.** Always use this file as the current source of truth. For older versions, consult the timestamped archives in the `snapshots/` directory.
 
 ---
@@ -73,21 +73,38 @@ Here is a basic working example of the embedded configuration inside `run_pil.py
 
 ```python
 PIL_CONFIG = {
-  "project_root": "./AdriftProject",
-  "scan_dirs": [
-    "./AdriftProject",
-    "./tests",
-    "./scripts"
-  ],
-  "journal_path": "./docs",
-  "output_dir": "./exports",
-  "docs_dir": "./documents",
-  "snapshot_dir": "./snapshots",
-  "vault_dir": "./exports/vault",
-  "config_self_path": "./run_pil.py",
-  "pil_module_path": "./AdriftProject",
-  "asset_extensions": [".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"],
-  "asset_dirs": ["./assets"]
+    # 📁 Root of the project to scan
+    "project_root": ".",
+
+    # 📂 Directories to scan for code and assets
+    "scan_dirs": [
+        "./Adrift",
+        "./scripts",
+        "./tests"
+    ],
+
+    # 📤 Where exports (JSON, etc) are saved
+    "output_dir": "./exports",
+
+    # 🧳 Directory for full project snapshots
+    "snapshot_dir": "./snapshots",
+
+    # 📌 Where this config is written (by this file)
+    "config_self_path": "./pilconfig.json",
+
+    # 📦 Where the PIL module is located (for dynamic import)
+    "pil_module_path": "./PIL_Project/pil_meta",
+
+    # 🎨 Asset file extensions to include in scan
+    "asset_extensions": [
+        ".png", ".json", ".tmx", ".glb", ".shader", ".svg", ".csv"
+    ],
+
+    # 🚫 Folder names to ignore during scanning
+    "ignored_folders": [
+        ".git", "__pycache__", "snapshots", "exports",
+        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache"
+    ]
 }
 ```
 

@@ -3,6 +3,8 @@
 Self-contained entry point for running the PIL pipeline for the Adrift project.
 Writes the config to disk, then invokes the main pipeline logic with error handling.
 
+To run from root:
+    python run_pil_.py
 @tags: ["entrypoint", "adrift", "self-contained"]
 @status: "stable"
 """
@@ -21,34 +23,25 @@ from typing import Callable
 
 PIL_CONFIG = {
     # 📁 Root of the project to scan
-    "project_root": "./PIL_Project",
+    "project_root": "./Adrift",
 
     # 📂 Directories to scan for code and assets
     "scan_dirs": [
-        "./PIL_Project/pil_meta",
-        "./PIL_Project/scripts",
-        "./PIL_Project/tests"
+        "./Adrift",
+        "./scripts",
+        "./tests"
     ],
 
-    # 📚 Location of markdown journal entries *OPTIONAL* *UNUSED*
-    "journal_path": "./documents",
-
-    # 📤 Where exports (JSON, vault, etc) are saved *MANDATORY*
-    "output_dir": "./PIL_Project/exports",
-
-    # 📝 Directory for user documentation (used by markdown loader) *OPTIONAL* *UNUSED*
-    "docs_dir": "./docs",
-
-    # 🗃️ Where the Obsidian vault is written
-    "vault_dir": "./PIL_Project/exports/vault",
+    # 📤 Where exports (JSON, etc) are saved
+    "output_dir": "./exports",
 
     # 🧳 Directory for full project snapshots
-    "snapshot_dir": "./PIL_Project/snapshots",
+    "snapshot_dir": "./snapshots",
 
     # 📌 Where this config is written (by this file)
     "config_self_path": "./pilconfig.json",
 
-    # 📦 Where the PIL module is located (for function resolution)
+    # 📦 Where the PIL module is located (for dynamic import)
     "pil_module_path": "./PIL_Project",
 
     # 🎨 Asset file extensions to include in scan
@@ -59,8 +52,7 @@ PIL_CONFIG = {
     # 🚫 Folder names to ignore during scanning
     "ignored_folders": [
         ".git", "__pycache__", "snapshots", "exports",
-        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache"
-    ]
+        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache", "node_modules", "documents", "PIL_Project"    ]
 }
 
 

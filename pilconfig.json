@@ -1,0 +1,35 @@
+{
+  "project_root": "./Adrift",
+  "scan_dirs": [
+    "./Adrift",
+    "./scripts",
+    "./tests"
+  ],
+  "output_dir": "./exports",
+  "snapshot_dir": "./snapshots",
+  "config_self_path": "./pilconfig.json",
+  "pil_module_path": "./PIL_Project",
+  "asset_extensions": [
+    ".png",
+    ".json",
+    ".tmx",
+    ".glb",
+    ".shader",
+    ".svg",
+    ".csv"
+  ],
+  "ignored_folders": [
+    ".git",
+    "__pycache__",
+    "snapshots",
+    "exports",
+    ".mypy_cache",
+    ".venv",
+    "env",
+    ".idea",
+    ".pytest_cache",
+    "node_modules",
+    "documents",
+    "PIL_Project"
+  ]
+}
