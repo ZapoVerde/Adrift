@@ -1,6 +1,6 @@
-# Crawling
+# Adrift
 
-**Crawling** is a retro-sci-fi tactical dungeon crawler inspired by emergent storytelling systems like *RimWorld*, but built from the ground up as a standalone, original project. It features:
+**Adrift** is a retro-sci-fi tactical dungeon crawler inspired by emergent storytelling systems like *RimWorld*, but built from the ground up as a standalone, original project. It features:
 
 - 🎲 2d6-based tactical combat with probabilistic outcomes
 - 🔍 Stealth, perception, and visibility mechanics
