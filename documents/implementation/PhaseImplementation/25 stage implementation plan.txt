@@ -1,0 +1,205 @@
+# Adrift Project — Full Stage Implementation Plan (All 25 Stages)
+
+# Status: STRUCTURE PLANNING
+
+# Version: 1.0
+
+# Last Updated: 2025-07-04
+
+This document provides a **planning-compliant full detail breakdown** of all 25 stages of the Adrift project, structured according to the layered planning model.
+Each stage includes:
+
+* ✅ Name + Goal
+* 🧠 Description
+* ⌛️ Duration Estimate
+* 📊 Tag Posture
+* 🔁 Sightlines / Interfaces
+* 📈 Lock Triggers
+* 📄 Phase Count and FBD
+
+────────────────────────────────────────────────────
+STAGE 0 — Instrumentation Foundations
+────────────────────────────────────────────────────
+
+✅ Goal: Establish debug, trace, tagging, and config scaffolding.
+🧠 Description: Build the bare minimum dev-layer foundations (debug(), config toggles, empty event bus shell).
+⌛️ Estimate: 2 hours
+📊 Tag Posture: \[PERMANENT] debug, \[DEAD-END] bus shell
+🔁 Interfaces: debug\_core/debug.py, services/event\_bus.py
+📈 Lock Triggers:
+
+* debug() route emits ai\_tags
+* tags\_vocab.json loads
+* event\_bus.publish() logs debug output
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 1 — Tick Clock & RNG Core
+────────────────────────────────────────────────────
+
+✅ Goal: Provide deterministic tick control and RNG backbone.
+🧠 Description: Enable tick advancement, tick-based loop, and RNG labeling for audit.
+⌛️ Estimate: 3 hours
+📊 Tag Posture: \[PERMANENT] tick\_clock.py, random\_source.py
+🔁 Interfaces: core/world\_state.py → systems
+📈 Lock Triggers:
+
+* advance\_tick() increments and publishes
+* debug() with ai\_tags per tick
+* get\_rng(label) emits traceable source
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 2 — Tick Phase Engine
+────────────────────────────────────────────────────
+
+✅ Goal: Dispatch registered hook groups each tick
+🧠 Description: Implement the perception, action, cleanup, and messaging tick phases via modular dispatcher.
+⌛️ Estimate: 3.5 hours
+📊 Tag Posture: \[PERMANENT] tick\_phases.py, \[UPGRADABLE] dispatch\_hooks()
+🔁 Interfaces: services/hook\_dispatcher.py, core/world\_state
+📈 Lock Triggers:
+
+* All 4 tick phases dispatched in correct order
+* Hooks are externally registerable
+* Empty phases log execution
+  📄 Phases: 2–3
+
+────────────────────────────────────────────────────
+STAGE 3 — Actor Lifecycle + Tags
+────────────────────────────────────────────────────
+
+✅ Goal: Define actor tickability, condition states, and control flags
+🧠 Description: Use tags to control which actors act each tick and when.
+⌛️ Estimate: 3 hours
+📊 Tag Posture: \[PERMANENT] actor\_state.py
+🔁 Interfaces: core/actor.py, core/world\_state, dispatch\_hooks
+📈 Lock Triggers:
+
+* is\_tickable() works on all tags
+* Condition timers (e.g. sleep/wounded)
+* Transition logic is modular
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 4 — Wait / Move Actions
+────────────────────────────────────────────────────
+
+✅ Goal: First actions that modify world\_state and consume ticks
+🧠 Description: Establish the action contract (validate, execute, duration\_ticks)
+⌛️ Estimate: 4 hours
+📊 Tag Posture: \[PERMANENT] actions/wait.py, move.py
+🔁 Interfaces: core/world\_state, actor\_adapter
+📈 Lock Triggers:
+
+* Wait, move actions work
+* ActionResult returned
+* Tick phase execution updates state
+  📄 Phases: 2–3
+
+────────────────────────────────────────────────────
+STAGE 5 — Combat Execution Engine
+────────────────────────────────────────────────────
+
+✅ Goal: Core targeting and resolution system
+🧠 Description: Actors use techniques to target zones, roll damage, and apply effects.
+⌛️ Estimate: 5.5 hours
+📊 Tag Posture: \[UPGRADABLE] combat.py
+🔁 Interfaces: skill\_registry, actor\_stats, world\_state, debug()
+📈 Lock Triggers:
+
+* Attacks resolve from source to target
+* Damage calculated via 2d6 or multiplier
+* Technique templates used
+  📄 Phases: 3
+
+────────────────────────────────────────────────────
+STAGE 6 — Status Effects Engine
+────────────────────────────────────────────────────
+
+✅ Goal: Handle wounds, poison, and time-based effects
+🧠 Description: Create system for applying and resolving ongoing effects
+⌛️ Estimate: 4 hours
+📊 Tag Posture: \[PERMANENT] status\_effects.py
+🔁 Interfaces: core/actor, world\_state, dispatch\_hooks
+📈 Lock Triggers:
+
+* Effects tick, expire, and stack
+* Actor tags change based on state
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 7 — ASCII Debug View
+────────────────────────────────────────────────────
+
+✅ Goal: Allow visual debugging of actor position and ticks
+🧠 Description: Implement placeholder display via text grid
+⌛️ Estimate: 3 hours
+📊 Tag Posture: \[DEAD-END] interface/render\_ascii.py
+🔁 Interfaces: render\_adapter
+📈 Lock Triggers:
+
+* Render loop outputs position
+* Tick counter visible
+  📄 Phases: 1–2
+
+────────────────────────────────────────────────────
+STAGE 8 — Zone & Tile Modeling
+────────────────────────────────────────────────────
+
+✅ Goal: Establish tile-based layout with (x, y) coords and metadata
+🧠 Description: Define a Floorplan object with zone dicts keyed by coordinates
+⌛️ Estimate: 4 hours
+📊 Tag Posture: \[PERMANENT] floorplan.py, zone.py
+🔁 Interfaces: tactical\_adapter, pathing\_utils
+📈 Lock Triggers:
+
+* Tile map loads
+* Zones have coordinate identity, metadata, env
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 9 — LoS, Perception, Fog
+────────────────────────────────────────────────────
+
+✅ Goal: Enable line-of-sight checks and visibility tracking
+🧠 Description: Add vision raycasting, distance-based clarity, and actor visibility memory
+⌛️ Estimate: 4 hours
+📊 Tag Posture: \[PERMANENT] perception\_utils.py, observe.py
+🔁 Interfaces: zone.py, actor.visibility\_memory, tick hooks
+📈 Lock Triggers:
+
+* Vision pathing works
+* Clear vs vague range respected
+* Fog-of-war memory stored per actor
+  📄 Phases: 2–3
+
+────────────────────────────────────────────────────
+STAGE 10 — Cover System
+────────────────────────────────────────────────────
+
+✅ Goal: Represent tactical cover using Things on tiles
+🧠 Description: Encode cover values in placed objects like crates or walls
+⌛️ Estimate: 3 hours
+📊 Tag Posture: \[PERMANENT] cover\_logic.py
+🔁 Interfaces: zone.things, combat\_targeting.py
+📈 Lock Triggers:
+
+* Cover values affect chance to hit
+* Tiles report current cover objects
+  📄 Phases: 2
+
+────────────────────────────────────────────────────
+STAGE 11 — AI Behavior Dispatching
+────────────────────────────────────────────────────
+
+✅ Goal: Provide tick-phase behavior hooks for actors
+🧠 Description: Assign behaviors via tags (wander, attack, wait) and run them per tick
+⌛️ Estimate: 4.5 hours
+📊 Tag Posture: \[UPGRADABLE] ai\_behaviors.py
+🔁 Interfaces: actor.tags, tick\_phase\_action
+📈 Lock Triggers:
+
+* Actors with AI tags take legal actions
+* Behaviors can change dynamically
+  📄 Phases: 2–3

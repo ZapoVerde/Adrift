@@ -1,0 +1,77 @@
+────────────────────────────────────
+🩰 AGILITY (AGI) — SYSTEM DEFINITION
+────────────────────────────────────
+
+Stat Type: Physical
+Soft Cap: 10 (human baseline), 20+ (augmented/post-human)
+Primary Role: Governs an actor’s ability to control movement precisely, maintain reactive coordination, and adapt physically under pressure.
+
+🧩 What AGI Is
+AGI measures how well an actor can physically control their body in space — not just speed, but intentionality, recovery, and efficiency of motion. It enables the actor to:
+
+Reposition smoothly or unpredictably
+
+Maintain balance under unstable or chaotic conditions
+
+React to threats before contact
+
+Chain movements fluidly across terrain and obstacles
+
+AGI models body intelligence — reflexive control, micro-adjustments, and real-time pathing decisions under duress.
+
+📐 System Area Influence
+AGI contributes to or governs systems in the following domains:
+
+Traversal — deliberate, multi-tile movement
+
+Avoidance — reflexive reaction to imminent threats
+
+Stealth — reducing visibility through controlled movement
+
+Control — stance stability, redirection, and impact mitigation
+
+🧭 What AGI Is Not
+AGI is not physical strength (see STR)
+
+AGI is not perceptual acuity (see PER)
+
+AGI is not decision-making or planning (see INT)
+
+AGI is not willpower or emotional regulation (see RES)
+
+AGI does not reduce damage — it prevents getting hit
+
+🎯 Functional Summary
+AGI determines:
+
+How cleanly an actor moves through the world
+
+How successfully they react to danger
+
+How hard they are to lock onto or intercept
+
+Whether they remain upright, efficient, and fluid — or stagger, flail, and get caught
+
+This stat underpins most forms of physical self-management — from sprinting to slipping away.
+
+
+────────────────────────────────────
+🩰 AGI-BASED SKILLS — SYSTEM TAGGED TABLE (vFinal)
+────────────────────────────────────
+
+Skill	Description	Emerges At Lv	Archetype	Stat Model	System Area
+Run	Move faster at cost of perception	Lv 0 (base)	Universal	AGI	Traversal
+Sprint	Burst forward across open terrain	Lv 1	Child	AGI + INT	Traversal
+Dodge	Sidestep melee strikes	Lv 1	Child	AGI + RES	Avoidance
+Vault	Clear obstacles while moving	Lv 3	Teenager	AGI + DEX	Traversal
+Charge	Rush to hostile and initiate contact	Lv 4	Teenager	AGI + STR	Control
+Balance	Stay stable on narrow or unstable ground	Lv 5	Teenager	AGI + RES or DEX	Control
+Roll	Tumble to evade projectiles or AoE threats	Lv 6	Professional	AGI + INT	Avoidance
+Evade	Intuitive escape from sudden threat	Lv 7	Professional	AGI + PER	Avoidance
+Parkour	Flow over terrain using chained moves	Lv 9	Uberadvanced	AGI + STR	Traversal
+Creep	Move slowly to avoid detection near LoS	Lv 1 (soft)	Child	AGI + RES	Stealth
+Sneak	Navigate hostile area undetected	Lv 3–5	Teenager	AGI + INT	Stealth
+Ghost	Flow through high-risk visibility zones unseen	Lv 7+	Professional	AGI + INT	Stealth
+Vanish	Break contact while being tracked or pursued	Lv 9+	Uberadvanced	AGI + INT + PER	Avoidance
+
+────────────────────────────────────

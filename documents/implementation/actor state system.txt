@@ -1,0 +1,120 @@
+──────────────────────────────────────────────────────────────
+ACTOR CONDITION STATE SYSTEM — TAG-BASED MODEL
+──────────────────────────────────────────────────────────────
+
+@status: "active"
+@tags: ["systems", "actor", "state"]
+
+This document defines how actors in the simulation participate in the tick loop and interact with the world depending on their condition. Actor states are modeled using tags applied to each actor's data structure. This allows for maximum flexibility, modular filtering, and extensibility without creating tightly coupled flags or custom classes.
+
+──────────────────────────────────────
+LIFECYCLE STATES (Tick Participation)
+──────────────────────────────────────
+
+Tick loop checks an actor’s state based on its tags. Each tag modifies or suspends participation.
+
+● Active
+  Tag(s): (none)
+  Behavior: Actor is processed each tick
+  Notes: Default condition
+
+● Suspended
+  Tag(s): "suspended"
+  Behavior: Skipped by tick loop
+  Notes: Used for paused NPCs or scripted sequences
+
+● Dead
+  Tag(s): "dead"
+  Behavior: Skipped by tick loop; actor is inert
+  Notes: Entity may still exist in world for events or corpse handling
+
+● Corpse (optional refinement)
+  Tag(s): "dead", "corpse"
+  Behavior: May interact with decay, looting, environmental effects
+
+──────────────────────────────────────
+CONDITION STATES (Soft Impairments)
+──────────────────────────────────────
+
+These states can co-exist with active lifecycle status. Systems must check them as needed.
+
+● Sleep
+  Tag(s): "sleep"
+  Behavior: Actor ticks only on randomized delay or `wake_time`
+  Notes: Used for natural sleep cycles; interruptible
+
+● Unconscious
+  Tag(s): "unconscious"
+  Behavior: Actor does not tick; like suspended
+  Notes: Typically applied from combat, KO, or effects
+
+● Wounded
+  Tag(s): "wounded"
+  Behavior: Actor ticks normally but with penalties
+  Notes: Can impact movement, combat, or skills
+
+──────────────────────────────────────
+TICK LOOP PARTICIPATION LOGIC
+──────────────────────────────────────
+
+Function: is_tickable(actor: dict) → bool
+
+Rule:
+- Actor is skipped if tagged with any of:
+  → "dead", "suspended", "unconscious"
+- Actors with "sleep" may tick probabilistically
+- All others are ticked normally
+
+Example:
+
+def is_tickable(actor):
+    tags = actor.get("tags", [])
+    if any(tag in tags for tag in ["dead", "suspended", "unconscious"]):
+        return False
+    if "sleep" in tags:
+        return random.random() < 0.05  # 5% chance to tick while asleep
+    return True
+
+──────────────────────────────────────
+STATE TRANSITION RULES
+──────────────────────────────────────
+
+These transitions should be handled by effects or system rules:
+
+| Trigger                    | Add Tag         | Remove Tag        |
+|---------------------------|------------------|--------------------|
+| Death                     | "dead"           | All others         |
+| Sleep begins              | "sleep"          | None               |
+| Wake up                   | None             | "sleep"            |
+| Knocked unconscious       | "unconscious"    | "sleep"            |
+| Regain consciousness      | None             | "unconscious"      |
+| Wounded (light)           | "wounded"        | None               |
+| Fully healed              | None             | "wounded"          |
+
+──────────────────────────────────────
+OPTIONAL: CONDITION METADATA FIELDS
+──────────────────────────────────────
+
+To support more complex logic, store transient timers or values:
+
+● actor["wake_time"] = tick_count + 100
+● actor["unconscious_timer"] = 50
+● actor["wounded_level"] = 2
+
+──────────────────────────────────────
+NOTES AND FUTURE EXTENSIONS
+──────────────────────────────────────
+
+- Supports AI-aware tick scaling (e.g., sleeping animals vs. alert guards)
+- Enables modular transitions and event handling without central logic
+- Tags are compatible with the rest of the system’s filtering, skill, and faction mechanics
+- Can be extended with states like "immobilized", "feared", "panicked"
+
+──────────────────────────────────────
+IMPLEMENTATION PRIORITY
+──────────────────────────────────────
+
+- Required for: MVP tick loop, AI state filtering
+- Optional but recommended: Metadata timers
+- Deadend: Corpse decay unless gameplay-relevant
+

@@ -1,0 +1,123 @@
+═══════════════════════════════════════════════
+📘 SYSTEM SPEC: TAG-DRIVEN EVENT BUS
+═══════════════════════════════════════════════
+
+PURPOSE
+────────────────────────────────────
+A flexible, modular event system that uses semantic tags instead of hardcoded event names.
+Handlers subscribe to events based on tag filters, not fixed identifiers.
+The system is pluggable, serializable, traceable, and scalable.
+
+Used by all systems via a single access point and adheres to the Modularity Core principles.
+
+ARCHITECTURE ROLE
+────────────────────────────────────
+This system is a core backbone used across all modules to:
+- Trigger reactions (e.g. movement → update visibility)
+- Support modular behavior (skills, AI, UI)
+- Power the Pareto Debugger
+- Provide a consistent, inspectable runtime log
+
+CORE COMPONENTS
+────────────────────────────────────
+
+1. Event Bus Interface
+----------------------
+The public API used to publish events and register handlers.
+
+Required Methods:
+- publish(event_dict)
+- subscribe(filter_dict, handler_fn)
+- clear_subscriptions()
+- get_all_handlers()
+
+2. Event Format (Flat JSON)
+---------------------------
+Each event is a fully serializable dictionary with fields:
+
+{
+  "tags": {
+    "domain": "combat",
+    "behavior": "state_change",
+    "urgency": "low"
+  },
+  "payload": {
+    "source": "actor_21",
+    "target": "actor_43",
+    "amount": 5
+  },
+  "meta": {
+    "timestamp": 1032,
+    "source_system": "damage_engine"
+  }
+}
+
+Tag Vocabulary:
+- domain: combat, movement, visibility, messaging, etc.
+- behavior: state_change, trigger, notification, effect_application
+- urgency: low, medium, high, critical
+
+Tags follow MECE structure from tags_vocab.json.
+
+3. Subscription Model
+---------------------
+Handlers subscribe by providing a tag filter dictionary.
+Matching is exact-match per key. All keys in the filter must match the event’s tags.
+
+Example Filter:
+{ "domain": "combat", "behavior": "state_change" }
+
+Matching Logic:
+- Match = every key in filter appears in event’s tags with same value
+- Extra tags in event are ignored
+- Multiple filters allowed per handler
+
+4. Registry-Based Handler Storage
+---------------------------------
+All handlers are stored in a centralized registry. Each entry includes:
+- Tag filter (dict)
+- Handler reference
+- Optional metadata: id, source_module, priority
+
+Registries are declared in core/registries.py (plugin-centric design).
+
+5. Execution Mode
+-----------------
+MVP = Immediate execution
+- Events dispatch to all matching handlers instantly when publish() is called.
+
+Future = Queued, delayed, or filtered backends, swappable without interface change.
+
+MODULARITY CORE COMPLIANCE
+────────────────────────────────────
+
+Principle                | Application
+------------------------|----------------------------------------------------------
+🔌 Plugin Registries     | Handlers registered dynamically in centralized registry
+🎭 Entity Templates      | Events can use JSON templates for test/procedural use
+🧭 Unified World State   | Handlers only modify world_state argument, not globals
+🪤 Soft Data Contracts   | Handlers only access defined keys, never internal logic
+⚙️ Phase Hook Dispatchers | Tick loop can dispatch event draining as a hook module
+
+CROSS-CUTTING ENHANCERS
+────────────────────────────────────
+- ✅ All events must include ai_tags (MECE-tagged)
+- ✅ All references are flat (UUIDs, not object pointers)
+- ✅ All events must serialize to JSON cleanly
+
+DEBUGGING & OBSERVABILITY
+────────────────────────────────────
+- All events include ai_tags
+- All published events can be logged or replayed
+- Debugger can filter events by any tag dimension
+- Each handler optionally emits a debug trace on execution
+
+MVP DEPLOYMENT PLAN
+────────────────────────────────────
+1. Implement ImmediateTagEventBus:
+   - publish(), subscribe(), clear(), get_all_handlers()
+   - Exact-match filter logic
+2. Provide get_event_bus() accessor
+3. Store in services/event_bus.py + services/impl/immediate_bus.py
+4. Add tags_vocab.json to define canonical tags
+5. Wire in 1 test event path (e.g., rock_pulse → debug)

@@ -1,0 +1,85 @@
+🛡️ RESOLVE (RES) — SYSTEM DEFINITION
+──────────────────────────────────────────────
+
+**Stat Type:** Mental / Stability
+**Soft Cap:** 10 (human), 20+ (augmented/post-human)
+**Primary Role:** Governs an actor’s resistance to psychological disruption, emotional collapse, social coercion, or identity breakdown under pressure.
+
+──────────────────────────────────────────────
+🧩 What RES Is
+
+RES models the *stability* and *durability* of an actor’s internal structure. It determines how well they maintain focus, control, and personal continuity when exposed to:
+
+* Intimidation, interrogation, or manipulation
+* Betrayal or social collapse
+* Emotional shock, grief, fear, or public failure
+* Demands to violate internal values or alignment
+
+RES is **never an action**. It is a **passive buffer** — a foundation for withstanding effects that erode or disrupt the self.
+
+──────────────────────────────────────────────
+📐 System Area Influence
+
+| System Area    | Role of RES                                        |
+| -------------- | -------------------------------------------------- |
+| Control        | Maintain emotional regulation and physical poise   |
+| Manipulation   | Resist being emotionally coerced or redirected     |
+| Memory         | Resist trauma-induced memory degradation           |
+| Interpretation | Maintain clarity under gaslighting, fear, or panic |
+
+──────────────────────────────────────────────
+⚙️ Runtime Effects
+
+* Reduces **strain accumulation** under persona misalignment
+* Buffers against forced leaks (emotional, informational, narrative)
+* Mitigates collapse under high-pressure social techniques
+* Raises resistance to:
+
+  * Deceive, Interrogate, Dominate, Appeal
+  * Social or alignment-based challenges
+* May reduce **leakage frequency** (if supported by Mask)
+
+──────────────────────────────────────────────
+🔒 What RES Is Not
+
+* Not a skill — RES is not trained or used directly
+* Not a universal "willpower" — RES doesn’t make decisions
+* Not a substitute for Mask — it works *with* Mask to buffer failure
+* Not a health stat — physical damage has no RES mitigation
+
+──────────────────────────────────────────────
+🎯 Functional Summary
+
+RES determines whether an actor *withstands pressure or fractures*.
+
+It is the underlying mental chassis: the frame that carries persona, absorbs impact, and defines how long an identity can survive dissonance.
+
+It does not make you right. It makes you *stay intact*.
+
+──────────────────────────────────────────────
+────────────────────────────────────
+🛡️ RESOLVE-BASED SKILLS — FINAL TABLE (w/ MASK AREA)
+────────────────────────────────────
+
+Skill Name	Description	Emerges At Lv	Archetype	Stat Model	System Areas
+Composure	Maintain calm under emotional, social, or combat pressure	Lv 1	Child	RES + INS	Control, Mask, Manipulation
+Console	Emotionally stabilize others experiencing strain or breakdown	Lv 3	Teenager	INS + RES	Manipulation
+Intimidate	Project dominance to suppress or control others’ emotional state	Lv 4	Teenager	RES + STR or PER	Manipulation
+Endure Interrogation	Withstand coercion without leaking information or alignment	Lv 5	Teenager	RES + INT	Control, Mask, Memory
+Hold Line	Resist group pressure or manipulation; anchor personal stance	Lv 6	Professional	RES	Control, Interpretation
+Suppress Reaction	Block involuntary social responses (e.g. flinch, shame, pause, reveal)	Lv 6–7	Professional	RES + Mask	Control, Mask
+False Calm	Appear emotionally stable while internally strained or collapsing	Lv 7+	Professional	RES + INS + Mask	Mask, Manipulation
+Poker Face	Suppress all emotional signal output — unreadable to even experts	Lv 9+	Uberadvanced	RES + Mask + INT	Mask, Interpretation
+Anchor	Passively stabilize party morale under heavy strain or psychological threat	Lv 10+	Uberadvanced	RES + INS	Control, Manipulation
+Persona Lock	Freeze public-facing identity — resists persona-targeting techniques	Lv 10+	Uberadvanced	RES + Mask + Strain	Mask, Manipulation
+
+────────────────────────────────────
+📌 Notes on System Area: Mask
+
+mask is now a formal system area, just like stealth or movement
+
+All skills that directly suppress leakage, persona break, or expression fall under it
+
+This enables tagging, filtering, and detection technique targeting
+
+It helps define who is opaque vs. legible, regardless of intent

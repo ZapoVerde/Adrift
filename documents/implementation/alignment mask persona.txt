@@ -1,0 +1,137 @@
+alignment_mask_persona.txt
+──────────────────────────────────────────────
+ALIGNMENT, MASK, AND PERSONA: SOCIAL STATE MODEL
+──────────────────────────────────────────────
+
+STATUS: LOCKED
+SCOPE: Core simulation model — applies to all high-fidelity actors
+
+This document defines how alignment, persona, and mask interact to drive social behavior,
+emotional leakage, interpersonal tension, and traitor dynamics in Adrift. It integrates
+with the interpersonal skills framework (Presence, Mask, Insight) and the strain system.
+
+──────────────────────────────────────────────
+I. COMPONENT DEFINITIONS
+──────────────────────────────────────────────
+
+1. ALIGNMENT (Private)
+   - Stored as a vector of numeric axes:
+       * empathy_cruelty      [-100 → +100]
+       * order_chaos          [-100 → +100]
+       * selfless_selfish     [-100 → +100]
+   - Represents the actor's *true* behavioral tendencies
+   - Not visible by default; inferred via behavior and Insight
+   - Actors accumulate STRAIN when acting against alignment
+
+2. PERSONA (Public)
+   - Actor’s claimed self-image and role
+   - Examples: “loyal protector”, “pragmatic raider”, “healer”
+   - Defined via tags or labels at character creation or through faction rolecasting
+   - Functions narratively but has mechanical tension with alignment
+
+3. MASK (Emotional Control)
+   - Stat representing an actor’s ability to suppress visible tension
+   - High mask = stoic, unreadable
+   - Low mask = leaks under stress
+   - Damage to mask is temporary and accumulates with strain
+
+4. INSIGHT (Perceptive Clarity)
+   - Stat representing an observer’s ability to detect social contradictions
+   - Enables noticing cracks in the mask or misalignment between actions and persona
+   - Used passively and actively in techniques
+
+5. STRAIN
+   - Accumulates when actor is:
+     • Forced to violate alignment
+     • Denied a personal quest
+     • Publicly challenged in persona
+     • Operating under extreme social pressure
+   - High strain reduces mask and increases leakage
+   - Can lead to emotional breakdowns, social collapse, betrayal, etc.
+
+──────────────────────────────────────────────
+II. LEAKAGE STATES
+──────────────────────────────────────────────
+
+Leakage occurs when mask fails to contain strain or alignment misfires.
+
+Leakage triggers:
+- Insight check succeeds against weakened mask
+- Actor fails a Mask roll while strained
+- A social technique forcibly reveals emotional state
+
+Leakage outputs:
+- Emoji indicators (“[strained]”, “[holding back tears]”, “[vacant stare]”)
+- Dialogue hints (e.g. “She forces a smile, but it doesn’t reach her eyes.”)
+- Technique activation failures (due to emotional state override)
+- Party strain spikes or loyalty loss
+
+Leakage can be *managed* through:
+- Social support techniques (e.g. `Reassure`, `Redirect Attention`)
+- Passive mask regeneration (rest, downtime)
+- Techniques that suppress leakage temporarily (e.g. `False Calm`, `Poker Face`)
+
+──────────────────────────────────────────────
+III. TECHNIQUE INTERACTION
+──────────────────────────────────────────────
+
+Social techniques may:
+- Force leakage in others (e.g. `Stare Down`, `Expose Hypocrisy`)
+- Temporarily boost or suppress mask (e.g. `Steel Nerves`)
+- Attempt to override persona (e.g. `Call Out`, `Break Cover`)
+- Exploit known alignment (e.g. `Appeal to Mercy`, `Offer Order`)
+
+Techniques always inherit one or more tagged skills from the actor.
+Example: `Appeal to Mercy` might require:
+  ["social", "influence", "persuasion", "emotional_appeal"]
+
+Each technique has:
+- An effect (what it changes)
+- A modifier (scope, cost, delay, cooldown)
+- A situational tag (when it's applicable)
+
+Techniques are gained or mutated on successful skill use.
+Each use rolls:
+- P_adv = level-up chance
+- P_tech = 2 × P_adv = technique gain chance
+- P_mut = 2 × P_adv = mutation chance on owned techniques
+
+──────────────────────────────────────────────
+IV. SOCIAL CONTRADICTION AND CONSEQUENCES
+──────────────────────────────────────────────
+
+When persona and alignment diverge under strain, the following may occur:
+- Mask begins to crack (emoji projection, behavior shifts)
+- Insightful party members detect tension or call out contradictions
+- Strain increases rapidly if behavior persists
+- Techniques may begin to backfire (e.g. `Inspire` fails if party no longer believes in actor)
+- Personal quests may be unlocked or lost based on revealed alignment
+- NPCs may challenge leadership or abandon actor
+- Players may trigger internal quest arcs to reconcile or abandon a persona
+
+──────────────────────────────────────────────
+V. IMPLEMENTATION RULES
+──────────────────────────────────────────────
+
+- All high-fidelity actors must have:
+    * alignment vector
+    * declared persona
+    * mask stat
+    * strain value
+- Insight and mask are standard stats
+- Alignment is invisible to the player unless revealed
+- Leakage outputs must route through messaging or animation layer
+- Techniques must obey tagging, XP, and mutation protocols
+
+──────────────────────────────────────────────
+VI. FUTURE EXTENSIONS
+──────────────────────────────────────────────
+
+- Mask durability based on trauma history or background
+- Persona evolution under duress
+- Alignment-aware procedural quests
+- Relationship tagging using alignment deltas
+- Trait-based Insight detection modifiers (e.g. “Emotionally Aware”)
+
+──────────────────────────────────────────────
+END OF FILE

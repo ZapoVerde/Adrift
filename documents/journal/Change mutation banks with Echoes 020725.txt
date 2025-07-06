@@ -1,0 +1,45 @@
+Design Changelog Entry
+-----------------------
+
+Date: 2025-07-03  
+Author: AI Assistant (Confirmed by Human Integrator)  
+System: Skill & Mutation Framework
+
+Change: Replaced “Mutation Banks” with Echoes
+---------------------------------------------
+
+- The global `mutation_bank` system is now renamed and restructured as Echoes.
+- Echoes represent the residual potential from banked or rejected mutation offers.
+- Echoes may be spent to:
+  - Boost mutation rarity for a skill (3 Echoes)
+  - Permanently improve a stat via Infusion (5 Echoes)
+- Boosts apply per skill and may stack; Infusions are player-directed and permanent.
+- Echoes are now earned at the same probability as skill level-up, not 2×.
+- All existing documentation referencing “bank” must be updated to use “Echo” terminology.
+
+Rationale
+---------
+
+- The previous "bank" terminology was mechanical and thematically disconnected.
+- Echoes create narrative and symbolic meaning while preserving all mechanical functionality.
+- Tying mutation frequency to level probability simplifies mental modeling and slows Echo inflation.
+- The revised system ensures strategic pacing, clarity of purpose, and a unified growth model across combat, social, and stat domains.
+
+Audit Note
+----------
+
+- Affected files:
+  - technique_evolution_system.md: update all references to “bank” to “Echo” (e.g., mutation_bank → echo_count)
+  - Game data structures: update all actor mutation-related fields
+  - Messaging and UI systems: reinforce Echo theming in player-facing text
+
+- System behavior remains unchanged except for adjusted mutation rate and renamed field.
+- This change is cosmetic + economic, not structural.
+
+Related Threads
+---------------
+
+- Echo infusion system [this thread]
+- Social stat & skill design [this thread]
+- Skill progression model: level-based probability (skill_progression_model.md)
+- Technique rarity boost table (technique_evolution_system.md)

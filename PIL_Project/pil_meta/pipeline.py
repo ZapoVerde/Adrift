@@ -117,8 +117,9 @@ def run_pipeline(config_path: str = "pilconfig.json") -> PipelineResult:
     result = PipelineResult()
     try:
         set_debug(False)
-
+        
         config = load_config(config_path)
+
         project_name = Path(config["project_root"]).resolve().name
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 

@@ -1,0 +1,85 @@
+PLAYER ALIGNMENT HANDLING
+──────────────────────────────────────────────
+STATUS: LOCKED
+SCOPE: Applies to player character only; integrates with alignment\_mask\_persona.txt, interpersonal skills, and narrative output systems.
+
+──────────────────────────────────────────────
+PHILOSOPHY
+──────────────────────────────────────────────
+The player character has an internal alignment vector (empathy\_cruelty, order\_chaos, selfless\_selfish) just like all high-fidelity actors.
+
+However, this alignment is:
+
+* Never shown numerically
+* Never scored as "good" or "evil"
+* Never moralized by the game
+* Never used to restrict options or coerce roleplay
+
+> "Let the world read the player — not the player read themselves."
+
+Alignment affects perception, not direction. NPCs interpret the player's actions through the lens of their own insight, strain, and worldview.
+
+──────────────────────────────────────────────
+LEAKAGE MODEL
+──────────────────────────────────────────────
+The player's alignment leaks into the world like any other actor — but only if the surrounding actors are capable of noticing.
+
+| Phase     | Behavior                                                          |
+| --------- | ----------------------------------------------------------------- |
+| Internal  | Player actions subtly shift alignment vector over time            |
+| Mask      | If player maintains a persona, strain builds on contradiction     |
+| Detection | High-INS NPCs roll checks to detect misalignment or cracks        |
+| Reaction  | NPCs respond through narrative (suspicion, fear, trust, distance) |
+| Mutation  | Skill offers may shift to match observed behavior patterns        |
+
+Player leakage does *not* manifest as numbers, gauges, or flags. Instead, it appears as:
+
+* Narrative descriptions (e.g. "He watches you a little too closely.")
+* Changed tone or behavior from NPCs
+* Technique reactions (e.g. failed persuasion due to lack of belief)
+* Reputation shifts, rumor spread (if social memory systems are active)
+
+──────────────────────────────────────────────
+DESIGN COMMITMENTS
+──────────────────────────────────────────────
+
+* The game never says "You are becoming evil"
+* Alignment is private unless inferred
+* Leakage is continuous but interpretable
+* Player has a mask, persona, and strain just like NPCs
+* High INS actors can misread as well as understand
+* Insight and related skills govern perception of player alignment
+
+──────────────────────────────────────────────
+LEAKAGE TELLS (EXAMPLES)
+──────────────────────────────────────────────
+
+* "Your hand hesitates a moment too long before the trigger."
+* "They flinch when you speak — they’ve seen what you did last night."
+* "A child presses a flower into your hand. You did something kind… maybe."
+
+These cues are soft, ambient, and narratively embedded.
+
+──────────────────────────────────────────────
+IMPLEMENTATION HOOKS
+──────────────────────────────────────────────
+
+* Player alignment: same 3-axis vector as other actors
+
+* Mask: strain builds when acting against alignment or under scrutiny
+
+* Leakage triggers:
+  • Failing a mask roll while strained
+  • Insight checks from NPCs
+  • Social techniques targeting the player's mask
+
+* Player can manage leakage using:
+  • Social techniques (e.g. "False Calm")
+  • Narrative deflection (e.g. "Joke to cover discomfort")
+  • Skillful deception (e.g. "Reframe event through Perform")
+
+──────────────────────────────────────────────
+CONCLUSION
+──────────────────────────────────────────────
+The player has alignment. The world can read it. The player cannot.
+There is no morality meter. Just consequences, interpretation, and tension.

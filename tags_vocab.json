@@ -1,0 +1,106 @@
+[
+  {
+    "group": "domain",
+    "values": [
+      "combat",
+      "movement",
+      "perception",
+      "inventory",
+      "quests",
+      "faction",
+      "UI",
+      "mutation",
+      "narrative",
+      "social",
+      "time",
+      "system"
+    ]
+  },
+  {
+    "group": "data_affinity",
+    "values": [
+      "actor_data",
+      "item_data",
+      "skill_data",
+      "technique_data",
+      "mutation_data",
+      "quest_data",
+      "faction_data",
+      "map_data",
+      "event_data"
+    ]
+  },
+  {
+    "group": "semantic_role",
+    "values": [
+      "runtime_behavior",
+      "data_schema",
+      "system_definition",
+      "procedural_model",
+      "trigger_logic",
+      "render_contract"
+    ]
+  },
+  {
+    "group": "debug_visibility",
+    "values": [
+      "always",
+      "on_failure",
+      "dev_only",
+      "silent",
+      "external"
+    ]
+  },
+  {
+    "group": "trigger_surface",
+    "values": [
+      "tick",
+      "event",
+      "input",
+      "passive",
+      "init"
+    ]
+  },
+  {
+    "group": "actor_mindset",
+    "values": [
+      "instinctual",
+      "scripted",
+      "affinity_based",
+      "masked",
+      "emotive",
+      "deliberative"
+    ]
+  },
+  {
+    "group": "pil_status",
+    "values": [
+      "permanent",
+      "upgradable",
+      "deadend"
+    ],
+    "__meta__": {
+      "description": "Module upgrade classification. Used only by PIL for structural governance.",
+      "enforced_in": [
+        "PIL"
+      ],
+      "excluded_from": [
+        "@tags",
+        "ai_tags",
+        "debug"
+      ]
+    }
+  },
+  {
+  "__reserved_groups__": [
+    "domain",
+    "data_affinity",
+    "semantic_role",
+    "debug_visibility",
+    "trigger_surface",
+    "actor_mindset",
+    "pil_status"
+  ]
+}
+
+]

@@ -52,7 +52,8 @@ PIL_CONFIG = {
     # 🚫 Folder names to ignore during scanning
     "ignored_folders": [
         ".git", "__pycache__", "snapshots", "exports",
-        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache", "node_modules", "documents", "PIL_Project"    ]
+        ".mypy_cache", ".venv", "env", ".idea", ".pytest_cache", "node_modules", "documents", "PIL_Project"    ],
+
 }
 
 

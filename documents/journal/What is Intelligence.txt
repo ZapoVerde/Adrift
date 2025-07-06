@@ -1,0 +1,88 @@
+ChatGPT said:
+Here’s your clear, modular definition for INT (Intelligence) — written in the same framing as Insight.
+
+────────────────────────────────────
+🧠 INTELLIGENCE (INT) — SYSTEM DEFINITION
+────────────────────────────────────
+
+Stat Type: Mental / Cognitive
+Soft Cap: 10 (human), 20+ (augmented)
+Primary Role: Manage complex systems, reason through logic, recognize patterns, and solve abstract or technical problems.
+
+🧩 What INT Is
+INT measures an actor’s cognitive complexity ceiling — their capacity for:
+
+Abstract reasoning
+
+Pattern analysis
+
+Tactical planning
+
+Codebreaking, logic chaining, technical operation
+
+Efficient use of tools, systems, or environmental affordances
+
+📐 Mechanical Effects
+System Area	INT Role
+Action resolution	Increases success odds for planning-, tool-, or logic-based tasks
+Skill emergence	Accelerates discovery of multi-step or indirect-use skills
+Technique gating	Allows use of logic-triggered or systems-level techniques (e.g., “Predict Attack Arc”)
+Equipment interaction	Reduces error chance or action cost with advanced tools/devices
+
+🧭 How INT Is Not Used
+INT is not memory (though it can influence recall systems)
+
+INT is not charisma or empathy (those live in Insight)
+
+INT is not discipline or willpower (governed by Resolve)
+
+INT does not generate options — it optimizes them
+
+🎯 Narrative Function
+A high-INT actor sees:
+
+Invisible affordances — "you realize this cable bypasses the lock"
+
+Causal links — "if she lied about her name, she’s lying about the rest"
+
+Optimal order of operations — "shoot that support beam first"
+
+Low-INT actors might succeed, but burn time, options, or clarity doing so.
+
+────────────────────────────────────
+🧠 INT-RELATED SKILLS (CORE SET)
+────────────────────────────────────
+
+Skill	Description	INT Influence
+Hack	Interact with terminals, locks, or networks	Plan-efficient path through system logic
+Tactics	Influence ally/AI behavior; optimize action economy	Predict outcomes, set formations
+Analyze	Break down unknown tools, behaviors, or anomalies	Connect observation to unseen logic
+Engineer	Construct or repair tech or structures	Correct tool selection, procedural order
+Logic	Solve abstract or symbolic puzzles	Reduce input requirement, increase options
+Recall	Retrieve learned or observed information	Reconstruct partial information accurately
+
+These skills don’t all need to be MVP — but they define a mental gameplay domain distinct from Insight or Perception.
+
+────────────────────────────────────
+📈 INT as Primary or Secondary Stat
+
+Skill	Primary Stat	Secondary Stat
+Hack	INT	DEX
+Tactics	INT	PER
+Analyze	INT	INS
+Engineer	INT	STR (manual leverage)
+Logic	INT	—
+Recall	INT	INS
+
+────────────────────────────────────
+🧠 Low-INT Behavior Modeling (Optional)
+
+Skill	Low-INT Failure Example
+Hack	Uses brute-force methods → lockout triggered
+Tactics	Misreads threat priority → bad formation
+Analyze	False positives (“this is a weapon” — it’s not)
+Logic	Needs more hints to progress
+Recall	Merges memories incorrectly or adds false detail
+
+→ These can be flavor, fail states, or structural XP blockers
+

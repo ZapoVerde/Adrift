@@ -1,0 +1,86 @@
+Design Journal Entry
+---------------------
+
+Date: 2025-07-03  
+Author: AI Assistant (Confirmed by Human Integrator)  
+Section: Social Stats and Skills
+
+Status
+------
+
+Finalizing the foundational structure for social stats and skills. This includes separating innate traits from trainable abilities and integrating them into the broader skill/technique/mutation framework. The model is compatible with Echo-based progression and the skill hierarchy used in combat and stealth.
+
+Rationale
+---------
+
+- Avoids traditional “Charisma dump stat” pitfalls by converting it into a skill (Charm).
+- Preserves player agency by tying growth to usage, not class or level-based upgrades.
+- Keeps the stat system lightweight and complementary, not central or bloated.
+- Mirrors physical systems: just as weapons train skills and mutate techniques, social skills now behave identically.
+- Encourages tactical and narrative decisions in social encounters.
+
+Core Structure
+--------------
+
+Stats (Innate, Passive Modifiers):
+  - Insight: Read others; detect lies, intent, hesitation
+  - Composure: Maintain control under pressure; resist influence
+
+Skills (Trainable, Technique-Unlocking):
+  - Charm: Persuasive warmth, likability
+  - Deceive: Lies, misdirection, acting
+  - Negotiate: Diplomacy, deal-making, compromise
+  - Console: Emotional support, calming, empathy
+  - Perform: Entertainment, distraction, manipulation
+  - Intimidate: Threats, presence, force (optional inclusion)
+
+Stats and skills are strictly separated: stats are **never trained directly**. Instead, repeated skill use leads to mutation chances, which may be banked or rejected to produce Echoes.
+
+Stat Advancement Rules
+----------------------
+
+- 5 Echoes may be spent to perform a **Stat Infusion**, improving one stat of the player’s choice.
+- Echoes are only earned by rejecting or banking mutation offers (not by leveling up directly).
+- Echo frequency matches skill level-up probability and is no longer 2×.
+- Echoes are tracked as `actor["echo_count"]`.
+
+Architectural Implications
+--------------------------
+
+- Stats can now be used in roll modifiers, conditional logic, and gating systems (e.g., composure check to stay calm).
+- Social techniques will mutate via the same flow and format as combat techniques, using the same component library.
+- Echo system is unified across domains — no need to separate combat vs social logic.
+- Mutation offers can draw from social technique components once defined.
+
+Flow Integration
+----------------
+
+1. Skill-tagged social action (e.g., use Charm or Negotiate)
+2. If successful and risky, XP is awarded
+3. Roll for level-up and mutation trigger (same probability)
+4. If mutation offer appears:
+   - Choose: mutate, bank, or reject
+   - Bank/reject generates 1 Echo
+5. Echoes tracked globally per actor
+6. Echoes may be spent on:
+   - Boosting rarity for future mutation offers (3 Echoes)
+   - Performing a stat infusion (5 Echoes)
+
+Design Philosophy
+-----------------
+
+- Everything is earned through action and story.
+- No player levels, no menu-based upgrades.
+- Skills represent learned patterns; stats reflect persistent tendencies.
+- Echoes give long-term agency without frontloading power.
+- Mutation pacing and stat growth are intentionally slow, narrative-weighted, and meaningful.
+
+Unstructured Notes
+------------------
+
+- Consider gating Intimidate skill behind faction origin or story background.
+- Charm vs Deceive may eventually gain opposed techniques (e.g., “Heartfelt Appeal” vs “Feigned Sincerity”).
+- Console skill may enable trauma recovery or prevent NPC breakdowns in extended encounters.
+- Presence stat is explicitly excluded — its role is handled through skill results and narrative framing.
+- Stat infusion messaging should use poetic, evocative language (e.g., “You feel a new calm settle into your bones”).
+

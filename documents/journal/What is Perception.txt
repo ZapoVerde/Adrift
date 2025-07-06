@@ -1,0 +1,145 @@
+────────────────────────────────────
+👁️ PERCEPTION (PER) — SYSTEM DEFINITION (SANITIZED)
+────────────────────────────────────
+
+Stat Type: Mental / Sensory
+Soft Cap: 10 (human), 20+ (augmented)
+Primary Role: Governs the maximum distance and visual clarity with which an actor can perceive external zones and objects under given lighting conditions.
+
+🧩 What PER Is
+PER is a range-limiting stat. It defines how far an actor is capable of seeing — assuming no obstacles, good light, and no interference. It does not control what is noticed or interpreted — only what is physically visible.
+
+📐 System Area Influence
+System Area	PER Role
+Detection	Sets the upper bound for visible radius in clear conditions
+Interpretation	Enables vague signals to resolve into readable detail
+Avoidance	(Indirect) Supports earlier threat recognition
+
+PER does not activate skills. It modifies what those skills have to work with.
+
+⚙️ Interaction Summary
+PER affects Range-of-Perception (RoP)
+
+More PER = more tiles available for visual scan
+
+Clarity is tiered: visible, vague, unseen
+
+Visibility score is a function of:
+
+Light level (light_tier)
+
+Target size
+
+Environmental effects (visibility_penalty)
+
+PER stat of observer
+
+PER does not allow an actor to notice, understand, or act on what they see.
+That is the job of skills like observe, search, or analyze.
+
+🔒 What PER Is Not
+Not a detection skill
+
+Not a memory stat
+
+Not a substitute for observe or search
+
+Not related to willpower or resistance
+
+Not effective in zero-light conditions
+────────────────────────────────────
+👁️ PERCEPTION-RELATED SKILLS
+────────────────────────────────────
+
+Skill	Description	Primary Stat	Secondary Stat	System Area
+Observe	Passive awareness of movement or threat nearby	PER/INS	Detection, Interpretation
+Search	Active scan of a tile, container, or person for hidden detail	PER/INS	Detection
+Track	Follow trail or pattern through terrain	PER	INT or RES	Detection, ProblemSolving
+Spot Trap	Recognize hazardous components in a scene	PER	INT	Detection
+Mark Target	Visually lock onto a target for tactical actions	PER	AGI or INT	Detection, Control
+
+────────────────────────────────────
+📐 Stat Role Model
+
+Stat	Influence Type	Notes
+PER	Primary	Drives raw visual reach and clarity
+INS	Secondary	Helps interpret ambiguity
+INT	Secondary (specific)	Supports logic-based searches
+RES	Secondary (Tracking)	Persistence and focus under strain
+
+────────────────────────────────────
+🧠 Low-PER Behavior Modeling (Optional)
+
+Skill	Low-PER Failure Effect
+Observe	Misses silhouette, false “empty room”
+Search	Overlooks hidden objects even when adjacent
+Track	Loses trail on low-contrast surfaces
+Spot Trap	Misclassifies object as harmless or natural
+Mark Target	Locks on to wrong or decoy target
+
+→ All failures are skill-level dependent, but amplified by low PER
+
+────────────────────────────────────
+You said:
+lets redefine Observe and search to include their INS function too, and make INS an equal primary stat as discussed. 
+
+
+ChatGPT said:
+Excellent — here is the updated definition of observe and search, now fully aligned with your locked stat model:
+
+PER and INS are both primary stats
+→ PER = see clearly
+→ INS = understand what you see
+
+Both skills now require visual acuity and interpretive ability to function effectively — neither stat dominates alone.
+
+────────────────────────────────────
+🔍 observe — Skill Definition (Locked)
+────────────────────────────────────
+
+Role: Passive skill used to notice movement, activity, or subtle behavioral cues in nearby tiles.
+It is triggered automatically during the perception phase and updated based on proximity, light, environmental modifiers, and movement.
+
+Attribute	Value
+Primary Stats	PER + INS (equal weighting)
+System Areas	Detection, Interpretation
+XP Trigger	Partial or full detection of entities under contested visibility conditions
+Emerges When	Actor repeatedly notices movement, vague forms, or unidentified actors
+Used Against	Actor stealth, light tier, visibility penalties
+Fails When	Observer lacks visual clarity or misreads intent
+
+Behavioral Notes:
+
+High PER = wider scan radius
+
+High INS = better interpretation of partial info
+
+Skill becomes visible after a handful of close calls or partial detections
+
+────────────────────────────────────
+🔎 search — Skill Definition (Locked)
+────────────────────────────────────
+
+Role: Active skill used to scan a specific target tile, object, or actor for hidden presence, traps, or concealed clues.
+It must be explicitly invoked, and temporarily boosts observe results for that tile.
+
+Attribute	Value
+Primary Stats	PER + INS (equal weighting)
+System Area	Detection
+XP Trigger	Actor successfully identifies hidden object, detail, or person in a searched tile
+Emerges When	Actor initiates manual scans and achieves partial or full successes
+Used Against	Concealment, stealth, embedded items, layered traps
+Fails When	Actor sees but misclassifies, or overlooks entirely
+
+Behavioral Notes:
+
+PER controls surface awareness
+
+INS governs pattern spotting and deduction
+
+May return false positives or ghost readings under uncertainty (as per confusion matrix rule)
+
+────────────────────────────────────
+
+
+
